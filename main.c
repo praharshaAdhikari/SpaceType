@@ -29,11 +29,6 @@ bool exitWindow = false;
 bool exitGame = false;
 bool sorted;
 Texture2D cockpitTexture, cockpitTextureTrain, cockpitTextureTest, cockpitTextureGame, cockpitTextureExit;
-// char alphabet[26] = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-struct charCount{
-	char character;
-	int count;
-} wrongLetters[26];
 /*Declaring general variables for the application end */
 
 
@@ -76,7 +71,6 @@ int main()
 		BeginDrawing();
 		draw_background();
 		draw_menu();
-		// DrawTextEx(retroFont, TextFormat("%c",wrongLetters[0].character), (Vector2){screenWidth / 2, screenHeight / 2}, 20, 1, WHITE);
 		DrawTextEx(retroFont, "SPACE", (Vector2){screenWidth / 2 - 170 + 5, screenHeight / 2 - 200 + 4}, 90, 1, DARKBLUE);
 		DrawTextEx(retroFont, "SPACE", (Vector2){screenWidth / 2 - 170, screenHeight / 2 - 200}, 90, 1, WHITE);
 		DrawTextEx(retroFont, "TYPE", (Vector2){screenWidth / 2 - 140 + 5, screenHeight / 2 - 90 + 4}, 90, 1, DARKBLUE);
