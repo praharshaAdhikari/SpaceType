@@ -1,0 +1,705 @@
+/*
+█▀ █▀█ ▄▀█ █▀▀ █▀▀   ▀█▀ █▄█ █▀█ █▀▀
+▄█ █▀▀ █▀█ █▄▄ ██▄   ░█░ ░█░ █▀▀ ██▄
+Letter and Word Typing Train
+Mukunda Dev Adhikari <mukunda.adhikari@outlook.com>
+SPDX-License-Identifier: LGPL-2.1-or-later
+*/
+
+/*Declaring variables for train screen start*/
+bool exitTrainWords, exitTrainLetters, MiddleRow, TopRow, BottomRow, exitTrainProcess, letterinput, exitTrain, trainMode, wordinput, exitResult;
+bool NumberRow = false;
+char TopRowLetters[10] = {'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p'};
+char MiddleRowLetters[9] = {'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l'};
+char BottomRowLetters[7] = {'z', 'x', 'c', 'v', 'b', 'n', 'm'};
+char RequiredLetter;
+Texture2D cockpitTextureKeyboard;
+/*Declaring variables for train screen end*/
+
+/*Declaring variables for word train start*/
+char MiddleRowWords[9][10] = {"lad", "slade", "glass", "fade", "grade", "hall", "jade", "klaus", "lathe"};
+char TopRowWords[10][10] = {"queer", "wrought", "erode", "trope", "troupe", "youth", "utopia", "irony", "outhouse", "power"};
+char BottomRowWords[7][10] = {"zoner", "xerox", "change", "vought", "broom", "noob", "mooncover"};
+char RequiredWord[10];
+/*Declaring variables for word train  end*/
+
+/*Declaring extern variables from main start*/
+extern Music music;
+extern int screenWidth, screenHeight;
+extern Font retroFont;
+extern Texture2D cockpitTexture;
+extern char wordStored[20];
+/*Declaring extern variables from main end*/
+
+ 
+void train()
+{
+	exitTrain = false;
+	cockpitTextureKeyboard = LoadTexture("resources/images/cockpit_texture_keyboard.png");
+	
+	while (!exitTrain)
+	{
+		movingDown += mover;
+		UpdateMusicStream(music);
+		BeginDrawing();
+		draw_background();
+		DrawTextureEx(cockpitTextureKeyboard, (Vector2){0, 0}, 0, 1, WHITE);
+		train_menu();
+		if (IsKeyDown(KEY_RIGHT))
+			exitTrain = true;
+		EndDrawing();
+	}
+}
+
+/**
+ * train_menu:
+ * 
+ * Draws the menu for the train mode. Gives the user the option 
+ * to choose between practicing letters or practicing words.
+ */   
+void train_menu()
+{
+	if ((float)GetMouseX() >= (GetScreenWidth() / 2 - MeasureTextEx(retroFont, "letters", 30, 1).x / 2) && (float)GetMouseX() <= (GetScreenWidth() / 2 + MeasureTextEx(retroFont, "letters", 30, 1).x / 2) && (float)GetMouseY() >= (GetScreenHeight() / 2 - 105 - MeasureTextEx(retroFont, "letters", 30, 1).y / 2) && (float)GetMouseY() <= (GetScreenHeight() / 2 - 105 + MeasureTextEx(retroFont, "letters", 30, 1).y / 2))
+	{
+		DrawTextPro(retroFont, "letters", (Vector2){(GetScreenWidth() / 2) + 2, (GetScreenHeight() / 2) - 100 + 1}, Vector2Scale(MeasureTextEx(retroFont, "letters", 30, 1), 0.5f), 0, 30, 1, RED);
+		DrawTextPro(retroFont, "letters", (Vector2){(GetScreenWidth() / 2), (GetScreenHeight() / 2) - 100}, Vector2Scale(MeasureTextEx(retroFont, "letters", 30, 1), 0.5f), 0, 30, 1, BLUE);
+
+		if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
+		{
+			EndDrawing();
+			exitTrainLetters = false;
+			trainMode = true; // to indicate that trainMode is letters
+			mode_trainletters();
+		}
+	}
+	else
+	{
+		DrawTextPro(retroFont, "letters", (Vector2){(GetScreenWidth() / 2), (GetScreenHeight() / 2) - 100}, Vector2Scale(MeasureTextEx(retroFont, "letters", 30, 1), 0.5f), 0, 30, 1, WHITE);
+	}
+	if ((float)GetMouseX() >= (GetScreenWidth() / 2 - MeasureTextEx(retroFont, "words", 30, 1).x / 2) && (float)GetMouseX() <= (GetScreenWidth() / 2 + MeasureTextEx(retroFont, "words", 30, 1).x / 2) && (float)GetMouseY() >= (GetScreenHeight() / 2 - 55 - MeasureTextEx(retroFont, "words", 30, 1).y / 2) && (float)GetMouseY() <= (GetScreenHeight() / 2 - 55 + MeasureTextEx(retroFont, "words", 30, 1).y / 2))
+	{
+		DrawTextPro(retroFont, "words", (Vector2){(GetScreenWidth() / 2) + 2, GetScreenHeight() / 2 - 50 + 1}, Vector2Scale(MeasureTextEx(retroFont, "words", 30, 1), 0.5f), 0, 30, 1, RED);
+		DrawTextPro(retroFont, "words", (Vector2){(GetScreenWidth() / 2) + 2, GetScreenHeight() / 2 - 50}, Vector2Scale(MeasureTextEx(retroFont, "words", 30, 1), 0.5f), 0, 30, 1, BLUE);
+		if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
+		{
+			EndDrawing();
+			exitTrainWords = false;
+			trainMode = false; // to indicate that trainMode is words
+			mode_trainwords();
+		}
+	}
+	else
+	{
+		DrawTextPro(retroFont, "words", (Vector2){(GetScreenWidth() / 2) + 2, GetScreenHeight() / 2 - 50}, Vector2Scale(MeasureTextEx(retroFont, "words", 30, 1), 0.5f), 0, 30, 1, WHITE);
+	}
+	if ((float)GetMouseX() >= (GetScreenWidth() / 2 - MeasureTextEx(retroFont, "back", 30, 1).x / 2) && (float)GetMouseX() <= (GetScreenWidth() / 2 + MeasureTextEx(retroFont, "back", 30, 1).x / 2) && (float)GetMouseY() >= (GetScreenHeight() / 2 + 15 - MeasureTextEx(retroFont, "back", 30, 1).y / 2) && (float)GetMouseY() <= (GetScreenHeight() / 2 + 15 + MeasureTextEx(retroFont, "back", 30, 1).y / 2))
+	{
+		DrawTextPro(retroFont, "back", (Vector2){(GetScreenWidth() / 2) + 2, GetScreenHeight() / 2 + 20 + 1}, Vector2Scale(MeasureTextEx(retroFont, "back", 30, 1), 0.5f), 0, 30, 1, RED);
+		DrawTextPro(retroFont, "back", (Vector2){(GetScreenWidth() / 2), GetScreenHeight() / 2 + 20}, Vector2Scale(MeasureTextEx(retroFont, "back", 30, 1), 0.5f), 0, 30, 1, BLUE);
+		if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
+		{
+			exitTrain = true;
+		}
+	}
+	else
+	{
+		DrawTextPro(retroFont, "back", (Vector2){(GetScreenWidth() / 2), GetScreenHeight() / 2 + 20}, Vector2Scale(MeasureTextEx(retroFont, "back", 30, 1), 0.5f), 0, 30, 1, WHITE);
+	}
+}
+
+/**
+ * mode_trainletters:
+ * 
+ * The function that handles lettere practice mode. Clears all
+ * boolean relatetd rows and train loops and calls the function
+ * which draws selection menu for rows.
+ */   
+void mode_trainletters() 
+{
+
+	TopRow = false;
+	MiddleRow = false;
+	BottomRow = false;
+	exitTrainProcess = false;
+	while (!exitTrainLetters)
+	{
+		UpdateMusicStream(music);
+		movingDown += mover;
+		BeginDrawing();
+
+		ClearBackground(BLACK);
+		draw_background();
+		DrawTextureEx(cockpitTextureKeyboard, (Vector2){0, 0}, 0, 1, WHITE);
+		train_select();
+
+		EndDrawing();
+	}
+}
+
+/**
+ * mode_trainwords:
+ * 
+ * The function that handles words practice mode. Clears all
+ * boolean relatetd rows and train loops and calls the train_select
+ * function which draws selection menu for rows.
+ */  
+void mode_trainwords() 
+{
+
+	TopRow = false;
+	MiddleRow = false;
+	BottomRow = false;
+	exitTrainProcess = false;
+	while (!exitTrainWords)
+	{
+		UpdateMusicStream(music);
+		movingDown += mover;
+		BeginDrawing();
+		ClearBackground(BLACK);
+		draw_background();
+		DrawTextureEx(cockpitTextureKeyboard, (Vector2){0, 0}, 0, 1, WHITE);
+		train_select();
+
+		EndDrawing();
+	}
+}
+
+/**
+ * letter_train
+ * 
+ * The function that handles resetting of variables by calling 
+ * reset_counter, and contains the loop which selects the new 
+ * letter (using select_letter) and a nested loop to check if the 
+ * input letter matches with the displayed one.
+ */  
+void letter_train() 
+{
+	reset_counter();
+	exitTrainProcess = false;
+	while (!exitTrainProcess)
+	{
+		BeginDrawing();
+		select_letter();
+		exitTrainProcess = false;
+		letterinput = false;
+
+			while (!letterinput)
+			{
+				UpdateMusicStream(music);
+				char requiredtxt[2] = {0};
+				movingDown += mover;
+				sprintf(requiredtxt, "%c ", RequiredLetter);
+				BeginDrawing();
+				ClearBackground(BLACK);
+				draw_background();
+				DrawTextureEx(cockpitTextureKeyboard, (Vector2){0, 0}, 0, 1, WHITE);
+				DrawTextEx(retroFont, requiredtxt, (Vector2){GetScreenWidth() / 2, GetScreenHeight() / 2 - 100}, 30, 2, WHITE);
+
+				int key = ((int)RequiredLetter) - 32;
+				if (IsKeyPressed(key)) letterinput = true;
+				
+				if (IsKeyPressed(KEY_ESCAPE))
+				{
+					letterinput = true;
+					exitTrainProcess = true;
+				}
+
+				EndDrawing();
+			}
+		EndDrawing();
+	}
+}
+
+/**
+ * word_train
+ * 
+ * The function that handles resetting of variables by calling 
+ * reset_counter, and contains the loop which selects the new 
+ * word (using select_word) and a nested loop which ends when 
+ * the user has finished enterring the word. It calls remove_firstletter
+ * each time the letter input matches the letter displayed. Once
+ * the user chooses to leave the train process, by pressing ESC, a 
+ * stats screen is displayed which shows their WPM, fastest word, 
+ * slowest word, etc.
+ */  
+void word_train() 
+{
+	reset_counter();
+	exitTrainProcess = false;
+	while (!exitTrainProcess)
+	{		
+		BeginDrawing();
+		select_word();
+			exitTrainProcess = false;
+	int textWidth;
+	wordinput = false;
+	strcpy(wordStored, RequiredWord);
+
+	while (!wordinput)
+	{
+		UpdateMusicStream(music);
+		movingDown += mover;
+		textWidth = MeasureTextEx(retroFont, RequiredWord, 30, 2).x;
+		BeginDrawing();
+		framesCounterForSession++;
+		framesCounterForWord++;
+		ClearBackground(BLACK);
+		draw_background();
+		DrawTextureEx(cockpitTextureKeyboard, (Vector2){0, 0}, 0, 1, WHITE);
+
+		DrawTextEx(retroFont, RequiredWord, (Vector2){(GetScreenWidth() / 2) - (textWidth / 2), GetScreenHeight() / 2 - 100}, 30, 2, WHITE);
+		int key = ((int)RequiredWord[0]) - 32;
+		if (GetKeyPressed()) keysPressed++;
+		if (IsKeyPressed(key))
+		{
+			rightKeysPressed++;
+			remove_firstletter(RequiredWord);
+			if (strlen(RequiredWord) == 0)
+			{ // UPDATING DATA
+				if (framesCounterForWord > slowestWordFrames)
+				{
+					slowestWordFrames = framesCounterForWord;
+					strcpy(slowestWord, wordStored);
+				}
+				if (framesCounterForWord < fastestWordFrames)
+				{
+					fastestWordFrames = framesCounterForWord;
+					strcpy(fastestWord, wordStored);
+				}
+
+				TIME -= (TIME < 5) ? ((TIME < 4) ? 0.1 : 0.25) : 0.5;
+				SCORE++;
+				wordinput = true;
+				framesCounterForWord = 0;
+			}
+		}
+
+		if (IsKeyPressed(KEY_ESCAPE))
+		{
+			wordinput = true;
+			exitTrainProcess = true;
+		}
+		EndDrawing();
+	}
+		EndDrawing();
+	}
+
+	while (!exitResult)
+	{
+		if (SCORE == 0)
+		{
+			fastestWordFrames = 0;
+			if (keysPressed == 0)
+				keysPressed = 1;
+		}
+		UpdateMusicStream(music);
+		char scoreString[50];
+		char sessionDurationString[50];
+		char fastestWordString[50];
+		char fastestTimeString[50];
+		char slowestWordString[50];
+		char slowestTimeString[50];
+		char wpmString[50];
+		char accuracyString[50];
+
+		sprintf(scoreString, "Score : %i", SCORE);
+		sprintf(sessionDurationString, "Session time : %.2f seconds", framesCounterForSession / 60);
+		sprintf(fastestWordString, "Fastest Word:  | %s |", fastestWord);
+		sprintf(fastestTimeString, "Time: %.2f seconds", fastestWordFrames / 60);
+		sprintf(slowestWordString, "Slowest Word:  | %s |", slowestWord);
+		sprintf(slowestTimeString, "Time: %.2f seconds", slowestWordFrames / 60);
+		sprintf(wpmString, "Typing Speed: %d WPM", (int)(SCORE * 60 * 60 / framesCounterForSession));
+		sprintf(accuracyString, "Accuracy: %.2f%%", (rightKeysPressed / keysPressed) * 100);
+		BeginDrawing();
+		draw_background();
+		DrawTextEx(retroFont, "RESULTS", (Vector2){screenWidth / 2 - 200 + 5, screenHeight / 2 - 250 + 4}, 80, 1, DARKBLUE);
+		DrawTextEx(retroFont, "RESULTS", (Vector2){screenWidth / 2 - 200, screenHeight / 2 - 250}, 80, 1, WHITE);
+		DrawTextEx(retroFont, scoreString, (Vector2){250 + 2, screenHeight / 2 - 40 + 1}, 20, 1, BROWN);
+		DrawTextEx(retroFont, scoreString, (Vector2){250, screenHeight / 2 - 40}, 20, 1, WHITE);
+		DrawTextEx(retroFont, sessionDurationString, (Vector2){250 + 2, screenHeight / 2 + 1}, 20, 1, BROWN);
+		DrawTextEx(retroFont, sessionDurationString, (Vector2){250, screenHeight / 2}, 20, 1, WHITE);
+		DrawTextEx(retroFont, fastestWordString, (Vector2){250 + 2, screenHeight / 2 + 40 + 1}, 20, 1, BROWN);
+		DrawTextEx(retroFont, fastestWordString, (Vector2){250, screenHeight / 2 + 40}, 20, 1, WHITE);
+		DrawTextEx(retroFont, fastestTimeString, (Vector2){850 + 2, screenHeight / 2 + 40 + 1}, 20, 1, BROWN);
+		DrawTextEx(retroFont, fastestTimeString, (Vector2){850, screenHeight / 2 + 40}, 20, 1, WHITE);
+		DrawTextEx(retroFont, slowestWordString, (Vector2){250 + 2, screenHeight / 2 + 80 + 1}, 20, 1, BROWN);
+		DrawTextEx(retroFont, slowestWordString, (Vector2){250, screenHeight / 2 + 80}, 20, 1, WHITE);
+		DrawTextEx(retroFont, slowestTimeString, (Vector2){850 + 2, screenHeight / 2 + 80 + 1}, 20, 1, BROWN);
+		DrawTextEx(retroFont, slowestTimeString, (Vector2){850, screenHeight / 2 + 80}, 20, 1, WHITE);
+		DrawTextEx(retroFont, wpmString, (Vector2){250 + 2, screenHeight / 2 + 120 + 1}, 20, 1, BROWN);
+		DrawTextEx(retroFont, wpmString, (Vector2){250, screenHeight / 2 + 120}, 20, 1, WHITE);
+		DrawTextEx(retroFont, accuracyString, (Vector2){250 + 2, screenHeight / 2 + 160 + 1}, 20, 1, BROWN);
+		DrawTextEx(retroFont, accuracyString, (Vector2){250, screenHeight / 2 + 160}, 20, 1, WHITE);
+
+		if ((float)GetMouseX() >= (GetScreenWidth() / 2 - MeasureTextEx(retroFont, "main menu", 30, 1).x / 2) && (float)GetMouseX() <= (GetScreenWidth() / 2 + MeasureTextEx(retroFont, "main menu", 30, 1).x / 2) && (float)GetMouseY() >= (GetScreenHeight() / 2 + 255 - MeasureTextEx(retroFont, "main menu", 30, 1).y / 2) && (float)GetMouseY() <= (GetScreenHeight() / 2 + 255 + MeasureTextEx(retroFont, "main menu", 30, 1).y / 2))
+		{
+			DrawTextPro(retroFont, "main menu", (Vector2){(GetScreenWidth() / 2) + 2, GetScreenHeight() / 2 + 260 + 1}, Vector2Scale(MeasureTextEx(retroFont, "main menu", 30, 1), 0.5f), 0, 30, 1, RED);
+			DrawTextPro(retroFont, "main menu", (Vector2){(GetScreenWidth() / 2), GetScreenHeight() / 2 + 260}, Vector2Scale(MeasureTextEx(retroFont, "main menu", 30, 1), 0.5f), 0, 30, 1, BLUE);
+			if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
+			{
+				exitResult = true;
+				exitTrainLetters = true;
+				exitTrainWords = true;
+				exitTrain = true;
+			}
+		}
+		else
+		{
+			DrawTextPro(retroFont, "main menu", (Vector2){(GetScreenWidth() / 2 + 3), GetScreenHeight() / 2 + 260 + 2}, Vector2Scale(MeasureTextEx(retroFont, "main menu", 30, 1), 0.5f), 0, 30, 1, LIME);
+			DrawTextPro(retroFont, "main menu", (Vector2){(GetScreenWidth() / 2), GetScreenHeight() / 2 + 260}, Vector2Scale(MeasureTextEx(retroFont, "main menu", 30, 1), 0.5f), 0, 30, 1, WHITE);
+		}
+		EndDrawing();
+	}
+}
+
+/**
+ * train_select:
+ * 
+ * This function generates the option menu for the user to choose 
+ * the rows that he wants to practice. Checkbox indicator are 
+ * present to indicate the rows chose. letter_train or word_train
+ * are called based on the user's previous selection
+ */  
+void train_select()
+{
+
+	if ((float)GetMouseX() >= (GetScreenWidth() / 2 - 150) && (float)GetMouseX() <= (GetScreenWidth() / 2 - 150 + MeasureTextEx(retroFont, "top row letters", 30, 1).x) && (float)GetMouseY() >= (GetScreenHeight() / 2 - 195) && (float)GetMouseY() <= (GetScreenHeight() / 2 - 195 + MeasureTextEx(retroFont, "top row letters", 30, 1).y))
+	{
+		DrawTextEx(retroFont, "top row letters", (Vector2){(GetScreenWidth() / 2) - 150 + 2, GetScreenHeight() / 2 - 195 + 1}, 30, 1, RED);
+		DrawTextEx(retroFont, "top row letters", (Vector2){(GetScreenWidth() / 2) - 150, GetScreenHeight() / 2 - 195}, 30, 1, BLUE);
+		if (!TopRow)
+		{
+			DrawRectangle(GetScreenWidth() / 2 - 210, GetScreenHeight() / 2 - 200, 30, 30, WHITE);
+			if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
+			{
+				TopRow = true;
+				DrawRectangle(GetScreenWidth() / 2 - 210 + 5, (GetScreenHeight() / 2 - 195), 20, 20, BLUE);
+			}
+		}
+		else
+		{
+			DrawRectangle(GetScreenWidth() / 2 - 210, GetScreenHeight() / 2 - 200, 30, 30, WHITE);
+			DrawRectangle(GetScreenWidth() / 2 - 210 + 5, GetScreenHeight() / 2 - 195, 20, 20, BLUE);
+			if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
+			{
+				TopRow = false;
+			}
+		}
+	}
+	else
+	{
+		DrawTextEx(retroFont, "top row letters", (Vector2){(GetScreenWidth() / 2) - 150, GetScreenHeight() / 2 - 195}, 30, 1, WHITE);
+		if (!TopRow)
+		{
+			DrawRectangle(GetScreenWidth() / 2 - 210, GetScreenHeight() / 2 - 200, 30, 30, WHITE);
+		}
+		else
+		{
+			DrawRectangle(GetScreenWidth() / 2 - 210, GetScreenHeight() / 2 - 200, 30, 30, WHITE);
+			DrawRectangle(GetScreenWidth() / 2 - 210 + 5, GetScreenHeight() / 2 - 195, 20, 20, BLUE);
+		}
+	}
+	if ((float)GetMouseX() >= (GetScreenWidth() / 2 - 150) && (float)GetMouseX() <= (GetScreenWidth() / 2 - 150 + MeasureTextEx(retroFont, "middle row letters", 30, 1).x) && (float)GetMouseY() >= (GetScreenHeight() / 2 - 145) && (float)GetMouseY() <= (GetScreenHeight() / 2 - 145 + MeasureTextEx(retroFont, "middle row letters", 30, 1).y))
+	{
+		DrawTextEx(retroFont, "middle row letters", (Vector2){(GetScreenWidth() / 2) - 150 + 2, GetScreenHeight() / 2 - 145 + 1}, 30, 1, RED);
+		DrawTextEx(retroFont, "middle row letters", (Vector2){(GetScreenWidth() / 2) - 150, GetScreenHeight() / 2 - 145}, 30, 1, BLUE);
+		if (!MiddleRow)
+		{
+			DrawRectangle(GetScreenWidth() / 2 - 210, GetScreenHeight() / 2 - 150, 30, 30, WHITE);
+			if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
+			{
+				MiddleRow = true;
+				DrawRectangle(GetScreenWidth() / 2 - 210 + 5, (GetScreenHeight() / 2 - 145), 20, 20, BLUE);
+			}
+		}
+		else
+		{
+			DrawRectangle(GetScreenWidth() / 2 - 210, GetScreenHeight() / 2 - 150, 30, 30, WHITE);
+			DrawRectangle(GetScreenWidth() / 2 - 210 + 5, GetScreenHeight() / 2 - 145, 20, 20, BLUE);
+			if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
+			{
+				MiddleRow = false;
+			}
+		}
+	}
+	else
+	{
+		DrawTextEx(retroFont, "middle row letters", (Vector2){(GetScreenWidth() / 2) - 150, GetScreenHeight() / 2 - 145}, 30, 1, WHITE);
+		if (!MiddleRow)
+		{
+			DrawRectangle(GetScreenWidth() / 2 - 210, GetScreenHeight() / 2 - 150, 30, 30, WHITE);
+		}
+		else
+		{
+			DrawRectangle(GetScreenWidth() / 2 - 210, GetScreenHeight() / 2 - 150, 30, 30, WHITE);
+			DrawRectangle(GetScreenWidth() / 2 - 210 + 5, GetScreenHeight() / 2 - 145, 20, 20, BLUE);
+		}
+	}
+	if ((float)GetMouseX() >= (GetScreenWidth() / 2 - 150) && (float)GetMouseX() <= (GetScreenWidth() / 2 - 150 + MeasureTextEx(retroFont, "bottom row letters", 30, 1).x) && (float)GetMouseY() >= (GetScreenHeight() / 2 - 95) && (float)GetMouseY() <= (GetScreenHeight() / 2 - 95 + MeasureTextEx(retroFont, "bottom row letters", 30, 1).y))
+	{
+		DrawTextEx(retroFont, "bottom row letters", (Vector2){(GetScreenWidth() / 2) - 150 + 2, GetScreenHeight() / 2 - 95 + 1}, 30, 1, RED);
+		DrawTextEx(retroFont, "bottom row letters", (Vector2){(GetScreenWidth() / 2) - 150, GetScreenHeight() / 2 - 95}, 30, 1, BLUE);
+		if (!BottomRow)
+		{
+			DrawRectangle(GetScreenWidth() / 2 - 210, GetScreenHeight() / 2 - 100, 30, 30, WHITE);
+			if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
+			{
+				BottomRow = true;
+				DrawRectangle(GetScreenWidth() / 2 - 210 + 5, (GetScreenHeight() / 2 - 95), 20, 20, BLUE);
+			}
+		}
+		else
+		{
+			DrawRectangle(GetScreenWidth() / 2 - 210, GetScreenHeight() / 2 - 100, 30, 30, WHITE);
+			DrawRectangle(GetScreenWidth() / 2 - 210 + 5, GetScreenHeight() / 2 - 95, 20, 20, BLUE);
+			if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
+			{
+				BottomRow = false;
+			}
+		}
+	}
+	else
+	{
+		DrawTextEx(retroFont, "bottom row letters", (Vector2){(GetScreenWidth() / 2) - 150, GetScreenHeight() / 2 - 95}, 30, 1, WHITE);
+		if (!BottomRow)
+		{
+			DrawRectangle(GetScreenWidth() / 2 - 210, GetScreenHeight() / 2 - 100, 30, 30, WHITE);
+		}
+		else
+		{
+			DrawRectangle(GetScreenWidth() / 2 - 210, GetScreenHeight() / 2 - 100, 30, 30, WHITE);
+			DrawRectangle(GetScreenWidth() / 2 - 210 + 5, GetScreenHeight() / 2 - 95, 20, 20, BLUE);
+		}
+	}
+	if ((float)GetMouseX() >= (GetScreenWidth() / 2 - MeasureTextEx(retroFont, "start training", 30, 1).x / 2) && (float)GetMouseX() <= (GetScreenWidth() / 2 + MeasureTextEx(retroFont, "start training", 30, 1).x / 2) && (float)GetMouseY() >= (GetScreenHeight() / 2 - 10 - MeasureTextEx(retroFont, "words", 30, 1).y / 2) && (float)GetMouseY() <= (GetScreenHeight() / 2 - 10 + MeasureTextEx(retroFont, "words", 30, 1).y / 2))
+	{
+		DrawTextPro(retroFont, "start training", (Vector2){(GetScreenWidth() / 2) + 2, GetScreenHeight() / 2 - 5 + 1}, Vector2Scale(MeasureTextEx(retroFont, "start training", 30, 1), 0.5f), 0, 30, 1, RED);
+		DrawTextPro(retroFont, "start training", (Vector2){(GetScreenWidth() / 2), GetScreenHeight() / 2 - 5}, Vector2Scale(MeasureTextEx(retroFont, "start training", 30, 1), 0.5f), 0, 30, 1, BLUE);
+		if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
+		{
+			exitResult = false;
+			if (BottomRow == false && TopRow == false && MiddleRow == false)
+			{
+			}
+			else
+			{
+				EndDrawing();
+				if (trainMode) // trainMode = true implies training letters
+				{
+					letter_train();
+				}
+				else if (!trainMode)
+				{
+					word_train();
+				}
+			}
+		}
+	}
+	else
+	{
+		DrawTextPro(retroFont, "Start Training", (Vector2){(GetScreenWidth() / 2) + 2, GetScreenHeight() / 2 - 5}, Vector2Scale(MeasureTextEx(retroFont, "start training", 30, 1), 0.5f), 0, 30, 1, WHITE);
+	}
+
+	if ((float)GetMouseX() >= (GetScreenWidth() / 2 - MeasureTextEx(retroFont, "back", 30, 1).x / 2) && (float)GetMouseX() <= (GetScreenWidth() / 2 + MeasureTextEx(retroFont, "back", 30, 1).x / 2) && (float)GetMouseY() >= (GetScreenHeight() / 2 + 40 - MeasureTextEx(retroFont, "words", 30, 1).y / 2) && (float)GetMouseY() <= (GetScreenHeight() / 2 + 40 + MeasureTextEx(retroFont, "words", 30, 1).y / 2))
+	{
+		DrawTextPro(retroFont, "back", (Vector2){(GetScreenWidth() / 2) + 2, GetScreenHeight() / 2 + 45 + 1}, Vector2Scale(MeasureTextEx(retroFont, "back", 30, 1), 0.5f), 0, 30, 1, RED);
+		DrawTextPro(retroFont, "back", (Vector2){(GetScreenWidth() / 2), GetScreenHeight() / 2 + 45}, Vector2Scale(MeasureTextEx(retroFont, "back", 30, 1), 0.5f), 0, 30, 1, BLUE);
+		if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
+		{
+			exitTrainLetters = true;
+			exitTrainWords = true;
+		}
+	}
+	else
+	{
+		DrawTextPro(retroFont, "back", (Vector2){(GetScreenWidth() / 2) + 2, GetScreenHeight() / 2 + 45}, Vector2Scale(MeasureTextEx(retroFont, "back", 30, 1), 0.5f), 0, 30, 1, WHITE);
+	}
+}
+
+/**
+ * select_letter:
+ * 
+ * Selects letter using the the three choices, random number 
+ * generator and a switch case based on the choice and number
+ * generated. Stores that letter in RequiredLetter.
+ */  
+void select_letter()
+{
+	// Convert the three choices into binary number
+	int RowChoice = 100 * MiddleRow + 10 * TopRow + 1 * BottomRow ;
+
+	// make a random number to choose a random row.
+	int RandomRow = rand() % (MiddleRow + TopRow + BottomRow ) + 1;
+
+	int RandomUpperLetter, RandomMiddleLetter, RandomLowerLetter;
+
+/* select random number from a certain number range based on size of the respective row words array)*/
+	RandomUpperLetter = rand() % 10; 
+	RandomMiddleLetter = rand() % 9; 
+	RandomLowerLetter = rand() % 7; 
+
+	switch (RowChoice)
+	{
+	/*lower only*/ case 1:
+		RequiredLetter = BottomRowLetters[RandomLowerLetter];
+		break;
+	/*upper only*/ case 10:
+		RequiredLetter = TopRowLetters[RandomUpperLetter];
+		break;
+
+	case 11:
+		switch (RandomRow)
+		{
+		case 1:
+			RequiredLetter = TopRowLetters[RandomUpperLetter];
+			break;
+		case 2:
+			RequiredLetter = BottomRowLetters[RandomLowerLetter];
+			break;
+		}
+		break;
+	/*middle only*/ case 100:
+		RequiredLetter = MiddleRowLetters[RandomMiddleLetter];
+		break;
+
+	case 101:
+		switch (RandomRow)
+		{
+		case 1:
+			RequiredLetter = MiddleRowLetters[RandomMiddleLetter];
+			break;
+		case 2:
+			RequiredLetter = BottomRowLetters[RandomLowerLetter];
+			break;
+		}
+		break;
+
+	case 110:
+		switch (RandomRow)
+		{
+		case 1:
+			RequiredLetter = MiddleRowLetters[RandomMiddleLetter];
+			break;
+		case 2:
+			RequiredLetter = TopRowLetters[RandomUpperLetter];
+			break;
+		}
+		break;
+		/*All the rows*/
+	case 111:
+		switch (RandomRow)
+		{
+		case 1:
+			RequiredLetter = MiddleRowLetters[RandomMiddleLetter];
+			break;
+		case 2:
+			RequiredLetter = TopRowLetters[RandomUpperLetter];
+			break;
+		case 3:
+			RequiredLetter = BottomRowLetters[RandomLowerLetter];
+			break;
+		}
+		break;
+
+	default:
+		break;
+	}
+}
+
+/**
+ * select_word:
+ * 
+ * Selects a word using the the three choices, random number 
+ * generator and a switch case based on the choice and number
+ * generated. Stores that word in RequiredWord.
+ */ 
+void select_word()
+{
+	// Convert the three choices into binary numbers for switch case.
+	int RowChoice = 100 * MiddleRow + 10 * TopRow + 1 * BottomRow ;
+
+	// make a random number to choose a random row.
+	int RandomRow = rand() % (MiddleRow + TopRow + BottomRow) + 1;
+
+	int RandomUpperWord, RandomMiddleWord, RandomLowerWord;
+
+/* select random number from a certain number range based on size of the respective row words array)*/
+	RandomUpperWord = rand() % 10; 
+	RandomMiddleWord = rand() % 11; 
+	RandomLowerWord = rand() % 7; 
+
+	switch (RowChoice)
+	{
+	/*upper only*/case 1:
+		strcpy(RequiredWord, BottomRowWords[RandomLowerWord]);
+		break;
+	
+	/*upper only*/ case 10:
+		strcpy(RequiredWord, TopRowWords[RandomUpperWord]);
+		break;
+	
+	case 11:
+		switch (RandomRow)
+		{
+		case 1:
+			strcpy(RequiredWord, TopRowWords[RandomUpperWord]);
+			break;
+		case 2:
+			strcpy(RequiredWord, BottomRowWords[RandomLowerWord]);
+			break;
+		}
+		break;
+	
+	/*middle only*/ case 100:
+		strcpy(RequiredWord, MiddleRowWords[RandomMiddleWord]);
+		break;
+	case 1001:
+		switch (RandomRow)
+		{
+		case 1:
+			strcpy(RequiredWord, MiddleRowWords[RandomMiddleWord]);
+			break;
+		}
+		break;
+	case 101:
+		switch (RandomRow)
+		{
+		case 1:
+			strcpy(RequiredWord, MiddleRowWords[RandomMiddleWord]);
+			break;
+		case 2:
+			strcpy(RequiredWord, BottomRowWords[RandomLowerWord]);
+			break;
+		}
+		break;
+	
+	case 110:
+		switch (RandomRow)
+		{
+		case 1:
+			strcpy(RequiredWord, MiddleRowWords[RandomMiddleWord]);
+			break;
+		case 2:
+			strcpy(RequiredWord, TopRowWords[RandomUpperWord]);
+			break;
+		}
+		break;
+	
+	case 111:
+		switch (RandomRow)
+		{
+		case 1:
+			strcpy(RequiredWord, MiddleRowWords[RandomMiddleWord]);
+			break;
+		case 2:
+			strcpy(RequiredWord, TopRowWords[RandomUpperWord]);
+			break;
+		case 3:
+			strcpy(RequiredWord, BottomRowWords[RandomLowerWord]);
+			break;
+		}
+		break;
+	default:
+		break;
+	}
+}
