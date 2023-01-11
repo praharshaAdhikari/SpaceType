@@ -15,7 +15,7 @@ char *words[] =
         "apple", "ant", "airplane", "banana", "book", "boat", "cat", "cow", "car", "dog", "desk", "dolphin", "elephant", "egg", "earth", "fish", "flamingo", "frog", "giraffe", "goat", "grapes", "hat", "horse", "house", "igloo", "icecream", "insect", "jacket", "jaguar", "juice", "kangaroo", "kite", "key", "lion", "leopard", "lamp", "monkey", "mouse", "mango", "night", "nest", "napkin", "octopus", "ostrich", "onion", "pear", "panda", "pig", "queen", "quail", "question", "rabbit", "rhinoceros", "ring", "snake", "snail", "sock", "tiger", "taco", "table", "unicorn", "umbrella", "vase", "vegetable", "whale", "wolf", "watermelon", "xray", "xylophone", "yak", "yoyo", "zipper", "zoo"};
 char word[20];
 char wordStored[20];
-int sizeOfArray;
+int sizeOfArray = sizeof(words) / sizeof(words[0]);
 Vector2 gap = {};
 Vector2 wordPos;
 const int fontSize = 25;
@@ -55,7 +55,6 @@ void game()
     Rectangle bulletPos = {screenWidth / 2, playerPos.y - 10, bulletTexture.width * 0.2, bulletTexture.height * 0.2};
     Vector2 planetVectors[3] = {{400, -200}, {1000, -200}, {1450, 200}};
     Vector2 planetVector = planetVectors[planetPos];
-    sizeOfArray = sizeof(words) / sizeof(words[0]);
     bulletTexture = LoadTexture("resources/images/bullet_texture.png");
     spaceshipTexture = LoadTexture("resources/images/spaceship_texture.png");
 
