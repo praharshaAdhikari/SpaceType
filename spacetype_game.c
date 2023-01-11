@@ -159,8 +159,12 @@ void game()
             // TAKING INPUT
             int key = GetKeyPressed();
             int firstLetter = ((int)word[0]) - 32;
-            if (key)
+            if (key){
                 keysPressed++;
+                if (key != firstLetter){
+                    fprintf(wrongChars, "%c", firstLetter);
+                }
+            }
             if ((key == firstLetter || bullet) && exitPause)
             {
                 if (key == firstLetter)

@@ -23,7 +23,8 @@ Texture2D spaceTexture, planetTextures[3], bulletTexture, spaceshipTexture;
 /*Declaring extern variables to be used from main start*/
 extern int screenWidth, screenHeight;
 extern Font retroFont;
-extern bool exitGame;
+extern bool exitGame, sorted;
+extern FILE* wrongChars;
 /*Declaring extern variables to be used from main end*/
 
 

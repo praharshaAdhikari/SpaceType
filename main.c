@@ -22,11 +22,18 @@ void draw_menu();
 
 /*Declaring general variables for the application start*/
 Music music;
+FILE* wrongChars;
 int screenWidth, screenHeight;
 Font retroFont;
 bool exitWindow = false;
 bool exitGame = false;
+bool sorted;
 Texture2D cockpitTexture, cockpitTextureTrain, cockpitTextureTest, cockpitTextureGame, cockpitTextureExit;
+// char alphabet[26] = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+struct charCount{
+	char character;
+	int count;
+} wrongLetters[26];
 /*Declaring general variables for the application end */
 
 
@@ -62,7 +69,6 @@ int main()
 	movingDown = 0;
 	mover = 0.15f;
 
-
 	while (!exitWindow)
 	{
 		UpdateMusicStream(music);
@@ -70,6 +76,7 @@ int main()
 		BeginDrawing();
 		draw_background();
 		draw_menu();
+		// DrawTextEx(retroFont, TextFormat("%c",wrongLetters[0].character), (Vector2){screenWidth / 2, screenHeight / 2}, 20, 1, WHITE);
 		DrawTextEx(retroFont, "SPACE", (Vector2){screenWidth / 2 - 170 + 5, screenHeight / 2 - 200 + 4}, 90, 1, DARKBLUE);
 		DrawTextEx(retroFont, "SPACE", (Vector2){screenWidth / 2 - 170, screenHeight / 2 - 200}, 90, 1, WHITE);
 		DrawTextEx(retroFont, "TYPE", (Vector2){screenWidth / 2 - 140 + 5, screenHeight / 2 - 90 + 4}, 90, 1, DARKBLUE);
@@ -89,6 +96,30 @@ int main()
  */
 void draw_menu()
 {
+	if (!sorted){
+		fclose(wrongChars);
+		wrongChars = fopen("wrongChars.txt", "a+");
+		for (int i=0; i<26; i++){
+			wrongLetters[i].character = (char)(i+65);
+			wrongLetters[i].count = 0;
+		}
+		while(!feof(wrongChars)){
+			char c = fgetc(wrongChars);
+			for (int i=0; i<26; i++){
+				if(c == wrongLetters[i].character) wrongLetters[i].count++;
+			}			
+		}
+		for (int i=0; i<26; i++){
+			for (int j=i+1; j<26; j++){
+				if(wrongLetters[i].count < wrongLetters[j].count){
+					struct charCount swap = wrongLetters[i];
+					wrongLetters[i] = wrongLetters[j];
+					wrongLetters[j] = swap;
+				}
+			}
+		}
+		sorted = true;
+	}
 	DrawTextureEx(cockpitTexture, (Vector2){0, 0}, 0, 1, WHITE);
 	if ((float)GetMouseX() >= 396 && (float)GetMouseX() <= 640 && (float)GetMouseY() >= 541 && (float)GetMouseY() <= 620)
 	{

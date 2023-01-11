@@ -196,6 +196,11 @@ void letter_train()
 				DrawTextEx(retroFont, requiredtxt, (Vector2){GetScreenWidth() / 2, GetScreenHeight() / 2 - 100}, 30, 2, WHITE);
 
 				int key = ((int)RequiredLetter) - 32;
+				int pressed = GetKeyPressed();
+				if (pressed && pressed != key){
+					fprintf(wrongChars, "%c", key);
+					sorted = false;
+				} 
 				if (IsKeyPressed(key)) letterinput = true;
 				
 				if (IsKeyPressed(KEY_ESCAPE))
@@ -249,7 +254,12 @@ void word_train()
 
 		DrawTextEx(retroFont, RequiredWord, (Vector2){(GetScreenWidth() / 2) - (textWidth / 2), GetScreenHeight() / 2 - 100}, 30, 2, WHITE);
 		int key = ((int)RequiredWord[0]) - 32;
-		if (GetKeyPressed()) keysPressed++;
+		int pressed = GetKeyPressed();
+		if (pressed){
+			keysPressed++;
+			if (pressed != key) fprintf(wrongChars, "%c", key);
+			sorted = false;
+		} 
 		if (IsKeyPressed(key))
 		{
 			rightKeysPressed++;
@@ -273,7 +283,6 @@ void word_train()
 				framesCounterForWord = 0;
 			}
 		}
-
 		if (IsKeyPressed(KEY_ESCAPE))
 		{
 			wordinput = true;
