@@ -5,7 +5,7 @@ Letter and Word Typing Train
 Mukunda Dev Adhikari <mukunda.adhikari@outlook.com>
 SPDX-License-Identifier: LGPL-2.1-or-later
 */
-
+void customized_train();
 /*Declaring variables for train screen start*/
 bool exitTrainWords, exitTrainLetters, MiddleRow, TopRow, BottomRow, exitTrainProcess, letterinput, exitTrain, trainMode, wordinput, exitResult;
 bool NumberRow = false;
@@ -20,6 +20,10 @@ Texture2D cockpitTextureKeyboard;
 char MiddleRowWords[9][10] = {"lad", "slade", "glass", "fade", "grade", "hall", "jade", "klaus", "lathe"};
 char TopRowWords[10][10] = {"queer", "wrought", "erode", "trope", "troupe", "youth", "utopia", "irony", "outhouse", "power"};
 char BottomRowWords[7][10] = {"zoner", "xerox", "change", "vought", "broom", "noob", "mooncover"};
+char *customizedWords[] =
+	{
+		"abstract", "conjecture", "elixir", "fervent", "gargantuan", "haphazard", "intrepid", "jubilant", "kinetic", "luminous", "maverick", "nocturnal", "orchid", "predator", "quagmire", "resilient", "saunter", "turbulent", "unwavering", "vortex", "whimsical", "xenon", "yellow", "zephyr", "allegory", "benevolent", "credence", "demeanor", "enigma", "fractal", "gusto", "hiatus", "intricacy", "jubilation", "kaleidoscope", "lucid", "magnitude", "nimble", "opulence", "pertinent", "quintessential", "responsive", "saturate", "tenacity", "unbridled", "volatile", "whirlwind", "xylophone", "yacht", "zodiac", "acumen", "bazaar", "clarity", "diligent", "empathy", "flourish", "graceful", "harmony", "intuition", "jovial", "klutz", "leverage", "mystique", "nostalgia", "overture", "persistence", "quirk", "radiance", "savvy", "transcend", "unison", "vivid", "whisper", "xylograph", "yearning", "zephyr", "affinity", "bucolic", "clandestine", "disparate", "embellish", "fluctuate", "glossary", "hiatus", "intrepid", "jubilant", "knick-knack", "legerdemain", "magnanimous", "nihilistic", "opulent", "provocative", "quintessence", "rhapsodic", "solitude", "tenacity", "unabashed", "versatility", "whirlwind", "xenophobe", "yen"
+	};
 char RequiredWord[10];
 /*Declaring variables for word train  end*/
 
@@ -31,12 +35,11 @@ extern Texture2D cockpitTexture;
 extern char wordStored[20];
 /*Declaring extern variables from main end*/
 
- 
 void train()
 {
 	exitTrain = false;
 	cockpitTextureKeyboard = LoadTexture("resources/images/cockpit_texture_keyboard.png");
-	
+
 	while (!exitTrain)
 	{
 		movingDown += mover;
@@ -53,16 +56,16 @@ void train()
 
 /**
  * train_menu:
- * 
- * Draws the menu for the train mode. Gives the user the option 
+ *
+ * Draws the menu for the train mode. Gives the user the option
  * to choose between practicing letters or practicing words.
- */   
+ */
 void train_menu()
 {
-	if ((float)GetMouseX() >= (GetScreenWidth() / 2 - MeasureTextEx(retroFont, "letters", 30, 1).x / 2) && (float)GetMouseX() <= (GetScreenWidth() / 2 + MeasureTextEx(retroFont, "letters", 30, 1).x / 2) && (float)GetMouseY() >= (GetScreenHeight() / 2 - 105 - MeasureTextEx(retroFont, "letters", 30, 1).y / 2) && (float)GetMouseY() <= (GetScreenHeight() / 2 - 105 + MeasureTextEx(retroFont, "letters", 30, 1).y / 2))
+	if ((float)GetMouseX() >= (GetScreenWidth() / 2 - MeasureTextEx(retroFont, "letters", 30, 1).x / 2) && (float)GetMouseX() <= (GetScreenWidth() / 2 + MeasureTextEx(retroFont, "letters", 30, 1).x / 2) && (float)GetMouseY() >= (GetScreenHeight() / 2 - 155 - MeasureTextEx(retroFont, "letters", 30, 1).y / 2) && (float)GetMouseY() <= (GetScreenHeight() / 2 - 155 + MeasureTextEx(retroFont, "letters", 30, 1).y / 2))
 	{
-		DrawTextPro(retroFont, "letters", (Vector2){(GetScreenWidth() / 2) + 2, (GetScreenHeight() / 2) - 100 + 1}, Vector2Scale(MeasureTextEx(retroFont, "letters", 30, 1), 0.5f), 0, 30, 1, RED);
-		DrawTextPro(retroFont, "letters", (Vector2){(GetScreenWidth() / 2), (GetScreenHeight() / 2) - 100}, Vector2Scale(MeasureTextEx(retroFont, "letters", 30, 1), 0.5f), 0, 30, 1, BLUE);
+		DrawTextPro(retroFont, "letters", (Vector2){(GetScreenWidth() / 2) + 2, (GetScreenHeight() / 2) - 150 + 1}, Vector2Scale(MeasureTextEx(retroFont, "letters", 30, 1), 0.5f), 0, 30, 1, RED);
+		DrawTextPro(retroFont, "letters", (Vector2){(GetScreenWidth() / 2), (GetScreenHeight() / 2) - 150}, Vector2Scale(MeasureTextEx(retroFont, "letters", 30, 1), 0.5f), 0, 30, 1, BLUE);
 
 		if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
 		{
@@ -74,12 +77,12 @@ void train_menu()
 	}
 	else
 	{
-		DrawTextPro(retroFont, "letters", (Vector2){(GetScreenWidth() / 2), (GetScreenHeight() / 2) - 100}, Vector2Scale(MeasureTextEx(retroFont, "letters", 30, 1), 0.5f), 0, 30, 1, WHITE);
+		DrawTextPro(retroFont, "letters", (Vector2){(GetScreenWidth() / 2), (GetScreenHeight() / 2) - 150}, Vector2Scale(MeasureTextEx(retroFont, "letters", 30, 1), 0.5f), 0, 30, 1, WHITE);
 	}
-	if ((float)GetMouseX() >= (GetScreenWidth() / 2 - MeasureTextEx(retroFont, "words", 30, 1).x / 2) && (float)GetMouseX() <= (GetScreenWidth() / 2 + MeasureTextEx(retroFont, "words", 30, 1).x / 2) && (float)GetMouseY() >= (GetScreenHeight() / 2 - 55 - MeasureTextEx(retroFont, "words", 30, 1).y / 2) && (float)GetMouseY() <= (GetScreenHeight() / 2 - 55 + MeasureTextEx(retroFont, "words", 30, 1).y / 2))
+	if ((float)GetMouseX() >= (GetScreenWidth() / 2 - MeasureTextEx(retroFont, "words", 30, 1).x / 2) && (float)GetMouseX() <= (GetScreenWidth() / 2 + MeasureTextEx(retroFont, "words", 30, 1).x / 2) && (float)GetMouseY() >= (GetScreenHeight() / 2 - 105 - MeasureTextEx(retroFont, "words", 30, 1).y / 2) && (float)GetMouseY() <= (GetScreenHeight() / 2 - 105 + MeasureTextEx(retroFont, "words", 30, 1).y / 2))
 	{
-		DrawTextPro(retroFont, "words", (Vector2){(GetScreenWidth() / 2) + 2, GetScreenHeight() / 2 - 50 + 1}, Vector2Scale(MeasureTextEx(retroFont, "words", 30, 1), 0.5f), 0, 30, 1, RED);
-		DrawTextPro(retroFont, "words", (Vector2){(GetScreenWidth() / 2) + 2, GetScreenHeight() / 2 - 50}, Vector2Scale(MeasureTextEx(retroFont, "words", 30, 1), 0.5f), 0, 30, 1, BLUE);
+		DrawTextPro(retroFont, "words", (Vector2){(GetScreenWidth() / 2) + 2, GetScreenHeight() / 2 - 100 + 1}, Vector2Scale(MeasureTextEx(retroFont, "words", 30, 1), 0.5f), 0, 30, 1, RED);
+		DrawTextPro(retroFont, "words", (Vector2){(GetScreenWidth() / 2) + 2, GetScreenHeight() / 2 - 100}, Vector2Scale(MeasureTextEx(retroFont, "words", 30, 1), 0.5f), 0, 30, 1, BLUE);
 		if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
 		{
 			EndDrawing();
@@ -90,7 +93,23 @@ void train_menu()
 	}
 	else
 	{
-		DrawTextPro(retroFont, "words", (Vector2){(GetScreenWidth() / 2) + 2, GetScreenHeight() / 2 - 50}, Vector2Scale(MeasureTextEx(retroFont, "words", 30, 1), 0.5f), 0, 30, 1, WHITE);
+		DrawTextPro(retroFont, "words", (Vector2){(GetScreenWidth() / 2) + 2, GetScreenHeight() / 2 - 100}, Vector2Scale(MeasureTextEx(retroFont, "words", 30, 1), 0.5f), 0, 30, 1, WHITE);
+	}
+	if ((float)GetMouseX() >= (GetScreenWidth() / 2 - MeasureTextEx(retroFont, "customized", 30, 1).x / 2) && (float)GetMouseX() <= (GetScreenWidth() / 2 + MeasureTextEx(retroFont, "customized", 30, 1).x / 2) && (float)GetMouseY() >= (GetScreenHeight() / 2 - 55 - MeasureTextEx(retroFont, "customized", 30, 1).y / 2) && (float)GetMouseY() <= (GetScreenHeight() / 2 - 55 + MeasureTextEx(retroFont, "customized", 30, 1).y / 2))
+	{
+		DrawTextPro(retroFont, "customized", (Vector2){(GetScreenWidth() / 2) + 2, GetScreenHeight() / 2 - 50 + 1}, Vector2Scale(MeasureTextEx(retroFont, "customized", 30, 1), 0.5f), 0, 30, 1, RED);
+		DrawTextPro(retroFont, "customized", (Vector2){(GetScreenWidth() / 2) + 2, GetScreenHeight() / 2 - 50}, Vector2Scale(MeasureTextEx(retroFont, "customized", 30, 1), 0.5f), 0, 30, 1, BLUE);
+		if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
+		{
+			EndDrawing();
+			exitTrainWords = false;
+			trainMode = false; // to indicate that trainMode is words
+			customized_train();
+		}
+	}
+	else
+	{
+		DrawTextPro(retroFont, "customized", (Vector2){(GetScreenWidth() / 2) + 2, GetScreenHeight() / 2 - 50}, Vector2Scale(MeasureTextEx(retroFont, "customized", 30, 1), 0.5f), 0, 30, 1, WHITE);
 	}
 	if ((float)GetMouseX() >= (GetScreenWidth() / 2 - MeasureTextEx(retroFont, "back", 30, 1).x / 2) && (float)GetMouseX() <= (GetScreenWidth() / 2 + MeasureTextEx(retroFont, "back", 30, 1).x / 2) && (float)GetMouseY() >= (GetScreenHeight() / 2 + 15 - MeasureTextEx(retroFont, "back", 30, 1).y / 2) && (float)GetMouseY() <= (GetScreenHeight() / 2 + 15 + MeasureTextEx(retroFont, "back", 30, 1).y / 2))
 	{
@@ -109,12 +128,12 @@ void train_menu()
 
 /**
  * mode_trainletters:
- * 
+ *
  * The function that handles lettere practice mode. Clears all
  * boolean relatetd rows and train loops and calls the function
  * which draws selection menu for rows.
- */   
-void mode_trainletters() 
+ */
+void mode_trainletters()
 {
 
 	TopRow = false;
@@ -138,12 +157,12 @@ void mode_trainletters()
 
 /**
  * mode_trainwords:
- * 
+ *
  * The function that handles words practice mode. Clears all
  * boolean relatetd rows and train loops and calls the train_select
  * function which draws selection menu for rows.
- */  
-void mode_trainwords() 
+ */
+void mode_trainwords()
 {
 
 	TopRow = false;
@@ -166,13 +185,13 @@ void mode_trainwords()
 
 /**
  * letter_train
- * 
- * The function that handles resetting of variables by calling 
- * reset_counter, and contains the loop which selects the new 
- * letter (using select_letter) and a nested loop to check if the 
+ *
+ * The function that handles resetting of variables by calling
+ * reset_counter, and contains the loop which selects the new
+ * letter (using select_letter) and a nested loop to check if the
  * input letter matches with the displayed one.
- */  
-void letter_train() 
+ */
+void letter_train()
 {
 	reset_counter();
 	exitTrainProcess = false;
@@ -183,113 +202,271 @@ void letter_train()
 		exitTrainProcess = false;
 		letterinput = false;
 
-			while (!letterinput)
+		while (!letterinput)
+		{
+			UpdateMusicStream(music);
+			char requiredtxt[2] = {0};
+			movingDown += mover;
+			sprintf(requiredtxt, "%c ", RequiredLetter);
+			BeginDrawing();
+			ClearBackground(BLACK);
+			draw_background();
+			DrawTextureEx(cockpitTextureKeyboard, (Vector2){0, 0}, 0, 1, WHITE);
+			DrawTextEx(retroFont, requiredtxt, (Vector2){GetScreenWidth() / 2, GetScreenHeight() / 2 - 100}, 30, 2, WHITE);
+
+			int key = ((int)RequiredLetter) - 32;
+			int pressed = GetKeyPressed();
+			if (pressed && pressed != key)
 			{
-				UpdateMusicStream(music);
-				char requiredtxt[2] = {0};
-				movingDown += mover;
-				sprintf(requiredtxt, "%c ", RequiredLetter);
-				BeginDrawing();
-				ClearBackground(BLACK);
-				draw_background();
-				DrawTextureEx(cockpitTextureKeyboard, (Vector2){0, 0}, 0, 1, WHITE);
-				DrawTextEx(retroFont, requiredtxt, (Vector2){GetScreenWidth() / 2, GetScreenHeight() / 2 - 100}, 30, 2, WHITE);
-
-				int key = ((int)RequiredLetter) - 32;
-				int pressed = GetKeyPressed();
-				if (pressed && pressed != key){
-					fprintf(wrongChars, "%c", key);
-					sorted = false;
-				} 
-				if (IsKeyPressed(key)) letterinput = true;
-				
-				if (IsKeyPressed(KEY_ESCAPE))
-				{
-					letterinput = true;
-					exitTrainProcess = true;
-				}
-
-				EndDrawing();
+				fprintf(wrongChars, "%c", key);
+				sorted = false;
 			}
+			if (IsKeyPressed(key))
+				letterinput = true;
+
+			if (IsKeyPressed(KEY_ESCAPE))
+			{
+				letterinput = true;
+				exitTrainProcess = true;
+			}
+
+			EndDrawing();
+		}
 		EndDrawing();
 	}
 }
 
 /**
  * word_train
- * 
- * The function that handles resetting of variables by calling 
- * reset_counter, and contains the loop which selects the new 
- * word (using select_word) and a nested loop which ends when 
+ *
+ * The function that handles resetting of variables by calling
+ * reset_counter, and contains the loop which selects the new
+ * word (using select_word) and a nested loop which ends when
  * the user has finished enterring the word. It calls remove_firstletter
  * each time the letter input matches the letter displayed. Once
- * the user chooses to leave the train process, by pressing ESC, a 
- * stats screen is displayed which shows their WPM, fastest word, 
+ * the user chooses to leave the train process, by pressing ESC, a
+ * stats screen is displayed which shows their WPM, fastest word,
  * slowest word, etc.
- */  
-void word_train() 
+ */
+void word_train()
 {
 	reset_counter();
 	exitTrainProcess = false;
 	while (!exitTrainProcess)
-	{		
+	{
 		BeginDrawing();
 		select_word();
-			exitTrainProcess = false;
-	int textWidth;
-	wordinput = false;
-	strcpy(wordStored, RequiredWord);
+		exitTrainProcess = false;
+		int textWidth;
+		wordinput = false;
+		strcpy(wordStored, RequiredWord);
 
-	while (!wordinput)
-	{
-		UpdateMusicStream(music);
-		movingDown += mover;
-		textWidth = MeasureTextEx(retroFont, RequiredWord, 30, 2).x;
-		BeginDrawing();
-		framesCounterForSession++;
-		framesCounterForWord++;
-		ClearBackground(BLACK);
-		draw_background();
-		DrawTextureEx(cockpitTextureKeyboard, (Vector2){0, 0}, 0, 1, WHITE);
-
-		DrawTextEx(retroFont, RequiredWord, (Vector2){(GetScreenWidth() / 2) - (textWidth / 2), GetScreenHeight() / 2 - 100}, 30, 2, WHITE);
-		int key = ((int)RequiredWord[0]) - 32;
-		int pressed = GetKeyPressed();
-		if (pressed){
-			keysPressed++;
-			if (pressed != key) fprintf(wrongChars, "%c", key);
-			sorted = false;
-		} 
-		if (IsKeyPressed(key))
+		while (!wordinput)
 		{
-			rightKeysPressed++;
-			remove_firstletter(RequiredWord);
-			if (strlen(RequiredWord) == 0)
-			{ // UPDATING DATA
-				if (framesCounterForWord > slowestWordFrames)
-				{
-					slowestWordFrames = framesCounterForWord;
-					strcpy(slowestWord, wordStored);
-				}
-				if (framesCounterForWord < fastestWordFrames)
-				{
-					fastestWordFrames = framesCounterForWord;
-					strcpy(fastestWord, wordStored);
-				}
+			UpdateMusicStream(music);
+			movingDown += mover;
+			textWidth = MeasureTextEx(retroFont, RequiredWord, 30, 2).x;
+			BeginDrawing();
+			framesCounterForSession++;
+			framesCounterForWord++;
+			ClearBackground(BLACK);
+			draw_background();
+			DrawTextureEx(cockpitTextureKeyboard, (Vector2){0, 0}, 0, 1, WHITE);
 
-				TIME -= (TIME < 5) ? ((TIME < 4) ? 0.1 : 0.25) : 0.5;
-				SCORE++;
-				wordinput = true;
-				framesCounterForWord = 0;
+			DrawTextEx(retroFont, RequiredWord, (Vector2){(GetScreenWidth() / 2) - (textWidth / 2), GetScreenHeight() / 2 - 100}, 30, 2, WHITE);
+			int key = ((int)RequiredWord[0]) - 32;
+			int pressed = GetKeyPressed();
+			if (pressed)
+			{
+				keysPressed++;
+				if (pressed != key)
+					fprintf(wrongChars, "%c", key);
+				sorted = false;
 			}
-		}
-		if (IsKeyPressed(KEY_ESCAPE))
-		{
-			wordinput = true;
-			exitTrainProcess = true;
+			if (IsKeyPressed(key))
+			{
+				rightKeysPressed++;
+				remove_firstletter(RequiredWord);
+				if (strlen(RequiredWord) == 0)
+				{ // UPDATING DATA
+					if (framesCounterForWord > slowestWordFrames)
+					{
+						slowestWordFrames = framesCounterForWord;
+						strcpy(slowestWord, wordStored);
+					}
+					if (framesCounterForWord < fastestWordFrames)
+					{
+						fastestWordFrames = framesCounterForWord;
+						strcpy(fastestWord, wordStored);
+					}
+
+					TIME -= (TIME < 5) ? ((TIME < 4) ? 0.1 : 0.25) : 0.5;
+					SCORE++;
+					wordinput = true;
+					framesCounterForWord = 0;
+				}
+			}
+			if (IsKeyPressed(KEY_ESCAPE))
+			{
+				wordinput = true;
+				exitTrainProcess = true;
+			}
+			EndDrawing();
 		}
 		EndDrawing();
 	}
+
+	while (!exitResult)
+	{
+		if (SCORE == 0)
+		{
+			fastestWordFrames = 0;
+			if (keysPressed == 0)
+				keysPressed = 1;
+		}
+		UpdateMusicStream(music);
+		char scoreString[50];
+		char sessionDurationString[50];
+		char fastestWordString[50];
+		char fastestTimeString[50];
+		char slowestWordString[50];
+		char slowestTimeString[50];
+		char wpmString[50];
+		char accuracyString[50];
+
+		sprintf(scoreString, "Score : %i", SCORE);
+		sprintf(sessionDurationString, "Session time : %.2f seconds", framesCounterForSession / 60);
+		sprintf(fastestWordString, "Fastest Word:  | %s |", fastestWord);
+		sprintf(fastestTimeString, "Time: %.2f seconds", fastestWordFrames / 60);
+		sprintf(slowestWordString, "Slowest Word:  | %s |", slowestWord);
+		sprintf(slowestTimeString, "Time: %.2f seconds", slowestWordFrames / 60);
+		sprintf(wpmString, "Typing Speed: %d WPM", (int)(SCORE * 60 * 60 / framesCounterForSession));
+		sprintf(accuracyString, "Accuracy: %.2f%%", (rightKeysPressed / keysPressed) * 100);
+		BeginDrawing();
+		draw_background();
+		DrawTextEx(retroFont, "RESULTS", (Vector2){screenWidth / 2 - 200 + 5, screenHeight / 2 - 250 + 4}, 80, 1, DARKBLUE);
+		DrawTextEx(retroFont, "RESULTS", (Vector2){screenWidth / 2 - 200, screenHeight / 2 - 250}, 80, 1, WHITE);
+		DrawTextEx(retroFont, scoreString, (Vector2){250 + 2, screenHeight / 2 - 40 + 1}, 20, 1, BROWN);
+		DrawTextEx(retroFont, scoreString, (Vector2){250, screenHeight / 2 - 40}, 20, 1, WHITE);
+		DrawTextEx(retroFont, sessionDurationString, (Vector2){250 + 2, screenHeight / 2 + 1}, 20, 1, BROWN);
+		DrawTextEx(retroFont, sessionDurationString, (Vector2){250, screenHeight / 2}, 20, 1, WHITE);
+		DrawTextEx(retroFont, fastestWordString, (Vector2){250 + 2, screenHeight / 2 + 40 + 1}, 20, 1, BROWN);
+		DrawTextEx(retroFont, fastestWordString, (Vector2){250, screenHeight / 2 + 40}, 20, 1, WHITE);
+		DrawTextEx(retroFont, fastestTimeString, (Vector2){850 + 2, screenHeight / 2 + 40 + 1}, 20, 1, BROWN);
+		DrawTextEx(retroFont, fastestTimeString, (Vector2){850, screenHeight / 2 + 40}, 20, 1, WHITE);
+		DrawTextEx(retroFont, slowestWordString, (Vector2){250 + 2, screenHeight / 2 + 80 + 1}, 20, 1, BROWN);
+		DrawTextEx(retroFont, slowestWordString, (Vector2){250, screenHeight / 2 + 80}, 20, 1, WHITE);
+		DrawTextEx(retroFont, slowestTimeString, (Vector2){850 + 2, screenHeight / 2 + 80 + 1}, 20, 1, BROWN);
+		DrawTextEx(retroFont, slowestTimeString, (Vector2){850, screenHeight / 2 + 80}, 20, 1, WHITE);
+		DrawTextEx(retroFont, wpmString, (Vector2){250 + 2, screenHeight / 2 + 120 + 1}, 20, 1, BROWN);
+		DrawTextEx(retroFont, wpmString, (Vector2){250, screenHeight / 2 + 120}, 20, 1, WHITE);
+		DrawTextEx(retroFont, accuracyString, (Vector2){250 + 2, screenHeight / 2 + 160 + 1}, 20, 1, BROWN);
+		DrawTextEx(retroFont, accuracyString, (Vector2){250, screenHeight / 2 + 160}, 20, 1, WHITE);
+
+		if ((float)GetMouseX() >= (GetScreenWidth() / 2 - MeasureTextEx(retroFont, "main menu", 30, 1).x / 2) && (float)GetMouseX() <= (GetScreenWidth() / 2 + MeasureTextEx(retroFont, "main menu", 30, 1).x / 2) && (float)GetMouseY() >= (GetScreenHeight() / 2 + 255 - MeasureTextEx(retroFont, "main menu", 30, 1).y / 2) && (float)GetMouseY() <= (GetScreenHeight() / 2 + 255 + MeasureTextEx(retroFont, "main menu", 30, 1).y / 2))
+		{
+			DrawTextPro(retroFont, "main menu", (Vector2){(GetScreenWidth() / 2) + 2, GetScreenHeight() / 2 + 260 + 1}, Vector2Scale(MeasureTextEx(retroFont, "main menu", 30, 1), 0.5f), 0, 30, 1, RED);
+			DrawTextPro(retroFont, "main menu", (Vector2){(GetScreenWidth() / 2), GetScreenHeight() / 2 + 260}, Vector2Scale(MeasureTextEx(retroFont, "main menu", 30, 1), 0.5f), 0, 30, 1, BLUE);
+			if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
+			{
+				exitResult = true;
+				exitTrainLetters = true;
+				exitTrainWords = true;
+				exitTrain = true;
+			}
+		}
+		else
+		{
+			DrawTextPro(retroFont, "main menu", (Vector2){(GetScreenWidth() / 2 + 3), GetScreenHeight() / 2 + 260 + 2}, Vector2Scale(MeasureTextEx(retroFont, "main menu", 30, 1), 0.5f), 0, 30, 1, LIME);
+			DrawTextPro(retroFont, "main menu", (Vector2){(GetScreenWidth() / 2), GetScreenHeight() / 2 + 260}, Vector2Scale(MeasureTextEx(retroFont, "main menu", 30, 1), 0.5f), 0, 30, 1, WHITE);
+		}
+		EndDrawing();
+	}
+}
+/**
+ * customized_train
+ *
+ * This function is a child of word_train. So, it does everything
+ * the word_train does but the words it provides to train you are
+ * customized and contains the letters that you have typed wrong the most.
+ * It is done by storing wrongly typed letters and comparing them with
+ * the letters in the word that will be displayed.
+ */
+void customized_train()
+{
+	reset_counter();
+	exitTrainProcess = false;
+
+	while (!exitTrainProcess)
+	{
+		BeginDrawing();
+		int letterPresent = 0;
+		while(letterPresent < 5){ 
+			strcpy(RequiredWord, customizedWords[GetRandomValue(0, (sizeof(customizedWords)/sizeof(customizedWords[0]))-1)]);
+			for (int i=0; i<strlen(RequiredWord); i++){
+				for (int j=0; j<8; j++){
+					if ((int)wrongLetters[0].character == (int)RequiredWord[i] - 32) letterPresent++;
+				}
+			}
+		}
+		exitTrainProcess = false;
+		int textWidth;
+		wordinput = false;
+		strcpy(wordStored, RequiredWord);
+
+
+		while (!wordinput)
+		{
+			UpdateMusicStream(music);
+			movingDown += mover;
+			textWidth = MeasureTextEx(retroFont, RequiredWord, 30, 2).x;
+			BeginDrawing();
+			framesCounterForSession++;
+			framesCounterForWord++;
+			ClearBackground(BLACK);
+			draw_background();
+			DrawTextureEx(cockpitTextureKeyboard, (Vector2){0, 0}, 0, 1, WHITE);
+
+			DrawTextEx(retroFont, RequiredWord, (Vector2){(GetScreenWidth() / 2) - (textWidth / 2), GetScreenHeight() / 2 - 100}, 30, 2, WHITE);
+			int key = ((int)RequiredWord[0]) - 32;
+			int pressed = GetKeyPressed();
+			if (pressed)
+			{
+				keysPressed++;
+				if (pressed != key)
+					fprintf(wrongChars, "%c", key);
+				sorted = false;
+			}
+			if (IsKeyPressed(key))
+			{
+				rightKeysPressed++;
+				remove_firstletter(RequiredWord);
+				if (strlen(RequiredWord) == 0)
+				{ // UPDATING DATA
+					if (framesCounterForWord > slowestWordFrames)
+					{
+						slowestWordFrames = framesCounterForWord;
+						strcpy(slowestWord, wordStored);
+					}
+					if (framesCounterForWord < fastestWordFrames)
+					{
+						fastestWordFrames = framesCounterForWord;
+						strcpy(fastestWord, wordStored);
+					}
+
+					TIME -= (TIME < 5) ? ((TIME < 4) ? 0.1 : 0.25) : 0.5;
+					SCORE++;
+					wordinput = true;
+					framesCounterForWord = 0;
+				}
+			}
+			if (IsKeyPressed(KEY_ESCAPE))
+			{
+				wordinput = true;
+				exitTrainProcess = true;
+			}
+			EndDrawing();
+		}
 		EndDrawing();
 	}
 
@@ -363,12 +540,12 @@ void word_train()
 
 /**
  * train_select:
- * 
- * This function generates the option menu for the user to choose 
- * the rows that he wants to practice. Checkbox indicator are 
+ *
+ * This function generates the option menu for the user to choose
+ * the rows that he wants to practice. Checkbox indicator are
  * present to indicate the rows chose. letter_train or word_train
  * are called based on the user's previous selection
- */  
+ */
 void train_select()
 {
 
@@ -527,25 +704,25 @@ void train_select()
 
 /**
  * select_letter:
- * 
- * Selects letter using the the three choices, random number 
+ *
+ * Selects letter using the the three choices, random number
  * generator and a switch case based on the choice and number
  * generated. Stores that letter in RequiredLetter.
- */  
+ */
 void select_letter()
 {
 	// Convert the three choices into binary number
-	int RowChoice = 100 * MiddleRow + 10 * TopRow + 1 * BottomRow ;
+	int RowChoice = 100 * MiddleRow + 10 * TopRow + 1 * BottomRow;
 
 	// make a random number to choose a random row.
-	int RandomRow = rand() % (MiddleRow + TopRow + BottomRow ) + 1;
+	int RandomRow = rand() % (MiddleRow + TopRow + BottomRow) + 1;
 
 	int RandomUpperLetter, RandomMiddleLetter, RandomLowerLetter;
 
-/* select random number from a certain number range based on size of the respective row words array)*/
-	RandomUpperLetter = rand() % 10; 
-	RandomMiddleLetter = rand() % 9; 
-	RandomLowerLetter = rand() % 7; 
+	/* select random number from a certain number range based on size of the respective row words array)*/
+	RandomUpperLetter = rand() % 10;
+	RandomMiddleLetter = rand() % 9;
+	RandomLowerLetter = rand() % 7;
 
 	switch (RowChoice)
 	{
@@ -617,36 +794,36 @@ void select_letter()
 
 /**
  * select_word:
- * 
- * Selects a word using the the three choices, random number 
+ *
+ * Selects a word using the the three choices, random number
  * generator and a switch case based on the choice and number
  * generated. Stores that word in RequiredWord.
- */ 
+ */
 void select_word()
 {
 	// Convert the three choices into binary numbers for switch case.
-	int RowChoice = 100 * MiddleRow + 10 * TopRow + 1 * BottomRow ;
+	int RowChoice = 100 * MiddleRow + 10 * TopRow + 1 * BottomRow;
 
 	// make a random number to choose a random row.
 	int RandomRow = rand() % (MiddleRow + TopRow + BottomRow) + 1;
 
 	int RandomUpperWord, RandomMiddleWord, RandomLowerWord;
 
-/* select random number from a certain number range based on size of the respective row words array)*/
-	RandomUpperWord = rand() % 10; 
-	RandomMiddleWord = rand() % 11; 
-	RandomLowerWord = rand() % 7; 
+	/* select random number from a certain number range based on size of the respective row words array)*/
+	RandomUpperWord = rand() % 10;
+	RandomMiddleWord = rand() % 11;
+	RandomLowerWord = rand() % 7;
 
 	switch (RowChoice)
 	{
-	/*upper only*/case 1:
+	/*upper only*/ case 1:
 		strcpy(RequiredWord, BottomRowWords[RandomLowerWord]);
 		break;
-	
+
 	/*upper only*/ case 10:
 		strcpy(RequiredWord, TopRowWords[RandomUpperWord]);
 		break;
-	
+
 	case 11:
 		switch (RandomRow)
 		{
@@ -658,7 +835,7 @@ void select_word()
 			break;
 		}
 		break;
-	
+
 	/*middle only*/ case 100:
 		strcpy(RequiredWord, MiddleRowWords[RandomMiddleWord]);
 		break;
@@ -681,7 +858,7 @@ void select_word()
 			break;
 		}
 		break;
-	
+
 	case 110:
 		switch (RandomRow)
 		{
@@ -693,7 +870,7 @@ void select_word()
 			break;
 		}
 		break;
-	
+
 	case 111:
 		switch (RandomRow)
 		{

@@ -12,7 +12,6 @@ Pragalbha Acharya <078bct060.pragalbha@pcampus.edu.np>
 SPDX-License-Identifier: LGPL-2.1-or-later
 */
 
-
 #include "spacetype_game.h"
 #include "spacetype_game.c"
 #include "spacetype_train.h"
