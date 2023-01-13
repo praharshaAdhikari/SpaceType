@@ -5,7 +5,7 @@ Letter and Word Typing Train
 Mukunda Dev Adhikari <mukunda.adhikari@outlook.com>
 SPDX-License-Identifier: LGPL-2.1-or-later
 */
-void customized_train();
+
 /*Declaring variables for train screen start*/
 bool exitTrainWords, exitTrainLetters, MiddleRow, TopRow, BottomRow, exitTrainProcess, letterinput, exitTrain, trainMode, wordinput, exitResult;
 bool NumberRow = false;
