@@ -131,12 +131,11 @@ void draw_menu()
     else
     {
         DrawTextEx(retroFont, "☰", (Vector2){screenWidth-50-1,-15-1}, 50, 1, WHITE);
-        DrawTextEx(retroFont, "☰", (Vector2){screenWidth-50,-15}, 50, 1, (Color) {28, 35, 74, 255});
+        DrawTextEx(retroFont, "☰", (Vector2){screenWidth-50,-15}, 50, 1, (Color) {115, 147, 179, 255});
         DrawTextEx(retroFont, "☰", (Vector2){screenWidth-50-1,-5-1}, 50, 1, WHITE);
-        DrawTextEx(retroFont, "☰", (Vector2){screenWidth-50,-5}, 50, 1, (Color) {28, 35, 74, 255});
+        DrawTextEx(retroFont, "☰", (Vector2){screenWidth-50,-5}, 50, 1, (Color) {115, 147, 179, 255});
         DrawTextEx(retroFont, "☰", (Vector2){screenWidth-50-1,5-1}, 50, 1, WHITE);
-        DrawTextEx(retroFont, "☰", (Vector2){screenWidth-50,5}, 50, 1, (Color) {28, 35, 74, 255});
-    
+        DrawTextEx(retroFont, "☰", (Vector2){screenWidth-50,5}, 50, 1, (Color) {115, 147, 179, 255});
     }
 	DrawTextureEx(cockpitTexture, (Vector2){0, 0}, 0, 1, WHITE);
 	if ((float)GetMouseX() >= 396 && (float)GetMouseX() <= 640 && (float)GetMouseY() >= 541 && (float)GetMouseY() <= 620)
