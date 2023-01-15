@@ -812,8 +812,8 @@ void select_word()
 	int RandomUpperWord, RandomMiddleWord, RandomLowerWord;
 
 	/* select random number from a certain number range based on size of the respective row words array)*/
-	RandomUpperWord = rand() % 9;
-	RandomMiddleWord = rand() % 10;
+	RandomUpperWord = rand() % 10;
+	RandomMiddleWord = rand() % 9;
 	RandomLowerWord = rand() % 7;
 
 	switch (RowChoice)
