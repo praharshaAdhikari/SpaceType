@@ -17,6 +17,7 @@ float keysPressed, rightKeysPressed, framesCounterForSession,
     framesCounterForWord, fastestWordFrames, slowestWordFrames;
 bool gapMeasured, exitPause = true;
 float scale, movingDown, mover;
+Music music;
 Texture2D spaceTexture, planetTextures[3], bulletTexture, spaceshipTexture, qwertyTexture, cockpitTextureKeyboard;
 /*Declaring variables end*/
 
@@ -135,8 +136,7 @@ void pause_screen()
  * Highlights the key you need to press in the keyboard for Train mode
  */   
 void keyboard_highlight (char a) {
-DrawTextureEx(cockpitTextureKeyboard, (Vector2){0, 0}, 0, 1, WHITE);
-
+    DrawTextureEx(cockpitTextureKeyboard, (Vector2){0, 0}, 0, 1, WHITE);
     switch (a)
     {
         case 'q':
@@ -229,30 +229,29 @@ DrawTextureEx(cockpitTextureKeyboard, (Vector2){0, 0}, 0, 1, WHITE);
  * Shows the touch typing keyboard placement when Help button is pressed in main menu
  */   
 void tutorial_screen() {
-    UpdateMusicStream(music);
     bool exitTutorial = false;
     while(!exitTutorial) {
+    	UpdateMusicStream(music);
         BeginDrawing();
         draw_background();
-        DrawTextEx(retroFont, "TOUCH TYPING ", (Vector2){screenWidth / 2 - 370 + 5, 60 + 4}, 90, 1, DARKBLUE);
-		DrawTextEx(retroFont, "TOUCH TYPING", (Vector2){screenWidth / 2 - 370, 60}, 90, 1, WHITE);
-		
-        DrawTextEx(retroFont, "Here's how your finger placement should be for touch typing", (Vector2){60+2,180+1}, 30, 1, BLUE);
-		DrawTextEx(retroFont, "Here's how your finger placement should be for touch typing", (Vector2){60,180}, 30, 1, WHITE);
-		DrawTextureEx(qwertyTexture, (Vector2){330,(GetScreenHeight()/2 -150)},0,0.6, WHITE);
-        if ((float)GetMouseX() >= (GetScreenWidth() / 2 - MeasureTextEx(retroFont, "main menu", 30, 1).x / 2) && (float)GetMouseX() <= (GetScreenWidth() / 2 + MeasureTextEx(retroFont, "main menu", 30, 1).x / 2) && (float)GetMouseY() >= (GetScreenHeight() / 2 + 285 - MeasureTextEx(retroFont, "main menu", 30, 1).y / 2) && (float)GetMouseY() <= (GetScreenHeight() / 2 + 285 + MeasureTextEx(retroFont, "main menu", 30, 1).y / 2))
+        DrawTextEx(retroFont, "TOUCH TYPING ", (Vector2){screenWidth / 2 - 375 + 5, 60 + 4}, 90, 1, DARKBLUE);
+		DrawTextEx(retroFont, "TOUCH TYPING", (Vector2){screenWidth / 2 - 375, 60}, 90, 1, WHITE);
+        DrawTextEx(retroFont, "Here's how your finger placement should be for touch typing.", (Vector2){70+2,220+1}, 30, 1, BLUE);
+		DrawTextEx(retroFont, "Here's how your finger placement should be for touch typing.", (Vector2){70,220}, 30, 1, WHITE);
+		DrawTextureEx(qwertyTexture, (Vector2){330,(GetScreenHeight()/2 - 100)},0,0.6, WHITE);
+        if ((float)GetMouseX() >= (GetScreenWidth() / 2 - MeasureTextEx(retroFont, "main menu", 30, 1).x / 2) && (float)GetMouseX() <= (GetScreenWidth() / 2 + MeasureTextEx(retroFont, "main menu", 30, 1).x / 2) && (float)GetMouseY() >= (GetScreenHeight() / 2 + 325 - MeasureTextEx(retroFont, "main menu", 30, 1).y / 2) && (float)GetMouseY() <= (GetScreenHeight() / 2 + 325 + MeasureTextEx(retroFont, "main menu", 30, 1).y / 2))
 		{
-			DrawTextPro(retroFont, "main menu", (Vector2){(GetScreenWidth() / 2) + 2, GetScreenHeight() / 2 + 280 + 1}, Vector2Scale(MeasureTextEx(retroFont, "main menu", 30, 1), 0.5f), 0, 30, 1, RED);
-			DrawTextPro(retroFont, "main menu", (Vector2){(GetScreenWidth() / 2), GetScreenHeight() / 2 + 280}, Vector2Scale(MeasureTextEx(retroFont, "main menu", 30, 1), 0.5f), 0, 30, 1, BLUE);
+			DrawTextPro(retroFont, "main menu", (Vector2){(GetScreenWidth() / 2) + 2, GetScreenHeight() / 2 + 330 + 1}, Vector2Scale(MeasureTextEx(retroFont, "main menu", 30, 1), 0.5f), 0, 30, 1, RED);
+			DrawTextPro(retroFont, "main menu", (Vector2){(GetScreenWidth() / 2), GetScreenHeight() / 2 + 330}, Vector2Scale(MeasureTextEx(retroFont, "main menu", 30, 1), 0.5f), 0, 30, 1, BLUE);
 			if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
 			{
-			exitTutorial = true;
+			    exitTutorial = true;
 			}
 		}
 		else
 		{
-			DrawTextPro(retroFont, "main menu", (Vector2){(GetScreenWidth() / 2 + 3), GetScreenHeight() / 2 + 280 + 2}, Vector2Scale(MeasureTextEx(retroFont, "main menu", 30, 1), 0.5f), 0, 30, 1, LIME);
-			DrawTextPro(retroFont, "main menu", (Vector2){(GetScreenWidth() / 2), GetScreenHeight() / 2 + 280}, Vector2Scale(MeasureTextEx(retroFont, "main menu", 30, 1), 0.5f), 0, 30, 1, WHITE);
+			DrawTextPro(retroFont, "main menu", (Vector2){(GetScreenWidth() / 2 + 3), GetScreenHeight() / 2 + 330 + 2}, Vector2Scale(MeasureTextEx(retroFont, "main menu", 30, 1), 0.5f), 0, 30, 1, LIME);
+			DrawTextPro(retroFont, "main menu", (Vector2){(GetScreenWidth() / 2), GetScreenHeight() / 2 + 330}, Vector2Scale(MeasureTextEx(retroFont, "main menu", 30, 1), 0.5f), 0, 30, 1, WHITE);
 		}
         // DrawTextEx(retroFont, "Put your left index finger in F and Right one in J. Then Put", (Vector2){60+2,580+1}, 30, 1, BLUE);
 		// DrawTextEx(retroFont, "Put your left index finger in F and Right one in J. Then Put", (Vector2){60,580}, 30, 1, WHITE);

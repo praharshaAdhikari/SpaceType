@@ -114,14 +114,14 @@ void draw_menu()
 		}
 		sorted = true;
 	}
-	if ((float)GetMouseX() >= 20 && (float)GetMouseX() <= 20 + MeasureTextEx(retroFont, "☰", 50, 1).x && (float)GetMouseY() >= 5 && (float)GetMouseY() <= (5 + MeasureTextEx(retroFont, "☰", 50, 1).y))
+	if ((float)GetMouseX() >= screenWidth-50 && (float)GetMouseX() <= screenWidth-50 + MeasureTextEx(retroFont, "☰", 50, 1).x && (float)GetMouseY() >= 5 && (float)GetMouseY() <= (5 + MeasureTextEx(retroFont, "☰", 50, 1).y))
     {
-        DrawTextEx(retroFont, "☰", (Vector2){20+2,-15+1}, 50, 1, RED);
-        DrawTextEx(retroFont, "☰", (Vector2){20,-15}, 50, 1, BLUE);
-		DrawTextEx(retroFont, "☰", (Vector2){20+2,-5+1}, 50, 1, RED);
-        DrawTextEx(retroFont, "☰", (Vector2){20,-5}, 50, 1, BLUE);
-		DrawTextEx(retroFont, "☰", (Vector2){20+2,5+1}, 50, 1, RED);
-        DrawTextEx(retroFont, "☰", (Vector2){20,5}, 50, 1, BLUE);
+        DrawTextEx(retroFont, "☰", (Vector2){screenWidth-50+2,-15+2}, 50, 1, RED);
+        DrawTextEx(retroFont, "☰", (Vector2){screenWidth-50,-15}, 50, 1, BLUE);
+		DrawTextEx(retroFont, "☰", (Vector2){screenWidth-50+2,-5+2}, 50, 1, RED);
+        DrawTextEx(retroFont, "☰", (Vector2){screenWidth-50,-5}, 50, 1, BLUE);
+		DrawTextEx(retroFont, "☰", (Vector2){screenWidth-50+2,5+2}, 50, 1, RED);
+        DrawTextEx(retroFont, "☰", (Vector2){screenWidth-50,5}, 50, 1, BLUE);
             if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
         {
             EndDrawing();
@@ -130,9 +130,12 @@ void draw_menu()
     }
     else
     {
-        DrawTextEx(retroFont, "☰", (Vector2){20,-15}, 50, 1, WHITE);
-        DrawTextEx(retroFont, "☰", (Vector2){20,-5}, 50, 1, WHITE);
-        DrawTextEx(retroFont, "☰", (Vector2){20,5}, 50, 1, WHITE);
+        DrawTextEx(retroFont, "☰", (Vector2){screenWidth-50-1,-15-1}, 50, 1, WHITE);
+        DrawTextEx(retroFont, "☰", (Vector2){screenWidth-50,-15}, 50, 1, (Color) {28, 35, 74, 255});
+        DrawTextEx(retroFont, "☰", (Vector2){screenWidth-50-1,-5-1}, 50, 1, WHITE);
+        DrawTextEx(retroFont, "☰", (Vector2){screenWidth-50,-5}, 50, 1, (Color) {28, 35, 74, 255});
+        DrawTextEx(retroFont, "☰", (Vector2){screenWidth-50-1,5-1}, 50, 1, WHITE);
+        DrawTextEx(retroFont, "☰", (Vector2){screenWidth-50,5}, 50, 1, (Color) {28, 35, 74, 255});
     
     }
 	DrawTextureEx(cockpitTexture, (Vector2){0, 0}, 0, 1, WHITE);
