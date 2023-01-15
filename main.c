@@ -27,7 +27,7 @@ Font retroFont;
 bool exitWindow = false;
 bool exitGame = false;
 bool sorted;
-Texture2D cockpitTexture, cockpitTextureTrain, cockpitTextureTest, cockpitTextureGame, cockpitTextureExit;
+Texture2D cockpitTexture, cockpitTextureTrain, cockpitTextureTest, cockpitTextureGame, cockpitTextureExit, qwertyTexture;
 /*Declaring general variables for the application end */
 
 
@@ -43,9 +43,10 @@ int main()
 	cockpitTexture = LoadTexture("resources/images/cockpit_texture.png");
 	spaceshipTexture = LoadTexture("resources/images/spaceship_texture.png");
 	bulletTexture = LoadTexture("resources/images/bullet_texture.png");
-	cockpitTexture = LoadTexture("resources/images/cockpit_texture.png");
+	qwertyTexture = LoadTexture("resources/images/qwerty.png");
 	cockpitTextureTrain = LoadTexture("resources/images/cockpit_texture_train.png");
 	cockpitTextureTest = LoadTexture("resources/images/cockpit_texture_test.png");
+	cockpitTextureKeyboard = LoadTexture("resources/images/cockpit_texture_keyboard.png");
 	cockpitTextureGame = LoadTexture("resources/images/cockpit_texture_game.png");
 	cockpitTextureExit = LoadTexture("resources/images/cockpit_texture_exit.png");
 	planetTextures[0] = LoadTexture("resources/images/planet1_texture.png");
@@ -113,6 +114,27 @@ void draw_menu()
 		}
 		sorted = true;
 	}
+	if ((float)GetMouseX() >= 20 && (float)GetMouseX() <= 20 + MeasureTextEx(retroFont, "☰", 50, 1).x && (float)GetMouseY() >= 5 && (float)GetMouseY() <= (5 + MeasureTextEx(retroFont, "☰", 50, 1).y))
+    {
+        DrawTextEx(retroFont, "☰", (Vector2){20+2,-15+1}, 50, 1, RED);
+        DrawTextEx(retroFont, "☰", (Vector2){20,-15}, 50, 1, BLUE);
+		DrawTextEx(retroFont, "☰", (Vector2){20+2,-5+1}, 50, 1, RED);
+        DrawTextEx(retroFont, "☰", (Vector2){20,-5}, 50, 1, BLUE);
+		DrawTextEx(retroFont, "☰", (Vector2){20+2,5+1}, 50, 1, RED);
+        DrawTextEx(retroFont, "☰", (Vector2){20,5}, 50, 1, BLUE);
+            if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
+        {
+            EndDrawing();
+            tutorial_screen();
+        }
+    }
+    else
+    {
+        DrawTextEx(retroFont, "☰", (Vector2){20,-15}, 50, 1, WHITE);
+        DrawTextEx(retroFont, "☰", (Vector2){20,-5}, 50, 1, WHITE);
+        DrawTextEx(retroFont, "☰", (Vector2){20,5}, 50, 1, WHITE);
+    
+    }
 	DrawTextureEx(cockpitTexture, (Vector2){0, 0}, 0, 1, WHITE);
 	if ((float)GetMouseX() >= 396 && (float)GetMouseX() <= 640 && (float)GetMouseY() >= 541 && (float)GetMouseY() <= 620)
 	{

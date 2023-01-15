@@ -213,6 +213,7 @@ void letter_train()
 			draw_background();
 			DrawTextureEx(cockpitTextureKeyboard, (Vector2){0, 0}, 0, 1, WHITE);
 			DrawTextEx(retroFont, requiredtxt, (Vector2){GetScreenWidth() / 2, GetScreenHeight() / 2 - 100}, 30, 2, WHITE);
+			keyboard_highlight(RequiredLetter); 
 
 			int key = ((int)RequiredLetter) - 32;
 			int pressed = GetKeyPressed();
@@ -272,8 +273,9 @@ void word_train()
 			ClearBackground(BLACK);
 			draw_background();
 			DrawTextureEx(cockpitTextureKeyboard, (Vector2){0, 0}, 0, 1, WHITE);
-
 			DrawTextEx(retroFont, RequiredWord, (Vector2){(GetScreenWidth() / 2) - (textWidth / 2), GetScreenHeight() / 2 - 100}, 30, 2, WHITE);
+			keyboard_highlight(RequiredWord[0]); 
+
 			int key = ((int)RequiredWord[0]) - 32;
 			int pressed = GetKeyPressed();
 			if (pressed)
@@ -414,7 +416,6 @@ void customized_train()
 		wordinput = false;
 		strcpy(wordStored, RequiredWord);
 
-
 		while (!wordinput)
 		{
 			UpdateMusicStream(music);
@@ -426,8 +427,9 @@ void customized_train()
 			ClearBackground(BLACK);
 			draw_background();
 			DrawTextureEx(cockpitTextureKeyboard, (Vector2){0, 0}, 0, 1, WHITE);
-
 			DrawTextEx(retroFont, RequiredWord, (Vector2){(GetScreenWidth() / 2) - (textWidth / 2), GetScreenHeight() / 2 - 100}, 30, 2, WHITE);
+			keyboard_highlight(RequiredWord[0]); 
+
 			int key = ((int)RequiredWord[0]) - 32;
 			int pressed = GetKeyPressed();
 			if (pressed)
