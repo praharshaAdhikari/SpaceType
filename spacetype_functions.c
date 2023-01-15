@@ -229,6 +229,7 @@ DrawTextureEx(cockpitTextureKeyboard, (Vector2){0, 0}, 0, 1, WHITE);
  * Shows the touch typing keyboard placement when Help button is pressed in main menu
  */   
 void tutorial_screen() {
+    UpdateMusicStream(music);
     bool exitTutorial = false;
     while(!exitTutorial) {
         BeginDrawing();
