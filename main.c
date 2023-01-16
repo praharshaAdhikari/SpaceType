@@ -1,36 +1,64 @@
-/*
-█▀ █▀█ ▄▀█ █▀▀ █▀▀   ▀█▀ █▄█ █▀█ █▀▀
-▄█ █▀▀ █▀█ █▄▄ ██▄   ░█░ ░█░ █▀▀ ██▄
-A retro-interface typing trainer and game to help boost your typing speed. This project takes its
-inspiration large from Typeshala, Ztype and aims for the feels similar to retro-console space games
-like Space Invadors.
-Creators of this include:
-Praharsha Adhikari <078bct061.praharsha@pcampus.edu.np>
-Mukunda Dev Adhikari <mukunda.adhikari@outlook.com>
-Pragalbha Acharya <078bct060.pragalbha@pcampus.edu.np>
-
-SPDX-License-Identifier: LGPL-2.1-or-later
+/**
+ * \file main.c
+ * \brief Main application file of Space Type
+ * \details retro-interface typing trainer and game to help boost your typing speed. This project takes its
+ * inspration from Typeshala, Ztype and aims for the feels similar to retro-console space games
+ * like Space Invadors.
+ * SPDX-License-Identifier: LGPL-2.1-or-later
+ * 
+ * \author Praharsha Adhikari <078bct061.praharsha@pcampus.edu.np>
+ * \author Mukunda Dev Adhikari <078bct049.mukunda@pcampus.edu.np>
+ * \author Pragalbha Acharya <078bct049.pragalbha@pcampus.edu.np>
+ * \bug: No known Bug.
 */
 
-#include "spacetype_game.h"
-#include "spacetype_game.c"
-#include "spacetype_train.h"
-#include "spacetype_train.c"
+/* -- Includes -- */
+/* Including other C files and header files of this code*/
+#include "spacetype_game.h" /*header file for game mode*/
+#include "spacetype_game.c"/*C file for game mode*/
+#include "spacetype_train.h" /*header file for train mode*/
+#include "spacetype_train.c" /*C file for train mode*/
+#include "spacetype_test.h" /*header file for test mode*/
+#include "spacetype_test.c" /*C file for test mode*/
+
 
 void draw_menu();
 
-/*Declaring general variables for the application start*/
-Music music;
-FILE* wrongChars;
-int screenWidth, screenHeight;
-Font retroFont;
-bool exitWindow = false;
-bool exitGame = false;
-bool sorted;
-Texture2D cockpitTexture, cockpitTextureTrain, cockpitTextureTest, cockpitTextureGame, cockpitTextureExit, qwertyTexture;
-/*Declaring general variables for the application end */
+/**
+ * @{ \name Main application variables
+ */
+FILE* wrongChars; //!<To store mispressed characters to use in customized train mode 
+int screenWidth; //!<screen width for graphical operations
+int screenHeight; //!<screen height for graphical operations
+bool exitWindow = false; //!< To govern main application loop
+bool exitGame = false; //!<To govern game mode loop
+bool sorted; //!<to check if the WrongChars.txt is sorted or not
+/**
+ * @}
+ */
 
 
+/**
+ * @{ \name Main interface variables
+ * Different textures for the main screen and hover, and other graphical components.
+ */
+
+Texture2D cockpitTexture, cockpitTextureTrain,  cockpitTextureTest, cockpitTextureGame, cockpitTextureExit;  //!<Main menu textures
+Font retroFont, regularFont; //!< Main application fonts
+Texture2D  qwertyTexture; //!<keyboard image for tutorial screen
+/**
+ * @}
+ */
+
+
+/**
+ * \brief Main function of the application
+ * 
+ * \details Initializes Screen and audio device. Loads music, fonts
+ * and textures. Plays the music, calls the respective function to draw 
+ * the background and menu. 
+ * 
+ */
 int main()
 {
 	InitWindow(1366, 768, "Space Type");
@@ -54,6 +82,7 @@ int main()
 	planetTextures[2] = LoadTexture("resources/images/planet3_texture.png");
 	//Loading default font for the application
 	retroFont = LoadFont("resources/fonts/retro_font.otf");
+	regularFont = LoadFont("resources/fonts/regular_font.otf");
 	// Load background music
 	music = LoadMusicStream("resources/music/country.mp3"); 
 	PlayMusicStream(music);
@@ -77,13 +106,16 @@ int main()
 		DrawTextEx(retroFont, "TYPE", (Vector2){screenWidth / 2 - 140, screenHeight / 2 - 90}, 90, 1, WHITE);
 		EndDrawing();
 	}
+	UnloadMusicStream(music);
+	CloseWindow();
+	UnloadFont(retroFont);
 }
 
 
 /**
- * draw_menu:
+ * \brief Draws main menu for the application.
  * 
- * Draws the main menu of the application by loading the cockpitTexture 
+ * \details Draws the main menu of the application by loading the cockpitTexture 
  * with mouse control for navigation. Has indicators for hover and  
  * mouse click calls the respective function associated with the
  * menu entry.
@@ -151,7 +183,11 @@ void draw_menu()
 	{
 		DrawTextureEx(cockpitTextureTest, (Vector2){0, 0}, 0, 1, WHITE);
 		if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
-			ClearBackground(MAROON);
+			if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
+		{
+			EndDrawing();
+			test();
+		}
 	}
 	if ((float)GetMouseX() >= 275 && (float)GetMouseX() <= 575 && (float)GetMouseY() >= 660 && (float)GetMouseY() <= 750)
 	{

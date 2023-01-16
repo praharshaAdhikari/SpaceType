@@ -1,54 +1,90 @@
-/*
-█▀ █▀█ ▄▀█ █▀▀ █▀▀   ▀█▀ █▄█ █▀█ █▀▀
-▄█ █▀▀ █▀█ █▄▄ ██▄   ░█░ ░█░ █▀▀ ██▄
-Word Shooter Game
-Praharsha Adhikari <078bct061.praharsha@pcampus.edu.np>
-SPDX-License-Identifier: LGPL-2.1-or-later
+/**
+ * \file spacetype_game.c
+ * \brief Word Shooter Game for Spacetype
+ * \author Praharsha Adhikari <078bct061.praharsha@pcampus.edu.np>
+ * \bug No known bug
 */
 
-#include "spacetype_functions.c"
-#include <raymath.h>
+/* -- Includes -- */
+/* Including other C files and header files of this code*/
+#include "spacetype_functions.c" /*for pause_screen, reset_counter and remove_firstletter functions*/
+/* Raylib includes*/
+/*for Vector2 operations*/
 
-/*Declaring variables for game start*/
+
+/**
+ * @{ \name Main gameplay variables
+ * \details These variables handle different aspects related to the main
+ * gameplay.
+ */
 char *words[] =
     {
-        "apple", "ant", "airplane", "banana", "book", "boat", "cat", "cow", "car", "dog", "desk", "dolphin", "elephant", "egg", "earth", "fish", "flamingo", "frog", "giraffe", "goat", "grapes", "hat", "horse", "house", "igloo", "icecream", "insect", "jacket", "jaguar", "juice", "kangaroo", "kite", "key", "lion", "leopard", "lamp", "monkey", "mouse", "mango", "night", "nest", "napkin", "octopus", "ostrich", "onion", "pear", "panda", "pig", "queen", "quail", "question", "rabbit", "rhinoceros", "ring", "snake", "snail", "sock", "tiger", "taco", "table", "unicorn", "umbrella", "vase", "vegetable", "whale", "wolf", "watermelon", "xray", "xylophone", "yak", "yoyo", "zipper", "zoo"};
-char word[20];
-char wordStored[20];
-int sizeOfArray = sizeof(words) / sizeof(words[0]);
-Vector2 gap = {};
-Vector2 wordPos;
-const int fontSize = 25;
-void text_mover(Vector2 *, Rectangle, Vector2, float);
-float bulletMover = 0;
-float angle = 0;
-float prevAngle = 0;
-float bulletAngle;
-float movingPlanets = 0;
-float movingDown = 0;
-Rectangle bulletPos;
-bool bullet = false;
-bool GAME_OVER = false;
-Sound shoot;
-/*Declaring variables for game end*/
+        "apple", "ant", "airplane", "banana", "book", "boat", "cat", "cow", "car", "dog", "desk", "dolphin", "elephant", "egg", "earth", "fish", "flamingo", "frog", "giraffe", "goat", "grapes", "hat", "horse", "house", "igloo", "icecream", "insect", "jacket", "jaguar", "juice", "kangaroo", "kite", "key", "lion", "leopard", "lamp", "monkey", "mouse", "mango", "night", "nest", "napkin", "octopus", "ostrich", "onion", "pear", "panda", "pig", "queen", "quail", "question", "rabbit", "rhinoceros", "ring", "snake", "snail", "sock", "tiger", "taco", "table", "unicorn", "umbrella", "vase", "vegetable", "whale", "wolf", "watermelon", "xray", "xylophone", "yak", "yoyo", "zipper", "zoo"}; //!< List of words to choose from for the game
+char word[20]; //!<word which is presented to type
+char wordStored[20]; //!<stores the presented word to later compare with fastestword and slowestword
+int sizeOfArray = sizeof(words) / sizeof(words[0]); //!<for calculating total number of words*/
+Vector2 gap = {}; //!<Shortest distance between word and spaceship*/
+Vector2 wordPos; //!<position of word as it falls down
+const int fontSize = 25; //!< Fonsize declaration for uniformity of fontsize
+float angle = 0; //!< Angle of word to have it fall towards player
+float prevAngle = 0; //!< Angle of the spaceship
+float movingPlanets = 0; //!< Denotes which planet will be on screen 
+float movingDown = 0; //!< Parameters which makes space texture scroll infinitely*/
+bool GAME_OVER = false; //!< boolean to check game over condition
+/**
+ * @}
+ */
 
-/*Declaring extern variables from main start*/
-extern Music music;
-extern int screenWidth, screenHeight;
+void text_mover(Vector2 *, Rectangle, Vector2, float); 
+
+/**
+ * @{ \name Bullet related variables
+ * 
+ * \details These variables handle different aspects related to bullet 
+ * which destroys the word when it is finished being typed. 
+ */
+Sound shoot; //!<Audio played when bullet is used
+Rectangle bulletPos; //!<Bullet Position
+bool bullet = false; //!<indicates whether bullet needs to be shoot or not
+float bulletAngle;  //!<Determine angle at which bullet needs to be thrown depending word position
+float bulletMover = 0; //!<To indicate speed of the bullet
+/**
+ * @}
+ */
+
+/**
+ * @{ \name Extern variables from main
+ * 
+ * \details different variables initialized before needed for this portion
+ */
+extern Music music; //!< background music
+extern int screenWidth;
+extern int screenHeight;
 extern Font retroFont;
-/*Declaring extern variables from main end*/
- 
+ /**
+ * @}
+ */
+
+/**
+* \brief main function for game mode
+*
+* \details Handles everything regarding spaceship shoot game. Resets
+* variables specific to the game and general by calling
+* reset_counter. Draws the graphics regarding spaceship
+* falling words and bullets. Handles the gameplay mechanics
+* and shows a gameover screen when required. 
+*/
+
 void game()
 {
-    // Resetting in case of new game from menu
+    /** Resetting in case of new game from menu */
     GAME_OVER = false;
     strcpy(word, words[GetRandomValue(0, sizeOfArray - 1)]);
     strcpy(wordStored, word);
-    wordPos.x = GetRandomValue(200, screenWidth - 150);
-    wordPos.y = 20;
+    wordPos = (Vector2){GetRandomValue(200, screenWidth - 150), 20};
     reset_counter();
     
-    // Initialize variables and textures
+    /** Initialize variables and textures */
     int planet = GetRandomValue(0, 2);
     int planetPos = GetRandomValue(0, 2);
     Rectangle playerPos = {screenWidth / 2, screenHeight - 100, spaceshipTexture.width * 2, spaceshipTexture.height * 2};
@@ -57,11 +93,6 @@ void game()
     Vector2 planetVector = planetVectors[planetPos];
     bulletTexture = LoadTexture("resources/images/bullet_texture.png");
     spaceshipTexture = LoadTexture("resources/images/spaceship_texture.png");
-
-    // RESET VARIABLES
-    strcpy(word, words[GetRandomValue(0, sizeOfArray - 1)]);
-    strcpy(wordStored, word);
-    wordPos = (Vector2){GetRandomValue(200, screenWidth - 150), 20};
 
     shoot = LoadSound("resources/music/shoot.mp3"); // loading the spaceship shooting sound effect
 
@@ -306,12 +337,13 @@ void game()
 }
 
 
-/*
- * textMover: Moves the word toward the player
- * @*wordPos: Position of generated word
- * @playerPos: Position of spaceship
- * @gap: Shortest distance between word and spaceship
- * @time: Set time for the word to hit the player
+/**
+ * \brief  Moves the word toward the player
+
+ * \param wordPos: Position of generated word
+ * \param playerPos Position of spaceship
+ * \param gap  Shortest distance between word and spaceship
+ * \param time Set time for the word to hit the player
  */   
 
 void text_mover(Vector2 *wordPos, Rectangle playerPos, Vector2 gap, float time)

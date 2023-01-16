@@ -1,37 +1,70 @@
-/*
-█▀ █▀█ ▄▀█ █▀▀ █▀▀   ▀█▀ █▄█ █▀█ █▀▀
-▄█ █▀▀ █▀█ █▄▄ ██▄   ░█░ ░█░ █▀▀ ██▄
-Created Library Functions
-Praharsha Adhikari <078bct061.praharsha@pcampus.edu.np>
-SPDX-License-Identifier: LGPL-2.1-or-later
+/**
+ * \file spacetype_functions.c
+ * \brief Created functions for this application
+ * \author Praharsha Adhikari <078bct061.praharsha@pcampus.edu.np>
+ * \bug No Known Bugs
 */
 
+
+/* -- Includes -- */
 #include <string.h>
 #include "spacetype_functions.h"
 
-/*Declaring variables start*/
+
+/**
+ * @{ \name Statistics variables
+ *
+ * \details variables handle counters which are associated with with 
+ * statistics of Word shooter game and word train mode. 
+ */
 char fastestWord[20], slowestWord[20], scoreString[50];
 int SCORE;
 float TIME = 10;
 float keysPressed, rightKeysPressed, framesCounterForSession,
     framesCounterForWord, fastestWordFrames, slowestWordFrames;
 bool gapMeasured, exitPause = true;
-float scale, movingDown, mover;
-Music music;
-Texture2D spaceTexture, planetTextures[3], bulletTexture, spaceshipTexture, qwertyTexture, cockpitTextureKeyboard;
-/*Declaring variables end*/
+/**
+ * @}
+ */
 
-/*Declaring extern variables to be used from main start*/
-extern int screenWidth, screenHeight;
+/**
+ * @{ \name Background and main interface variables
+ * 
+ * \details handle different elements related to main interface
+ * of the program like background textures, music, scale, etc
+ */
+float scale; //!< Image scale for the uniformity
+float movingDown; //!< Variable to govern infinitely scrolling background
+float mover; //!< Variable which controls the speed of the word in game mode
+Music music;
+Texture2D spaceTexture; //!< Space Background used in infinite scroll background
+Texture2D planetTextures[3]; //!< Array of 3 different planet images to display on background
+Texture2D bulletTexture; //!< Texture of Bullet used in game mode
+Texture2D spaceshipTexture; //!< Texture of spaceship in game mode
+Texture2D  cockpitTextureKeyboard; //!< Background Texture
+/**
+ * @}
+ */
+
+/**
+ * @{ \name Extern variables from main
+ * 
+ * \details different variables initialized before needed for this portion
+ */
+extern int screenWidth;
+extern int screenHeight;
 extern Font retroFont;
 extern bool exitGame, sorted;
 extern FILE* wrongChars;
-/*Declaring extern variables to be used from main end*/
-
+extern Texture2D qwertyTexture;
+/**
+ * @}
+ */
 
 /**
- * remove_firstletter:
- * @word[]: the word sent to have its first letter removed
+ * \brief Removes the first letter of the word sent
+ * 
+ * \param word[]: the word sent to have its first letter removed
  */    
 void remove_firstletter(char word[])
 {
@@ -43,9 +76,9 @@ void remove_firstletter(char word[])
 }
 
 /**
- * draw_background:
+ * \brief Draws background in all modes
  * 
- * Draws the infinitely scrolling space background with moving planets.
+ * \details  Draws the infinitely scrolling space background with moving planets.
  */   
 void draw_background()
 {
@@ -61,9 +94,11 @@ void draw_background()
 }
 
 /**
- * reset_counter:
+ * \brief resets variables for required statistics
  * 
- * Resets all the variables that are used to calculate statistics during word practice and Game mode
+ * \details all the variables like score, fastestword, 
+ * slowest word, etc. that are used to calculate
+ * statistics during word practice and Game mode
  */   
 void reset_counter()
 {
@@ -84,9 +119,10 @@ void reset_counter()
 }
 
 /**
- * pause_screen:
+ * \brief Creates a pause menu
  * 
- * Creates a pause menu when called. Has options to either resume the game or return back to main menu
+ * \details a pause menu when called. Has options to 
+ * either resume the game or return back to main menu
  */   
 void pause_screen()
 {
@@ -130,10 +166,13 @@ void pause_screen()
     }
     EndDrawing();
 }
+
 /**
- * keyboard_highlight:
+ * \brief hightlights requried letter
  * 
- * Highlights the key you need to press in the keyboard for Train mode
+ * \details the key you need to press in the keyboard for Train mode
+ * 
+ * \param a the letter which needs to be highlighted
  */   
 void keyboard_highlight (char a) {
     DrawTextureEx(cockpitTextureKeyboard, (Vector2){0, 0}, 0, 1, WHITE);
@@ -142,80 +181,253 @@ void keyboard_highlight (char a) {
         case 'q':
             DrawCircle(422, 593, 10, ColorAlpha(RED, 0.75f));
             break;
+        case 'Q':
+            DrawCircle(1040, 660, 10, ColorAlpha(RED, 0.75f));
+            DrawCircle(422, 593, 10, ColorAlpha(RED, 0.75f));
+            break;
         case 'w':
+            DrawCircle(468, 592, 10, ColorAlpha(RED, 0.75f));
+            break;
+        case 'W':
+            DrawCircle(1040, 660, 10, ColorAlpha(RED, 0.75f));
             DrawCircle(468, 592, 10, ColorAlpha(RED, 0.75f));
             break;
         case 'e':
             DrawCircle(515, 592, 10, ColorAlpha(RED, 0.75f));
             break;
+        case 'E':
+            DrawCircle(1040, 660, 10, ColorAlpha(RED, 0.75f));
+            DrawCircle(515, 592, 10, ColorAlpha(RED, 0.75f));
+            break;
         case 'r':
+            DrawCircle(562, 593, 10, ColorAlpha(RED, 0.75f));
+            break;
+        case 'R':
+            DrawCircle(1040, 660, 10, ColorAlpha(RED, 0.75f));
             DrawCircle(562, 593, 10, ColorAlpha(RED, 0.75f));
             break;
         case 't':
             DrawCircle(609, 592, 10, ColorAlpha(RED, 0.75f));
             break;
+        case 'T':
+            DrawCircle(1040, 660, 10, ColorAlpha(RED, 0.75f));
+            DrawCircle(609, 592, 10, ColorAlpha(RED, 0.75f));
+            break;
         case 'y':
+            DrawCircle(653, 592, 10, ColorAlpha(RED, 0.75f));
+            break;
+        case 'Y':
+            DrawCircle(310, 660, 10, ColorAlpha(RED, 0.75f));
             DrawCircle(653, 592, 10, ColorAlpha(RED, 0.75f));
             break;
         case 'u':
             DrawCircle(703, 593, 10, ColorAlpha(RED, 0.75f));
             break;
+        case 'U':
+            DrawCircle(310, 660, 10, ColorAlpha(RED, 0.75f));
+            DrawCircle(703, 593, 10, ColorAlpha(RED, 0.75f));
+            break;
         case 'i':
+            DrawCircle(747, 593, 10, ColorAlpha(RED, 0.75f));
+            break;
+        case 'I':
+            DrawCircle(310, 660, 10, ColorAlpha(RED, 0.75f));
             DrawCircle(747, 593, 10, ColorAlpha(RED, 0.75f));
             break;
         case 'o':
             DrawCircle(796, 593, 10, ColorAlpha(RED, 0.75f));
             break;
+        case 'O':
+            DrawCircle(310, 660, 10, ColorAlpha(RED, 0.75f));
+            DrawCircle(796, 593, 10, ColorAlpha(RED, 0.75f));
+            break;
         case 'p':
+            DrawCircle(841, 593, 10, ColorAlpha(RED, 0.75f));
+            break;
+        case 'P':
+            DrawCircle(310, 660, 10, ColorAlpha(RED, 0.75f));
             DrawCircle(841, 593, 10, ColorAlpha(RED, 0.75f));
             break;
         case 'a':
             DrawCircle(407, 622, 10, ColorAlpha(RED, 0.75f));
             break; 
+        case 'A':
+            DrawCircle(1040, 660, 10, ColorAlpha(RED, 0.75f));
+            DrawCircle(407, 622, 10, ColorAlpha(RED, 0.75f));
+            break; 
         case 's':
+            DrawCircle(457, 622, 10, ColorAlpha(RED, 0.75f));
+            break;
+        case 'S':
+            DrawCircle(1040, 660, 10, ColorAlpha(RED, 0.75f));
             DrawCircle(457, 622, 10, ColorAlpha(RED, 0.75f));
             break;
         case 'd':
             DrawCircle(509, 622, 10, ColorAlpha(RED, 0.75f));
             break;
+        case 'D':
+            DrawCircle(1040, 660, 10, ColorAlpha(RED, 0.75f));
+            DrawCircle(509, 622, 10, ColorAlpha(RED, 0.75f));
+            break;
         case 'f':
+            DrawCircle(565, 622, 10, ColorAlpha(RED, 0.75f));
+            break;
+        case 'F':
+            DrawCircle(1040, 660, 10, ColorAlpha(RED, 0.75f));
             DrawCircle(565, 622, 10, ColorAlpha(RED, 0.75f));
             break;
         case 'g':
             DrawCircle(617, 622, 10, ColorAlpha(RED, 0.75f));
             break;
+        case 'G':
+            DrawCircle(1040, 660, 10, ColorAlpha(RED, 0.75f));
+            DrawCircle(617, 622, 10, ColorAlpha(RED, 0.75f));
+            break;
         case 'h':
+            DrawCircle(666, 622, 10, ColorAlpha(RED, 0.75f));
+            break;
+        case 'H':
+            DrawCircle(310, 660, 10, ColorAlpha(RED, 0.75f));
             DrawCircle(666, 622, 10, ColorAlpha(RED, 0.75f));
             break;
         case 'j':
             DrawCircle(716, 622, 10, ColorAlpha(RED, 0.75f));
             break;
+        case 'J':
+            DrawCircle(310, 660, 10, ColorAlpha(RED, 0.75f));
+            DrawCircle(716, 622, 10, ColorAlpha(RED, 0.75f));
+            break;
         case 'k':
+            DrawCircle(772, 622, 10, ColorAlpha(RED, 0.75f));
+            break;
+        case 'K':
+            DrawCircle(310, 660, 10, ColorAlpha(RED, 0.75f));
             DrawCircle(772, 622, 10, ColorAlpha(RED, 0.75f));
             break;
         case 'l':
             DrawCircle(820, 622, 10, ColorAlpha(RED, 0.75f));
             break;   
+        case 'L':
+            DrawCircle(310, 660, 10, ColorAlpha(RED, 0.75f));
+            DrawCircle(820, 622, 10, ColorAlpha(RED, 0.75f));
+            break;   
         case 'z':
+            DrawCircle(403, 656, 10, ColorAlpha(RED, 0.75f));
+            break;
+        case 'Z':
+            DrawCircle(1040, 660, 10, ColorAlpha(RED, 0.75f));
             DrawCircle(403, 656, 10, ColorAlpha(RED, 0.75f));
             break;
         case 'x':
             DrawCircle(460, 656, 10, ColorAlpha(RED, 0.75f));
             break;
+        case 'X':
+            DrawCircle(1040, 660, 10, ColorAlpha(RED, 0.75f));
+            DrawCircle(460, 656, 10, ColorAlpha(RED, 0.75f));
+            break;
         case 'c':
+            DrawCircle(521, 656, 10, ColorAlpha(RED, 0.75f));
+            break;
+        case 'C':
+            DrawCircle(1040, 660, 10, ColorAlpha(RED, 0.75f));
             DrawCircle(521, 656, 10, ColorAlpha(RED, 0.75f));
             break;
         case 'v':
             DrawCircle(578, 656, 10, ColorAlpha(RED, 0.75f));
             break;
+        case 'V':
+            DrawCircle(1040, 660, 10, ColorAlpha(RED, 0.75f));
+            DrawCircle(578, 656, 10, ColorAlpha(RED, 0.75f));
+            break;
         case 'b':
+            DrawCircle(636, 656, 10, ColorAlpha(RED, 0.75f));
+            break;
+        case 'B':
+            DrawCircle(1040, 660, 10, ColorAlpha(RED, 0.75f));
             DrawCircle(636, 656, 10, ColorAlpha(RED, 0.75f));
             break;
         case 'n':
             DrawCircle(691, 656, 10, ColorAlpha(RED, 0.75f));
             break;
+        case 'N':
+            DrawCircle(310, 660, 10, ColorAlpha(RED, 0.75f));
+            DrawCircle(691, 656, 10, ColorAlpha(RED, 0.75f));
+            break;
         case 'm':
             DrawCircle(755, 656, 10, ColorAlpha(RED, 0.75f));
+            break;
+        case 'M':
+            DrawCircle(310, 660, 10, ColorAlpha(RED, 0.75f));
+            DrawCircle(755, 656, 10, ColorAlpha(RED, 0.75f));
+            break;
+        case ' ':
+            DrawCircle(636, 706, 10, ColorAlpha(RED, 0.75f));
+            break;
+        case ((char)39):
+            DrawCircle(935, 622, 10, ColorAlpha(RED, 0.75f));
+            break;
+        case ':':
+            DrawCircle(310, 660, 10, ColorAlpha(RED, 0.75f));
+            DrawCircle(875, 622, 10, ColorAlpha(RED, 0.75f));
+            break;
+        case ',':
+            DrawCircle(810, 656, 10, ColorAlpha(RED, 0.75f));
+            break;
+        case '.':
+            DrawCircle(861, 656, 10, ColorAlpha(RED, 0.75f));
+            break;
+        case '1':
+            DrawCircle(426, 568, 10, ColorAlpha(RED, 0.75f));
+            break;
+        case '2':
+            DrawCircle(466, 568, 10, ColorAlpha(RED, 0.75f));
+            break;
+        case '3':
+            DrawCircle(506, 568, 10, ColorAlpha(RED, 0.75f));
+            break;
+        case '4':
+            DrawCircle(556, 568, 10, ColorAlpha(RED, 0.75f));
+            break;
+        case '5':
+            DrawCircle(596, 568, 10, ColorAlpha(RED, 0.75f));
+            break;
+        case '6':
+            DrawCircle(636, 568, 10, ColorAlpha(RED, 0.75f));
+            break;
+        case '7':
+            DrawCircle(676, 568, 10, ColorAlpha(RED, 0.75f));
+            break;
+        case '8':
+            DrawCircle(726, 568, 10, ColorAlpha(RED, 0.75f));
+            break;
+        case '9':
+            DrawCircle(766, 568, 10, ColorAlpha(RED, 0.75f));
+            break;
+        case '0':
+            DrawCircle(806, 568, 10, ColorAlpha(RED, 0.75f));
+            break;
+        case '(':
+            DrawCircle(310, 660, 10, ColorAlpha(RED, 0.75f));
+            DrawCircle(766, 568, 10, ColorAlpha(RED, 0.75f));
+            break;
+        case ')':
+            DrawCircle(310, 660, 10, ColorAlpha(RED, 0.75f));
+            DrawCircle(806, 568, 10, ColorAlpha(RED, 0.75f));
+            break;
+        case '-':
+            DrawCircle(851, 568, 10, ColorAlpha(RED, 0.75f));
+            break;
+        case '+':
+            DrawCircle(310, 660, 10, ColorAlpha(RED, 0.75f));
+            DrawCircle(891, 568, 10, ColorAlpha(RED, 0.75f));
+            break;
+        case '!':
+            DrawCircle(1040, 660, 10, ColorAlpha(RED, 0.75f));
+            DrawCircle(426, 568, 10, ColorAlpha(RED, 0.75f));
+            break;
+        case '?':
+            DrawCircle(310, 660, 10, ColorAlpha(RED, 0.75f));
+            DrawCircle(915, 656, 10, ColorAlpha(RED, 0.75f));
             break;
         default:
             break;
@@ -224,9 +436,10 @@ void keyboard_highlight (char a) {
 }
 
 /**
- * tutorial_screen:
+ * \brief Shows a tutorial screeen for touch typing
  * 
- * Shows the touch typing keyboard placement when Help button is pressed in main menu
+ * \details Shows the touch typing finger placement in keyboard
+ * when Help button is pressed in main menu
  */   
 void tutorial_screen() {
     bool exitTutorial = false;

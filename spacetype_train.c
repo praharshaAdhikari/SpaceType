@@ -1,40 +1,80 @@
-/*
-█▀ █▀█ ▄▀█ █▀▀ █▀▀   ▀█▀ █▄█ █▀█ █▀▀
-▄█ █▀▀ █▀█ █▄▄ ██▄   ░█░ ░█░ █▀▀ ██▄
-Letter and Word Typing Train
-Mukunda Dev Adhikari <mukunda.adhikari@outlook.com>
-SPDX-License-Identifier: LGPL-2.1-or-later
+/**
+ * \file spacetype_train.c
+ * \brief Word and Letter Typing train mode
+ * \author Mukunda Dev Adhikari <078bct049.mukunda@pcampus.edu.np>
+ * \bug No Known Bug
 */
 
-/*Declaring variables for train screen start*/
-bool exitTrainWords, exitTrainLetters, MiddleRow, TopRow, BottomRow, exitTrainProcess, letterinput, exitTrain, trainMode, wordinput, exitResult;
-bool NumberRow = false;
+/**
+ * @{ \name Letter Train variables
+ * 
+ * \details 3 character arrays to store characters of respective keyboard rows.
+ */
 char TopRowLetters[10] = {'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p'};
 char MiddleRowLetters[9] = {'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l'};
 char BottomRowLetters[7] = {'z', 'x', 'c', 'v', 'b', 'n', 'm'};
-char RequiredLetter;
-Texture2D cockpitTextureKeyboard;
-/*Declaring variables for train screen end*/
+char RequiredLetter; //!< Stores letter which will be displayed in Letter Train process
+/**
+ * @}
+ */
 
-/*Declaring variables for word train start*/
-char MiddleRowWords[9][10] = {"lad", "slade", "glass", "fade", "grade", "hall", "jade", "klaus", "lathe"};
-char TopRowWords[10][10] = {"queer", "wrought", "erode", "trope", "troupe", "youth", "utopia", "irony", "outhouse", "power"};
-char BottomRowWords[7][10] = {"zoner", "xerox", "change", "vought", "broom", "noob", "mooncover"};
+
+/**
+ * @{ \name Word Train variables
+ * 
+ * \details List of Words from toprow, middlerow and bottomrow to choose from when selecting word
+ */
+char TopRowWords[][10] = {"queer", "wrought", "erode", "trope", "troupe", "youth", "utopia", "irony", "outhouse", "power"};
+char MiddleRowWords[][10] = {"lad", "slade", "glass", "fade", "grade", "hall", "jade", "klaus", "lathe"};
+char BottomRowWords[][10] = {"zoner", "xerox", "change", "vought", "broom", "noob", "mooncover"};
 char *customizedWords[] =
 	{
 		"abstract", "conjecture", "elixir", "fervent", "gargantuan", "haphazard", "intrepid", "jubilant", "kinetic", "luminous", "maverick", "nocturnal", "orchid", "predator", "quagmire", "resilient", "saunter", "turbulent", "unwavering", "vortex", "whimsical", "xenon", "yellow", "zephyr", "allegory", "benevolent", "credence", "demeanor", "enigma", "fractal", "gusto", "hiatus", "intricacy", "jubilation", "kaleidoscope", "lucid", "magnitude", "nimble", "opulence", "pertinent", "quintessential", "responsive", "saturate", "tenacity", "unbridled", "volatile", "whirlwind", "xylophone", "yacht", "zodiac", "acumen", "bazaar", "clarity", "diligent", "empathy", "flourish", "graceful", "harmony", "intuition", "jovial", "klutz", "leverage", "mystique", "nostalgia", "overture", "persistence", "quirk", "radiance", "savvy", "transcend", "unison", "vivid", "whisper", "xylograph", "yearning", "zephyr", "affinity", "bucolic", "clandestine", "disparate", "embellish", "fluctuate", "glossary", "hiatus", "intrepid", "jubilant", "knick-knack", "legerdemain", "magnanimous", "nihilistic", "opulent", "provocative", "quintessence", "rhapsodic", "solitude", "tenacity", "unabashed", "versatility", "whirlwind", "xenophobe", "yen"
 	};
 char RequiredWord[10];
-/*Declaring variables for word train  end*/
+/**
+ * @}
+ */
 
-/*Declaring extern variables from main start*/
+/**
+ * @{ \name Boolean to control different modes and screen
+ *
+ *  Different booleans to control training process and also to
+ * indicatet which row is chosen for respective train modes
+ *
+ */
+bool exitTrainWords, exitTrainLetters, MiddleRow, 
+	TopRow, BottomRow, exitTrainProcess, letterinput, 
+	exitTrain, trainMode, wordinput, exitResult;
+/**
+ * @}
+ */
+
+
+/**
+ * @{ \name Extern variables from main
+ * \details different variables initialized before 
+ * that were needed for this portion
+ */
 extern Music music;
-extern int screenWidth, screenHeight;
+extern int screenWidth; 
+extern int screenHeight;
 extern Font retroFont;
-extern Texture2D cockpitTexture;
+extern Texture2D cockpitTexture; //!< Background Textures
+extern Texture2D cockpitTextureKeyboard; //!< Background Texture
 extern char wordStored[20];
-/*Declaring extern variables from main end*/
+/**
+ * @}
+ */
 
+
+
+/**
+ * \brief main function for train mode
+ *
+ * \details the background texture, continues the background 
+ * music and calls train_menu function for further navigation
+ */
 void train()
 {
 	exitTrain = false;
@@ -55,9 +95,9 @@ void train()
 }
 
 /**
- * train_menu:
+ * \brief main menu for train screen
  *
- * Draws the menu for the train mode. Gives the user the option
+ * \details Draws the menu for the train mode. Gives the user the option
  * to choose between practicing letters or practicing words.
  */
 void train_menu()
@@ -127,9 +167,9 @@ void train_menu()
 }
 
 /**
- * mode_trainletters:
+ * \brief Letter Train sub menu 
  *
- * The function that handles lettere practice mode. Clears all
+ * \details function that handles lettere practice mode. Clears all
  * boolean relatetd rows and train loops and calls the function
  * which draws selection menu for rows.
  */
@@ -156,9 +196,9 @@ void mode_trainletters()
 }
 
 /**
- * mode_trainwords:
+ * \brief Word Train sub menu
  *
- * The function that handles words practice mode. Clears all
+ * \details The function that handles words practice mode. Clears all
  * boolean relatetd rows and train loops and calls the train_select
  * function which draws selection menu for rows.
  */
@@ -178,15 +218,14 @@ void mode_trainwords()
 		draw_background();
 		DrawTextureEx(cockpitTextureKeyboard, (Vector2){0, 0}, 0, 1, WHITE);
 		train_select();
-
 		EndDrawing();
 	}
 }
 
 /**
- * letter_train
+ * \brief Handles processes regarding training typing letters
  *
- * The function that handles resetting of variables by calling
+ * \details The function that handles resetting of variables by calling
  * reset_counter, and contains the loop which selects the new
  * letter (using select_letter) and a nested loop to check if the
  * input letter matches with the displayed one.
@@ -230,7 +269,6 @@ void letter_train()
 				letterinput = true;
 				exitTrainProcess = true;
 			}
-
 			EndDrawing();
 		}
 		EndDrawing();
@@ -238,9 +276,9 @@ void letter_train()
 }
 
 /**
- * word_train
+ * \brief Handles processes regarding training typing words 
  *
- * The function that handles resetting of variables by calling
+ * \details The function that handles resetting of variables by calling
  * reset_counter, and contains the loop which selects the new
  * word (using select_word) and a nested loop which ends when
  * the user has finished enterring the word. It calls remove_firstletter
@@ -385,10 +423,11 @@ void word_train()
 		EndDrawing();
 	}
 }
+
 /**
- * customized_train
+ * \brief Handles processes regarding cuztomized train mode
  *
- * This function is a child of word_train. So, it does everything
+ * \details This function is a child of word_train. So, it does everything
  * the word_train does but the words it provides to train you are
  * customized and contains the letters that you have typed wrong the most.
  * It is done by storing wrongly typed letters and comparing them with
@@ -541,9 +580,9 @@ void customized_train()
 }
 
 /**
- * train_select:
+ * \brief Option menu for choosing rows for both letter mode and word mode
  *
- * This function generates the option menu for the user to choose
+ * \details This function generates the option menu for the user to choose
  * the rows that he wants to practice. Checkbox indicator are
  * present to indicate the rows chose. letter_train or word_train
  * are called based on the user's previous selection
@@ -705,9 +744,9 @@ void train_select()
 }
 
 /**
- * select_letter:
+ * \brief function which selects letter to display for letter train process
  *
- * Selects letter using the the three choices, random number
+ * \details letter using the the three choices, random number
  * generator and a switch case based on the choice and number
  * generated. Stores that letter in RequiredLetter.
  */
@@ -795,9 +834,9 @@ void select_letter()
 }
 
 /**
- * select_word:
+ * \brief function which selects words to display for word train process
  *
- * Selects a word using the the three choices, random number
+ * \details Selects a word using the the three choices, random number
  * generator and a switch case based on the choice and number
  * generated. Stores that word in RequiredWord.
  */
@@ -818,7 +857,7 @@ void select_word()
 
 	switch (RowChoice)
 	{
-	/*upper only*/ case 1:
+	/*lower only*/ case 1:
 		strcpy(RequiredWord, BottomRowWords[RandomLowerWord]);
 		break;
 
@@ -841,14 +880,8 @@ void select_word()
 	/*middle only*/ case 100:
 		strcpy(RequiredWord, MiddleRowWords[RandomMiddleWord]);
 		break;
-	case 1001:
-		switch (RandomRow)
-		{
-		case 1:
-			strcpy(RequiredWord, MiddleRowWords[RandomMiddleWord]);
-			break;
-		}
-		break;
+	
+	
 	case 101:
 		switch (RandomRow)
 		{

@@ -8,4 +8,5 @@ void letter_print();
 void select_letter();
 void select_word();
 void start_trainword();
-void train_select(); //To print an menu which selects which rows you want to choose
+void train_select(); 
+void customized_train();
