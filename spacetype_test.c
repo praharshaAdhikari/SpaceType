@@ -47,7 +47,7 @@ extern Texture2D cockpitTexture, cockpitTextureKeyboard; //!< Textures for backg
  *
  */
 bool exitTest, exitTestProcess;
-char input[] = {};
+char input[550] = {};
 int check;
 /**
  * @}
@@ -289,8 +289,12 @@ void test_process(char test_text[])
             sprintf(out1, "Accuracy:\t%.2f%%", accuracy);
             sprintf(out2, "The WPM is %.2f.", wpm);
             ClearBackground(BLACK);
-            DrawTextEx(regularFont, out1, (Vector2){position.x + 100 - 3, position.y - 20 + 8}, 10, 1, ORANGE);
-            DrawTextEx(regularFont, out2, (Vector2){position.x + 100 - 3, position.y - 20 + 25}, 10, 1, ORANGE);
+            DrawTextEx(regularFont, out1, (Vector2){position.x + 250, position.y - 20 + 8}, 10, 1, ORANGE);
+            DrawTextEx(regularFont, out2, (Vector2){position.x + 250 - 3, position.y - 20 + 25}, 10, 1, ORANGE);
+            if (IsKeyPressed(KEY_ESCAPE)){
+                exitTestProcess = true;
+                exitTest = true;
+            }
         }
         ClearBackground(BLACK);
         EndDrawing();
