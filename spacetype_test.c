@@ -226,9 +226,35 @@ void test_process(char test_text[])
     const int maxletter = strlen(test_text);
     int timecount = 0;
     int letterCount = 0;
+    char lineOne[50], lineTwo[50];
+    int spacePosOne, spacePosTwo;
+    int i, j;
+    for (i = 0; i < 20 || test_text[i] != ' '; i++){
+        if (i>=26){
+            for (i=26; test_text[i] != ' '; i--) lineOne[i] = '\0';
+            spacePosOne = i + 1;
+            break;
+        }
+        lineOne[i] = test_text[i];
+        spacePosOne = i + 1;
+        if (test_text[i] == '\0') break;
+    }
+    lineOne[i] = ' ';
+    lineOne[i+1] = '\0';
+    for (i = spacePosOne, j = 0; j < 20 || test_text[i] != ' '; i++, j++){
+        if (j>=26){
+            for (j=26; test_text[i] != ' '; j--, i--) lineTwo[j] = '\0';
+            spacePosTwo = i + 1;
+            break;
+        }
+        lineTwo[j] = test_text[i];
+        spacePosTwo = i + 1;
+        if (test_text[i] == '\0') break;
+    }
+    lineTwo[j] = ' ';
+    lineTwo[j+1] = '\0';
     float correct_keys_pressed = 0, incorrect_keys_pressed = 0;
-    int j = 0;
-    Vector2 position = {(screenWidth / 2) - 280, screenHeight / 2 - 100};
+    int startPos = 0;
 
     while (!exitTestProcess)
     {
@@ -241,13 +267,30 @@ void test_process(char test_text[])
         int key = GetCharPressed();
         if (letterCount < maxletter)
         {
-            DrawTextEx(regularFont, TextSubtext(test_text, j, 20), (Vector2){position.x + 100 + 2, position.y - 20 + 8 + 1}, 18, 1, BLUE);
-            DrawTextEx(regularFont, TextSubtext(test_text, j, 20), (Vector2){position.x + 100, position.y - 20 + 8}, 18, 1, WHITE);
-            DrawTextEx(regularFont, TextSubtext(test_text, j + 20, 20), (Vector2){position.x + 100 + 2, position.y + 5 + 8 + 1}, 18, 1, BLUE);
-            DrawTextEx(regularFont, TextSubtext(test_text, j + 20, 20), (Vector2){position.x + 100, position.y + 5 + 8}, 18, 1, WHITE);
+		    DrawTextPro(regularFont, lineOne, (Vector2){(GetScreenWidth() / 2) + 18 + 2, GetScreenHeight() / 2 - 130 + 1}, Vector2Scale(MeasureTextEx(regularFont, lineOne, 18, 1), 0.5f), 0, 18, 1, BLUE);
+		    DrawTextPro(regularFont, lineOne, (Vector2){(GetScreenWidth() / 2) + 18, GetScreenHeight() / 2 - 130}, Vector2Scale(MeasureTextEx(regularFont, lineOne, 18, 1), 0.5f), 0, 18, 1, WHITE);
+		    DrawTextPro(regularFont, lineTwo, (Vector2){(GetScreenWidth() / 2) + 18 + 2, GetScreenHeight() / 2 - 100 + 1}, Vector2Scale(MeasureTextEx(regularFont, lineTwo, 18, 1), 0.5f), 0, 18, 1, BLUE);
+		    DrawTextPro(regularFont, lineTwo, (Vector2){(GetScreenWidth() / 2) + 18, GetScreenHeight() / 2 - 100}, Vector2Scale(MeasureTextEx(regularFont, lineTwo, 18, 1), 0.5f), 0, 18, 1, WHITE);
             keyboard_highlight(test_text[letterCount]);
-            if ((letterCount + 1) % 20 == 0 && key != 0 && (char)key == test_text[letterCount])
-                j += 20;
+            if ((letterCount + 1) == spacePosOne && key != 0 && (char)key == test_text[letterCount])
+            {
+                strcpy(lineOne, lineTwo);
+                startPos = spacePosOne;
+                spacePosOne = spacePosTwo;
+                strcpy(lineTwo, "");
+                for (i = spacePosOne, j = 0; j < 20 || test_text[i] != ' '; i++, j++){
+                    if (j>=26){
+                        for (j=26; test_text[i] != ' '; j--, i--) lineTwo[j] = '\0';
+                        spacePosTwo = i + 1;
+                        break;
+                    }
+                    lineTwo[j] = test_text[i];
+                    spacePosTwo = i + 1;
+                    if (test_text[i] == '\0') break;
+                }
+                lineTwo[j] = ' ';
+                lineTwo[j+1] = '\0';
+            }
         }
         while (key)
         {
@@ -281,8 +324,8 @@ void test_process(char test_text[])
         }
         if (letterCount < maxletter)
         {
-            DrawTextEx(regularFont, TextSubtext(input, j, 20), (Vector2){position.x + 100 + 2, position.y - 20 + 8 + 1}, 18, 1, BLUE);
-            DrawTextEx(regularFont, TextSubtext(input, j, 20), (Vector2){position.x + 100, position.y - 20 + 8}, 18, 1, (Color){115, 147, 179, 255});
+            DrawTextPro(regularFont, TextSubtext(input, startPos, spacePosOne), (Vector2){(GetScreenWidth() / 2) + 18+ 2, GetScreenHeight() / 2 - 130 + 1}, Vector2Scale(MeasureTextEx(regularFont, lineOne, 18, 1), 0.5f), 0, 18, 1, BLUE);
+            DrawTextPro(regularFont, TextSubtext(input, startPos, spacePosOne), (Vector2){(GetScreenWidth() / 2) + 18, GetScreenHeight() / 2 - 130}, Vector2Scale(MeasureTextEx(regularFont, lineOne, 18, 1), 0.5f), 0, 18, 1, (Color){115, 147, 179, 255});
         }
         ClearBackground(BLACK);
         if (letterCount >= maxletter)
@@ -294,7 +337,7 @@ void test_process(char test_text[])
 
             sprintf(sessionDurationString, "Session time : %.2f seconds", (float)note / 60);
             sprintf(wpmString, "Typing Speed: %d WPM", (int)(((correct_keys_pressed + incorrect_keys_pressed) / 5) / ((float)note / 3600)));
-            sprintf(accuracyString, "Accuracy: %.2f%%", ((correct_keys_pressed - incorrect_keys_pressed) / (incorrect_keys_pressed + correct_keys_pressed)) * 100);
+            sprintf(accuracyString, "Accuracy: %.2f%%", ((correct_keys_pressed) / (incorrect_keys_pressed + correct_keys_pressed)) * 100);
 
             BeginDrawing();
             draw_background();

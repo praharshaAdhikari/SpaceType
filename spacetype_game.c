@@ -19,7 +19,8 @@
  */
 char *words[] =
     {
-        "apple", "ant", "airplane", "banana", "book", "boat", "cat", "cow", "car", "dog", "desk", "dolphin", "elephant", "egg", "earth", "fish", "flamingo", "frog", "giraffe", "goat", "grapes", "hat", "horse", "house", "igloo", "icecream", "insect", "jacket", "jaguar", "juice", "kangaroo", "kite", "key", "lion", "leopard", "lamp", "monkey", "mouse", "mango", "night", "nest", "napkin", "octopus", "ostrich", "onion", "pear", "panda", "pig", "queen", "quail", "question", "rabbit", "rhinoceros", "ring", "snake", "snail", "sock", "tiger", "taco", "table", "unicorn", "umbrella", "vase", "vegetable", "whale", "wolf", "watermelon", "xray", "xylophone", "yak", "yoyo", "zipper", "zoo"}; //!< List of words to choose from for the game
+        "apple", "ant", "airplane", "banana", "book", "boat", "cat", "cow", "car", "dog", "desk", "dolphin", "elephant", "egg", "earth", "fish", "flamingo", "frog", "giraffe", "goat", "grapes", "hat", "horse", "house", "igloo", "icecream", "insect", "jacket", "jaguar", "juice", "kangaroo", "kite", "key", "lion", "leopard", "lamp", "monkey", "mouse", "mango", "night", "nest", "napkin", "octopus", "ostrich", "onion", "pear", "panda", "pig", "queen", "quail", "question", "rabbit", "rhinoceros", "ring", "snake", "snail", "sock", "tiger", "taco", "table", "unicorn", "umbrella", "vase", "vegetable", "whale", "wolf", "watermelon", "xray", "xylophone", "yak", "yoyo", "zipper", "zoo"
+    }; //!< List of words to choose from for the game
 char word[20]; //!<word which is presented to type
 char wordStored[20]; //!<stores the presented word to later compare with fastestword and slowestword
 int sizeOfArray = sizeof(words) / sizeof(words[0]); //!<for calculating total number of words*/
