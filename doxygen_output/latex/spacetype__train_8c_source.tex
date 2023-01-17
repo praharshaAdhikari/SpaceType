@@ -1,0 +1,808 @@
+\hypertarget{spacetype__train_8c_source}{}\doxysection{spacetype\+\_\+train.\+c}
+\mbox{\hyperlink{spacetype__train_8c}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00013}\mbox{\hyperlink{spacetype__train_8c_aa0eb65cd9fbb49834ffc197ecb28cb46}{00013}}\ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{spacetype__train_8c_aa0eb65cd9fbb49834ffc197ecb28cb46}{TopRowLetters}}[10]\ =\ \{\textcolor{charliteral}{'q'},\ \textcolor{charliteral}{'w'},\ \textcolor{charliteral}{'e'},\ \textcolor{charliteral}{'r'},\ \textcolor{charliteral}{'t'},\ \textcolor{charliteral}{'y'},\ \textcolor{charliteral}{'u'},\ \textcolor{charliteral}{'i'},\ \textcolor{charliteral}{'o'},\ \textcolor{charliteral}{'p'}\};}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00014}\mbox{\hyperlink{spacetype__train_8c_a83a7eb20198674b4a97cd912d871edad}{00014}}\ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{spacetype__train_8c_a83a7eb20198674b4a97cd912d871edad}{MiddleRowLetters}}[9]\ =\ \{\textcolor{charliteral}{'a'},\ \textcolor{charliteral}{'s'},\ \textcolor{charliteral}{'d'},\ \textcolor{charliteral}{'f'},\ \textcolor{charliteral}{'g'},\ \textcolor{charliteral}{'h'},\ \textcolor{charliteral}{'j'},\ \textcolor{charliteral}{'k'},\ \textcolor{charliteral}{'l'}\};}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00015}\mbox{\hyperlink{spacetype__train_8c_ad0d9b4da8dd51c340764cb70b6aa2493}{00015}}\ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{spacetype__train_8c_ad0d9b4da8dd51c340764cb70b6aa2493}{BottomRowLetters}}[7]\ =\ \{\textcolor{charliteral}{'z'},\ \textcolor{charliteral}{'x'},\ \textcolor{charliteral}{'c'},\ \textcolor{charliteral}{'v'},\ \textcolor{charliteral}{'b'},\ \textcolor{charliteral}{'n'},\ \textcolor{charliteral}{'m'}\};}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00016}\mbox{\hyperlink{spacetype__train_8c_a274280c65c6cdaa496287f642aa67e94}{00016}}\ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{spacetype__train_8c_a274280c65c6cdaa496287f642aa67e94}{RequiredLetter}};\ }
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00027}\mbox{\hyperlink{spacetype__train_8c_a7f7a2ca3ec7cf5038b6c1123127611b4}{00027}}\ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{spacetype__train_8c_a7f7a2ca3ec7cf5038b6c1123127611b4}{TopRowWords}}[][10]\ =\ \{\textcolor{stringliteral}{"{}queer"{}},\ \textcolor{stringliteral}{"{}wrought"{}},\ \textcolor{stringliteral}{"{}erode"{}},\ \textcolor{stringliteral}{"{}trope"{}},\ \textcolor{stringliteral}{"{}troupe"{}},\ \textcolor{stringliteral}{"{}youth"{}},\ \textcolor{stringliteral}{"{}utopia"{}},\ \textcolor{stringliteral}{"{}irony"{}},\ \textcolor{stringliteral}{"{}outhouse"{}},\ \textcolor{stringliteral}{"{}power"{}}\};}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00028}\mbox{\hyperlink{spacetype__train_8c_a026fe24097b865d938bf03d591f0573c}{00028}}\ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{spacetype__train_8c_a026fe24097b865d938bf03d591f0573c}{MiddleRowWords}}[][10]\ =\ \{\textcolor{stringliteral}{"{}lad"{}},\ \textcolor{stringliteral}{"{}slade"{}},\ \textcolor{stringliteral}{"{}glass"{}},\ \textcolor{stringliteral}{"{}fade"{}},\ \textcolor{stringliteral}{"{}grade"{}},\ \textcolor{stringliteral}{"{}hall"{}},\ \textcolor{stringliteral}{"{}jade"{}},\ \textcolor{stringliteral}{"{}klaus"{}},\ \textcolor{stringliteral}{"{}lathe"{}}\};}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00029}\mbox{\hyperlink{spacetype__train_8c_abf18f43aaf42f928442ef50bf764e474}{00029}}\ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{spacetype__train_8c_abf18f43aaf42f928442ef50bf764e474}{BottomRowWords}}[][10]\ =\ \{\textcolor{stringliteral}{"{}zoner"{}},\ \textcolor{stringliteral}{"{}xerox"{}},\ \textcolor{stringliteral}{"{}change"{}},\ \textcolor{stringliteral}{"{}vought"{}},\ \textcolor{stringliteral}{"{}broom"{}},\ \textcolor{stringliteral}{"{}noob"{}},\ \textcolor{stringliteral}{"{}mooncover"{}}\};}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00030}\mbox{\hyperlink{spacetype__train_8c_a9aa8d778f3c76629a003f60e46cb9cd0}{00030}}\ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{spacetype__train_8c_a9aa8d778f3c76629a003f60e46cb9cd0}{customizedWords}}[]\ =}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00031}00031\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00032}00032\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}abstract"{}},\ \textcolor{stringliteral}{"{}conjecture"{}},\ \textcolor{stringliteral}{"{}elixir"{}},\ \textcolor{stringliteral}{"{}fervent"{}},\ \textcolor{stringliteral}{"{}gargantuan"{}},\ \textcolor{stringliteral}{"{}haphazard"{}},\ \textcolor{stringliteral}{"{}intrepid"{}},\ \textcolor{stringliteral}{"{}jubilant"{}},\ \textcolor{stringliteral}{"{}kinetic"{}},\ \textcolor{stringliteral}{"{}luminous"{}},\ \textcolor{stringliteral}{"{}maverick"{}},\ \textcolor{stringliteral}{"{}nocturnal"{}},\ \textcolor{stringliteral}{"{}orchid"{}},\ \textcolor{stringliteral}{"{}predator"{}},\ \textcolor{stringliteral}{"{}quagmire"{}},\ \textcolor{stringliteral}{"{}resilient"{}},\ \textcolor{stringliteral}{"{}saunter"{}},\ \textcolor{stringliteral}{"{}turbulent"{}},\ \textcolor{stringliteral}{"{}unwavering"{}},\ \textcolor{stringliteral}{"{}vortex"{}},\ \textcolor{stringliteral}{"{}whimsical"{}},\ \textcolor{stringliteral}{"{}xenon"{}},\ \textcolor{stringliteral}{"{}yellow"{}},\ \textcolor{stringliteral}{"{}zephyr"{}},\ \textcolor{stringliteral}{"{}allegory"{}},\ \textcolor{stringliteral}{"{}benevolent"{}},\ \textcolor{stringliteral}{"{}credence"{}},\ \textcolor{stringliteral}{"{}demeanor"{}},\ \textcolor{stringliteral}{"{}enigma"{}},\ \textcolor{stringliteral}{"{}fractal"{}},\ \textcolor{stringliteral}{"{}gusto"{}},\ \textcolor{stringliteral}{"{}hiatus"{}},\ \textcolor{stringliteral}{"{}intricacy"{}},\ \textcolor{stringliteral}{"{}jubilation"{}},\ \textcolor{stringliteral}{"{}kaleidoscope"{}},\ \textcolor{stringliteral}{"{}lucid"{}},\ \textcolor{stringliteral}{"{}magnitude"{}},\ \textcolor{stringliteral}{"{}nimble"{}},\ \textcolor{stringliteral}{"{}opulence"{}},\ \textcolor{stringliteral}{"{}pertinent"{}},\ \textcolor{stringliteral}{"{}quintessential"{}},\ \textcolor{stringliteral}{"{}responsive"{}},\ \textcolor{stringliteral}{"{}saturate"{}},\ \textcolor{stringliteral}{"{}tenacity"{}},\ \textcolor{stringliteral}{"{}unbridled"{}},\ \textcolor{stringliteral}{"{}volatile"{}},\ \textcolor{stringliteral}{"{}whirlwind"{}},\ \textcolor{stringliteral}{"{}xylophone"{}},\ \textcolor{stringliteral}{"{}yacht"{}},\ \textcolor{stringliteral}{"{}zodiac"{}},\ \textcolor{stringliteral}{"{}acumen"{}},\ \textcolor{stringliteral}{"{}bazaar"{}},\ \textcolor{stringliteral}{"{}clarity"{}},\ \textcolor{stringliteral}{"{}diligent"{}},\ \textcolor{stringliteral}{"{}empathy"{}},\ \textcolor{stringliteral}{"{}flourish"{}},\ \textcolor{stringliteral}{"{}graceful"{}},\ \textcolor{stringliteral}{"{}harmony"{}},\ \textcolor{stringliteral}{"{}intuition"{}},\ \textcolor{stringliteral}{"{}jovial"{}},\ \textcolor{stringliteral}{"{}klutz"{}},\ \textcolor{stringliteral}{"{}leverage"{}},\ \textcolor{stringliteral}{"{}mystique"{}},\ \textcolor{stringliteral}{"{}nostalgia"{}},\ \textcolor{stringliteral}{"{}overture"{}},\ \textcolor{stringliteral}{"{}persistence"{}},\ \textcolor{stringliteral}{"{}quirk"{}},\ \textcolor{stringliteral}{"{}radiance"{}},\ \textcolor{stringliteral}{"{}savvy"{}},\ \textcolor{stringliteral}{"{}transcend"{}},\ \textcolor{stringliteral}{"{}unison"{}},\ \textcolor{stringliteral}{"{}vivid"{}},\ \textcolor{stringliteral}{"{}whisper"{}},\ \textcolor{stringliteral}{"{}xylograph"{}},\ \textcolor{stringliteral}{"{}yearning"{}},\ \textcolor{stringliteral}{"{}zephyr"{}},\ \textcolor{stringliteral}{"{}affinity"{}},\ \textcolor{stringliteral}{"{}bucolic"{}},\ \textcolor{stringliteral}{"{}clandestine"{}},\ \textcolor{stringliteral}{"{}disparate"{}},\ \textcolor{stringliteral}{"{}embellish"{}},\ \textcolor{stringliteral}{"{}fluctuate"{}},\ \textcolor{stringliteral}{"{}glossary"{}},\ \textcolor{stringliteral}{"{}hiatus"{}},\ \textcolor{stringliteral}{"{}intrepid"{}},\ \textcolor{stringliteral}{"{}jubilant"{}},\ \textcolor{stringliteral}{"{}knick-\/knack"{}},\ \textcolor{stringliteral}{"{}legerdemain"{}},\ \textcolor{stringliteral}{"{}magnanimous"{}},\ \textcolor{stringliteral}{"{}nihilistic"{}},\ \textcolor{stringliteral}{"{}opulent"{}},\ \textcolor{stringliteral}{"{}provocative"{}},\ \textcolor{stringliteral}{"{}quintessence"{}},\ \textcolor{stringliteral}{"{}rhapsodic"{}},\ \textcolor{stringliteral}{"{}solitude"{}},\ \textcolor{stringliteral}{"{}tenacity"{}},\ \textcolor{stringliteral}{"{}unabashed"{}},\ \textcolor{stringliteral}{"{}versatility"{}},\ \textcolor{stringliteral}{"{}whirlwind"{}},\ \textcolor{stringliteral}{"{}xenophobe"{}},\ \textcolor{stringliteral}{"{}yen"{}}}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00033}00033\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00034}\mbox{\hyperlink{spacetype__train_8c_ab67c2bf75aecaae45aa54be72064b12c}{00034}}\ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{spacetype__train_8c_ab67c2bf75aecaae45aa54be72064b12c}{RequiredWord}}[10];}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00046}\mbox{\hyperlink{spacetype__train_8c_a7731a0bb03a0145545c4ab2887bfbd1b}{00046}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{spacetype__train_8c_ace864dd89beddb30682a2194098c4d7a}{exitTrainWords}},\ \mbox{\hyperlink{spacetype__train_8c_a7731a0bb03a0145545c4ab2887bfbd1b}{exitTrainLetters}},\ \mbox{\hyperlink{spacetype__train_8c_a6f4860fac5ee4453264d597efe0d96d2}{MiddleRow}},\ }
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00047}\mbox{\hyperlink{spacetype__train_8c_a0306f32a10da6fc136490962cdf2c8e5}{00047}}\ \ \ \ \ \mbox{\hyperlink{spacetype__train_8c_af75b4f0a50616082d89f8646b879d7b2}{TopRow}},\ \mbox{\hyperlink{spacetype__train_8c_a0306f32a10da6fc136490962cdf2c8e5}{BottomRow}},\ \mbox{\hyperlink{spacetype__train_8c_a31600148ead2658ecf1e07c4dc4831ac}{exitTrainProcess}},\ \mbox{\hyperlink{spacetype__train_8c_af77294798c31640392e8a24118aa0209}{letterinput}},\ }
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00048}\mbox{\hyperlink{spacetype__train_8c_a3b7260afdeb5ccd84b1bfd028b24017b}{00048}}\ \ \ \ \ \mbox{\hyperlink{spacetype__train_8c_ab7f8058b1e0af16644a127cc19b0ce0c}{exitTrain}},\ \mbox{\hyperlink{spacetype__train_8c_a636f2eeb92432f6fcf8a64eda3ddb618}{trainMode}},\ \mbox{\hyperlink{spacetype__train_8c_aeb5c19fef16dd5c060190c22c877cb2f}{wordinput}},\ \mbox{\hyperlink{spacetype__train_8c_a3b7260afdeb5ccd84b1bfd028b24017b}{exitResult}};}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00059}00059\ \textcolor{keyword}{extern}\ Music\ \mbox{\hyperlink{spacetype__train_8c_a8e4a12cb358091be4a5f7447b57e2014}{music}};}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00060}00060\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{spacetype__train_8c_ae50cb92a78d9e0a4f4bd718fc02bd294}{screenWidth}};\ }
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00061}00061\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{spacetype__train_8c_a9ebc1dbd77788c4bfa27758a6725413f}{screenHeight}};}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00062}00062\ \textcolor{keyword}{extern}\ Font\ \mbox{\hyperlink{spacetype__train_8c_a81aa2ca2abef778dcd32bddb7dbb164e}{retroFont}};}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00063}00063\ \textcolor{keyword}{extern}\ Texture2D\ \mbox{\hyperlink{spacetype__train_8c_af96cbe49197628e2b40f64e969fd819a}{cockpitTexture}};\ }
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00064}00064\ \textcolor{keyword}{extern}\ Texture2D\ \mbox{\hyperlink{spacetype__train_8c_ad3e43f46994781a6189f0d5a93145898}{cockpitTextureKeyboard}};\ }
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00065}00065\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{spacetype__train_8c_a3bf9fbb547b39fad87847c05dddf7835}{wordStored}}[20];}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00078}\mbox{\hyperlink{spacetype__train_8c_a58a9e39b3626c1bb7e4e959b36bf43d7}{00078}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{spacetype__train_8c_a58a9e39b3626c1bb7e4e959b36bf43d7}{train}}()}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00079}00079\ \{}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00080}00080\ \ \ \ \ \mbox{\hyperlink{spacetype__train_8c_ab7f8058b1e0af16644a127cc19b0ce0c}{exitTrain}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00081}00081\ \ \ \ \ \mbox{\hyperlink{spacetype__train_8c_ad3e43f46994781a6189f0d5a93145898}{cockpitTextureKeyboard}}\ =\ LoadTexture(\textcolor{stringliteral}{"{}resources/images/cockpit\_texture\_keyboard.png"{}});}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00082}00082\ }
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00083}00083\ \ \ \ \ \textcolor{keywordflow}{while}\ (!\mbox{\hyperlink{spacetype__train_8c_ab7f8058b1e0af16644a127cc19b0ce0c}{exitTrain}})}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00084}00084\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00085}00085\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{spacetype__functions_8c_a6fd0aee1ce197388cddc6fb8bb2e605d}{movingDown}}\ +=\ \mbox{\hyperlink{spacetype__functions_8c_afe5fabfd23aa37cc25ce0ade58d9a21c}{mover}};}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00086}00086\ \ \ \ \ \ \ \ \ UpdateMusicStream(\mbox{\hyperlink{spacetype__train_8c_a8e4a12cb358091be4a5f7447b57e2014}{music}});}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00087}00087\ \ \ \ \ \ \ \ \ BeginDrawing();}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00088}00088\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{spacetype__functions_8c_a3d385ca0396c4c2b3001371505a410e4}{draw\_background}}();}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00089}00089\ \ \ \ \ \ \ \ \ DrawTextureEx(\mbox{\hyperlink{spacetype__train_8c_ad3e43f46994781a6189f0d5a93145898}{cockpitTextureKeyboard}},\ (Vector2)\{0,\ 0\},\ 0,\ 1,\ WHITE);}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00090}00090\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{spacetype__train_8c_ab348f26a0c1dd03ac6671c03b90efa5e}{train\_menu}}();}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00091}00091\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (IsKeyDown(KEY\_RIGHT))}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00092}00092\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{spacetype__train_8c_ab7f8058b1e0af16644a127cc19b0ce0c}{exitTrain}}\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00093}00093\ \ \ \ \ \ \ \ \ EndDrawing();}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00094}00094\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00095}00095\ \}}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00096}00096\ }
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00103}\mbox{\hyperlink{spacetype__train_8c_ab348f26a0c1dd03ac6671c03b90efa5e}{00103}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{spacetype__train_8c_ab348f26a0c1dd03ac6671c03b90efa5e}{train\_menu}}()}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00104}00104\ \{}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00105}00105\ \ \ \ \ \textcolor{keywordflow}{if}\ ((\textcolor{keywordtype}{float})GetMouseX()\ >=\ (GetScreenWidth()\ /\ 2\ -\/\ MeasureTextEx(\mbox{\hyperlink{spacetype__train_8c_a81aa2ca2abef778dcd32bddb7dbb164e}{retroFont}},\ \textcolor{stringliteral}{"{}letters"{}},\ 30,\ 1).x\ /\ 2)\ \&\&\ (\textcolor{keywordtype}{float})GetMouseX()\ <=\ (GetScreenWidth()\ /\ 2\ +\ MeasureTextEx(\mbox{\hyperlink{spacetype__train_8c_a81aa2ca2abef778dcd32bddb7dbb164e}{retroFont}},\ \textcolor{stringliteral}{"{}letters"{}},\ 30,\ 1).x\ /\ 2)\ \&\&\ (\textcolor{keywordtype}{float})GetMouseY()\ >=\ (GetScreenHeight()\ /\ 2\ -\/\ 155\ -\/\ MeasureTextEx(\mbox{\hyperlink{spacetype__train_8c_a81aa2ca2abef778dcd32bddb7dbb164e}{retroFont}},\ \textcolor{stringliteral}{"{}letters"{}},\ 30,\ 1).y\ /\ 2)\ \&\&\ (\textcolor{keywordtype}{float})GetMouseY()\ <=\ (GetScreenHeight()\ /\ 2\ -\/\ 155\ +\ MeasureTextEx(\mbox{\hyperlink{spacetype__train_8c_a81aa2ca2abef778dcd32bddb7dbb164e}{retroFont}},\ \textcolor{stringliteral}{"{}letters"{}},\ 30,\ 1).y\ /\ 2))}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00106}00106\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00107}00107\ \ \ \ \ \ \ \ \ DrawTextPro(\mbox{\hyperlink{spacetype__train_8c_a81aa2ca2abef778dcd32bddb7dbb164e}{retroFont}},\ \textcolor{stringliteral}{"{}letters"{}},\ (Vector2)\{(GetScreenWidth()\ /\ 2)\ +\ 2,\ (GetScreenHeight()\ /\ 2)\ -\/\ 150\ +\ 1\},\ Vector2Scale(MeasureTextEx(\mbox{\hyperlink{spacetype__train_8c_a81aa2ca2abef778dcd32bddb7dbb164e}{retroFont}},\ \textcolor{stringliteral}{"{}letters"{}},\ 30,\ 1),\ 0.5f),\ 0,\ 30,\ 1,\ RED);}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00108}00108\ \ \ \ \ \ \ \ \ DrawTextPro(\mbox{\hyperlink{spacetype__train_8c_a81aa2ca2abef778dcd32bddb7dbb164e}{retroFont}},\ \textcolor{stringliteral}{"{}letters"{}},\ (Vector2)\{(GetScreenWidth()\ /\ 2),\ (GetScreenHeight()\ /\ 2)\ -\/\ 150\},\ Vector2Scale(MeasureTextEx(\mbox{\hyperlink{spacetype__train_8c_a81aa2ca2abef778dcd32bddb7dbb164e}{retroFont}},\ \textcolor{stringliteral}{"{}letters"{}},\ 30,\ 1),\ 0.5f),\ 0,\ 30,\ 1,\ BLUE);}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00109}00109\ }
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00110}00110\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (IsMouseButtonPressed(MOUSE\_BUTTON\_LEFT))}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00111}00111\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00112}00112\ \ \ \ \ \ \ \ \ \ \ \ \ EndDrawing();}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00113}00113\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{spacetype__train_8c_a7731a0bb03a0145545c4ab2887bfbd1b}{exitTrainLetters}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00114}00114\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{spacetype__train_8c_a636f2eeb92432f6fcf8a64eda3ddb618}{trainMode}}\ =\ \textcolor{keyword}{true};\ \textcolor{comment}{//\ to\ indicate\ that\ trainMode\ is\ letters}}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00115}00115\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{spacetype__train_8c_abda48979ae2115375b8a9123d9bf99d8}{mode\_trainletters}}();}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00116}00116\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00117}00117\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00118}00118\ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00119}00119\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00120}00120\ \ \ \ \ \ \ \ \ DrawTextPro(\mbox{\hyperlink{spacetype__train_8c_a81aa2ca2abef778dcd32bddb7dbb164e}{retroFont}},\ \textcolor{stringliteral}{"{}letters"{}},\ (Vector2)\{(GetScreenWidth()\ /\ 2),\ (GetScreenHeight()\ /\ 2)\ -\/\ 150\},\ Vector2Scale(MeasureTextEx(\mbox{\hyperlink{spacetype__train_8c_a81aa2ca2abef778dcd32bddb7dbb164e}{retroFont}},\ \textcolor{stringliteral}{"{}letters"{}},\ 30,\ 1),\ 0.5f),\ 0,\ 30,\ 1,\ WHITE);}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00121}00121\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00122}00122\ \ \ \ \ \textcolor{keywordflow}{if}\ ((\textcolor{keywordtype}{float})GetMouseX()\ >=\ (GetScreenWidth()\ /\ 2\ -\/\ MeasureTextEx(\mbox{\hyperlink{spacetype__train_8c_a81aa2ca2abef778dcd32bddb7dbb164e}{retroFont}},\ \textcolor{stringliteral}{"{}words"{}},\ 30,\ 1).x\ /\ 2)\ \&\&\ (\textcolor{keywordtype}{float})GetMouseX()\ <=\ (GetScreenWidth()\ /\ 2\ +\ MeasureTextEx(\mbox{\hyperlink{spacetype__train_8c_a81aa2ca2abef778dcd32bddb7dbb164e}{retroFont}},\ \textcolor{stringliteral}{"{}words"{}},\ 30,\ 1).x\ /\ 2)\ \&\&\ (\textcolor{keywordtype}{float})GetMouseY()\ >=\ (GetScreenHeight()\ /\ 2\ -\/\ 105\ -\/\ MeasureTextEx(\mbox{\hyperlink{spacetype__train_8c_a81aa2ca2abef778dcd32bddb7dbb164e}{retroFont}},\ \textcolor{stringliteral}{"{}words"{}},\ 30,\ 1).y\ /\ 2)\ \&\&\ (\textcolor{keywordtype}{float})GetMouseY()\ <=\ (GetScreenHeight()\ /\ 2\ -\/\ 105\ +\ MeasureTextEx(\mbox{\hyperlink{spacetype__train_8c_a81aa2ca2abef778dcd32bddb7dbb164e}{retroFont}},\ \textcolor{stringliteral}{"{}words"{}},\ 30,\ 1).y\ /\ 2))}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00123}00123\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00124}00124\ \ \ \ \ \ \ \ \ DrawTextPro(\mbox{\hyperlink{spacetype__train_8c_a81aa2ca2abef778dcd32bddb7dbb164e}{retroFont}},\ \textcolor{stringliteral}{"{}words"{}},\ (Vector2)\{(GetScreenWidth()\ /\ 2)\ +\ 2,\ GetScreenHeight()\ /\ 2\ -\/\ 100\ +\ 1\},\ Vector2Scale(MeasureTextEx(\mbox{\hyperlink{spacetype__train_8c_a81aa2ca2abef778dcd32bddb7dbb164e}{retroFont}},\ \textcolor{stringliteral}{"{}words"{}},\ 30,\ 1),\ 0.5f),\ 0,\ 30,\ 1,\ RED);}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00125}00125\ \ \ \ \ \ \ \ \ DrawTextPro(\mbox{\hyperlink{spacetype__train_8c_a81aa2ca2abef778dcd32bddb7dbb164e}{retroFont}},\ \textcolor{stringliteral}{"{}words"{}},\ (Vector2)\{(GetScreenWidth()\ /\ 2)\ +\ 2,\ GetScreenHeight()\ /\ 2\ -\/\ 100\},\ Vector2Scale(MeasureTextEx(\mbox{\hyperlink{spacetype__train_8c_a81aa2ca2abef778dcd32bddb7dbb164e}{retroFont}},\ \textcolor{stringliteral}{"{}words"{}},\ 30,\ 1),\ 0.5f),\ 0,\ 30,\ 1,\ BLUE);}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00126}00126\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (IsMouseButtonPressed(MOUSE\_BUTTON\_LEFT))}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00127}00127\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00128}00128\ \ \ \ \ \ \ \ \ \ \ \ \ EndDrawing();}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00129}00129\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{spacetype__train_8c_ace864dd89beddb30682a2194098c4d7a}{exitTrainWords}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00130}00130\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{spacetype__train_8c_a636f2eeb92432f6fcf8a64eda3ddb618}{trainMode}}\ =\ \textcolor{keyword}{false};\ \textcolor{comment}{//\ to\ indicate\ that\ trainMode\ is\ words}}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00131}00131\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{spacetype__train_8c_ae46d5ffa05bceb73109a5c717f13085c}{mode\_trainwords}}();}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00132}00132\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00133}00133\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00134}00134\ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00135}00135\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00136}00136\ \ \ \ \ \ \ \ \ DrawTextPro(\mbox{\hyperlink{spacetype__train_8c_a81aa2ca2abef778dcd32bddb7dbb164e}{retroFont}},\ \textcolor{stringliteral}{"{}words"{}},\ (Vector2)\{(GetScreenWidth()\ /\ 2)\ +\ 2,\ GetScreenHeight()\ /\ 2\ -\/\ 100\},\ Vector2Scale(MeasureTextEx(\mbox{\hyperlink{spacetype__train_8c_a81aa2ca2abef778dcd32bddb7dbb164e}{retroFont}},\ \textcolor{stringliteral}{"{}words"{}},\ 30,\ 1),\ 0.5f),\ 0,\ 30,\ 1,\ WHITE);}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00137}00137\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00138}00138\ \ \ \ \ \textcolor{keywordflow}{if}\ ((\textcolor{keywordtype}{float})GetMouseX()\ >=\ (GetScreenWidth()\ /\ 2\ -\/\ MeasureTextEx(\mbox{\hyperlink{spacetype__train_8c_a81aa2ca2abef778dcd32bddb7dbb164e}{retroFont}},\ \textcolor{stringliteral}{"{}customized"{}},\ 30,\ 1).x\ /\ 2)\ \&\&\ (\textcolor{keywordtype}{float})GetMouseX()\ <=\ (GetScreenWidth()\ /\ 2\ +\ MeasureTextEx(\mbox{\hyperlink{spacetype__train_8c_a81aa2ca2abef778dcd32bddb7dbb164e}{retroFont}},\ \textcolor{stringliteral}{"{}customized"{}},\ 30,\ 1).x\ /\ 2)\ \&\&\ (\textcolor{keywordtype}{float})GetMouseY()\ >=\ (GetScreenHeight()\ /\ 2\ -\/\ 55\ -\/\ MeasureTextEx(\mbox{\hyperlink{spacetype__train_8c_a81aa2ca2abef778dcd32bddb7dbb164e}{retroFont}},\ \textcolor{stringliteral}{"{}customized"{}},\ 30,\ 1).y\ /\ 2)\ \&\&\ (\textcolor{keywordtype}{float})GetMouseY()\ <=\ (GetScreenHeight()\ /\ 2\ -\/\ 55\ +\ MeasureTextEx(\mbox{\hyperlink{spacetype__train_8c_a81aa2ca2abef778dcd32bddb7dbb164e}{retroFont}},\ \textcolor{stringliteral}{"{}customized"{}},\ 30,\ 1).y\ /\ 2))}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00139}00139\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00140}00140\ \ \ \ \ \ \ \ \ DrawTextPro(\mbox{\hyperlink{spacetype__train_8c_a81aa2ca2abef778dcd32bddb7dbb164e}{retroFont}},\ \textcolor{stringliteral}{"{}customized"{}},\ (Vector2)\{(GetScreenWidth()\ /\ 2)\ +\ 2,\ GetScreenHeight()\ /\ 2\ -\/\ 50\ +\ 1\},\ Vector2Scale(MeasureTextEx(\mbox{\hyperlink{spacetype__train_8c_a81aa2ca2abef778dcd32bddb7dbb164e}{retroFont}},\ \textcolor{stringliteral}{"{}customized"{}},\ 30,\ 1),\ 0.5f),\ 0,\ 30,\ 1,\ RED);}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00141}00141\ \ \ \ \ \ \ \ \ DrawTextPro(\mbox{\hyperlink{spacetype__train_8c_a81aa2ca2abef778dcd32bddb7dbb164e}{retroFont}},\ \textcolor{stringliteral}{"{}customized"{}},\ (Vector2)\{(GetScreenWidth()\ /\ 2)\ +\ 2,\ GetScreenHeight()\ /\ 2\ -\/\ 50\},\ Vector2Scale(MeasureTextEx(\mbox{\hyperlink{spacetype__train_8c_a81aa2ca2abef778dcd32bddb7dbb164e}{retroFont}},\ \textcolor{stringliteral}{"{}customized"{}},\ 30,\ 1),\ 0.5f),\ 0,\ 30,\ 1,\ BLUE);}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00142}00142\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (IsMouseButtonPressed(MOUSE\_BUTTON\_LEFT))}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00143}00143\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00144}00144\ \ \ \ \ \ \ \ \ \ \ \ \ EndDrawing();}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00145}00145\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{spacetype__train_8c_ace864dd89beddb30682a2194098c4d7a}{exitTrainWords}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00146}00146\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{spacetype__train_8c_a636f2eeb92432f6fcf8a64eda3ddb618}{trainMode}}\ =\ \textcolor{keyword}{false};\ \textcolor{comment}{//\ to\ indicate\ that\ trainMode\ is\ words}}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00147}00147\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{spacetype__train_8c_a774d816129879166ef7b47827fa13f34}{customized\_train}}();}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00148}00148\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00149}00149\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00150}00150\ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00151}00151\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00152}00152\ \ \ \ \ \ \ \ \ DrawTextPro(\mbox{\hyperlink{spacetype__train_8c_a81aa2ca2abef778dcd32bddb7dbb164e}{retroFont}},\ \textcolor{stringliteral}{"{}customized"{}},\ (Vector2)\{(GetScreenWidth()\ /\ 2)\ +\ 2,\ GetScreenHeight()\ /\ 2\ -\/\ 50\},\ Vector2Scale(MeasureTextEx(\mbox{\hyperlink{spacetype__train_8c_a81aa2ca2abef778dcd32bddb7dbb164e}{retroFont}},\ \textcolor{stringliteral}{"{}customized"{}},\ 30,\ 1),\ 0.5f),\ 0,\ 30,\ 1,\ WHITE);}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00153}00153\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00154}00154\ \ \ \ \ \textcolor{keywordflow}{if}\ ((\textcolor{keywordtype}{float})GetMouseX()\ >=\ (GetScreenWidth()\ /\ 2\ -\/\ MeasureTextEx(\mbox{\hyperlink{spacetype__train_8c_a81aa2ca2abef778dcd32bddb7dbb164e}{retroFont}},\ \textcolor{stringliteral}{"{}back"{}},\ 30,\ 1).x\ /\ 2)\ \&\&\ (\textcolor{keywordtype}{float})GetMouseX()\ <=\ (GetScreenWidth()\ /\ 2\ +\ MeasureTextEx(\mbox{\hyperlink{spacetype__train_8c_a81aa2ca2abef778dcd32bddb7dbb164e}{retroFont}},\ \textcolor{stringliteral}{"{}back"{}},\ 30,\ 1).x\ /\ 2)\ \&\&\ (\textcolor{keywordtype}{float})GetMouseY()\ >=\ (GetScreenHeight()\ /\ 2\ +\ 15\ -\/\ MeasureTextEx(\mbox{\hyperlink{spacetype__train_8c_a81aa2ca2abef778dcd32bddb7dbb164e}{retroFont}},\ \textcolor{stringliteral}{"{}back"{}},\ 30,\ 1).y\ /\ 2)\ \&\&\ (\textcolor{keywordtype}{float})GetMouseY()\ <=\ (GetScreenHeight()\ /\ 2\ +\ 15\ +\ MeasureTextEx(\mbox{\hyperlink{spacetype__train_8c_a81aa2ca2abef778dcd32bddb7dbb164e}{retroFont}},\ \textcolor{stringliteral}{"{}back"{}},\ 30,\ 1).y\ /\ 2))}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00155}00155\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00156}00156\ \ \ \ \ \ \ \ \ DrawTextPro(\mbox{\hyperlink{spacetype__train_8c_a81aa2ca2abef778dcd32bddb7dbb164e}{retroFont}},\ \textcolor{stringliteral}{"{}back"{}},\ (Vector2)\{(GetScreenWidth()\ /\ 2)\ +\ 2,\ GetScreenHeight()\ /\ 2\ +\ 20\ +\ 1\},\ Vector2Scale(MeasureTextEx(\mbox{\hyperlink{spacetype__train_8c_a81aa2ca2abef778dcd32bddb7dbb164e}{retroFont}},\ \textcolor{stringliteral}{"{}back"{}},\ 30,\ 1),\ 0.5f),\ 0,\ 30,\ 1,\ RED);}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00157}00157\ \ \ \ \ \ \ \ \ DrawTextPro(\mbox{\hyperlink{spacetype__train_8c_a81aa2ca2abef778dcd32bddb7dbb164e}{retroFont}},\ \textcolor{stringliteral}{"{}back"{}},\ (Vector2)\{(GetScreenWidth()\ /\ 2),\ GetScreenHeight()\ /\ 2\ +\ 20\},\ Vector2Scale(MeasureTextEx(\mbox{\hyperlink{spacetype__train_8c_a81aa2ca2abef778dcd32bddb7dbb164e}{retroFont}},\ \textcolor{stringliteral}{"{}back"{}},\ 30,\ 1),\ 0.5f),\ 0,\ 30,\ 1,\ BLUE);}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00158}00158\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (IsMouseButtonPressed(MOUSE\_BUTTON\_LEFT))}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00159}00159\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00160}00160\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{spacetype__train_8c_ab7f8058b1e0af16644a127cc19b0ce0c}{exitTrain}}\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00161}00161\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00162}00162\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00163}00163\ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00164}00164\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00165}00165\ \ \ \ \ \ \ \ \ DrawTextPro(\mbox{\hyperlink{spacetype__train_8c_a81aa2ca2abef778dcd32bddb7dbb164e}{retroFont}},\ \textcolor{stringliteral}{"{}back"{}},\ (Vector2)\{(GetScreenWidth()\ /\ 2),\ GetScreenHeight()\ /\ 2\ +\ 20\},\ Vector2Scale(MeasureTextEx(\mbox{\hyperlink{spacetype__train_8c_a81aa2ca2abef778dcd32bddb7dbb164e}{retroFont}},\ \textcolor{stringliteral}{"{}back"{}},\ 30,\ 1),\ 0.5f),\ 0,\ 30,\ 1,\ WHITE);}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00166}00166\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00167}00167\ \}}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00168}00168\ }
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00176}\mbox{\hyperlink{spacetype__train_8c_abda48979ae2115375b8a9123d9bf99d8}{00176}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{spacetype__train_8c_abda48979ae2115375b8a9123d9bf99d8}{mode\_trainletters}}()}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00177}00177\ \{}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00178}00178\ }
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00179}00179\ \ \ \ \ \mbox{\hyperlink{spacetype__train_8c_af75b4f0a50616082d89f8646b879d7b2}{TopRow}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00180}00180\ \ \ \ \ \mbox{\hyperlink{spacetype__train_8c_a6f4860fac5ee4453264d597efe0d96d2}{MiddleRow}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00181}00181\ \ \ \ \ \mbox{\hyperlink{spacetype__train_8c_a0306f32a10da6fc136490962cdf2c8e5}{BottomRow}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00182}00182\ \ \ \ \ \mbox{\hyperlink{spacetype__train_8c_a31600148ead2658ecf1e07c4dc4831ac}{exitTrainProcess}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00183}00183\ \ \ \ \ \textcolor{keywordflow}{while}\ (!\mbox{\hyperlink{spacetype__train_8c_a7731a0bb03a0145545c4ab2887bfbd1b}{exitTrainLetters}})}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00184}00184\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00185}00185\ \ \ \ \ \ \ \ \ UpdateMusicStream(\mbox{\hyperlink{spacetype__train_8c_a8e4a12cb358091be4a5f7447b57e2014}{music}});}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00186}00186\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{spacetype__functions_8c_a6fd0aee1ce197388cddc6fb8bb2e605d}{movingDown}}\ +=\ \mbox{\hyperlink{spacetype__functions_8c_afe5fabfd23aa37cc25ce0ade58d9a21c}{mover}};}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00187}00187\ \ \ \ \ \ \ \ \ BeginDrawing();}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00188}00188\ }
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00189}00189\ \ \ \ \ \ \ \ \ ClearBackground(BLACK);}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00190}00190\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{spacetype__functions_8c_a3d385ca0396c4c2b3001371505a410e4}{draw\_background}}();}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00191}00191\ \ \ \ \ \ \ \ \ DrawTextureEx(\mbox{\hyperlink{spacetype__train_8c_ad3e43f46994781a6189f0d5a93145898}{cockpitTextureKeyboard}},\ (Vector2)\{0,\ 0\},\ 0,\ 1,\ WHITE);}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00192}00192\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{spacetype__train_8c_a3d854df91ebc16ceb8135872b1252e68}{train\_select}}();}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00193}00193\ }
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00194}00194\ \ \ \ \ \ \ \ \ EndDrawing();}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00195}00195\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00196}00196\ \}}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00197}00197\ }
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00205}\mbox{\hyperlink{spacetype__train_8c_ae46d5ffa05bceb73109a5c717f13085c}{00205}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{spacetype__train_8c_ae46d5ffa05bceb73109a5c717f13085c}{mode\_trainwords}}()}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00206}00206\ \{}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00207}00207\ }
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00208}00208\ \ \ \ \ \mbox{\hyperlink{spacetype__train_8c_af75b4f0a50616082d89f8646b879d7b2}{TopRow}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00209}00209\ \ \ \ \ \mbox{\hyperlink{spacetype__train_8c_a6f4860fac5ee4453264d597efe0d96d2}{MiddleRow}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00210}00210\ \ \ \ \ \mbox{\hyperlink{spacetype__train_8c_a0306f32a10da6fc136490962cdf2c8e5}{BottomRow}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00211}00211\ \ \ \ \ \mbox{\hyperlink{spacetype__train_8c_a31600148ead2658ecf1e07c4dc4831ac}{exitTrainProcess}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00212}00212\ \ \ \ \ \textcolor{keywordflow}{while}\ (!\mbox{\hyperlink{spacetype__train_8c_ace864dd89beddb30682a2194098c4d7a}{exitTrainWords}})}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00213}00213\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00214}00214\ \ \ \ \ \ \ \ \ UpdateMusicStream(\mbox{\hyperlink{spacetype__train_8c_a8e4a12cb358091be4a5f7447b57e2014}{music}});}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00215}00215\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{spacetype__functions_8c_a6fd0aee1ce197388cddc6fb8bb2e605d}{movingDown}}\ +=\ \mbox{\hyperlink{spacetype__functions_8c_afe5fabfd23aa37cc25ce0ade58d9a21c}{mover}};}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00216}00216\ \ \ \ \ \ \ \ \ BeginDrawing();}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00217}00217\ \ \ \ \ \ \ \ \ ClearBackground(BLACK);}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00218}00218\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{spacetype__functions_8c_a3d385ca0396c4c2b3001371505a410e4}{draw\_background}}();}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00219}00219\ \ \ \ \ \ \ \ \ DrawTextureEx(\mbox{\hyperlink{spacetype__train_8c_ad3e43f46994781a6189f0d5a93145898}{cockpitTextureKeyboard}},\ (Vector2)\{0,\ 0\},\ 0,\ 1,\ WHITE);}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00220}00220\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{spacetype__train_8c_a3d854df91ebc16ceb8135872b1252e68}{train\_select}}();}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00221}00221\ }
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00222}00222\ \ \ \ \ \ \ \ \ EndDrawing();}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00223}00223\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00224}00224\ \}}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00225}00225\ }
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00234}\mbox{\hyperlink{spacetype__train_8c_a08952319e7c38f34243c26a936d8c38b}{00234}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{spacetype__train_8c_a08952319e7c38f34243c26a936d8c38b}{letter\_train}}()}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00235}00235\ \{}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00236}00236\ \ \ \ \ \mbox{\hyperlink{spacetype__functions_8c_aaea5b3f618e439b47273f9547f8ee72f}{reset\_counter}}();}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00237}00237\ \ \ \ \ \mbox{\hyperlink{spacetype__train_8c_a31600148ead2658ecf1e07c4dc4831ac}{exitTrainProcess}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00238}00238\ \ \ \ \ \textcolor{keywordflow}{while}\ (!\mbox{\hyperlink{spacetype__train_8c_a31600148ead2658ecf1e07c4dc4831ac}{exitTrainProcess}})}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00239}00239\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00240}00240\ \ \ \ \ \ \ \ \ BeginDrawing();}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00241}00241\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{spacetype__train_8c_ae2a6f84abfa05b6703a92e19c4f2802a}{select\_letter}}();}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00242}00242\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{spacetype__train_8c_a31600148ead2658ecf1e07c4dc4831ac}{exitTrainProcess}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00243}00243\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{spacetype__train_8c_af77294798c31640392e8a24118aa0209}{letterinput}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00244}00244\ }
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00245}00245\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (!\mbox{\hyperlink{spacetype__train_8c_af77294798c31640392e8a24118aa0209}{letterinput}})}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00246}00246\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00247}00247\ \ \ \ \ \ \ \ \ \ \ \ \ UpdateMusicStream(\mbox{\hyperlink{spacetype__train_8c_a8e4a12cb358091be4a5f7447b57e2014}{music}});}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00248}00248\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ requiredtxt[2]\ =\ \{0\};}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00249}00249\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{spacetype__functions_8c_a6fd0aee1ce197388cddc6fb8bb2e605d}{movingDown}}\ +=\ \mbox{\hyperlink{spacetype__functions_8c_afe5fabfd23aa37cc25ce0ade58d9a21c}{mover}};}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00250}00250\ \ \ \ \ \ \ \ \ \ \ \ \ sprintf(requiredtxt,\ \textcolor{stringliteral}{"{}\%c\ "{}},\ \mbox{\hyperlink{spacetype__train_8c_a274280c65c6cdaa496287f642aa67e94}{RequiredLetter}});}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00251}00251\ \ \ \ \ \ \ \ \ \ \ \ \ BeginDrawing();}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00252}00252\ \ \ \ \ \ \ \ \ \ \ \ \ ClearBackground(BLACK);}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00253}00253\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{spacetype__functions_8c_a3d385ca0396c4c2b3001371505a410e4}{draw\_background}}();}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00254}00254\ \ \ \ \ \ \ \ \ \ \ \ \ DrawTextureEx(\mbox{\hyperlink{spacetype__train_8c_ad3e43f46994781a6189f0d5a93145898}{cockpitTextureKeyboard}},\ (Vector2)\{0,\ 0\},\ 0,\ 1,\ WHITE);}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00255}00255\ \ \ \ \ \ \ \ \ \ \ \ \ DrawTextEx(\mbox{\hyperlink{spacetype__train_8c_a81aa2ca2abef778dcd32bddb7dbb164e}{retroFont}},\ requiredtxt,\ (Vector2)\{GetScreenWidth()\ /\ 2,\ GetScreenHeight()\ /\ 2\ -\/\ 100\},\ 30,\ 2,\ WHITE);}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00256}00256\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{spacetype__functions_8c_a12b39a18475d88f1af660a2fca26e2e1}{keyboard\_highlight}}(\mbox{\hyperlink{spacetype__train_8c_a274280c65c6cdaa496287f642aa67e94}{RequiredLetter}});\ }
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00257}00257\ }
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00258}00258\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ key\ =\ ((int)\mbox{\hyperlink{spacetype__train_8c_a274280c65c6cdaa496287f642aa67e94}{RequiredLetter}})\ -\/\ 32;}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00259}00259\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ pressed\ =\ GetKeyPressed();}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00260}00260\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (pressed\ \&\&\ pressed\ !=\ key)}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00261}00261\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00262}00262\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ fprintf(\mbox{\hyperlink{main_8c_a6873dfffcddeacc1146d828469a7b271}{wrongChars}},\ \textcolor{stringliteral}{"{}\%c"{}},\ key);}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00263}00263\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{main_8c_af55ba184810ed8dbd5951a049baa7687}{sorted}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00264}00264\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00265}00265\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (IsKeyPressed(key))}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00266}00266\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{spacetype__train_8c_af77294798c31640392e8a24118aa0209}{letterinput}}\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00267}00267\ }
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00268}00268\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (IsKeyPressed(KEY\_ESCAPE))}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00269}00269\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00270}00270\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{spacetype__train_8c_af77294798c31640392e8a24118aa0209}{letterinput}}\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00271}00271\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{spacetype__train_8c_a31600148ead2658ecf1e07c4dc4831ac}{exitTrainProcess}}\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00272}00272\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00273}00273\ }
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00274}00274\ \ \ \ \ \ \ \ \ \ \ \ \ EndDrawing();}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00275}00275\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00276}00276\ \ \ \ \ \ \ \ \ EndDrawing();}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00277}00277\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00278}00278\ \}}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00279}00279\ }
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00292}\mbox{\hyperlink{spacetype__train_8c_a9b71b1145b442c758139bf3b462b56b7}{00292}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{spacetype__train_8c_a9b71b1145b442c758139bf3b462b56b7}{word\_train}}()}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00293}00293\ \{}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00294}00294\ \ \ \ \ \mbox{\hyperlink{spacetype__functions_8c_aaea5b3f618e439b47273f9547f8ee72f}{reset\_counter}}();}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00295}00295\ \ \ \ \ \mbox{\hyperlink{spacetype__train_8c_a31600148ead2658ecf1e07c4dc4831ac}{exitTrainProcess}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00296}00296\ \ \ \ \ \textcolor{keywordflow}{while}\ (!\mbox{\hyperlink{spacetype__train_8c_a31600148ead2658ecf1e07c4dc4831ac}{exitTrainProcess}})}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00297}00297\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00298}00298\ \ \ \ \ \ \ \ \ BeginDrawing();}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00299}00299\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{spacetype__train_8c_aaad24f8670154915aa2c3915a2c0cab0}{select\_word}}();}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00300}00300\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{spacetype__train_8c_a31600148ead2658ecf1e07c4dc4831ac}{exitTrainProcess}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00301}00301\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ textWidth;}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00302}00302\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{spacetype__train_8c_aeb5c19fef16dd5c060190c22c877cb2f}{wordinput}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00303}00303\ \ \ \ \ \ \ \ \ strcpy(\mbox{\hyperlink{spacetype__train_8c_a3bf9fbb547b39fad87847c05dddf7835}{wordStored}},\ \mbox{\hyperlink{spacetype__train_8c_ab67c2bf75aecaae45aa54be72064b12c}{RequiredWord}});}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00304}00304\ }
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00305}00305\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (!\mbox{\hyperlink{spacetype__train_8c_aeb5c19fef16dd5c060190c22c877cb2f}{wordinput}})}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00306}00306\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00307}00307\ \ \ \ \ \ \ \ \ \ \ \ \ UpdateMusicStream(\mbox{\hyperlink{spacetype__train_8c_a8e4a12cb358091be4a5f7447b57e2014}{music}});}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00308}00308\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{spacetype__functions_8c_a6fd0aee1ce197388cddc6fb8bb2e605d}{movingDown}}\ +=\ \mbox{\hyperlink{spacetype__functions_8c_afe5fabfd23aa37cc25ce0ade58d9a21c}{mover}};}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00309}00309\ \ \ \ \ \ \ \ \ \ \ \ \ textWidth\ =\ MeasureTextEx(\mbox{\hyperlink{spacetype__train_8c_a81aa2ca2abef778dcd32bddb7dbb164e}{retroFont}},\ \mbox{\hyperlink{spacetype__train_8c_ab67c2bf75aecaae45aa54be72064b12c}{RequiredWord}},\ 30,\ 2).x;}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00310}00310\ \ \ \ \ \ \ \ \ \ \ \ \ BeginDrawing();}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00311}00311\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{spacetype__functions_8c_a51e1166222fd5d5311a40d1e2f4f9de4}{framesCounterForSession}}++;}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00312}00312\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{spacetype__functions_8c_a95ae14fd649ced57a69b75d68da589d2}{framesCounterForWord}}++;}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00313}00313\ \ \ \ \ \ \ \ \ \ \ \ \ ClearBackground(BLACK);}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00314}00314\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{spacetype__functions_8c_a3d385ca0396c4c2b3001371505a410e4}{draw\_background}}();}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00315}00315\ \ \ \ \ \ \ \ \ \ \ \ \ DrawTextureEx(\mbox{\hyperlink{spacetype__train_8c_ad3e43f46994781a6189f0d5a93145898}{cockpitTextureKeyboard}},\ (Vector2)\{0,\ 0\},\ 0,\ 1,\ WHITE);}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00316}00316\ \ \ \ \ \ \ \ \ \ \ \ \ DrawTextEx(\mbox{\hyperlink{spacetype__train_8c_a81aa2ca2abef778dcd32bddb7dbb164e}{retroFont}},\ \mbox{\hyperlink{spacetype__train_8c_ab67c2bf75aecaae45aa54be72064b12c}{RequiredWord}},\ (Vector2)\{(GetScreenWidth()\ /\ 2)\ -\/\ (textWidth\ /\ 2),\ GetScreenHeight()\ /\ 2\ -\/\ 100\},\ 30,\ 2,\ WHITE);}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00317}00317\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{spacetype__functions_8c_a12b39a18475d88f1af660a2fca26e2e1}{keyboard\_highlight}}(\mbox{\hyperlink{spacetype__train_8c_ab67c2bf75aecaae45aa54be72064b12c}{RequiredWord}}[0]);\ }
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00318}00318\ }
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00319}00319\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ key\ =\ ((int)\mbox{\hyperlink{spacetype__train_8c_ab67c2bf75aecaae45aa54be72064b12c}{RequiredWord}}[0])\ -\/\ 32;}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00320}00320\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ pressed\ =\ GetKeyPressed();}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00321}00321\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (pressed)}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00322}00322\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00323}00323\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{spacetype__functions_8c_abae3a0ff51af1f5850b19e1393d9bb3b}{keysPressed}}++;}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00324}00324\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (pressed\ !=\ key)}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00325}00325\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ fprintf(\mbox{\hyperlink{main_8c_a6873dfffcddeacc1146d828469a7b271}{wrongChars}},\ \textcolor{stringliteral}{"{}\%c"{}},\ key);}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00326}00326\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{main_8c_af55ba184810ed8dbd5951a049baa7687}{sorted}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00327}00327\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00328}00328\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (IsKeyPressed(key))}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00329}00329\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00330}00330\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{spacetype__functions_8c_ab5086d2f1f8f1f1d2ee04e2e9150a602}{rightKeysPressed}}++;}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00331}00331\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{spacetype__functions_8c_ac2b53920425ca2363a0d94d7b4cd537e}{remove\_firstletter}}(\mbox{\hyperlink{spacetype__train_8c_ab67c2bf75aecaae45aa54be72064b12c}{RequiredWord}});}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00332}00332\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (strlen(\mbox{\hyperlink{spacetype__train_8c_ab67c2bf75aecaae45aa54be72064b12c}{RequiredWord}})\ ==\ 0)}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00333}00333\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \textcolor{comment}{//\ UPDATING\ DATA}}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00334}00334\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{spacetype__functions_8c_a95ae14fd649ced57a69b75d68da589d2}{framesCounterForWord}}\ >\ \mbox{\hyperlink{spacetype__functions_8c_aebc7f6cb0e8f7579831be9c2c2da2b88}{slowestWordFrames}})}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00335}00335\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00336}00336\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{spacetype__functions_8c_aebc7f6cb0e8f7579831be9c2c2da2b88}{slowestWordFrames}}\ =\ \mbox{\hyperlink{spacetype__functions_8c_a95ae14fd649ced57a69b75d68da589d2}{framesCounterForWord}};}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00337}00337\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ strcpy(\mbox{\hyperlink{spacetype__functions_8c_a936c03af3e86babcb0ac353944d924d2}{slowestWord}},\ \mbox{\hyperlink{spacetype__train_8c_a3bf9fbb547b39fad87847c05dddf7835}{wordStored}});}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00338}00338\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00339}00339\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{spacetype__functions_8c_a95ae14fd649ced57a69b75d68da589d2}{framesCounterForWord}}\ <\ \mbox{\hyperlink{spacetype__functions_8c_adefa0a21ad7e922b1cf99c1019e0a0b0}{fastestWordFrames}})}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00340}00340\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00341}00341\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{spacetype__functions_8c_adefa0a21ad7e922b1cf99c1019e0a0b0}{fastestWordFrames}}\ =\ \mbox{\hyperlink{spacetype__functions_8c_a95ae14fd649ced57a69b75d68da589d2}{framesCounterForWord}};}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00342}00342\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ strcpy(\mbox{\hyperlink{spacetype__functions_8c_a665a0731aec1172152b78cb5f3c01066}{fastestWord}},\ \mbox{\hyperlink{spacetype__train_8c_a3bf9fbb547b39fad87847c05dddf7835}{wordStored}});}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00343}00343\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00344}00344\ }
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00345}00345\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{spacetype__functions_8c_a89af8cc9f9feb6c3fa73d0ea6729b7d5}{TIME}}\ -\/=\ (\mbox{\hyperlink{spacetype__functions_8c_a89af8cc9f9feb6c3fa73d0ea6729b7d5}{TIME}}\ <\ 5)\ ?\ ((\mbox{\hyperlink{spacetype__functions_8c_a89af8cc9f9feb6c3fa73d0ea6729b7d5}{TIME}}\ <\ 4)\ ?\ 0.1\ :\ 0.25)\ :\ 0.5;}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00346}00346\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{spacetype__functions_8c_a8259dd681a3af7574239fa1f57cb8b01}{SCORE}}++;}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00347}00347\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{spacetype__train_8c_aeb5c19fef16dd5c060190c22c877cb2f}{wordinput}}\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00348}00348\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{spacetype__functions_8c_a95ae14fd649ced57a69b75d68da589d2}{framesCounterForWord}}\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00349}00349\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00350}00350\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00351}00351\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (IsKeyPressed(KEY\_ESCAPE))}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00352}00352\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00353}00353\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{spacetype__train_8c_aeb5c19fef16dd5c060190c22c877cb2f}{wordinput}}\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00354}00354\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{spacetype__train_8c_a31600148ead2658ecf1e07c4dc4831ac}{exitTrainProcess}}\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00355}00355\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00356}00356\ \ \ \ \ \ \ \ \ \ \ \ \ EndDrawing();}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00357}00357\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00358}00358\ \ \ \ \ \ \ \ \ EndDrawing();}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00359}00359\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00360}00360\ }
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00361}00361\ \ \ \ \ \textcolor{keywordflow}{while}\ (!\mbox{\hyperlink{spacetype__train_8c_a3b7260afdeb5ccd84b1bfd028b24017b}{exitResult}})}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00362}00362\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00363}00363\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{spacetype__functions_8c_a8259dd681a3af7574239fa1f57cb8b01}{SCORE}}\ ==\ 0)}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00364}00364\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00365}00365\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{spacetype__functions_8c_adefa0a21ad7e922b1cf99c1019e0a0b0}{fastestWordFrames}}\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00366}00366\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{spacetype__functions_8c_abae3a0ff51af1f5850b19e1393d9bb3b}{keysPressed}}\ ==\ 0)}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00367}00367\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{spacetype__functions_8c_abae3a0ff51af1f5850b19e1393d9bb3b}{keysPressed}}\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00368}00368\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00369}00369\ \ \ \ \ \ \ \ \ UpdateMusicStream(\mbox{\hyperlink{spacetype__train_8c_a8e4a12cb358091be4a5f7447b57e2014}{music}});}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00370}00370\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{spacetype__functions_8c_a7949044f3f01bd1a91fa3b2454288355}{scoreString}}[50];}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00371}00371\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ sessionDurationString[50];}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00372}00372\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ fastestWordString[50];}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00373}00373\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ fastestTimeString[50];}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00374}00374\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ slowestWordString[50];}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00375}00375\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ slowestTimeString[50];}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00376}00376\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ wpmString[50];}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00377}00377\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ accuracyString[50];}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00378}00378\ }
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00379}00379\ \ \ \ \ \ \ \ \ sprintf(\mbox{\hyperlink{spacetype__functions_8c_a7949044f3f01bd1a91fa3b2454288355}{scoreString}},\ \textcolor{stringliteral}{"{}Score\ :\ \%i"{}},\ \mbox{\hyperlink{spacetype__functions_8c_a8259dd681a3af7574239fa1f57cb8b01}{SCORE}});}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00380}00380\ \ \ \ \ \ \ \ \ sprintf(sessionDurationString,\ \textcolor{stringliteral}{"{}Session\ time\ :\ \%.2f\ seconds"{}},\ \mbox{\hyperlink{spacetype__functions_8c_a51e1166222fd5d5311a40d1e2f4f9de4}{framesCounterForSession}}\ /\ 60);}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00381}00381\ \ \ \ \ \ \ \ \ sprintf(fastestWordString,\ \textcolor{stringliteral}{"{}Fastest\ Word:\ \ |\ \%s\ |"{}},\ \mbox{\hyperlink{spacetype__functions_8c_a665a0731aec1172152b78cb5f3c01066}{fastestWord}});}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00382}00382\ \ \ \ \ \ \ \ \ sprintf(fastestTimeString,\ \textcolor{stringliteral}{"{}Time:\ \%.2f\ seconds"{}},\ \mbox{\hyperlink{spacetype__functions_8c_adefa0a21ad7e922b1cf99c1019e0a0b0}{fastestWordFrames}}\ /\ 60);}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00383}00383\ \ \ \ \ \ \ \ \ sprintf(slowestWordString,\ \textcolor{stringliteral}{"{}Slowest\ Word:\ \ |\ \%s\ |"{}},\ \mbox{\hyperlink{spacetype__functions_8c_a936c03af3e86babcb0ac353944d924d2}{slowestWord}});}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00384}00384\ \ \ \ \ \ \ \ \ sprintf(slowestTimeString,\ \textcolor{stringliteral}{"{}Time:\ \%.2f\ seconds"{}},\ \mbox{\hyperlink{spacetype__functions_8c_aebc7f6cb0e8f7579831be9c2c2da2b88}{slowestWordFrames}}\ /\ 60);}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00385}00385\ \ \ \ \ \ \ \ \ sprintf(wpmString,\ \textcolor{stringliteral}{"{}Typing\ Speed:\ \%d\ WPM"{}},\ (\textcolor{keywordtype}{int})(\mbox{\hyperlink{spacetype__functions_8c_a8259dd681a3af7574239fa1f57cb8b01}{SCORE}}\ *\ 60\ *\ 60\ /\ \mbox{\hyperlink{spacetype__functions_8c_a51e1166222fd5d5311a40d1e2f4f9de4}{framesCounterForSession}}));}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00386}00386\ \ \ \ \ \ \ \ \ sprintf(accuracyString,\ \textcolor{stringliteral}{"{}Accuracy:\ \%.2f\%\%"{}},\ (\mbox{\hyperlink{spacetype__functions_8c_ab5086d2f1f8f1f1d2ee04e2e9150a602}{rightKeysPressed}}\ /\ \mbox{\hyperlink{spacetype__functions_8c_abae3a0ff51af1f5850b19e1393d9bb3b}{keysPressed}})\ *\ 100);}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00387}00387\ \ \ \ \ \ \ \ \ BeginDrawing();}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00388}00388\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{spacetype__functions_8c_a3d385ca0396c4c2b3001371505a410e4}{draw\_background}}();}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00389}00389\ \ \ \ \ \ \ \ \ DrawTextEx(\mbox{\hyperlink{spacetype__train_8c_a81aa2ca2abef778dcd32bddb7dbb164e}{retroFont}},\ \textcolor{stringliteral}{"{}RESULTS"{}},\ (Vector2)\{\mbox{\hyperlink{spacetype__train_8c_ae50cb92a78d9e0a4f4bd718fc02bd294}{screenWidth}}\ /\ 2\ -\/\ 200\ +\ 5,\ \mbox{\hyperlink{spacetype__train_8c_a9ebc1dbd77788c4bfa27758a6725413f}{screenHeight}}\ /\ 2\ -\/\ 250\ +\ 4\},\ 80,\ 1,\ DARKBLUE);}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00390}00390\ \ \ \ \ \ \ \ \ DrawTextEx(\mbox{\hyperlink{spacetype__train_8c_a81aa2ca2abef778dcd32bddb7dbb164e}{retroFont}},\ \textcolor{stringliteral}{"{}RESULTS"{}},\ (Vector2)\{\mbox{\hyperlink{spacetype__train_8c_ae50cb92a78d9e0a4f4bd718fc02bd294}{screenWidth}}\ /\ 2\ -\/\ 200,\ \mbox{\hyperlink{spacetype__train_8c_a9ebc1dbd77788c4bfa27758a6725413f}{screenHeight}}\ /\ 2\ -\/\ 250\},\ 80,\ 1,\ WHITE);}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00391}00391\ \ \ \ \ \ \ \ \ DrawTextEx(\mbox{\hyperlink{spacetype__train_8c_a81aa2ca2abef778dcd32bddb7dbb164e}{retroFont}},\ \mbox{\hyperlink{spacetype__functions_8c_a7949044f3f01bd1a91fa3b2454288355}{scoreString}},\ (Vector2)\{250\ +\ 2,\ \mbox{\hyperlink{spacetype__train_8c_a9ebc1dbd77788c4bfa27758a6725413f}{screenHeight}}\ /\ 2\ -\/\ 40\ +\ 1\},\ 20,\ 1,\ BROWN);}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00392}00392\ \ \ \ \ \ \ \ \ DrawTextEx(\mbox{\hyperlink{spacetype__train_8c_a81aa2ca2abef778dcd32bddb7dbb164e}{retroFont}},\ \mbox{\hyperlink{spacetype__functions_8c_a7949044f3f01bd1a91fa3b2454288355}{scoreString}},\ (Vector2)\{250,\ \mbox{\hyperlink{spacetype__train_8c_a9ebc1dbd77788c4bfa27758a6725413f}{screenHeight}}\ /\ 2\ -\/\ 40\},\ 20,\ 1,\ WHITE);}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00393}00393\ \ \ \ \ \ \ \ \ DrawTextEx(\mbox{\hyperlink{spacetype__train_8c_a81aa2ca2abef778dcd32bddb7dbb164e}{retroFont}},\ sessionDurationString,\ (Vector2)\{250\ +\ 2,\ \mbox{\hyperlink{spacetype__train_8c_a9ebc1dbd77788c4bfa27758a6725413f}{screenHeight}}\ /\ 2\ +\ 1\},\ 20,\ 1,\ BROWN);}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00394}00394\ \ \ \ \ \ \ \ \ DrawTextEx(\mbox{\hyperlink{spacetype__train_8c_a81aa2ca2abef778dcd32bddb7dbb164e}{retroFont}},\ sessionDurationString,\ (Vector2)\{250,\ \mbox{\hyperlink{spacetype__train_8c_a9ebc1dbd77788c4bfa27758a6725413f}{screenHeight}}\ /\ 2\},\ 20,\ 1,\ WHITE);}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00395}00395\ \ \ \ \ \ \ \ \ DrawTextEx(\mbox{\hyperlink{spacetype__train_8c_a81aa2ca2abef778dcd32bddb7dbb164e}{retroFont}},\ fastestWordString,\ (Vector2)\{250\ +\ 2,\ \mbox{\hyperlink{spacetype__train_8c_a9ebc1dbd77788c4bfa27758a6725413f}{screenHeight}}\ /\ 2\ +\ 40\ +\ 1\},\ 20,\ 1,\ BROWN);}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00396}00396\ \ \ \ \ \ \ \ \ DrawTextEx(\mbox{\hyperlink{spacetype__train_8c_a81aa2ca2abef778dcd32bddb7dbb164e}{retroFont}},\ fastestWordString,\ (Vector2)\{250,\ \mbox{\hyperlink{spacetype__train_8c_a9ebc1dbd77788c4bfa27758a6725413f}{screenHeight}}\ /\ 2\ +\ 40\},\ 20,\ 1,\ WHITE);}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00397}00397\ \ \ \ \ \ \ \ \ DrawTextEx(\mbox{\hyperlink{spacetype__train_8c_a81aa2ca2abef778dcd32bddb7dbb164e}{retroFont}},\ fastestTimeString,\ (Vector2)\{850\ +\ 2,\ \mbox{\hyperlink{spacetype__train_8c_a9ebc1dbd77788c4bfa27758a6725413f}{screenHeight}}\ /\ 2\ +\ 40\ +\ 1\},\ 20,\ 1,\ BROWN);}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00398}00398\ \ \ \ \ \ \ \ \ DrawTextEx(\mbox{\hyperlink{spacetype__train_8c_a81aa2ca2abef778dcd32bddb7dbb164e}{retroFont}},\ fastestTimeString,\ (Vector2)\{850,\ \mbox{\hyperlink{spacetype__train_8c_a9ebc1dbd77788c4bfa27758a6725413f}{screenHeight}}\ /\ 2\ +\ 40\},\ 20,\ 1,\ WHITE);}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00399}00399\ \ \ \ \ \ \ \ \ DrawTextEx(\mbox{\hyperlink{spacetype__train_8c_a81aa2ca2abef778dcd32bddb7dbb164e}{retroFont}},\ slowestWordString,\ (Vector2)\{250\ +\ 2,\ \mbox{\hyperlink{spacetype__train_8c_a9ebc1dbd77788c4bfa27758a6725413f}{screenHeight}}\ /\ 2\ +\ 80\ +\ 1\},\ 20,\ 1,\ BROWN);}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00400}00400\ \ \ \ \ \ \ \ \ DrawTextEx(\mbox{\hyperlink{spacetype__train_8c_a81aa2ca2abef778dcd32bddb7dbb164e}{retroFont}},\ slowestWordString,\ (Vector2)\{250,\ \mbox{\hyperlink{spacetype__train_8c_a9ebc1dbd77788c4bfa27758a6725413f}{screenHeight}}\ /\ 2\ +\ 80\},\ 20,\ 1,\ WHITE);}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00401}00401\ \ \ \ \ \ \ \ \ DrawTextEx(\mbox{\hyperlink{spacetype__train_8c_a81aa2ca2abef778dcd32bddb7dbb164e}{retroFont}},\ slowestTimeString,\ (Vector2)\{850\ +\ 2,\ \mbox{\hyperlink{spacetype__train_8c_a9ebc1dbd77788c4bfa27758a6725413f}{screenHeight}}\ /\ 2\ +\ 80\ +\ 1\},\ 20,\ 1,\ BROWN);}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00402}00402\ \ \ \ \ \ \ \ \ DrawTextEx(\mbox{\hyperlink{spacetype__train_8c_a81aa2ca2abef778dcd32bddb7dbb164e}{retroFont}},\ slowestTimeString,\ (Vector2)\{850,\ \mbox{\hyperlink{spacetype__train_8c_a9ebc1dbd77788c4bfa27758a6725413f}{screenHeight}}\ /\ 2\ +\ 80\},\ 20,\ 1,\ WHITE);}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00403}00403\ \ \ \ \ \ \ \ \ DrawTextEx(\mbox{\hyperlink{spacetype__train_8c_a81aa2ca2abef778dcd32bddb7dbb164e}{retroFont}},\ wpmString,\ (Vector2)\{250\ +\ 2,\ \mbox{\hyperlink{spacetype__train_8c_a9ebc1dbd77788c4bfa27758a6725413f}{screenHeight}}\ /\ 2\ +\ 120\ +\ 1\},\ 20,\ 1,\ BROWN);}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00404}00404\ \ \ \ \ \ \ \ \ DrawTextEx(\mbox{\hyperlink{spacetype__train_8c_a81aa2ca2abef778dcd32bddb7dbb164e}{retroFont}},\ wpmString,\ (Vector2)\{250,\ \mbox{\hyperlink{spacetype__train_8c_a9ebc1dbd77788c4bfa27758a6725413f}{screenHeight}}\ /\ 2\ +\ 120\},\ 20,\ 1,\ WHITE);}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00405}00405\ \ \ \ \ \ \ \ \ DrawTextEx(\mbox{\hyperlink{spacetype__train_8c_a81aa2ca2abef778dcd32bddb7dbb164e}{retroFont}},\ accuracyString,\ (Vector2)\{250\ +\ 2,\ \mbox{\hyperlink{spacetype__train_8c_a9ebc1dbd77788c4bfa27758a6725413f}{screenHeight}}\ /\ 2\ +\ 160\ +\ 1\},\ 20,\ 1,\ BROWN);}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00406}00406\ \ \ \ \ \ \ \ \ DrawTextEx(\mbox{\hyperlink{spacetype__train_8c_a81aa2ca2abef778dcd32bddb7dbb164e}{retroFont}},\ accuracyString,\ (Vector2)\{250,\ \mbox{\hyperlink{spacetype__train_8c_a9ebc1dbd77788c4bfa27758a6725413f}{screenHeight}}\ /\ 2\ +\ 160\},\ 20,\ 1,\ WHITE);}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00407}00407\ }
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00408}00408\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ ((\textcolor{keywordtype}{float})GetMouseX()\ >=\ (GetScreenWidth()\ /\ 2\ -\/\ MeasureTextEx(\mbox{\hyperlink{spacetype__train_8c_a81aa2ca2abef778dcd32bddb7dbb164e}{retroFont}},\ \textcolor{stringliteral}{"{}main\ menu"{}},\ 30,\ 1).x\ /\ 2)\ \&\&\ (\textcolor{keywordtype}{float})GetMouseX()\ <=\ (GetScreenWidth()\ /\ 2\ +\ MeasureTextEx(\mbox{\hyperlink{spacetype__train_8c_a81aa2ca2abef778dcd32bddb7dbb164e}{retroFont}},\ \textcolor{stringliteral}{"{}main\ menu"{}},\ 30,\ 1).x\ /\ 2)\ \&\&\ (\textcolor{keywordtype}{float})GetMouseY()\ >=\ (GetScreenHeight()\ /\ 2\ +\ 255\ -\/\ MeasureTextEx(\mbox{\hyperlink{spacetype__train_8c_a81aa2ca2abef778dcd32bddb7dbb164e}{retroFont}},\ \textcolor{stringliteral}{"{}main\ menu"{}},\ 30,\ 1).y\ /\ 2)\ \&\&\ (\textcolor{keywordtype}{float})GetMouseY()\ <=\ (GetScreenHeight()\ /\ 2\ +\ 255\ +\ MeasureTextEx(\mbox{\hyperlink{spacetype__train_8c_a81aa2ca2abef778dcd32bddb7dbb164e}{retroFont}},\ \textcolor{stringliteral}{"{}main\ menu"{}},\ 30,\ 1).y\ /\ 2))}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00409}00409\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00410}00410\ \ \ \ \ \ \ \ \ \ \ \ \ DrawTextPro(\mbox{\hyperlink{spacetype__train_8c_a81aa2ca2abef778dcd32bddb7dbb164e}{retroFont}},\ \textcolor{stringliteral}{"{}main\ menu"{}},\ (Vector2)\{(GetScreenWidth()\ /\ 2)\ +\ 2,\ GetScreenHeight()\ /\ 2\ +\ 260\ +\ 1\},\ Vector2Scale(MeasureTextEx(\mbox{\hyperlink{spacetype__train_8c_a81aa2ca2abef778dcd32bddb7dbb164e}{retroFont}},\ \textcolor{stringliteral}{"{}main\ menu"{}},\ 30,\ 1),\ 0.5f),\ 0,\ 30,\ 1,\ RED);}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00411}00411\ \ \ \ \ \ \ \ \ \ \ \ \ DrawTextPro(\mbox{\hyperlink{spacetype__train_8c_a81aa2ca2abef778dcd32bddb7dbb164e}{retroFont}},\ \textcolor{stringliteral}{"{}main\ menu"{}},\ (Vector2)\{(GetScreenWidth()\ /\ 2),\ GetScreenHeight()\ /\ 2\ +\ 260\},\ Vector2Scale(MeasureTextEx(\mbox{\hyperlink{spacetype__train_8c_a81aa2ca2abef778dcd32bddb7dbb164e}{retroFont}},\ \textcolor{stringliteral}{"{}main\ menu"{}},\ 30,\ 1),\ 0.5f),\ 0,\ 30,\ 1,\ BLUE);}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00412}00412\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (IsMouseButtonPressed(MOUSE\_BUTTON\_LEFT))}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00413}00413\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00414}00414\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{spacetype__train_8c_a3b7260afdeb5ccd84b1bfd028b24017b}{exitResult}}\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00415}00415\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{spacetype__train_8c_a7731a0bb03a0145545c4ab2887bfbd1b}{exitTrainLetters}}\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00416}00416\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{spacetype__train_8c_ace864dd89beddb30682a2194098c4d7a}{exitTrainWords}}\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00417}00417\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{spacetype__train_8c_ab7f8058b1e0af16644a127cc19b0ce0c}{exitTrain}}\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00418}00418\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00419}00419\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00420}00420\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00421}00421\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00422}00422\ \ \ \ \ \ \ \ \ \ \ \ \ DrawTextPro(\mbox{\hyperlink{spacetype__train_8c_a81aa2ca2abef778dcd32bddb7dbb164e}{retroFont}},\ \textcolor{stringliteral}{"{}main\ menu"{}},\ (Vector2)\{(GetScreenWidth()\ /\ 2\ +\ 3),\ GetScreenHeight()\ /\ 2\ +\ 260\ +\ 2\},\ Vector2Scale(MeasureTextEx(\mbox{\hyperlink{spacetype__train_8c_a81aa2ca2abef778dcd32bddb7dbb164e}{retroFont}},\ \textcolor{stringliteral}{"{}main\ menu"{}},\ 30,\ 1),\ 0.5f),\ 0,\ 30,\ 1,\ LIME);}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00423}00423\ \ \ \ \ \ \ \ \ \ \ \ \ DrawTextPro(\mbox{\hyperlink{spacetype__train_8c_a81aa2ca2abef778dcd32bddb7dbb164e}{retroFont}},\ \textcolor{stringliteral}{"{}main\ menu"{}},\ (Vector2)\{(GetScreenWidth()\ /\ 2),\ GetScreenHeight()\ /\ 2\ +\ 260\},\ Vector2Scale(MeasureTextEx(\mbox{\hyperlink{spacetype__train_8c_a81aa2ca2abef778dcd32bddb7dbb164e}{retroFont}},\ \textcolor{stringliteral}{"{}main\ menu"{}},\ 30,\ 1),\ 0.5f),\ 0,\ 30,\ 1,\ WHITE);}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00424}00424\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00425}00425\ \ \ \ \ \ \ \ \ EndDrawing();}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00426}00426\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00427}00427\ \}}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00428}00428\ }
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00438}\mbox{\hyperlink{spacetype__train_8c_a774d816129879166ef7b47827fa13f34}{00438}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{spacetype__train_8c_a774d816129879166ef7b47827fa13f34}{customized\_train}}()}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00439}00439\ \{}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00440}00440\ \ \ \ \ \mbox{\hyperlink{spacetype__functions_8c_aaea5b3f618e439b47273f9547f8ee72f}{reset\_counter}}();}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00441}00441\ \ \ \ \ \mbox{\hyperlink{spacetype__train_8c_a31600148ead2658ecf1e07c4dc4831ac}{exitTrainProcess}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00442}00442\ }
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00443}00443\ \ \ \ \ \textcolor{keywordflow}{while}\ (!\mbox{\hyperlink{spacetype__train_8c_a31600148ead2658ecf1e07c4dc4831ac}{exitTrainProcess}})}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00444}00444\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00445}00445\ \ \ \ \ \ \ \ \ BeginDrawing();}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00446}00446\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ letterPresent\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00447}00447\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}(letterPresent\ <\ 5)\{\ }
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00448}00448\ \ \ \ \ \ \ \ \ \ \ \ \ strcpy(\mbox{\hyperlink{spacetype__train_8c_ab67c2bf75aecaae45aa54be72064b12c}{RequiredWord}},\ \mbox{\hyperlink{spacetype__train_8c_a9aa8d778f3c76629a003f60e46cb9cd0}{customizedWords}}[GetRandomValue(0,\ (\textcolor{keyword}{sizeof}(\mbox{\hyperlink{spacetype__train_8c_a9aa8d778f3c76629a003f60e46cb9cd0}{customizedWords}})/\textcolor{keyword}{sizeof}(\mbox{\hyperlink{spacetype__train_8c_a9aa8d778f3c76629a003f60e46cb9cd0}{customizedWords}}[0]))-\/1)]);}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00449}00449\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i=0;\ i<strlen(\mbox{\hyperlink{spacetype__train_8c_ab67c2bf75aecaae45aa54be72064b12c}{RequiredWord}});\ i++)\{}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00450}00450\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ j=0;\ j<8;\ j++)\{}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00451}00451\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ ((\textcolor{keywordtype}{int})\mbox{\hyperlink{spacetype__functions_8h_a6b6c5deaba9d68a985285ff4c8d0fcf9}{wrongLetters}}[0].\mbox{\hyperlink{structchar_count_ad9a5d03d507ae224a984e68dae5e2932}{character}}\ ==\ (int)\mbox{\hyperlink{spacetype__train_8c_ab67c2bf75aecaae45aa54be72064b12c}{RequiredWord}}[i]\ -\/\ 32)\ letterPresent++;}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00452}00452\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00453}00453\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00454}00454\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00455}00455\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{spacetype__train_8c_a31600148ead2658ecf1e07c4dc4831ac}{exitTrainProcess}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00456}00456\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ textWidth;}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00457}00457\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{spacetype__train_8c_aeb5c19fef16dd5c060190c22c877cb2f}{wordinput}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00458}00458\ \ \ \ \ \ \ \ \ strcpy(\mbox{\hyperlink{spacetype__train_8c_a3bf9fbb547b39fad87847c05dddf7835}{wordStored}},\ \mbox{\hyperlink{spacetype__train_8c_ab67c2bf75aecaae45aa54be72064b12c}{RequiredWord}});}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00459}00459\ }
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00460}00460\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (!\mbox{\hyperlink{spacetype__train_8c_aeb5c19fef16dd5c060190c22c877cb2f}{wordinput}})}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00461}00461\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00462}00462\ \ \ \ \ \ \ \ \ \ \ \ \ UpdateMusicStream(\mbox{\hyperlink{spacetype__train_8c_a8e4a12cb358091be4a5f7447b57e2014}{music}});}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00463}00463\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{spacetype__functions_8c_a6fd0aee1ce197388cddc6fb8bb2e605d}{movingDown}}\ +=\ \mbox{\hyperlink{spacetype__functions_8c_afe5fabfd23aa37cc25ce0ade58d9a21c}{mover}};}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00464}00464\ \ \ \ \ \ \ \ \ \ \ \ \ textWidth\ =\ MeasureTextEx(\mbox{\hyperlink{spacetype__train_8c_a81aa2ca2abef778dcd32bddb7dbb164e}{retroFont}},\ \mbox{\hyperlink{spacetype__train_8c_ab67c2bf75aecaae45aa54be72064b12c}{RequiredWord}},\ 30,\ 2).x;}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00465}00465\ \ \ \ \ \ \ \ \ \ \ \ \ BeginDrawing();}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00466}00466\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{spacetype__functions_8c_a51e1166222fd5d5311a40d1e2f4f9de4}{framesCounterForSession}}++;}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00467}00467\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{spacetype__functions_8c_a95ae14fd649ced57a69b75d68da589d2}{framesCounterForWord}}++;}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00468}00468\ \ \ \ \ \ \ \ \ \ \ \ \ ClearBackground(BLACK);}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00469}00469\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{spacetype__functions_8c_a3d385ca0396c4c2b3001371505a410e4}{draw\_background}}();}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00470}00470\ \ \ \ \ \ \ \ \ \ \ \ \ DrawTextureEx(\mbox{\hyperlink{spacetype__train_8c_ad3e43f46994781a6189f0d5a93145898}{cockpitTextureKeyboard}},\ (Vector2)\{0,\ 0\},\ 0,\ 1,\ WHITE);}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00471}00471\ \ \ \ \ \ \ \ \ \ \ \ \ DrawTextEx(\mbox{\hyperlink{spacetype__train_8c_a81aa2ca2abef778dcd32bddb7dbb164e}{retroFont}},\ \mbox{\hyperlink{spacetype__train_8c_ab67c2bf75aecaae45aa54be72064b12c}{RequiredWord}},\ (Vector2)\{(GetScreenWidth()\ /\ 2)\ -\/\ (textWidth\ /\ 2),\ GetScreenHeight()\ /\ 2\ -\/\ 100\},\ 30,\ 2,\ WHITE);}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00472}00472\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{spacetype__functions_8c_a12b39a18475d88f1af660a2fca26e2e1}{keyboard\_highlight}}(\mbox{\hyperlink{spacetype__train_8c_ab67c2bf75aecaae45aa54be72064b12c}{RequiredWord}}[0]);\ }
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00473}00473\ }
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00474}00474\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ key\ =\ ((int)\mbox{\hyperlink{spacetype__train_8c_ab67c2bf75aecaae45aa54be72064b12c}{RequiredWord}}[0])\ -\/\ 32;}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00475}00475\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ pressed\ =\ GetKeyPressed();}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00476}00476\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (pressed)}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00477}00477\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00478}00478\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{spacetype__functions_8c_abae3a0ff51af1f5850b19e1393d9bb3b}{keysPressed}}++;}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00479}00479\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (pressed\ !=\ key)}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00480}00480\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ fprintf(\mbox{\hyperlink{main_8c_a6873dfffcddeacc1146d828469a7b271}{wrongChars}},\ \textcolor{stringliteral}{"{}\%c"{}},\ key);}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00481}00481\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{main_8c_af55ba184810ed8dbd5951a049baa7687}{sorted}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00482}00482\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00483}00483\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (IsKeyPressed(key))}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00484}00484\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00485}00485\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{spacetype__functions_8c_ab5086d2f1f8f1f1d2ee04e2e9150a602}{rightKeysPressed}}++;}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00486}00486\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{spacetype__functions_8c_ac2b53920425ca2363a0d94d7b4cd537e}{remove\_firstletter}}(\mbox{\hyperlink{spacetype__train_8c_ab67c2bf75aecaae45aa54be72064b12c}{RequiredWord}});}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00487}00487\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (strlen(\mbox{\hyperlink{spacetype__train_8c_ab67c2bf75aecaae45aa54be72064b12c}{RequiredWord}})\ ==\ 0)}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00488}00488\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \textcolor{comment}{//\ UPDATING\ DATA}}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00489}00489\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{spacetype__functions_8c_a95ae14fd649ced57a69b75d68da589d2}{framesCounterForWord}}\ >\ \mbox{\hyperlink{spacetype__functions_8c_aebc7f6cb0e8f7579831be9c2c2da2b88}{slowestWordFrames}})}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00490}00490\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00491}00491\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{spacetype__functions_8c_aebc7f6cb0e8f7579831be9c2c2da2b88}{slowestWordFrames}}\ =\ \mbox{\hyperlink{spacetype__functions_8c_a95ae14fd649ced57a69b75d68da589d2}{framesCounterForWord}};}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00492}00492\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ strcpy(\mbox{\hyperlink{spacetype__functions_8c_a936c03af3e86babcb0ac353944d924d2}{slowestWord}},\ \mbox{\hyperlink{spacetype__train_8c_a3bf9fbb547b39fad87847c05dddf7835}{wordStored}});}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00493}00493\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00494}00494\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{spacetype__functions_8c_a95ae14fd649ced57a69b75d68da589d2}{framesCounterForWord}}\ <\ \mbox{\hyperlink{spacetype__functions_8c_adefa0a21ad7e922b1cf99c1019e0a0b0}{fastestWordFrames}})}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00495}00495\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00496}00496\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{spacetype__functions_8c_adefa0a21ad7e922b1cf99c1019e0a0b0}{fastestWordFrames}}\ =\ \mbox{\hyperlink{spacetype__functions_8c_a95ae14fd649ced57a69b75d68da589d2}{framesCounterForWord}};}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00497}00497\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ strcpy(\mbox{\hyperlink{spacetype__functions_8c_a665a0731aec1172152b78cb5f3c01066}{fastestWord}},\ \mbox{\hyperlink{spacetype__train_8c_a3bf9fbb547b39fad87847c05dddf7835}{wordStored}});}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00498}00498\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00499}00499\ }
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00500}00500\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{spacetype__functions_8c_a89af8cc9f9feb6c3fa73d0ea6729b7d5}{TIME}}\ -\/=\ (\mbox{\hyperlink{spacetype__functions_8c_a89af8cc9f9feb6c3fa73d0ea6729b7d5}{TIME}}\ <\ 5)\ ?\ ((\mbox{\hyperlink{spacetype__functions_8c_a89af8cc9f9feb6c3fa73d0ea6729b7d5}{TIME}}\ <\ 4)\ ?\ 0.1\ :\ 0.25)\ :\ 0.5;}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00501}00501\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{spacetype__functions_8c_a8259dd681a3af7574239fa1f57cb8b01}{SCORE}}++;}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00502}00502\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{spacetype__train_8c_aeb5c19fef16dd5c060190c22c877cb2f}{wordinput}}\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00503}00503\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{spacetype__functions_8c_a95ae14fd649ced57a69b75d68da589d2}{framesCounterForWord}}\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00504}00504\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00505}00505\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00506}00506\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (IsKeyPressed(KEY\_ESCAPE))}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00507}00507\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00508}00508\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{spacetype__train_8c_aeb5c19fef16dd5c060190c22c877cb2f}{wordinput}}\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00509}00509\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{spacetype__train_8c_a31600148ead2658ecf1e07c4dc4831ac}{exitTrainProcess}}\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00510}00510\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00511}00511\ \ \ \ \ \ \ \ \ \ \ \ \ EndDrawing();}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00512}00512\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00513}00513\ \ \ \ \ \ \ \ \ EndDrawing();}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00514}00514\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00515}00515\ }
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00516}00516\ \ \ \ \ \textcolor{keywordflow}{while}\ (!\mbox{\hyperlink{spacetype__train_8c_a3b7260afdeb5ccd84b1bfd028b24017b}{exitResult}})}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00517}00517\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00518}00518\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{spacetype__functions_8c_a8259dd681a3af7574239fa1f57cb8b01}{SCORE}}\ ==\ 0)}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00519}00519\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00520}00520\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{spacetype__functions_8c_adefa0a21ad7e922b1cf99c1019e0a0b0}{fastestWordFrames}}\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00521}00521\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{spacetype__functions_8c_abae3a0ff51af1f5850b19e1393d9bb3b}{keysPressed}}\ ==\ 0)}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00522}00522\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{spacetype__functions_8c_abae3a0ff51af1f5850b19e1393d9bb3b}{keysPressed}}\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00523}00523\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00524}00524\ \ \ \ \ \ \ \ \ UpdateMusicStream(\mbox{\hyperlink{spacetype__train_8c_a8e4a12cb358091be4a5f7447b57e2014}{music}});}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00525}00525\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{spacetype__functions_8c_a7949044f3f01bd1a91fa3b2454288355}{scoreString}}[50];}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00526}00526\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ sessionDurationString[50];}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00527}00527\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ fastestWordString[50];}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00528}00528\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ fastestTimeString[50];}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00529}00529\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ slowestWordString[50];}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00530}00530\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ slowestTimeString[50];}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00531}00531\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ wpmString[50];}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00532}00532\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ accuracyString[50];}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00533}00533\ }
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00534}00534\ \ \ \ \ \ \ \ \ sprintf(\mbox{\hyperlink{spacetype__functions_8c_a7949044f3f01bd1a91fa3b2454288355}{scoreString}},\ \textcolor{stringliteral}{"{}Score\ :\ \%i"{}},\ \mbox{\hyperlink{spacetype__functions_8c_a8259dd681a3af7574239fa1f57cb8b01}{SCORE}});}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00535}00535\ \ \ \ \ \ \ \ \ sprintf(sessionDurationString,\ \textcolor{stringliteral}{"{}Session\ time\ :\ \%.2f\ seconds"{}},\ \mbox{\hyperlink{spacetype__functions_8c_a51e1166222fd5d5311a40d1e2f4f9de4}{framesCounterForSession}}\ /\ 60);}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00536}00536\ \ \ \ \ \ \ \ \ sprintf(fastestWordString,\ \textcolor{stringliteral}{"{}Fastest\ Word:\ \ |\ \%s\ |"{}},\ \mbox{\hyperlink{spacetype__functions_8c_a665a0731aec1172152b78cb5f3c01066}{fastestWord}});}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00537}00537\ \ \ \ \ \ \ \ \ sprintf(fastestTimeString,\ \textcolor{stringliteral}{"{}Time:\ \%.2f\ seconds"{}},\ \mbox{\hyperlink{spacetype__functions_8c_adefa0a21ad7e922b1cf99c1019e0a0b0}{fastestWordFrames}}\ /\ 60);}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00538}00538\ \ \ \ \ \ \ \ \ sprintf(slowestWordString,\ \textcolor{stringliteral}{"{}Slowest\ Word:\ \ |\ \%s\ |"{}},\ \mbox{\hyperlink{spacetype__functions_8c_a936c03af3e86babcb0ac353944d924d2}{slowestWord}});}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00539}00539\ \ \ \ \ \ \ \ \ sprintf(slowestTimeString,\ \textcolor{stringliteral}{"{}Time:\ \%.2f\ seconds"{}},\ \mbox{\hyperlink{spacetype__functions_8c_aebc7f6cb0e8f7579831be9c2c2da2b88}{slowestWordFrames}}\ /\ 60);}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00540}00540\ \ \ \ \ \ \ \ \ sprintf(wpmString,\ \textcolor{stringliteral}{"{}Typing\ Speed:\ \%d\ WPM"{}},\ (\textcolor{keywordtype}{int})(\mbox{\hyperlink{spacetype__functions_8c_a8259dd681a3af7574239fa1f57cb8b01}{SCORE}}\ *\ 60\ *\ 60\ /\ \mbox{\hyperlink{spacetype__functions_8c_a51e1166222fd5d5311a40d1e2f4f9de4}{framesCounterForSession}}));}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00541}00541\ \ \ \ \ \ \ \ \ sprintf(accuracyString,\ \textcolor{stringliteral}{"{}Accuracy:\ \%.2f\%\%"{}},\ (\mbox{\hyperlink{spacetype__functions_8c_ab5086d2f1f8f1f1d2ee04e2e9150a602}{rightKeysPressed}}\ /\ \mbox{\hyperlink{spacetype__functions_8c_abae3a0ff51af1f5850b19e1393d9bb3b}{keysPressed}})\ *\ 100);}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00542}00542\ \ \ \ \ \ \ \ \ BeginDrawing();}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00543}00543\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{spacetype__functions_8c_a3d385ca0396c4c2b3001371505a410e4}{draw\_background}}();}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00544}00544\ \ \ \ \ \ \ \ \ DrawTextEx(\mbox{\hyperlink{spacetype__train_8c_a81aa2ca2abef778dcd32bddb7dbb164e}{retroFont}},\ \textcolor{stringliteral}{"{}RESULTS"{}},\ (Vector2)\{\mbox{\hyperlink{spacetype__train_8c_ae50cb92a78d9e0a4f4bd718fc02bd294}{screenWidth}}\ /\ 2\ -\/\ 200\ +\ 5,\ \mbox{\hyperlink{spacetype__train_8c_a9ebc1dbd77788c4bfa27758a6725413f}{screenHeight}}\ /\ 2\ -\/\ 250\ +\ 4\},\ 80,\ 1,\ DARKBLUE);}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00545}00545\ \ \ \ \ \ \ \ \ DrawTextEx(\mbox{\hyperlink{spacetype__train_8c_a81aa2ca2abef778dcd32bddb7dbb164e}{retroFont}},\ \textcolor{stringliteral}{"{}RESULTS"{}},\ (Vector2)\{\mbox{\hyperlink{spacetype__train_8c_ae50cb92a78d9e0a4f4bd718fc02bd294}{screenWidth}}\ /\ 2\ -\/\ 200,\ \mbox{\hyperlink{spacetype__train_8c_a9ebc1dbd77788c4bfa27758a6725413f}{screenHeight}}\ /\ 2\ -\/\ 250\},\ 80,\ 1,\ WHITE);}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00546}00546\ \ \ \ \ \ \ \ \ DrawTextEx(\mbox{\hyperlink{spacetype__train_8c_a81aa2ca2abef778dcd32bddb7dbb164e}{retroFont}},\ \mbox{\hyperlink{spacetype__functions_8c_a7949044f3f01bd1a91fa3b2454288355}{scoreString}},\ (Vector2)\{250\ +\ 2,\ \mbox{\hyperlink{spacetype__train_8c_a9ebc1dbd77788c4bfa27758a6725413f}{screenHeight}}\ /\ 2\ -\/\ 40\ +\ 1\},\ 20,\ 1,\ BROWN);}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00547}00547\ \ \ \ \ \ \ \ \ DrawTextEx(\mbox{\hyperlink{spacetype__train_8c_a81aa2ca2abef778dcd32bddb7dbb164e}{retroFont}},\ \mbox{\hyperlink{spacetype__functions_8c_a7949044f3f01bd1a91fa3b2454288355}{scoreString}},\ (Vector2)\{250,\ \mbox{\hyperlink{spacetype__train_8c_a9ebc1dbd77788c4bfa27758a6725413f}{screenHeight}}\ /\ 2\ -\/\ 40\},\ 20,\ 1,\ WHITE);}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00548}00548\ \ \ \ \ \ \ \ \ DrawTextEx(\mbox{\hyperlink{spacetype__train_8c_a81aa2ca2abef778dcd32bddb7dbb164e}{retroFont}},\ sessionDurationString,\ (Vector2)\{250\ +\ 2,\ \mbox{\hyperlink{spacetype__train_8c_a9ebc1dbd77788c4bfa27758a6725413f}{screenHeight}}\ /\ 2\ +\ 1\},\ 20,\ 1,\ BROWN);}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00549}00549\ \ \ \ \ \ \ \ \ DrawTextEx(\mbox{\hyperlink{spacetype__train_8c_a81aa2ca2abef778dcd32bddb7dbb164e}{retroFont}},\ sessionDurationString,\ (Vector2)\{250,\ \mbox{\hyperlink{spacetype__train_8c_a9ebc1dbd77788c4bfa27758a6725413f}{screenHeight}}\ /\ 2\},\ 20,\ 1,\ WHITE);}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00550}00550\ \ \ \ \ \ \ \ \ DrawTextEx(\mbox{\hyperlink{spacetype__train_8c_a81aa2ca2abef778dcd32bddb7dbb164e}{retroFont}},\ fastestWordString,\ (Vector2)\{250\ +\ 2,\ \mbox{\hyperlink{spacetype__train_8c_a9ebc1dbd77788c4bfa27758a6725413f}{screenHeight}}\ /\ 2\ +\ 40\ +\ 1\},\ 20,\ 1,\ BROWN);}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00551}00551\ \ \ \ \ \ \ \ \ DrawTextEx(\mbox{\hyperlink{spacetype__train_8c_a81aa2ca2abef778dcd32bddb7dbb164e}{retroFont}},\ fastestWordString,\ (Vector2)\{250,\ \mbox{\hyperlink{spacetype__train_8c_a9ebc1dbd77788c4bfa27758a6725413f}{screenHeight}}\ /\ 2\ +\ 40\},\ 20,\ 1,\ WHITE);}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00552}00552\ \ \ \ \ \ \ \ \ DrawTextEx(\mbox{\hyperlink{spacetype__train_8c_a81aa2ca2abef778dcd32bddb7dbb164e}{retroFont}},\ fastestTimeString,\ (Vector2)\{850\ +\ 2,\ \mbox{\hyperlink{spacetype__train_8c_a9ebc1dbd77788c4bfa27758a6725413f}{screenHeight}}\ /\ 2\ +\ 40\ +\ 1\},\ 20,\ 1,\ BROWN);}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00553}00553\ \ \ \ \ \ \ \ \ DrawTextEx(\mbox{\hyperlink{spacetype__train_8c_a81aa2ca2abef778dcd32bddb7dbb164e}{retroFont}},\ fastestTimeString,\ (Vector2)\{850,\ \mbox{\hyperlink{spacetype__train_8c_a9ebc1dbd77788c4bfa27758a6725413f}{screenHeight}}\ /\ 2\ +\ 40\},\ 20,\ 1,\ WHITE);}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00554}00554\ \ \ \ \ \ \ \ \ DrawTextEx(\mbox{\hyperlink{spacetype__train_8c_a81aa2ca2abef778dcd32bddb7dbb164e}{retroFont}},\ slowestWordString,\ (Vector2)\{250\ +\ 2,\ \mbox{\hyperlink{spacetype__train_8c_a9ebc1dbd77788c4bfa27758a6725413f}{screenHeight}}\ /\ 2\ +\ 80\ +\ 1\},\ 20,\ 1,\ BROWN);}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00555}00555\ \ \ \ \ \ \ \ \ DrawTextEx(\mbox{\hyperlink{spacetype__train_8c_a81aa2ca2abef778dcd32bddb7dbb164e}{retroFont}},\ slowestWordString,\ (Vector2)\{250,\ \mbox{\hyperlink{spacetype__train_8c_a9ebc1dbd77788c4bfa27758a6725413f}{screenHeight}}\ /\ 2\ +\ 80\},\ 20,\ 1,\ WHITE);}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00556}00556\ \ \ \ \ \ \ \ \ DrawTextEx(\mbox{\hyperlink{spacetype__train_8c_a81aa2ca2abef778dcd32bddb7dbb164e}{retroFont}},\ slowestTimeString,\ (Vector2)\{850\ +\ 2,\ \mbox{\hyperlink{spacetype__train_8c_a9ebc1dbd77788c4bfa27758a6725413f}{screenHeight}}\ /\ 2\ +\ 80\ +\ 1\},\ 20,\ 1,\ BROWN);}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00557}00557\ \ \ \ \ \ \ \ \ DrawTextEx(\mbox{\hyperlink{spacetype__train_8c_a81aa2ca2abef778dcd32bddb7dbb164e}{retroFont}},\ slowestTimeString,\ (Vector2)\{850,\ \mbox{\hyperlink{spacetype__train_8c_a9ebc1dbd77788c4bfa27758a6725413f}{screenHeight}}\ /\ 2\ +\ 80\},\ 20,\ 1,\ WHITE);}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00558}00558\ \ \ \ \ \ \ \ \ DrawTextEx(\mbox{\hyperlink{spacetype__train_8c_a81aa2ca2abef778dcd32bddb7dbb164e}{retroFont}},\ wpmString,\ (Vector2)\{250\ +\ 2,\ \mbox{\hyperlink{spacetype__train_8c_a9ebc1dbd77788c4bfa27758a6725413f}{screenHeight}}\ /\ 2\ +\ 120\ +\ 1\},\ 20,\ 1,\ BROWN);}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00559}00559\ \ \ \ \ \ \ \ \ DrawTextEx(\mbox{\hyperlink{spacetype__train_8c_a81aa2ca2abef778dcd32bddb7dbb164e}{retroFont}},\ wpmString,\ (Vector2)\{250,\ \mbox{\hyperlink{spacetype__train_8c_a9ebc1dbd77788c4bfa27758a6725413f}{screenHeight}}\ /\ 2\ +\ 120\},\ 20,\ 1,\ WHITE);}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00560}00560\ \ \ \ \ \ \ \ \ DrawTextEx(\mbox{\hyperlink{spacetype__train_8c_a81aa2ca2abef778dcd32bddb7dbb164e}{retroFont}},\ accuracyString,\ (Vector2)\{250\ +\ 2,\ \mbox{\hyperlink{spacetype__train_8c_a9ebc1dbd77788c4bfa27758a6725413f}{screenHeight}}\ /\ 2\ +\ 160\ +\ 1\},\ 20,\ 1,\ BROWN);}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00561}00561\ \ \ \ \ \ \ \ \ DrawTextEx(\mbox{\hyperlink{spacetype__train_8c_a81aa2ca2abef778dcd32bddb7dbb164e}{retroFont}},\ accuracyString,\ (Vector2)\{250,\ \mbox{\hyperlink{spacetype__train_8c_a9ebc1dbd77788c4bfa27758a6725413f}{screenHeight}}\ /\ 2\ +\ 160\},\ 20,\ 1,\ WHITE);}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00562}00562\ }
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00563}00563\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ ((\textcolor{keywordtype}{float})GetMouseX()\ >=\ (GetScreenWidth()\ /\ 2\ -\/\ MeasureTextEx(\mbox{\hyperlink{spacetype__train_8c_a81aa2ca2abef778dcd32bddb7dbb164e}{retroFont}},\ \textcolor{stringliteral}{"{}main\ menu"{}},\ 30,\ 1).x\ /\ 2)\ \&\&\ (\textcolor{keywordtype}{float})GetMouseX()\ <=\ (GetScreenWidth()\ /\ 2\ +\ MeasureTextEx(\mbox{\hyperlink{spacetype__train_8c_a81aa2ca2abef778dcd32bddb7dbb164e}{retroFont}},\ \textcolor{stringliteral}{"{}main\ menu"{}},\ 30,\ 1).x\ /\ 2)\ \&\&\ (\textcolor{keywordtype}{float})GetMouseY()\ >=\ (GetScreenHeight()\ /\ 2\ +\ 255\ -\/\ MeasureTextEx(\mbox{\hyperlink{spacetype__train_8c_a81aa2ca2abef778dcd32bddb7dbb164e}{retroFont}},\ \textcolor{stringliteral}{"{}main\ menu"{}},\ 30,\ 1).y\ /\ 2)\ \&\&\ (\textcolor{keywordtype}{float})GetMouseY()\ <=\ (GetScreenHeight()\ /\ 2\ +\ 255\ +\ MeasureTextEx(\mbox{\hyperlink{spacetype__train_8c_a81aa2ca2abef778dcd32bddb7dbb164e}{retroFont}},\ \textcolor{stringliteral}{"{}main\ menu"{}},\ 30,\ 1).y\ /\ 2))}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00564}00564\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00565}00565\ \ \ \ \ \ \ \ \ \ \ \ \ DrawTextPro(\mbox{\hyperlink{spacetype__train_8c_a81aa2ca2abef778dcd32bddb7dbb164e}{retroFont}},\ \textcolor{stringliteral}{"{}main\ menu"{}},\ (Vector2)\{(GetScreenWidth()\ /\ 2)\ +\ 2,\ GetScreenHeight()\ /\ 2\ +\ 260\ +\ 1\},\ Vector2Scale(MeasureTextEx(\mbox{\hyperlink{spacetype__train_8c_a81aa2ca2abef778dcd32bddb7dbb164e}{retroFont}},\ \textcolor{stringliteral}{"{}main\ menu"{}},\ 30,\ 1),\ 0.5f),\ 0,\ 30,\ 1,\ RED);}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00566}00566\ \ \ \ \ \ \ \ \ \ \ \ \ DrawTextPro(\mbox{\hyperlink{spacetype__train_8c_a81aa2ca2abef778dcd32bddb7dbb164e}{retroFont}},\ \textcolor{stringliteral}{"{}main\ menu"{}},\ (Vector2)\{(GetScreenWidth()\ /\ 2),\ GetScreenHeight()\ /\ 2\ +\ 260\},\ Vector2Scale(MeasureTextEx(\mbox{\hyperlink{spacetype__train_8c_a81aa2ca2abef778dcd32bddb7dbb164e}{retroFont}},\ \textcolor{stringliteral}{"{}main\ menu"{}},\ 30,\ 1),\ 0.5f),\ 0,\ 30,\ 1,\ BLUE);}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00567}00567\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (IsMouseButtonPressed(MOUSE\_BUTTON\_LEFT))}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00568}00568\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00569}00569\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{spacetype__train_8c_a3b7260afdeb5ccd84b1bfd028b24017b}{exitResult}}\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00570}00570\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{spacetype__train_8c_a7731a0bb03a0145545c4ab2887bfbd1b}{exitTrainLetters}}\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00571}00571\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{spacetype__train_8c_ace864dd89beddb30682a2194098c4d7a}{exitTrainWords}}\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00572}00572\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{spacetype__train_8c_ab7f8058b1e0af16644a127cc19b0ce0c}{exitTrain}}\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00573}00573\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00574}00574\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00575}00575\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00576}00576\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00577}00577\ \ \ \ \ \ \ \ \ \ \ \ \ DrawTextPro(\mbox{\hyperlink{spacetype__train_8c_a81aa2ca2abef778dcd32bddb7dbb164e}{retroFont}},\ \textcolor{stringliteral}{"{}main\ menu"{}},\ (Vector2)\{(GetScreenWidth()\ /\ 2\ +\ 3),\ GetScreenHeight()\ /\ 2\ +\ 260\ +\ 2\},\ Vector2Scale(MeasureTextEx(\mbox{\hyperlink{spacetype__train_8c_a81aa2ca2abef778dcd32bddb7dbb164e}{retroFont}},\ \textcolor{stringliteral}{"{}main\ menu"{}},\ 30,\ 1),\ 0.5f),\ 0,\ 30,\ 1,\ LIME);}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00578}00578\ \ \ \ \ \ \ \ \ \ \ \ \ DrawTextPro(\mbox{\hyperlink{spacetype__train_8c_a81aa2ca2abef778dcd32bddb7dbb164e}{retroFont}},\ \textcolor{stringliteral}{"{}main\ menu"{}},\ (Vector2)\{(GetScreenWidth()\ /\ 2),\ GetScreenHeight()\ /\ 2\ +\ 260\},\ Vector2Scale(MeasureTextEx(\mbox{\hyperlink{spacetype__train_8c_a81aa2ca2abef778dcd32bddb7dbb164e}{retroFont}},\ \textcolor{stringliteral}{"{}main\ menu"{}},\ 30,\ 1),\ 0.5f),\ 0,\ 30,\ 1,\ WHITE);}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00579}00579\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00580}00580\ \ \ \ \ \ \ \ \ EndDrawing();}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00581}00581\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00582}00582\ \}}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00583}00583\ }
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00592}\mbox{\hyperlink{spacetype__train_8c_a3d854df91ebc16ceb8135872b1252e68}{00592}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{spacetype__train_8c_a3d854df91ebc16ceb8135872b1252e68}{train\_select}}()}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00593}00593\ \{}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00594}00594\ }
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00595}00595\ \ \ \ \ \textcolor{keywordflow}{if}\ ((\textcolor{keywordtype}{float})GetMouseX()\ >=\ (GetScreenWidth()\ /\ 2\ -\/\ 150)\ \&\&\ (\textcolor{keywordtype}{float})GetMouseX()\ <=\ (GetScreenWidth()\ /\ 2\ -\/\ 150\ +\ MeasureTextEx(\mbox{\hyperlink{spacetype__train_8c_a81aa2ca2abef778dcd32bddb7dbb164e}{retroFont}},\ \textcolor{stringliteral}{"{}top\ row\ letters"{}},\ 30,\ 1).x)\ \&\&\ (\textcolor{keywordtype}{float})GetMouseY()\ >=\ (GetScreenHeight()\ /\ 2\ -\/\ 195)\ \&\&\ (\textcolor{keywordtype}{float})GetMouseY()\ <=\ (GetScreenHeight()\ /\ 2\ -\/\ 195\ +\ MeasureTextEx(\mbox{\hyperlink{spacetype__train_8c_a81aa2ca2abef778dcd32bddb7dbb164e}{retroFont}},\ \textcolor{stringliteral}{"{}top\ row\ letters"{}},\ 30,\ 1).y))}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00596}00596\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00597}00597\ \ \ \ \ \ \ \ \ DrawTextEx(\mbox{\hyperlink{spacetype__train_8c_a81aa2ca2abef778dcd32bddb7dbb164e}{retroFont}},\ \textcolor{stringliteral}{"{}top\ row\ letters"{}},\ (Vector2)\{(GetScreenWidth()\ /\ 2)\ -\/\ 150\ +\ 2,\ GetScreenHeight()\ /\ 2\ -\/\ 195\ +\ 1\},\ 30,\ 1,\ RED);}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00598}00598\ \ \ \ \ \ \ \ \ DrawTextEx(\mbox{\hyperlink{spacetype__train_8c_a81aa2ca2abef778dcd32bddb7dbb164e}{retroFont}},\ \textcolor{stringliteral}{"{}top\ row\ letters"{}},\ (Vector2)\{(GetScreenWidth()\ /\ 2)\ -\/\ 150,\ GetScreenHeight()\ /\ 2\ -\/\ 195\},\ 30,\ 1,\ BLUE);}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00599}00599\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{spacetype__train_8c_af75b4f0a50616082d89f8646b879d7b2}{TopRow}})}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00600}00600\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00601}00601\ \ \ \ \ \ \ \ \ \ \ \ \ DrawRectangle(GetScreenWidth()\ /\ 2\ -\/\ 210,\ GetScreenHeight()\ /\ 2\ -\/\ 200,\ 30,\ 30,\ WHITE);}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00602}00602\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (IsMouseButtonPressed(MOUSE\_BUTTON\_LEFT))}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00603}00603\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00604}00604\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{spacetype__train_8c_af75b4f0a50616082d89f8646b879d7b2}{TopRow}}\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00605}00605\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ DrawRectangle(GetScreenWidth()\ /\ 2\ -\/\ 210\ +\ 5,\ (GetScreenHeight()\ /\ 2\ -\/\ 195),\ 20,\ 20,\ BLUE);}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00606}00606\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00607}00607\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00608}00608\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00609}00609\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00610}00610\ \ \ \ \ \ \ \ \ \ \ \ \ DrawRectangle(GetScreenWidth()\ /\ 2\ -\/\ 210,\ GetScreenHeight()\ /\ 2\ -\/\ 200,\ 30,\ 30,\ WHITE);}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00611}00611\ \ \ \ \ \ \ \ \ \ \ \ \ DrawRectangle(GetScreenWidth()\ /\ 2\ -\/\ 210\ +\ 5,\ GetScreenHeight()\ /\ 2\ -\/\ 195,\ 20,\ 20,\ BLUE);}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00612}00612\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (IsMouseButtonPressed(MOUSE\_BUTTON\_LEFT))}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00613}00613\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00614}00614\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{spacetype__train_8c_af75b4f0a50616082d89f8646b879d7b2}{TopRow}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00615}00615\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00616}00616\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00617}00617\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00618}00618\ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00619}00619\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00620}00620\ \ \ \ \ \ \ \ \ DrawTextEx(\mbox{\hyperlink{spacetype__train_8c_a81aa2ca2abef778dcd32bddb7dbb164e}{retroFont}},\ \textcolor{stringliteral}{"{}top\ row\ letters"{}},\ (Vector2)\{(GetScreenWidth()\ /\ 2)\ -\/\ 150,\ GetScreenHeight()\ /\ 2\ -\/\ 195\},\ 30,\ 1,\ WHITE);}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00621}00621\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{spacetype__train_8c_af75b4f0a50616082d89f8646b879d7b2}{TopRow}})}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00622}00622\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00623}00623\ \ \ \ \ \ \ \ \ \ \ \ \ DrawRectangle(GetScreenWidth()\ /\ 2\ -\/\ 210,\ GetScreenHeight()\ /\ 2\ -\/\ 200,\ 30,\ 30,\ WHITE);}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00624}00624\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00625}00625\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00626}00626\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00627}00627\ \ \ \ \ \ \ \ \ \ \ \ \ DrawRectangle(GetScreenWidth()\ /\ 2\ -\/\ 210,\ GetScreenHeight()\ /\ 2\ -\/\ 200,\ 30,\ 30,\ WHITE);}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00628}00628\ \ \ \ \ \ \ \ \ \ \ \ \ DrawRectangle(GetScreenWidth()\ /\ 2\ -\/\ 210\ +\ 5,\ GetScreenHeight()\ /\ 2\ -\/\ 195,\ 20,\ 20,\ BLUE);}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00629}00629\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00630}00630\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00631}00631\ \ \ \ \ \textcolor{keywordflow}{if}\ ((\textcolor{keywordtype}{float})GetMouseX()\ >=\ (GetScreenWidth()\ /\ 2\ -\/\ 150)\ \&\&\ (\textcolor{keywordtype}{float})GetMouseX()\ <=\ (GetScreenWidth()\ /\ 2\ -\/\ 150\ +\ MeasureTextEx(\mbox{\hyperlink{spacetype__train_8c_a81aa2ca2abef778dcd32bddb7dbb164e}{retroFont}},\ \textcolor{stringliteral}{"{}middle\ row\ letters"{}},\ 30,\ 1).x)\ \&\&\ (\textcolor{keywordtype}{float})GetMouseY()\ >=\ (GetScreenHeight()\ /\ 2\ -\/\ 145)\ \&\&\ (\textcolor{keywordtype}{float})GetMouseY()\ <=\ (GetScreenHeight()\ /\ 2\ -\/\ 145\ +\ MeasureTextEx(\mbox{\hyperlink{spacetype__train_8c_a81aa2ca2abef778dcd32bddb7dbb164e}{retroFont}},\ \textcolor{stringliteral}{"{}middle\ row\ letters"{}},\ 30,\ 1).y))}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00632}00632\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00633}00633\ \ \ \ \ \ \ \ \ DrawTextEx(\mbox{\hyperlink{spacetype__train_8c_a81aa2ca2abef778dcd32bddb7dbb164e}{retroFont}},\ \textcolor{stringliteral}{"{}middle\ row\ letters"{}},\ (Vector2)\{(GetScreenWidth()\ /\ 2)\ -\/\ 150\ +\ 2,\ GetScreenHeight()\ /\ 2\ -\/\ 145\ +\ 1\},\ 30,\ 1,\ RED);}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00634}00634\ \ \ \ \ \ \ \ \ DrawTextEx(\mbox{\hyperlink{spacetype__train_8c_a81aa2ca2abef778dcd32bddb7dbb164e}{retroFont}},\ \textcolor{stringliteral}{"{}middle\ row\ letters"{}},\ (Vector2)\{(GetScreenWidth()\ /\ 2)\ -\/\ 150,\ GetScreenHeight()\ /\ 2\ -\/\ 145\},\ 30,\ 1,\ BLUE);}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00635}00635\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{spacetype__train_8c_a6f4860fac5ee4453264d597efe0d96d2}{MiddleRow}})}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00636}00636\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00637}00637\ \ \ \ \ \ \ \ \ \ \ \ \ DrawRectangle(GetScreenWidth()\ /\ 2\ -\/\ 210,\ GetScreenHeight()\ /\ 2\ -\/\ 150,\ 30,\ 30,\ WHITE);}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00638}00638\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (IsMouseButtonPressed(MOUSE\_BUTTON\_LEFT))}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00639}00639\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00640}00640\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{spacetype__train_8c_a6f4860fac5ee4453264d597efe0d96d2}{MiddleRow}}\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00641}00641\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ DrawRectangle(GetScreenWidth()\ /\ 2\ -\/\ 210\ +\ 5,\ (GetScreenHeight()\ /\ 2\ -\/\ 145),\ 20,\ 20,\ BLUE);}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00642}00642\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00643}00643\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00644}00644\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00645}00645\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00646}00646\ \ \ \ \ \ \ \ \ \ \ \ \ DrawRectangle(GetScreenWidth()\ /\ 2\ -\/\ 210,\ GetScreenHeight()\ /\ 2\ -\/\ 150,\ 30,\ 30,\ WHITE);}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00647}00647\ \ \ \ \ \ \ \ \ \ \ \ \ DrawRectangle(GetScreenWidth()\ /\ 2\ -\/\ 210\ +\ 5,\ GetScreenHeight()\ /\ 2\ -\/\ 145,\ 20,\ 20,\ BLUE);}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00648}00648\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (IsMouseButtonPressed(MOUSE\_BUTTON\_LEFT))}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00649}00649\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00650}00650\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{spacetype__train_8c_a6f4860fac5ee4453264d597efe0d96d2}{MiddleRow}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00651}00651\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00652}00652\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00653}00653\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00654}00654\ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00655}00655\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00656}00656\ \ \ \ \ \ \ \ \ DrawTextEx(\mbox{\hyperlink{spacetype__train_8c_a81aa2ca2abef778dcd32bddb7dbb164e}{retroFont}},\ \textcolor{stringliteral}{"{}middle\ row\ letters"{}},\ (Vector2)\{(GetScreenWidth()\ /\ 2)\ -\/\ 150,\ GetScreenHeight()\ /\ 2\ -\/\ 145\},\ 30,\ 1,\ WHITE);}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00657}00657\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{spacetype__train_8c_a6f4860fac5ee4453264d597efe0d96d2}{MiddleRow}})}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00658}00658\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00659}00659\ \ \ \ \ \ \ \ \ \ \ \ \ DrawRectangle(GetScreenWidth()\ /\ 2\ -\/\ 210,\ GetScreenHeight()\ /\ 2\ -\/\ 150,\ 30,\ 30,\ WHITE);}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00660}00660\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00661}00661\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00662}00662\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00663}00663\ \ \ \ \ \ \ \ \ \ \ \ \ DrawRectangle(GetScreenWidth()\ /\ 2\ -\/\ 210,\ GetScreenHeight()\ /\ 2\ -\/\ 150,\ 30,\ 30,\ WHITE);}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00664}00664\ \ \ \ \ \ \ \ \ \ \ \ \ DrawRectangle(GetScreenWidth()\ /\ 2\ -\/\ 210\ +\ 5,\ GetScreenHeight()\ /\ 2\ -\/\ 145,\ 20,\ 20,\ BLUE);}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00665}00665\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00666}00666\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00667}00667\ \ \ \ \ \textcolor{keywordflow}{if}\ ((\textcolor{keywordtype}{float})GetMouseX()\ >=\ (GetScreenWidth()\ /\ 2\ -\/\ 150)\ \&\&\ (\textcolor{keywordtype}{float})GetMouseX()\ <=\ (GetScreenWidth()\ /\ 2\ -\/\ 150\ +\ MeasureTextEx(\mbox{\hyperlink{spacetype__train_8c_a81aa2ca2abef778dcd32bddb7dbb164e}{retroFont}},\ \textcolor{stringliteral}{"{}bottom\ row\ letters"{}},\ 30,\ 1).x)\ \&\&\ (\textcolor{keywordtype}{float})GetMouseY()\ >=\ (GetScreenHeight()\ /\ 2\ -\/\ 95)\ \&\&\ (\textcolor{keywordtype}{float})GetMouseY()\ <=\ (GetScreenHeight()\ /\ 2\ -\/\ 95\ +\ MeasureTextEx(\mbox{\hyperlink{spacetype__train_8c_a81aa2ca2abef778dcd32bddb7dbb164e}{retroFont}},\ \textcolor{stringliteral}{"{}bottom\ row\ letters"{}},\ 30,\ 1).y))}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00668}00668\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00669}00669\ \ \ \ \ \ \ \ \ DrawTextEx(\mbox{\hyperlink{spacetype__train_8c_a81aa2ca2abef778dcd32bddb7dbb164e}{retroFont}},\ \textcolor{stringliteral}{"{}bottom\ row\ letters"{}},\ (Vector2)\{(GetScreenWidth()\ /\ 2)\ -\/\ 150\ +\ 2,\ GetScreenHeight()\ /\ 2\ -\/\ 95\ +\ 1\},\ 30,\ 1,\ RED);}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00670}00670\ \ \ \ \ \ \ \ \ DrawTextEx(\mbox{\hyperlink{spacetype__train_8c_a81aa2ca2abef778dcd32bddb7dbb164e}{retroFont}},\ \textcolor{stringliteral}{"{}bottom\ row\ letters"{}},\ (Vector2)\{(GetScreenWidth()\ /\ 2)\ -\/\ 150,\ GetScreenHeight()\ /\ 2\ -\/\ 95\},\ 30,\ 1,\ BLUE);}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00671}00671\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{spacetype__train_8c_a0306f32a10da6fc136490962cdf2c8e5}{BottomRow}})}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00672}00672\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00673}00673\ \ \ \ \ \ \ \ \ \ \ \ \ DrawRectangle(GetScreenWidth()\ /\ 2\ -\/\ 210,\ GetScreenHeight()\ /\ 2\ -\/\ 100,\ 30,\ 30,\ WHITE);}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00674}00674\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (IsMouseButtonPressed(MOUSE\_BUTTON\_LEFT))}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00675}00675\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00676}00676\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{spacetype__train_8c_a0306f32a10da6fc136490962cdf2c8e5}{BottomRow}}\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00677}00677\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ DrawRectangle(GetScreenWidth()\ /\ 2\ -\/\ 210\ +\ 5,\ (GetScreenHeight()\ /\ 2\ -\/\ 95),\ 20,\ 20,\ BLUE);}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00678}00678\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00679}00679\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00680}00680\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00681}00681\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00682}00682\ \ \ \ \ \ \ \ \ \ \ \ \ DrawRectangle(GetScreenWidth()\ /\ 2\ -\/\ 210,\ GetScreenHeight()\ /\ 2\ -\/\ 100,\ 30,\ 30,\ WHITE);}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00683}00683\ \ \ \ \ \ \ \ \ \ \ \ \ DrawRectangle(GetScreenWidth()\ /\ 2\ -\/\ 210\ +\ 5,\ GetScreenHeight()\ /\ 2\ -\/\ 95,\ 20,\ 20,\ BLUE);}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00684}00684\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (IsMouseButtonPressed(MOUSE\_BUTTON\_LEFT))}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00685}00685\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00686}00686\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{spacetype__train_8c_a0306f32a10da6fc136490962cdf2c8e5}{BottomRow}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00687}00687\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00688}00688\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00689}00689\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00690}00690\ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00691}00691\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00692}00692\ \ \ \ \ \ \ \ \ DrawTextEx(\mbox{\hyperlink{spacetype__train_8c_a81aa2ca2abef778dcd32bddb7dbb164e}{retroFont}},\ \textcolor{stringliteral}{"{}bottom\ row\ letters"{}},\ (Vector2)\{(GetScreenWidth()\ /\ 2)\ -\/\ 150,\ GetScreenHeight()\ /\ 2\ -\/\ 95\},\ 30,\ 1,\ WHITE);}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00693}00693\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{spacetype__train_8c_a0306f32a10da6fc136490962cdf2c8e5}{BottomRow}})}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00694}00694\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00695}00695\ \ \ \ \ \ \ \ \ \ \ \ \ DrawRectangle(GetScreenWidth()\ /\ 2\ -\/\ 210,\ GetScreenHeight()\ /\ 2\ -\/\ 100,\ 30,\ 30,\ WHITE);}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00696}00696\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00697}00697\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00698}00698\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00699}00699\ \ \ \ \ \ \ \ \ \ \ \ \ DrawRectangle(GetScreenWidth()\ /\ 2\ -\/\ 210,\ GetScreenHeight()\ /\ 2\ -\/\ 100,\ 30,\ 30,\ WHITE);}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00700}00700\ \ \ \ \ \ \ \ \ \ \ \ \ DrawRectangle(GetScreenWidth()\ /\ 2\ -\/\ 210\ +\ 5,\ GetScreenHeight()\ /\ 2\ -\/\ 95,\ 20,\ 20,\ BLUE);}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00701}00701\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00702}00702\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00703}00703\ \ \ \ \ \textcolor{keywordflow}{if}\ ((\textcolor{keywordtype}{float})GetMouseX()\ >=\ (GetScreenWidth()\ /\ 2\ -\/\ MeasureTextEx(\mbox{\hyperlink{spacetype__train_8c_a81aa2ca2abef778dcd32bddb7dbb164e}{retroFont}},\ \textcolor{stringliteral}{"{}start\ training"{}},\ 30,\ 1).x\ /\ 2)\ \&\&\ (\textcolor{keywordtype}{float})GetMouseX()\ <=\ (GetScreenWidth()\ /\ 2\ +\ MeasureTextEx(\mbox{\hyperlink{spacetype__train_8c_a81aa2ca2abef778dcd32bddb7dbb164e}{retroFont}},\ \textcolor{stringliteral}{"{}start\ training"{}},\ 30,\ 1).x\ /\ 2)\ \&\&\ (\textcolor{keywordtype}{float})GetMouseY()\ >=\ (GetScreenHeight()\ /\ 2\ -\/\ 10\ -\/\ MeasureTextEx(\mbox{\hyperlink{spacetype__train_8c_a81aa2ca2abef778dcd32bddb7dbb164e}{retroFont}},\ \textcolor{stringliteral}{"{}words"{}},\ 30,\ 1).y\ /\ 2)\ \&\&\ (\textcolor{keywordtype}{float})GetMouseY()\ <=\ (GetScreenHeight()\ /\ 2\ -\/\ 10\ +\ MeasureTextEx(\mbox{\hyperlink{spacetype__train_8c_a81aa2ca2abef778dcd32bddb7dbb164e}{retroFont}},\ \textcolor{stringliteral}{"{}words"{}},\ 30,\ 1).y\ /\ 2))}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00704}00704\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00705}00705\ \ \ \ \ \ \ \ \ DrawTextPro(\mbox{\hyperlink{spacetype__train_8c_a81aa2ca2abef778dcd32bddb7dbb164e}{retroFont}},\ \textcolor{stringliteral}{"{}start\ training"{}},\ (Vector2)\{(GetScreenWidth()\ /\ 2)\ +\ 2,\ GetScreenHeight()\ /\ 2\ -\/\ 5\ +\ 1\},\ Vector2Scale(MeasureTextEx(\mbox{\hyperlink{spacetype__train_8c_a81aa2ca2abef778dcd32bddb7dbb164e}{retroFont}},\ \textcolor{stringliteral}{"{}start\ training"{}},\ 30,\ 1),\ 0.5f),\ 0,\ 30,\ 1,\ RED);}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00706}00706\ \ \ \ \ \ \ \ \ DrawTextPro(\mbox{\hyperlink{spacetype__train_8c_a81aa2ca2abef778dcd32bddb7dbb164e}{retroFont}},\ \textcolor{stringliteral}{"{}start\ training"{}},\ (Vector2)\{(GetScreenWidth()\ /\ 2),\ GetScreenHeight()\ /\ 2\ -\/\ 5\},\ Vector2Scale(MeasureTextEx(\mbox{\hyperlink{spacetype__train_8c_a81aa2ca2abef778dcd32bddb7dbb164e}{retroFont}},\ \textcolor{stringliteral}{"{}start\ training"{}},\ 30,\ 1),\ 0.5f),\ 0,\ 30,\ 1,\ BLUE);}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00707}00707\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (IsMouseButtonPressed(MOUSE\_BUTTON\_LEFT))}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00708}00708\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00709}00709\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{spacetype__train_8c_a3b7260afdeb5ccd84b1bfd028b24017b}{exitResult}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00710}00710\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{spacetype__train_8c_a0306f32a10da6fc136490962cdf2c8e5}{BottomRow}}\ ==\ \textcolor{keyword}{false}\ \&\&\ \mbox{\hyperlink{spacetype__train_8c_af75b4f0a50616082d89f8646b879d7b2}{TopRow}}\ ==\ \textcolor{keyword}{false}\ \&\&\ \mbox{\hyperlink{spacetype__train_8c_a6f4860fac5ee4453264d597efe0d96d2}{MiddleRow}}\ ==\ \textcolor{keyword}{false})}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00711}00711\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00712}00712\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00713}00713\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00714}00714\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00715}00715\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ EndDrawing();}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00716}00716\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{spacetype__train_8c_a636f2eeb92432f6fcf8a64eda3ddb618}{trainMode}})\ \textcolor{comment}{//\ trainMode\ =\ true\ implies\ training\ letters}}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00717}00717\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00718}00718\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{spacetype__train_8c_a08952319e7c38f34243c26a936d8c38b}{letter\_train}}();}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00719}00719\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00720}00720\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{spacetype__train_8c_a636f2eeb92432f6fcf8a64eda3ddb618}{trainMode}})}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00721}00721\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00722}00722\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{spacetype__train_8c_a9b71b1145b442c758139bf3b462b56b7}{word\_train}}();}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00723}00723\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00724}00724\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00725}00725\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00726}00726\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00727}00727\ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00728}00728\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00729}00729\ \ \ \ \ \ \ \ \ DrawTextPro(\mbox{\hyperlink{spacetype__train_8c_a81aa2ca2abef778dcd32bddb7dbb164e}{retroFont}},\ \textcolor{stringliteral}{"{}Start\ Training"{}},\ (Vector2)\{(GetScreenWidth()\ /\ 2)\ +\ 2,\ GetScreenHeight()\ /\ 2\ -\/\ 5\},\ Vector2Scale(MeasureTextEx(\mbox{\hyperlink{spacetype__train_8c_a81aa2ca2abef778dcd32bddb7dbb164e}{retroFont}},\ \textcolor{stringliteral}{"{}start\ training"{}},\ 30,\ 1),\ 0.5f),\ 0,\ 30,\ 1,\ WHITE);}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00730}00730\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00731}00731\ }
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00732}00732\ \ \ \ \ \textcolor{keywordflow}{if}\ ((\textcolor{keywordtype}{float})GetMouseX()\ >=\ (GetScreenWidth()\ /\ 2\ -\/\ MeasureTextEx(\mbox{\hyperlink{spacetype__train_8c_a81aa2ca2abef778dcd32bddb7dbb164e}{retroFont}},\ \textcolor{stringliteral}{"{}back"{}},\ 30,\ 1).x\ /\ 2)\ \&\&\ (\textcolor{keywordtype}{float})GetMouseX()\ <=\ (GetScreenWidth()\ /\ 2\ +\ MeasureTextEx(\mbox{\hyperlink{spacetype__train_8c_a81aa2ca2abef778dcd32bddb7dbb164e}{retroFont}},\ \textcolor{stringliteral}{"{}back"{}},\ 30,\ 1).x\ /\ 2)\ \&\&\ (\textcolor{keywordtype}{float})GetMouseY()\ >=\ (GetScreenHeight()\ /\ 2\ +\ 40\ -\/\ MeasureTextEx(\mbox{\hyperlink{spacetype__train_8c_a81aa2ca2abef778dcd32bddb7dbb164e}{retroFont}},\ \textcolor{stringliteral}{"{}words"{}},\ 30,\ 1).y\ /\ 2)\ \&\&\ (\textcolor{keywordtype}{float})GetMouseY()\ <=\ (GetScreenHeight()\ /\ 2\ +\ 40\ +\ MeasureTextEx(\mbox{\hyperlink{spacetype__train_8c_a81aa2ca2abef778dcd32bddb7dbb164e}{retroFont}},\ \textcolor{stringliteral}{"{}words"{}},\ 30,\ 1).y\ /\ 2))}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00733}00733\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00734}00734\ \ \ \ \ \ \ \ \ DrawTextPro(\mbox{\hyperlink{spacetype__train_8c_a81aa2ca2abef778dcd32bddb7dbb164e}{retroFont}},\ \textcolor{stringliteral}{"{}back"{}},\ (Vector2)\{(GetScreenWidth()\ /\ 2)\ +\ 2,\ GetScreenHeight()\ /\ 2\ +\ 45\ +\ 1\},\ Vector2Scale(MeasureTextEx(\mbox{\hyperlink{spacetype__train_8c_a81aa2ca2abef778dcd32bddb7dbb164e}{retroFont}},\ \textcolor{stringliteral}{"{}back"{}},\ 30,\ 1),\ 0.5f),\ 0,\ 30,\ 1,\ RED);}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00735}00735\ \ \ \ \ \ \ \ \ DrawTextPro(\mbox{\hyperlink{spacetype__train_8c_a81aa2ca2abef778dcd32bddb7dbb164e}{retroFont}},\ \textcolor{stringliteral}{"{}back"{}},\ (Vector2)\{(GetScreenWidth()\ /\ 2),\ GetScreenHeight()\ /\ 2\ +\ 45\},\ Vector2Scale(MeasureTextEx(\mbox{\hyperlink{spacetype__train_8c_a81aa2ca2abef778dcd32bddb7dbb164e}{retroFont}},\ \textcolor{stringliteral}{"{}back"{}},\ 30,\ 1),\ 0.5f),\ 0,\ 30,\ 1,\ BLUE);}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00736}00736\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (IsMouseButtonPressed(MOUSE\_BUTTON\_LEFT))}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00737}00737\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00738}00738\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{spacetype__train_8c_a7731a0bb03a0145545c4ab2887bfbd1b}{exitTrainLetters}}\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00739}00739\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{spacetype__train_8c_ace864dd89beddb30682a2194098c4d7a}{exitTrainWords}}\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00740}00740\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00741}00741\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00742}00742\ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00743}00743\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00744}00744\ \ \ \ \ \ \ \ \ DrawTextPro(\mbox{\hyperlink{spacetype__train_8c_a81aa2ca2abef778dcd32bddb7dbb164e}{retroFont}},\ \textcolor{stringliteral}{"{}back"{}},\ (Vector2)\{(GetScreenWidth()\ /\ 2)\ +\ 2,\ GetScreenHeight()\ /\ 2\ +\ 45\},\ Vector2Scale(MeasureTextEx(\mbox{\hyperlink{spacetype__train_8c_a81aa2ca2abef778dcd32bddb7dbb164e}{retroFont}},\ \textcolor{stringliteral}{"{}back"{}},\ 30,\ 1),\ 0.5f),\ 0,\ 30,\ 1,\ WHITE);}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00745}00745\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00746}00746\ \}}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00747}00747\ }
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00755}\mbox{\hyperlink{spacetype__train_8c_ae2a6f84abfa05b6703a92e19c4f2802a}{00755}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{spacetype__train_8c_ae2a6f84abfa05b6703a92e19c4f2802a}{select\_letter}}()}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00756}00756\ \{}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00757}00757\ \ \ \ \ \textcolor{comment}{//\ Convert\ the\ three\ choices\ into\ binary\ number}}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00758}00758\ \ \ \ \ \textcolor{keywordtype}{int}\ RowChoice\ =\ 100\ *\ \mbox{\hyperlink{spacetype__train_8c_a6f4860fac5ee4453264d597efe0d96d2}{MiddleRow}}\ +\ 10\ *\ \mbox{\hyperlink{spacetype__train_8c_af75b4f0a50616082d89f8646b879d7b2}{TopRow}}\ +\ 1\ *\ \mbox{\hyperlink{spacetype__train_8c_a0306f32a10da6fc136490962cdf2c8e5}{BottomRow}};}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00759}00759\ }
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00760}00760\ \ \ \ \ \textcolor{comment}{//\ make\ a\ random\ number\ to\ choose\ a\ random\ row.}}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00761}00761\ \ \ \ \ \textcolor{keywordtype}{int}\ RandomRow\ =\ rand()\ \%\ (\mbox{\hyperlink{spacetype__train_8c_a6f4860fac5ee4453264d597efe0d96d2}{MiddleRow}}\ +\ \mbox{\hyperlink{spacetype__train_8c_af75b4f0a50616082d89f8646b879d7b2}{TopRow}}\ +\ \mbox{\hyperlink{spacetype__train_8c_a0306f32a10da6fc136490962cdf2c8e5}{BottomRow}})\ +\ 1;}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00762}00762\ }
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00763}00763\ \ \ \ \ \textcolor{keywordtype}{int}\ RandomUpperLetter,\ RandomMiddleLetter,\ RandomLowerLetter;}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00764}00764\ }
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00765}00765\ \ \ \ \ \textcolor{comment}{/*\ select\ random\ number\ from\ a\ certain\ number\ range\ based\ on\ size\ of\ the\ respective\ row\ words\ array)*/}}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00766}00766\ \ \ \ \ RandomUpperLetter\ =\ rand()\ \%\ 10;}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00767}00767\ \ \ \ \ RandomMiddleLetter\ =\ rand()\ \%\ 9;}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00768}00768\ \ \ \ \ RandomLowerLetter\ =\ rand()\ \%\ 7;}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00769}00769\ }
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00770}00770\ \ \ \ \ \textcolor{keywordflow}{switch}\ (RowChoice)}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00771}00771\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00772}00772\ \ \ \ \ \textcolor{comment}{/*lower\ only*/}\ \textcolor{keywordflow}{case}\ 1:}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00773}00773\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{spacetype__train_8c_a274280c65c6cdaa496287f642aa67e94}{RequiredLetter}}\ =\ \mbox{\hyperlink{spacetype__train_8c_ad0d9b4da8dd51c340764cb70b6aa2493}{BottomRowLetters}}[RandomLowerLetter];}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00774}00774\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00775}00775\ \ \ \ \ \textcolor{comment}{/*upper\ only*/}\ \textcolor{keywordflow}{case}\ 10:}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00776}00776\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{spacetype__train_8c_a274280c65c6cdaa496287f642aa67e94}{RequiredLetter}}\ =\ \mbox{\hyperlink{spacetype__train_8c_aa0eb65cd9fbb49834ffc197ecb28cb46}{TopRowLetters}}[RandomUpperLetter];}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00777}00777\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00778}00778\ }
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00779}00779\ \ \ \ \ \textcolor{keywordflow}{case}\ 11:}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00780}00780\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (RandomRow)}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00781}00781\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00782}00782\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 1:}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00783}00783\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{spacetype__train_8c_a274280c65c6cdaa496287f642aa67e94}{RequiredLetter}}\ =\ \mbox{\hyperlink{spacetype__train_8c_aa0eb65cd9fbb49834ffc197ecb28cb46}{TopRowLetters}}[RandomUpperLetter];}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00784}00784\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00785}00785\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 2:}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00786}00786\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{spacetype__train_8c_a274280c65c6cdaa496287f642aa67e94}{RequiredLetter}}\ =\ \mbox{\hyperlink{spacetype__train_8c_ad0d9b4da8dd51c340764cb70b6aa2493}{BottomRowLetters}}[RandomLowerLetter];}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00787}00787\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00788}00788\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00789}00789\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00790}00790\ \ \ \ \ \textcolor{comment}{/*middle\ only*/}\ \textcolor{keywordflow}{case}\ 100:}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00791}00791\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{spacetype__train_8c_a274280c65c6cdaa496287f642aa67e94}{RequiredLetter}}\ =\ \mbox{\hyperlink{spacetype__train_8c_a83a7eb20198674b4a97cd912d871edad}{MiddleRowLetters}}[RandomMiddleLetter];}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00792}00792\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00793}00793\ }
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00794}00794\ \ \ \ \ \textcolor{keywordflow}{case}\ 101:}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00795}00795\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (RandomRow)}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00796}00796\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00797}00797\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 1:}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00798}00798\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{spacetype__train_8c_a274280c65c6cdaa496287f642aa67e94}{RequiredLetter}}\ =\ \mbox{\hyperlink{spacetype__train_8c_a83a7eb20198674b4a97cd912d871edad}{MiddleRowLetters}}[RandomMiddleLetter];}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00799}00799\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00800}00800\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 2:}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00801}00801\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{spacetype__train_8c_a274280c65c6cdaa496287f642aa67e94}{RequiredLetter}}\ =\ \mbox{\hyperlink{spacetype__train_8c_ad0d9b4da8dd51c340764cb70b6aa2493}{BottomRowLetters}}[RandomLowerLetter];}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00802}00802\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00803}00803\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00804}00804\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00805}00805\ }
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00806}00806\ \ \ \ \ \textcolor{keywordflow}{case}\ 110:}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00807}00807\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (RandomRow)}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00808}00808\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00809}00809\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 1:}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00810}00810\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{spacetype__train_8c_a274280c65c6cdaa496287f642aa67e94}{RequiredLetter}}\ =\ \mbox{\hyperlink{spacetype__train_8c_a83a7eb20198674b4a97cd912d871edad}{MiddleRowLetters}}[RandomMiddleLetter];}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00811}00811\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00812}00812\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 2:}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00813}00813\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{spacetype__train_8c_a274280c65c6cdaa496287f642aa67e94}{RequiredLetter}}\ =\ \mbox{\hyperlink{spacetype__train_8c_aa0eb65cd9fbb49834ffc197ecb28cb46}{TopRowLetters}}[RandomUpperLetter];}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00814}00814\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00815}00815\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00816}00816\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00817}00817\ \ \ \ \ \ \ \ \ \textcolor{comment}{/*All\ the\ rows*/}}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00818}00818\ \ \ \ \ \textcolor{keywordflow}{case}\ 111:}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00819}00819\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (RandomRow)}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00820}00820\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00821}00821\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 1:}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00822}00822\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{spacetype__train_8c_a274280c65c6cdaa496287f642aa67e94}{RequiredLetter}}\ =\ \mbox{\hyperlink{spacetype__train_8c_a83a7eb20198674b4a97cd912d871edad}{MiddleRowLetters}}[RandomMiddleLetter];}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00823}00823\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00824}00824\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 2:}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00825}00825\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{spacetype__train_8c_a274280c65c6cdaa496287f642aa67e94}{RequiredLetter}}\ =\ \mbox{\hyperlink{spacetype__train_8c_aa0eb65cd9fbb49834ffc197ecb28cb46}{TopRowLetters}}[RandomUpperLetter];}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00826}00826\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00827}00827\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 3:}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00828}00828\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{spacetype__train_8c_a274280c65c6cdaa496287f642aa67e94}{RequiredLetter}}\ =\ \mbox{\hyperlink{spacetype__train_8c_ad0d9b4da8dd51c340764cb70b6aa2493}{BottomRowLetters}}[RandomLowerLetter];}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00829}00829\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00830}00830\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00831}00831\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00832}00832\ }
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00833}00833\ \ \ \ \ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00834}00834\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00835}00835\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00836}00836\ \}}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00837}00837\ }
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00845}\mbox{\hyperlink{spacetype__train_8c_aaad24f8670154915aa2c3915a2c0cab0}{00845}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{spacetype__train_8c_aaad24f8670154915aa2c3915a2c0cab0}{select\_word}}()}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00846}00846\ \{}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00847}00847\ \ \ \ \ \textcolor{comment}{//\ Convert\ the\ three\ choices\ into\ binary\ numbers\ for\ switch\ case.}}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00848}00848\ \ \ \ \ \textcolor{keywordtype}{int}\ RowChoice\ =\ 100\ *\ \mbox{\hyperlink{spacetype__train_8c_a6f4860fac5ee4453264d597efe0d96d2}{MiddleRow}}\ +\ 10\ *\ \mbox{\hyperlink{spacetype__train_8c_af75b4f0a50616082d89f8646b879d7b2}{TopRow}}\ +\ 1\ *\ \mbox{\hyperlink{spacetype__train_8c_a0306f32a10da6fc136490962cdf2c8e5}{BottomRow}};}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00849}00849\ }
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00850}00850\ \ \ \ \ \textcolor{comment}{//\ make\ a\ random\ number\ to\ choose\ a\ random\ row.}}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00851}00851\ \ \ \ \ \textcolor{keywordtype}{int}\ RandomRow\ =\ rand()\ \%\ (\mbox{\hyperlink{spacetype__train_8c_a6f4860fac5ee4453264d597efe0d96d2}{MiddleRow}}\ +\ \mbox{\hyperlink{spacetype__train_8c_af75b4f0a50616082d89f8646b879d7b2}{TopRow}}\ +\ \mbox{\hyperlink{spacetype__train_8c_a0306f32a10da6fc136490962cdf2c8e5}{BottomRow}})\ +\ 1;}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00852}00852\ }
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00853}00853\ \ \ \ \ \textcolor{keywordtype}{int}\ RandomUpperWord,\ RandomMiddleWord,\ RandomLowerWord;}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00854}00854\ }
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00855}00855\ \ \ \ \ \textcolor{comment}{/*\ select\ random\ number\ from\ a\ certain\ number\ range\ based\ on\ size\ of\ the\ respective\ row\ words\ array)*/}}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00856}00856\ \ \ \ \ RandomUpperWord\ =\ rand()\ \%\ 10;}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00857}00857\ \ \ \ \ RandomMiddleWord\ =\ rand()\ \%\ 9;}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00858}00858\ \ \ \ \ RandomLowerWord\ =\ rand()\ \%\ 7;}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00859}00859\ }
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00860}00860\ \ \ \ \ \textcolor{keywordflow}{switch}\ (RowChoice)}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00861}00861\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00862}00862\ \ \ \ \ \textcolor{comment}{/*lower\ only*/}\ \textcolor{keywordflow}{case}\ 1:}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00863}00863\ \ \ \ \ \ \ \ \ strcpy(\mbox{\hyperlink{spacetype__train_8c_ab67c2bf75aecaae45aa54be72064b12c}{RequiredWord}},\ \mbox{\hyperlink{spacetype__train_8c_abf18f43aaf42f928442ef50bf764e474}{BottomRowWords}}[RandomLowerWord]);}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00864}00864\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00865}00865\ }
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00866}00866\ \ \ \ \ \textcolor{comment}{/*upper\ only*/}\ \textcolor{keywordflow}{case}\ 10:}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00867}00867\ \ \ \ \ \ \ \ \ strcpy(\mbox{\hyperlink{spacetype__train_8c_ab67c2bf75aecaae45aa54be72064b12c}{RequiredWord}},\ \mbox{\hyperlink{spacetype__train_8c_a7f7a2ca3ec7cf5038b6c1123127611b4}{TopRowWords}}[RandomUpperWord]);}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00868}00868\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00869}00869\ }
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00870}00870\ \ \ \ \ \textcolor{keywordflow}{case}\ 11:}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00871}00871\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (RandomRow)}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00872}00872\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00873}00873\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 1:}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00874}00874\ \ \ \ \ \ \ \ \ \ \ \ \ strcpy(\mbox{\hyperlink{spacetype__train_8c_ab67c2bf75aecaae45aa54be72064b12c}{RequiredWord}},\ \mbox{\hyperlink{spacetype__train_8c_a7f7a2ca3ec7cf5038b6c1123127611b4}{TopRowWords}}[RandomUpperWord]);}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00875}00875\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00876}00876\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 2:}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00877}00877\ \ \ \ \ \ \ \ \ \ \ \ \ strcpy(\mbox{\hyperlink{spacetype__train_8c_ab67c2bf75aecaae45aa54be72064b12c}{RequiredWord}},\ \mbox{\hyperlink{spacetype__train_8c_abf18f43aaf42f928442ef50bf764e474}{BottomRowWords}}[RandomLowerWord]);}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00878}00878\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00879}00879\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00880}00880\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00881}00881\ }
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00882}00882\ \ \ \ \ \textcolor{comment}{/*middle\ only*/}\ \textcolor{keywordflow}{case}\ 100:}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00883}00883\ \ \ \ \ \ \ \ \ strcpy(\mbox{\hyperlink{spacetype__train_8c_ab67c2bf75aecaae45aa54be72064b12c}{RequiredWord}},\ \mbox{\hyperlink{spacetype__train_8c_a026fe24097b865d938bf03d591f0573c}{MiddleRowWords}}[RandomMiddleWord]);}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00884}00884\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00885}00885\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00886}00886\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00887}00887\ \ \ \ \ \textcolor{keywordflow}{case}\ 101:}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00888}00888\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (RandomRow)}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00889}00889\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00890}00890\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 1:}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00891}00891\ \ \ \ \ \ \ \ \ \ \ \ \ strcpy(\mbox{\hyperlink{spacetype__train_8c_ab67c2bf75aecaae45aa54be72064b12c}{RequiredWord}},\ \mbox{\hyperlink{spacetype__train_8c_a026fe24097b865d938bf03d591f0573c}{MiddleRowWords}}[RandomMiddleWord]);}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00892}00892\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00893}00893\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 2:}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00894}00894\ \ \ \ \ \ \ \ \ \ \ \ \ strcpy(\mbox{\hyperlink{spacetype__train_8c_ab67c2bf75aecaae45aa54be72064b12c}{RequiredWord}},\ \mbox{\hyperlink{spacetype__train_8c_abf18f43aaf42f928442ef50bf764e474}{BottomRowWords}}[RandomLowerWord]);}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00895}00895\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00896}00896\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00897}00897\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00898}00898\ }
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00899}00899\ \ \ \ \ \textcolor{keywordflow}{case}\ 110:}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00900}00900\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (RandomRow)}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00901}00901\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00902}00902\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 1:}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00903}00903\ \ \ \ \ \ \ \ \ \ \ \ \ strcpy(\mbox{\hyperlink{spacetype__train_8c_ab67c2bf75aecaae45aa54be72064b12c}{RequiredWord}},\ \mbox{\hyperlink{spacetype__train_8c_a026fe24097b865d938bf03d591f0573c}{MiddleRowWords}}[RandomMiddleWord]);}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00904}00904\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00905}00905\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 2:}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00906}00906\ \ \ \ \ \ \ \ \ \ \ \ \ strcpy(\mbox{\hyperlink{spacetype__train_8c_ab67c2bf75aecaae45aa54be72064b12c}{RequiredWord}},\ \mbox{\hyperlink{spacetype__train_8c_a7f7a2ca3ec7cf5038b6c1123127611b4}{TopRowWords}}[RandomUpperWord]);}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00907}00907\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00908}00908\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00909}00909\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00910}00910\ }
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00911}00911\ \ \ \ \ \textcolor{keywordflow}{case}\ 111:}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00912}00912\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (RandomRow)}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00913}00913\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00914}00914\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 1:}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00915}00915\ \ \ \ \ \ \ \ \ \ \ \ \ strcpy(\mbox{\hyperlink{spacetype__train_8c_ab67c2bf75aecaae45aa54be72064b12c}{RequiredWord}},\ \mbox{\hyperlink{spacetype__train_8c_a026fe24097b865d938bf03d591f0573c}{MiddleRowWords}}[RandomMiddleWord]);}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00916}00916\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00917}00917\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 2:}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00918}00918\ \ \ \ \ \ \ \ \ \ \ \ \ strcpy(\mbox{\hyperlink{spacetype__train_8c_ab67c2bf75aecaae45aa54be72064b12c}{RequiredWord}},\ \mbox{\hyperlink{spacetype__train_8c_a7f7a2ca3ec7cf5038b6c1123127611b4}{TopRowWords}}[RandomUpperWord]);}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00919}00919\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00920}00920\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 3:}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00921}00921\ \ \ \ \ \ \ \ \ \ \ \ \ strcpy(\mbox{\hyperlink{spacetype__train_8c_ab67c2bf75aecaae45aa54be72064b12c}{RequiredWord}},\ \mbox{\hyperlink{spacetype__train_8c_abf18f43aaf42f928442ef50bf764e474}{BottomRowWords}}[RandomLowerWord]);}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00922}00922\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00923}00923\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00924}00924\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00925}00925\ \ \ \ \ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00926}00926\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00927}00927\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{spacetype__train_8c_source_l00928}00928\ \}}
+
+\end{DoxyCode}

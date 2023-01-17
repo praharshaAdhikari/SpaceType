@@ -1,0 +1,496 @@
+\begin{theindex}
+
+  \item {angle}
+    \subitem {spacetype\_game.c}, 29
+
+  \indexspace
+
+  \item {BottomRow}
+    \subitem {spacetype\_train.c}, 51
+  \item {BottomRowLetters}
+    \subitem {spacetype\_train.c}, 51
+  \item {BottomRowWords}
+    \subitem {spacetype\_train.c}, 51
+  \item {bullet}
+    \subitem {spacetype\_game.c}, 29
+  \item {bulletAngle}
+    \subitem {spacetype\_game.c}, 30
+  \item {bulletMover}
+    \subitem {spacetype\_game.c}, 30
+  \item {bulletPos}
+    \subitem {spacetype\_game.c}, 30
+  \item {bulletTexture}
+    \subitem {spacetype\_functions.c}, 18
+
+  \indexspace
+
+  \item {character}
+    \subitem {charCount}, 7
+  \item {charCount}, 7
+    \subitem {character}, 7
+    \subitem {count}, 7
+  \item {check}
+    \subitem {spacetype\_test.c}, 39
+  \item {cockpitTexture}
+    \subitem {main.c}, 12
+    \subitem {spacetype\_test.c}, 39
+    \subitem {spacetype\_train.c}, 52
+  \item {cockpitTextureExit}
+    \subitem {main.c}, 12
+  \item {cockpitTextureGame}
+    \subitem {main.c}, 12
+  \item {cockpitTextureKeyboard}
+    \subitem {spacetype\_functions.c}, 18
+    \subitem {spacetype\_test.c}, 39
+    \subitem {spacetype\_train.c}, 52
+  \item {cockpitTextureTest}
+    \subitem {main.c}, 12
+  \item {cockpitTextureTrain}
+    \subitem {main.c}, 12
+  \item {count}
+    \subitem {charCount}, 7
+  \item {customized\_train}
+    \subitem {spacetype\_train.c}, 46
+    \subitem {spacetype\_train.h}, 56
+  \item {customizedWords}
+    \subitem {spacetype\_train.c}, 52
+
+  \indexspace
+
+  \item {draw\_background}
+    \subitem {spacetype\_functions.c}, 16
+    \subitem {spacetype\_functions.h}, 24
+  \item {draw\_menu}
+    \subitem {main.c}, 10
+
+  \indexspace
+
+  \item {exitGame}
+    \subitem {main.c}, 12
+    \subitem {spacetype\_functions.c}, 18
+  \item {exitPause}
+    \subitem {spacetype\_functions.c}, 18
+  \item {exitResult}
+    \subitem {spacetype\_train.c}, 52
+  \item {exitTest}
+    \subitem {spacetype\_test.c}, 39
+  \item {exitTestProcess}
+    \subitem {spacetype\_test.c}, 39
+  \item {exitTrain}
+    \subitem {spacetype\_train.c}, 52
+  \item {exitTrainLetters}
+    \subitem {spacetype\_train.c}, 53
+  \item {exitTrainProcess}
+    \subitem {spacetype\_train.c}, 53
+  \item {exitTrainWords}
+    \subitem {spacetype\_train.c}, 53
+  \item {exitWindow}
+    \subitem {main.c}, 12
+
+  \indexspace
+
+  \item {fastestWord}
+    \subitem {spacetype\_functions.c}, 19
+  \item {fastestWordFrames}
+    \subitem {spacetype\_functions.c}, 19
+  \item {fontSize}
+    \subitem {spacetype\_game.c}, 30
+  \item {framesCounterForSession}
+    \subitem {spacetype\_functions.c}, 19
+  \item {framesCounterForWord}
+    \subitem {spacetype\_functions.c}, 19
+
+  \indexspace
+
+  \item {game}
+    \subitem {spacetype\_game.c}, 28
+    \subitem {spacetype\_game.h}, 34
+  \item {GAME\_OVER}
+    \subitem {spacetype\_game.c}, 30
+  \item {gap}
+    \subitem {spacetype\_game.c}, 30
+  \item {gapMeasured}
+    \subitem {spacetype\_functions.c}, 19
+
+  \indexspace
+
+  \item {input}
+    \subitem {spacetype\_test.c}, 39
+
+  \indexspace
+
+  \item {keyboard\_highlight}
+    \subitem {spacetype\_functions.c}, 17
+    \subitem {spacetype\_functions.h}, 24
+  \item {keysPressed}
+    \subitem {spacetype\_functions.c}, 19
+
+  \indexspace
+
+  \item {letter\_print}
+    \subitem {spacetype\_train.h}, 56
+  \item {letter\_train}
+    \subitem {spacetype\_train.c}, 47
+    \subitem {spacetype\_train.h}, 57
+  \item {letterinput}
+    \subitem {spacetype\_train.c}, 53
+
+  \indexspace
+
+  \item {main}
+    \subitem {main.c}, 11
+  \item {main.c}, 9
+    \subitem {cockpitTexture}, 12
+    \subitem {cockpitTextureExit}, 12
+    \subitem {cockpitTextureGame}, 12
+    \subitem {cockpitTextureTest}, 12
+    \subitem {cockpitTextureTrain}, 12
+    \subitem {draw\_menu}, 10
+    \subitem {exitGame}, 12
+    \subitem {exitWindow}, 12
+    \subitem {main}, 11
+    \subitem {qwertyTexture}, 13
+    \subitem {regularFont}, 13
+    \subitem {retroFont}, 13
+    \subitem {screenHeight}, 13
+    \subitem {screenWidth}, 13
+    \subitem {sorted}, 13
+    \subitem {wrongChars}, 14
+  \item {MiddleRow}
+    \subitem {spacetype\_train.c}, 53
+  \item {MiddleRowLetters}
+    \subitem {spacetype\_train.c}, 53
+  \item {MiddleRowWords}
+    \subitem {spacetype\_train.c}, 53
+  \item {mode\_trainletters}
+    \subitem {spacetype\_train.c}, 48
+    \subitem {spacetype\_train.h}, 57
+  \item {mode\_trainwords}
+    \subitem {spacetype\_train.c}, 48
+    \subitem {spacetype\_train.h}, 58
+  \item {mover}
+    \subitem {spacetype\_functions.c}, 19
+  \item {movingDown}
+    \subitem {spacetype\_functions.c}, 20
+    \subitem {spacetype\_game.c}, 31
+  \item {movingPlanets}
+    \subitem {spacetype\_game.c}, 31
+  \item {music}
+    \subitem {spacetype\_functions.c}, 20
+    \subitem {spacetype\_game.c}, 31
+    \subitem {spacetype\_test.c}, 39
+    \subitem {spacetype\_train.c}, 53
+
+  \indexspace
+
+  \item {pause\_screen}
+    \subitem {spacetype\_functions.c}, 17
+    \subitem {spacetype\_functions.h}, 24
+  \item {planetTextures}
+    \subitem {spacetype\_functions.c}, 20
+  \item {prevAngle}
+    \subitem {spacetype\_game.c}, 31
+
+  \indexspace
+
+  \item {qwertyTexture}
+    \subitem {main.c}, 13
+    \subitem {spacetype\_functions.c}, 20
+
+  \indexspace
+
+  \item {regularFont}
+    \subitem {main.c}, 13
+    \subitem {spacetype\_test.c}, 40
+  \item {remove\_firstletter}
+    \subitem {spacetype\_functions.c}, 17
+    \subitem {spacetype\_functions.h}, 25
+  \item {RequiredLetter}
+    \subitem {spacetype\_train.c}, 54
+  \item {RequiredWord}
+    \subitem {spacetype\_train.c}, 54
+  \item {reset\_counter}
+    \subitem {spacetype\_functions.c}, 17
+    \subitem {spacetype\_functions.h}, 25
+  \item {retroFont}
+    \subitem {main.c}, 13
+    \subitem {spacetype\_functions.c}, 20
+    \subitem {spacetype\_game.c}, 31
+    \subitem {spacetype\_test.c}, 40
+    \subitem {spacetype\_train.c}, 54
+  \item {rightKeysPressed}
+    \subitem {spacetype\_functions.c}, 20
+
+  \indexspace
+
+  \item {scale}
+    \subitem {spacetype\_functions.c}, 21
+  \item {SCORE}
+    \subitem {spacetype\_functions.c}, 21
+  \item {scoreString}
+    \subitem {spacetype\_functions.c}, 21
+  \item {screenHeight}
+    \subitem {main.c}, 13
+    \subitem {spacetype\_functions.c}, 21
+    \subitem {spacetype\_game.c}, 31
+    \subitem {spacetype\_test.c}, 40
+    \subitem {spacetype\_train.c}, 54
+  \item {screenWidth}
+    \subitem {main.c}, 13
+    \subitem {spacetype\_functions.c}, 21
+    \subitem {spacetype\_game.c}, 32
+    \subitem {spacetype\_test.c}, 40
+    \subitem {spacetype\_train.c}, 54
+  \item {select\_letter}
+    \subitem {spacetype\_train.c}, 48
+    \subitem {spacetype\_train.h}, 58
+  \item {select\_word}
+    \subitem {spacetype\_train.c}, 49
+    \subitem {spacetype\_train.h}, 59
+  \item {shoot}
+    \subitem {spacetype\_game.c}, 32
+  \item {sizeOfArray}
+    \subitem {spacetype\_game.c}, 32
+  \item {slowestWord}
+    \subitem {spacetype\_functions.c}, 21
+  \item {slowestWordFrames}
+    \subitem {spacetype\_functions.c}, 21
+  \item {sorted}
+    \subitem {main.c}, 13
+    \subitem {spacetype\_functions.c}, 22
+  \item {spaceshipTexture}
+    \subitem {spacetype\_functions.c}, 22
+  \item {spaceTexture}
+    \subitem {spacetype\_functions.c}, 22
+  \item {spacetype\_functions.c}, 14
+    \subitem {bulletTexture}, 18
+    \subitem {cockpitTextureKeyboard}, 18
+    \subitem {draw\_background}, 16
+    \subitem {exitGame}, 18
+    \subitem {exitPause}, 18
+    \subitem {fastestWord}, 19
+    \subitem {fastestWordFrames}, 19
+    \subitem {framesCounterForSession}, 19
+    \subitem {framesCounterForWord}, 19
+    \subitem {gapMeasured}, 19
+    \subitem {keyboard\_highlight}, 17
+    \subitem {keysPressed}, 19
+    \subitem {mover}, 19
+    \subitem {movingDown}, 20
+    \subitem {music}, 20
+    \subitem {pause\_screen}, 17
+    \subitem {planetTextures}, 20
+    \subitem {qwertyTexture}, 20
+    \subitem {remove\_firstletter}, 17
+    \subitem {reset\_counter}, 17
+    \subitem {retroFont}, 20
+    \subitem {rightKeysPressed}, 20
+    \subitem {scale}, 21
+    \subitem {SCORE}, 21
+    \subitem {scoreString}, 21
+    \subitem {screenHeight}, 21
+    \subitem {screenWidth}, 21
+    \subitem {slowestWord}, 21
+    \subitem {slowestWordFrames}, 21
+    \subitem {sorted}, 22
+    \subitem {spaceshipTexture}, 22
+    \subitem {spaceTexture}, 22
+    \subitem {TIME}, 22
+    \subitem {tutorial\_screen}, 18
+    \subitem {wrongChars}, 22
+  \item {spacetype\_functions.h}, 23
+    \subitem {draw\_background}, 24
+    \subitem {keyboard\_highlight}, 24
+    \subitem {pause\_screen}, 24
+    \subitem {remove\_firstletter}, 25
+    \subitem {reset\_counter}, 25
+    \subitem {tutorial\_screen}, 25
+    \subitem {wrongLetters}, 26
+  \item {spacetype\_game.c}, 26
+    \subitem {angle}, 29
+    \subitem {bullet}, 29
+    \subitem {bulletAngle}, 30
+    \subitem {bulletMover}, 30
+    \subitem {bulletPos}, 30
+    \subitem {fontSize}, 30
+    \subitem {game}, 28
+    \subitem {GAME\_OVER}, 30
+    \subitem {gap}, 30
+    \subitem {movingDown}, 31
+    \subitem {movingPlanets}, 31
+    \subitem {music}, 31
+    \subitem {prevAngle}, 31
+    \subitem {retroFont}, 31
+    \subitem {screenHeight}, 31
+    \subitem {screenWidth}, 32
+    \subitem {shoot}, 32
+    \subitem {sizeOfArray}, 32
+    \subitem {text\_mover}, 29
+    \subitem {word}, 32
+    \subitem {wordPos}, 32
+    \subitem {words}, 32
+    \subitem {wordStored}, 33
+  \item {spacetype\_game.h}, 33
+    \subitem {game}, 34
+    \subitem {text\_mover}, 34
+  \item {spacetype\_test.c}, 35
+    \subitem {check}, 39
+    \subitem {cockpitTexture}, 39
+    \subitem {cockpitTextureKeyboard}, 39
+    \subitem {exitTest}, 39
+    \subitem {exitTestProcess}, 39
+    \subitem {input}, 39
+    \subitem {music}, 39
+    \subitem {regularFont}, 40
+    \subitem {retroFont}, 40
+    \subitem {screenHeight}, 40
+    \subitem {screenWidth}, 40
+    \subitem {test}, 37
+    \subitem {test\_menu}, 37
+    \subitem {test\_process}, 38
+    \subitem {text1}, 40
+    \subitem {text10}, 40
+    \subitem {text2}, 41
+    \subitem {text3}, 41
+    \subitem {text4}, 41
+    \subitem {text5}, 41
+    \subitem {text6}, 41
+    \subitem {text7}, 42
+    \subitem {text8}, 42
+    \subitem {text9}, 42
+  \item {spacetype\_test.h}, 42
+    \subitem {test}, 43
+    \subitem {test\_menu}, 43
+    \subitem {test\_process}, 43
+  \item {spacetype\_train.c}, 44
+    \subitem {BottomRow}, 51
+    \subitem {BottomRowLetters}, 51
+    \subitem {BottomRowWords}, 51
+    \subitem {cockpitTexture}, 52
+    \subitem {cockpitTextureKeyboard}, 52
+    \subitem {customized\_train}, 46
+    \subitem {customizedWords}, 52
+    \subitem {exitResult}, 52
+    \subitem {exitTrain}, 52
+    \subitem {exitTrainLetters}, 53
+    \subitem {exitTrainProcess}, 53
+    \subitem {exitTrainWords}, 53
+    \subitem {letter\_train}, 47
+    \subitem {letterinput}, 53
+    \subitem {MiddleRow}, 53
+    \subitem {MiddleRowLetters}, 53
+    \subitem {MiddleRowWords}, 53
+    \subitem {mode\_trainletters}, 48
+    \subitem {mode\_trainwords}, 48
+    \subitem {music}, 53
+    \subitem {RequiredLetter}, 54
+    \subitem {RequiredWord}, 54
+    \subitem {retroFont}, 54
+    \subitem {screenHeight}, 54
+    \subitem {screenWidth}, 54
+    \subitem {select\_letter}, 48
+    \subitem {select\_word}, 49
+    \subitem {TopRow}, 54
+    \subitem {TopRowLetters}, 54
+    \subitem {TopRowWords}, 55
+    \subitem {train}, 49
+    \subitem {train\_menu}, 49
+    \subitem {train\_select}, 50
+    \subitem {trainMode}, 55
+    \subitem {word\_train}, 51
+    \subitem {wordinput}, 55
+    \subitem {wordStored}, 55
+  \item {spacetype\_train.h}, 55
+    \subitem {customized\_train}, 56
+    \subitem {letter\_print}, 56
+    \subitem {letter\_train}, 57
+    \subitem {mode\_trainletters}, 57
+    \subitem {mode\_trainwords}, 58
+    \subitem {select\_letter}, 58
+    \subitem {select\_word}, 59
+    \subitem {start\_trainword}, 59
+    \subitem {train}, 59
+    \subitem {train\_menu}, 59
+    \subitem {train\_select}, 60
+  \item {start\_trainword}
+    \subitem {spacetype\_train.h}, 59
+
+  \indexspace
+
+  \item {test}
+    \subitem {spacetype\_test.c}, 37
+    \subitem {spacetype\_test.h}, 43
+  \item {test\_menu}
+    \subitem {spacetype\_test.c}, 37
+    \subitem {spacetype\_test.h}, 43
+  \item {test\_process}
+    \subitem {spacetype\_test.c}, 38
+    \subitem {spacetype\_test.h}, 43
+  \item {text1}
+    \subitem {spacetype\_test.c}, 40
+  \item {text10}
+    \subitem {spacetype\_test.c}, 40
+  \item {text2}
+    \subitem {spacetype\_test.c}, 41
+  \item {text3}
+    \subitem {spacetype\_test.c}, 41
+  \item {text4}
+    \subitem {spacetype\_test.c}, 41
+  \item {text5}
+    \subitem {spacetype\_test.c}, 41
+  \item {text6}
+    \subitem {spacetype\_test.c}, 41
+  \item {text7}
+    \subitem {spacetype\_test.c}, 42
+  \item {text8}
+    \subitem {spacetype\_test.c}, 42
+  \item {text9}
+    \subitem {spacetype\_test.c}, 42
+  \item {text\_mover}
+    \subitem {spacetype\_game.c}, 29
+    \subitem {spacetype\_game.h}, 34
+  \item {TIME}
+    \subitem {spacetype\_functions.c}, 22
+  \item {TopRow}
+    \subitem {spacetype\_train.c}, 54
+  \item {TopRowLetters}
+    \subitem {spacetype\_train.c}, 54
+  \item {TopRowWords}
+    \subitem {spacetype\_train.c}, 55
+  \item {train}
+    \subitem {spacetype\_train.c}, 49
+    \subitem {spacetype\_train.h}, 59
+  \item {train\_menu}
+    \subitem {spacetype\_train.c}, 49
+    \subitem {spacetype\_train.h}, 59
+  \item {train\_select}
+    \subitem {spacetype\_train.c}, 50
+    \subitem {spacetype\_train.h}, 60
+  \item {trainMode}
+    \subitem {spacetype\_train.c}, 55
+  \item {tutorial\_screen}
+    \subitem {spacetype\_functions.c}, 18
+    \subitem {spacetype\_functions.h}, 25
+
+  \indexspace
+
+  \item {word}
+    \subitem {spacetype\_game.c}, 32
+  \item {word\_train}
+    \subitem {spacetype\_train.c}, 51
+  \item {wordinput}
+    \subitem {spacetype\_train.c}, 55
+  \item {wordPos}
+    \subitem {spacetype\_game.c}, 32
+  \item {words}
+    \subitem {spacetype\_game.c}, 32
+  \item {wordStored}
+    \subitem {spacetype\_game.c}, 33
+    \subitem {spacetype\_train.c}, 55
+  \item {wrongChars}
+    \subitem {main.c}, 14
+    \subitem {spacetype\_functions.c}, 22
+  \item {wrongLetters}
+    \subitem {spacetype\_functions.h}, 26
+
+\end{theindex}

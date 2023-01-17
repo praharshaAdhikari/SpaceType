@@ -1,0 +1,82 @@
+\doxysection{spacetype\+\_\+test.\+h File Reference}
+\label{spacetype__test_8h}\index{spacetype\_test.h@{spacetype\_test.h}}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=172pt]{spacetype__test_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \textbf{ test\+\_\+process} (char test\+\_\+text[$\,$])
+\begin{DoxyCompactList}\small\item\em Handles the typing test process. \end{DoxyCompactList}\item 
+void \textbf{ test\+\_\+menu} ()
+\begin{DoxyCompactList}\small\item\em main menu for test screen \end{DoxyCompactList}\item 
+void \textbf{ test} ()
+\begin{DoxyCompactList}\small\item\em main function for test mode \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\label{spacetype__test_8h_ae1a3968e7947464bee7714f6d43b7002}} 
+\index{spacetype\_test.h@{spacetype\_test.h}!test@{test}}
+\index{test@{test}!spacetype\_test.h@{spacetype\_test.h}}
+\doxysubsubsection{test()}
+{\footnotesize\ttfamily void test (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+main function for test mode 
+
+Initializes the background texture, continues the background music, draws the background and calls test\+\_\+menu function for further navigation Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{spacetype__test_8h_ae1a3968e7947464bee7714f6d43b7002_cgraph}
+\end{center}
+\end{figure}
+\mbox{\label{spacetype__test_8h_a25ba3fb7af6ebbefc65c74be1ed8e186}} 
+\index{spacetype\_test.h@{spacetype\_test.h}!test\_menu@{test\_menu}}
+\index{test\_menu@{test\_menu}!spacetype\_test.h@{spacetype\_test.h}}
+\doxysubsubsection{test\_menu()}
+{\footnotesize\ttfamily void test\+\_\+menu (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+main menu for test screen 
+
+Draws the menu for the test mode. Gives the user the option to choose the difficulty that they want their test to be in. Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{spacetype__test_8h_a25ba3fb7af6ebbefc65c74be1ed8e186_cgraph}
+\end{center}
+\end{figure}
+\mbox{\label{spacetype__test_8h_af55403a1d20e95c21ed04315a711d285}} 
+\index{spacetype\_test.h@{spacetype\_test.h}!test\_process@{test\_process}}
+\index{test\_process@{test\_process}!spacetype\_test.h@{spacetype\_test.h}}
+\doxysubsubsection{test\_process()}
+{\footnotesize\ttfamily void test\+\_\+process (\begin{DoxyParamCaption}\item[{char}]{test\+\_\+text[$\,$] }\end{DoxyParamCaption})}
+
+
+
+Handles the typing test process. 
+
+This function divides the large text into smaller parts, and displays it on the screen to make it easier for the user. Gets the key pressed by the user, checks with the letter from the text, and highlights if its correct. The second part of the text only displayed once the displayed part is enterred correctly. Statistics like typing speed, accuracy are shown at the end.
+
+
+\begin{DoxyParams}{Parameters}
+{\em test\+\_\+test} & Indicates which passage is to be displayed \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=287pt]{spacetype__test_8h_af55403a1d20e95c21ed04315a711d285_cgraph}
+\end{center}
+\end{figure}

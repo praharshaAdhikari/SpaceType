@@ -1,0 +1,353 @@
+\doxysection{spacetype\+\_\+game.\+c File Reference}
+\label{spacetype__game_8c}\index{spacetype\_game.c@{spacetype\_game.c}}
+
+
+Word Shooter Game for Spacetype.  
+
+
+{\ttfamily \#include \char`\"{}spacetype\+\_\+functions.\+c\char`\"{}}\newline
+Include dependency graph for spacetype\+\_\+game.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=336pt]{spacetype__game_8c__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=179pt]{spacetype__game_8c__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \textbf{ text\+\_\+mover} (Vector2 $\ast$\textbf{ word\+Pos}, Rectangle player\+Pos, Vector2 \textbf{ gap}, float time)
+\begin{DoxyCompactList}\small\item\em Moves the word toward the player. \end{DoxyCompactList}\item 
+void \textbf{ game} ()
+\begin{DoxyCompactList}\small\item\em main function for game mode \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{Indent}\textbf{ Main gameplay variables}\par
+{\em These variables handle different aspects related to the main gameplay. }\begin{DoxyCompactItemize}
+\item 
+char $\ast$ \textbf{ words} [$\,$]
+\begin{DoxyCompactList}\small\item\em List of words to choose from for the game. \end{DoxyCompactList}\item 
+char \textbf{ word} [20]
+\begin{DoxyCompactList}\small\item\em word which is presented to type \end{DoxyCompactList}\item 
+char \textbf{ word\+Stored} [20]
+\begin{DoxyCompactList}\small\item\em stores the presented word to later compare with fastestword and slowestword \end{DoxyCompactList}\item 
+int \textbf{ size\+Of\+Array} = sizeof(\textbf{ words}) / sizeof(\textbf{ words}[0])
+\begin{DoxyCompactList}\small\item\em for calculating total number of words$\ast$/ \end{DoxyCompactList}\item 
+Vector2 \textbf{ gap} = \{\}
+\begin{DoxyCompactList}\small\item\em Shortest distance between word and spaceship$\ast$/. \end{DoxyCompactList}\item 
+Vector2 \textbf{ word\+Pos}
+\begin{DoxyCompactList}\small\item\em position of word as it falls down \end{DoxyCompactList}\item 
+const int \textbf{ font\+Size} = 25
+\begin{DoxyCompactList}\small\item\em Fonsize declaration for uniformity of fontsize. \end{DoxyCompactList}\item 
+float \textbf{ angle} = 0
+\begin{DoxyCompactList}\small\item\em Angle of word to have it fall towards player. \end{DoxyCompactList}\item 
+float \textbf{ prev\+Angle} = 0
+\begin{DoxyCompactList}\small\item\em Angle of the spaceship. \end{DoxyCompactList}\item 
+float \textbf{ moving\+Planets} = 0
+\begin{DoxyCompactList}\small\item\em Denotes which planet will be on screen. \end{DoxyCompactList}\item 
+float \textbf{ moving\+Down} = 0
+\begin{DoxyCompactList}\small\item\em Parameters which makes space texture scroll infinitely$\ast$/. \end{DoxyCompactList}\item 
+bool \textbf{ GAME\+\_\+\+OVER} = false
+\begin{DoxyCompactList}\small\item\em boolean to check game over condition \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}\textbf{ Bullet related variables}\par
+{\em These variables handle different aspects related to bullet which destroys the word when it is finished being typed. }\begin{DoxyCompactItemize}
+\item 
+Sound \textbf{ shoot}
+\begin{DoxyCompactList}\small\item\em Audio played when bullet is used. \end{DoxyCompactList}\item 
+Rectangle \textbf{ bullet\+Pos}
+\begin{DoxyCompactList}\small\item\em Bullet Position. \end{DoxyCompactList}\item 
+bool \textbf{ bullet} = false
+\begin{DoxyCompactList}\small\item\em indicates whether bullet needs to be shoot or not \end{DoxyCompactList}\item 
+float \textbf{ bullet\+Angle}
+\begin{DoxyCompactList}\small\item\em Determine angle at which bullet needs to be thrown depending word position. \end{DoxyCompactList}\item 
+float \textbf{ bullet\+Mover} = 0
+\begin{DoxyCompactList}\small\item\em To indicate speed of the bullet. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}\textbf{ Extern variables from main}\par
+{\em different variables initialized before needed for this portion }\begin{DoxyCompactItemize}
+\item 
+Music \textbf{ music}
+\begin{DoxyCompactList}\small\item\em background music \end{DoxyCompactList}\item 
+int \textbf{ screen\+Width}
+\begin{DoxyCompactList}\small\item\em screen width for graphical operations \end{DoxyCompactList}\item 
+int \textbf{ screen\+Height}
+\begin{DoxyCompactList}\small\item\em screen height for graphical operations \end{DoxyCompactList}\item 
+Font \textbf{ retro\+Font}
+\end{DoxyCompactItemize}
+\end{Indent}
+
+
+\doxysubsection{Detailed Description}
+Word Shooter Game for Spacetype. 
+
+\begin{DoxyAuthor}{Author}
+Praharsha Adhikari {\texttt{ 078bct061.\+praharsha@pcampus.\+edu.\+np}} 
+\end{DoxyAuthor}
+\begin{DoxyRefDesc}{Bug}
+\item[\textbf{ Bug}]No known bug \end{DoxyRefDesc}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\label{spacetype__game_8c_a9f1c87c7296779c4c895ca2b13ad2e3e}} 
+\index{spacetype\_game.c@{spacetype\_game.c}!game@{game}}
+\index{game@{game}!spacetype\_game.c@{spacetype\_game.c}}
+\doxysubsubsection{game()}
+{\footnotesize\ttfamily void game (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+main function for game mode 
+
+Handles everything regarding spaceship shoot game. Resets variables specific to the game and general by calling reset\+\_\+counter. Draws the graphics regarding spaceship falling words and bullets. Handles the gameplay mechanics and shows a gameover screen when required. Resetting in case of new game from menu
+
+Initialize variables and texturesHere is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=247pt]{spacetype__game_8c_a9f1c87c7296779c4c895ca2b13ad2e3e_cgraph}
+\end{center}
+\end{figure}
+\mbox{\label{spacetype__game_8c_a494f9b4583b6aef45e50c191af3155de}} 
+\index{spacetype\_game.c@{spacetype\_game.c}!text\_mover@{text\_mover}}
+\index{text\_mover@{text\_mover}!spacetype\_game.c@{spacetype\_game.c}}
+\doxysubsubsection{text\_mover()}
+{\footnotesize\ttfamily void text\+\_\+mover (\begin{DoxyParamCaption}\item[{Vector2 $\ast$}]{word\+Pos,  }\item[{Rectangle}]{player\+Pos,  }\item[{Vector2}]{gap,  }\item[{float}]{time }\end{DoxyParamCaption})}
+
+
+
+Moves the word toward the player. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em word\+Pos} & Position of generated word \\
+\hline
+{\em player\+Pos} & Position of spaceship \\
+\hline
+{\em gap} & Shortest distance between word and spaceship \\
+\hline
+{\em time} & Set time for the word to hit the player \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\label{spacetype__game_8c_ab8ef1bf8a70cc07c6d55823c390a7e76}} 
+\index{spacetype\_game.c@{spacetype\_game.c}!angle@{angle}}
+\index{angle@{angle}!spacetype\_game.c@{spacetype\_game.c}}
+\doxysubsubsection{angle}
+{\footnotesize\ttfamily float angle = 0}
+
+
+
+Angle of word to have it fall towards player. 
+
+\mbox{\label{spacetype__game_8c_aea9c97c1578ff87a5a81aae47a10e7e5}} 
+\index{spacetype\_game.c@{spacetype\_game.c}!bullet@{bullet}}
+\index{bullet@{bullet}!spacetype\_game.c@{spacetype\_game.c}}
+\doxysubsubsection{bullet}
+{\footnotesize\ttfamily bool bullet = false}
+
+
+
+indicates whether bullet needs to be shoot or not 
+
+\mbox{\label{spacetype__game_8c_ab396cdce489b782dd8c4c9ae2c6b16ae}} 
+\index{spacetype\_game.c@{spacetype\_game.c}!bulletAngle@{bulletAngle}}
+\index{bulletAngle@{bulletAngle}!spacetype\_game.c@{spacetype\_game.c}}
+\doxysubsubsection{bulletAngle}
+{\footnotesize\ttfamily float bullet\+Angle}
+
+
+
+Determine angle at which bullet needs to be thrown depending word position. 
+
+\mbox{\label{spacetype__game_8c_a8ac5b681f73e3503e13433c2b284431a}} 
+\index{spacetype\_game.c@{spacetype\_game.c}!bulletMover@{bulletMover}}
+\index{bulletMover@{bulletMover}!spacetype\_game.c@{spacetype\_game.c}}
+\doxysubsubsection{bulletMover}
+{\footnotesize\ttfamily float bullet\+Mover = 0}
+
+
+
+To indicate speed of the bullet. 
+
+\mbox{\label{spacetype__game_8c_a96059ba0fb97c7a4d421ae4326badfe8}} 
+\index{spacetype\_game.c@{spacetype\_game.c}!bulletPos@{bulletPos}}
+\index{bulletPos@{bulletPos}!spacetype\_game.c@{spacetype\_game.c}}
+\doxysubsubsection{bulletPos}
+{\footnotesize\ttfamily Rectangle bullet\+Pos}
+
+
+
+Bullet Position. 
+
+\mbox{\label{spacetype__game_8c_aeb2753c60923d59623c791d46816ed06}} 
+\index{spacetype\_game.c@{spacetype\_game.c}!fontSize@{fontSize}}
+\index{fontSize@{fontSize}!spacetype\_game.c@{spacetype\_game.c}}
+\doxysubsubsection{fontSize}
+{\footnotesize\ttfamily const int font\+Size = 25}
+
+
+
+Fonsize declaration for uniformity of fontsize. 
+
+\mbox{\label{spacetype__game_8c_a0afb49932c640cff3c3da426f1e16c79}} 
+\index{spacetype\_game.c@{spacetype\_game.c}!GAME\_OVER@{GAME\_OVER}}
+\index{GAME\_OVER@{GAME\_OVER}!spacetype\_game.c@{spacetype\_game.c}}
+\doxysubsubsection{GAME\_OVER}
+{\footnotesize\ttfamily bool GAME\+\_\+\+OVER = false}
+
+
+
+boolean to check game over condition 
+
+\mbox{\label{spacetype__game_8c_a256dba4556a663ff7e3e293a0d9203b1}} 
+\index{spacetype\_game.c@{spacetype\_game.c}!gap@{gap}}
+\index{gap@{gap}!spacetype\_game.c@{spacetype\_game.c}}
+\doxysubsubsection{gap}
+{\footnotesize\ttfamily Vector2 gap = \{\}}
+
+
+
+Shortest distance between word and spaceship$\ast$/. 
+
+\mbox{\label{spacetype__game_8c_a6fd0aee1ce197388cddc6fb8bb2e605d}} 
+\index{spacetype\_game.c@{spacetype\_game.c}!movingDown@{movingDown}}
+\index{movingDown@{movingDown}!spacetype\_game.c@{spacetype\_game.c}}
+\doxysubsubsection{movingDown}
+{\footnotesize\ttfamily float moving\+Down = 0}
+
+
+
+Parameters which makes space texture scroll infinitely$\ast$/. 
+
+\mbox{\label{spacetype__game_8c_a024e5dce544a851b8ababcadb2fa50f1}} 
+\index{spacetype\_game.c@{spacetype\_game.c}!movingPlanets@{movingPlanets}}
+\index{movingPlanets@{movingPlanets}!spacetype\_game.c@{spacetype\_game.c}}
+\doxysubsubsection{movingPlanets}
+{\footnotesize\ttfamily float moving\+Planets = 0}
+
+
+
+Denotes which planet will be on screen. 
+
+\mbox{\label{spacetype__game_8c_a8e4a12cb358091be4a5f7447b57e2014}} 
+\index{spacetype\_game.c@{spacetype\_game.c}!music@{music}}
+\index{music@{music}!spacetype\_game.c@{spacetype\_game.c}}
+\doxysubsubsection{music}
+{\footnotesize\ttfamily Music music\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+background music 
+
+\mbox{\label{spacetype__game_8c_ac84493c11fd97026e89aa49009264e7f}} 
+\index{spacetype\_game.c@{spacetype\_game.c}!prevAngle@{prevAngle}}
+\index{prevAngle@{prevAngle}!spacetype\_game.c@{spacetype\_game.c}}
+\doxysubsubsection{prevAngle}
+{\footnotesize\ttfamily float prev\+Angle = 0}
+
+
+
+Angle of the spaceship. 
+
+\mbox{\label{spacetype__game_8c_a81aa2ca2abef778dcd32bddb7dbb164e}} 
+\index{spacetype\_game.c@{spacetype\_game.c}!retroFont@{retroFont}}
+\index{retroFont@{retroFont}!spacetype\_game.c@{spacetype\_game.c}}
+\doxysubsubsection{retroFont}
+{\footnotesize\ttfamily Font retro\+Font\hspace{0.3cm}{\ttfamily [extern]}}
+
+\mbox{\label{spacetype__game_8c_a9ebc1dbd77788c4bfa27758a6725413f}} 
+\index{spacetype\_game.c@{spacetype\_game.c}!screenHeight@{screenHeight}}
+\index{screenHeight@{screenHeight}!spacetype\_game.c@{spacetype\_game.c}}
+\doxysubsubsection{screenHeight}
+{\footnotesize\ttfamily int screen\+Height\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+screen height for graphical operations 
+
+\mbox{\label{spacetype__game_8c_ae50cb92a78d9e0a4f4bd718fc02bd294}} 
+\index{spacetype\_game.c@{spacetype\_game.c}!screenWidth@{screenWidth}}
+\index{screenWidth@{screenWidth}!spacetype\_game.c@{spacetype\_game.c}}
+\doxysubsubsection{screenWidth}
+{\footnotesize\ttfamily int screen\+Width\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+screen width for graphical operations 
+
+\mbox{\label{spacetype__game_8c_ab10922951e1f572e4aacae3538ca68d4}} 
+\index{spacetype\_game.c@{spacetype\_game.c}!shoot@{shoot}}
+\index{shoot@{shoot}!spacetype\_game.c@{spacetype\_game.c}}
+\doxysubsubsection{shoot}
+{\footnotesize\ttfamily Sound shoot}
+
+
+
+Audio played when bullet is used. 
+
+\mbox{\label{spacetype__game_8c_ad690bf6003ce6245174e369b276af50c}} 
+\index{spacetype\_game.c@{spacetype\_game.c}!sizeOfArray@{sizeOfArray}}
+\index{sizeOfArray@{sizeOfArray}!spacetype\_game.c@{spacetype\_game.c}}
+\doxysubsubsection{sizeOfArray}
+{\footnotesize\ttfamily int size\+Of\+Array = sizeof(\textbf{ words}) / sizeof(\textbf{ words}[0])}
+
+
+
+for calculating total number of words$\ast$/ 
+
+\mbox{\label{spacetype__game_8c_af034065dfe33f7ef74362e100b14b260}} 
+\index{spacetype\_game.c@{spacetype\_game.c}!word@{word}}
+\index{word@{word}!spacetype\_game.c@{spacetype\_game.c}}
+\doxysubsubsection{word}
+{\footnotesize\ttfamily char word[20]}
+
+
+
+word which is presented to type 
+
+\mbox{\label{spacetype__game_8c_a9f8f6efeebecd00829d7d9a43fb412d8}} 
+\index{spacetype\_game.c@{spacetype\_game.c}!wordPos@{wordPos}}
+\index{wordPos@{wordPos}!spacetype\_game.c@{spacetype\_game.c}}
+\doxysubsubsection{wordPos}
+{\footnotesize\ttfamily Vector2 word\+Pos}
+
+
+
+position of word as it falls down 
+
+\mbox{\label{spacetype__game_8c_a985ad30ad9e64392b3e2177281a60ccb}} 
+\index{spacetype\_game.c@{spacetype\_game.c}!words@{words}}
+\index{words@{words}!spacetype\_game.c@{spacetype\_game.c}}
+\doxysubsubsection{words}
+{\footnotesize\ttfamily char$\ast$ words[$\,$]}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}apple"{}},\ \textcolor{stringliteral}{"{}ant"{}},\ \textcolor{stringliteral}{"{}airplane"{}},\ \textcolor{stringliteral}{"{}banana"{}},\ \textcolor{stringliteral}{"{}book"{}},\ \textcolor{stringliteral}{"{}boat"{}},\ \textcolor{stringliteral}{"{}cat"{}},\ \textcolor{stringliteral}{"{}cow"{}},\ \textcolor{stringliteral}{"{}car"{}},\ \textcolor{stringliteral}{"{}dog"{}},\ \textcolor{stringliteral}{"{}desk"{}},\ \textcolor{stringliteral}{"{}dolphin"{}},\ \textcolor{stringliteral}{"{}elephant"{}},\ \textcolor{stringliteral}{"{}egg"{}},\ \textcolor{stringliteral}{"{}earth"{}},\ \textcolor{stringliteral}{"{}fish"{}},\ \textcolor{stringliteral}{"{}flamingo"{}},\ \textcolor{stringliteral}{"{}frog"{}},\ \textcolor{stringliteral}{"{}giraffe"{}},\ \textcolor{stringliteral}{"{}goat"{}},\ \textcolor{stringliteral}{"{}grapes"{}},\ \textcolor{stringliteral}{"{}hat"{}},\ \textcolor{stringliteral}{"{}horse"{}},\ \textcolor{stringliteral}{"{}house"{}},\ \textcolor{stringliteral}{"{}igloo"{}},\ \textcolor{stringliteral}{"{}icecream"{}},\ \textcolor{stringliteral}{"{}insect"{}},\ \textcolor{stringliteral}{"{}jacket"{}},\ \textcolor{stringliteral}{"{}jaguar"{}},\ \textcolor{stringliteral}{"{}juice"{}},\ \textcolor{stringliteral}{"{}kangaroo"{}},\ \textcolor{stringliteral}{"{}kite"{}},\ \textcolor{stringliteral}{"{}key"{}},\ \textcolor{stringliteral}{"{}lion"{}},\ \textcolor{stringliteral}{"{}leopard"{}},\ \textcolor{stringliteral}{"{}lamp"{}},\ \textcolor{stringliteral}{"{}monkey"{}},\ \textcolor{stringliteral}{"{}mouse"{}},\ \textcolor{stringliteral}{"{}mango"{}},\ \textcolor{stringliteral}{"{}night"{}},\ \textcolor{stringliteral}{"{}nest"{}},\ \textcolor{stringliteral}{"{}napkin"{}},\ \textcolor{stringliteral}{"{}octopus"{}},\ \textcolor{stringliteral}{"{}ostrich"{}},\ \textcolor{stringliteral}{"{}onion"{}},\ \textcolor{stringliteral}{"{}pear"{}},\ \textcolor{stringliteral}{"{}panda"{}},\ \textcolor{stringliteral}{"{}pig"{}},\ \textcolor{stringliteral}{"{}queen"{}},\ \textcolor{stringliteral}{"{}quail"{}},\ \textcolor{stringliteral}{"{}question"{}},\ \textcolor{stringliteral}{"{}rabbit"{}},\ \textcolor{stringliteral}{"{}rhinoceros"{}},\ \textcolor{stringliteral}{"{}ring"{}},\ \textcolor{stringliteral}{"{}snake"{}},\ \textcolor{stringliteral}{"{}snail"{}},\ \textcolor{stringliteral}{"{}sock"{}},\ \textcolor{stringliteral}{"{}tiger"{}},\ \textcolor{stringliteral}{"{}taco"{}},\ \textcolor{stringliteral}{"{}table"{}},\ \textcolor{stringliteral}{"{}unicorn"{}},\ \textcolor{stringliteral}{"{}umbrella"{}},\ \textcolor{stringliteral}{"{}vase"{}},\ \textcolor{stringliteral}{"{}vegetable"{}},\ \textcolor{stringliteral}{"{}whale"{}},\ \textcolor{stringliteral}{"{}wolf"{}},\ \textcolor{stringliteral}{"{}watermelon"{}},\ \textcolor{stringliteral}{"{}xray"{}},\ \textcolor{stringliteral}{"{}xylophone"{}},\ \textcolor{stringliteral}{"{}yak"{}},\ \textcolor{stringliteral}{"{}yoyo"{}},\ \textcolor{stringliteral}{"{}zipper"{}},\ \textcolor{stringliteral}{"{}zoo"{}}\}}
+
+\end{DoxyCode}
+
+
+List of words to choose from for the game. 
+
+\mbox{\label{spacetype__game_8c_a3bf9fbb547b39fad87847c05dddf7835}} 
+\index{spacetype\_game.c@{spacetype\_game.c}!wordStored@{wordStored}}
+\index{wordStored@{wordStored}!spacetype\_game.c@{spacetype\_game.c}}
+\doxysubsubsection{wordStored}
+{\footnotesize\ttfamily char word\+Stored[20]}
+
+
+
+stores the presented word to later compare with fastestword and slowestword 
+
