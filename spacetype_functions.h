@@ -5,6 +5,7 @@
 #include <raymath.h>
 
 void draw_background(); 
+void draw_menu();
 void reset_counter(); 
 void remove_firstletter(char word[]); 
 void pause_screen(); 

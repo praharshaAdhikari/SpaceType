@@ -68,7 +68,7 @@ void test()
     while (!exitTest)
     {
         UpdateMusicStream(music);
-		movingDown += mover;
+        movingDown += mover;
         BeginDrawing();
         ClearBackground(BLACK);
         draw_background();
@@ -221,22 +221,19 @@ void test_menu()
 void test_process(char test_text[])
 {
     exitTestProcess = false;
-    char out1[30], out2[20];
     int note;
     int framescounter = 0;
     const int maxletter = strlen(test_text);
     int timecount = 0;
     int letterCount = 0;
     float correct_keys_pressed = 0, incorrect_keys_pressed = 0;
-    float accuracy;
-    float wpm;
     int j = 0;
     Vector2 position = {(screenWidth / 2) - 280, screenHeight / 2 - 100};
 
     while (!exitTestProcess)
     {
         UpdateMusicStream(music);
-		movingDown += mover;
+        movingDown += mover;
         BeginDrawing();
         draw_background();
         framescounter++;
@@ -246,8 +243,8 @@ void test_process(char test_text[])
         {
             DrawTextEx(regularFont, TextSubtext(test_text, j, 20), (Vector2){position.x + 100 + 2, position.y - 20 + 8 + 1}, 18, 1, BLUE);
             DrawTextEx(regularFont, TextSubtext(test_text, j, 20), (Vector2){position.x + 100, position.y - 20 + 8}, 18, 1, WHITE);
-            DrawTextEx(regularFont, TextSubtext(test_text, j+20, 20), (Vector2){position.x + 100 + 2, position.y + 5 + 8 + 1}, 18, 1, BLUE);
-            DrawTextEx(regularFont, TextSubtext(test_text, j+20, 20), (Vector2){position.x + 100, position.y + 5 + 8}, 18, 1, WHITE);
+            DrawTextEx(regularFont, TextSubtext(test_text, j + 20, 20), (Vector2){position.x + 100 + 2, position.y + 5 + 8 + 1}, 18, 1, BLUE);
+            DrawTextEx(regularFont, TextSubtext(test_text, j + 20, 20), (Vector2){position.x + 100, position.y + 5 + 8}, 18, 1, WHITE);
             keyboard_highlight(test_text[letterCount]);
             if ((letterCount + 1) % 20 == 0 && key != 0 && (char)key == test_text[letterCount])
                 j += 20;
@@ -266,6 +263,12 @@ void test_process(char test_text[])
                 else
                 {
                     incorrect_keys_pressed++;
+                    if (key >= 97)
+                        fprintf(wrongChars, "%c", (char)(key - 32));
+                    else if (key == 32)
+                        ;
+                    else
+                        fprintf(wrongChars, "%c", (char)(key));
                     input[letterCount] = '\0';
                 }
             }
@@ -279,21 +282,47 @@ void test_process(char test_text[])
         if (letterCount < maxletter)
         {
             DrawTextEx(regularFont, TextSubtext(input, j, 20), (Vector2){position.x + 100 + 2, position.y - 20 + 8 + 1}, 18, 1, BLUE);
-            DrawTextEx(regularFont, TextSubtext(input, j, 20), (Vector2){position.x + 100, position.y - 20 + 8}, 18, 1, (Color) {115, 147, 179, 255});
+            DrawTextEx(regularFont, TextSubtext(input, j, 20), (Vector2){position.x + 100, position.y - 20 + 8}, 18, 1, (Color){115, 147, 179, 255});
         }
         ClearBackground(BLACK);
         if (letterCount >= maxletter)
         {
-            accuracy = ((correct_keys_pressed - incorrect_keys_pressed) / (incorrect_keys_pressed + correct_keys_pressed)) * 100;
-            wpm = ((correct_keys_pressed + incorrect_keys_pressed) / 5) / ((float)note / 3600);
-            sprintf(out1, "Accuracy:\t%.2f%%", accuracy);
-            sprintf(out2, "The WPM is %.2f.", wpm);
-            ClearBackground(BLACK);
-            DrawTextEx(regularFont, out1, (Vector2){position.x + 250, position.y - 20 + 8}, 10, 1, ORANGE);
-            DrawTextEx(regularFont, out2, (Vector2){position.x + 250 - 3, position.y - 20 + 25}, 10, 1, ORANGE);
-            if (IsKeyPressed(KEY_ESCAPE)){
-                exitTestProcess = true;
-                exitTest = true;
+            UpdateMusicStream(music);
+            char sessionDurationString[50];
+            char wpmString[50];
+            char accuracyString[50];
+
+            sprintf(sessionDurationString, "Session time : %.2f seconds", (float)note / 60);
+            sprintf(wpmString, "Typing Speed: %d WPM", (int)(((correct_keys_pressed + incorrect_keys_pressed) / 5) / ((float)note / 3600)));
+            sprintf(accuracyString, "Accuracy: %.2f%%", ((correct_keys_pressed - incorrect_keys_pressed) / (incorrect_keys_pressed + correct_keys_pressed)) * 100);
+
+            BeginDrawing();
+            draw_background();
+            DrawTextureEx(cockpitTextureKeyboard, (Vector2){0, 0}, 0, 1, WHITE);
+            
+			DrawTextPro(retroFont, "RESULTS", (Vector2){(GetScreenWidth() / 2 + 5), GetScreenHeight() / 2 - 250 + 4}, Vector2Scale(MeasureTextEx(retroFont, "RESULTS", 80, 1), 0.5f), 0, 80, 1, DARKBLUE);
+			DrawTextPro(retroFont, "RESULTS", (Vector2){(GetScreenWidth() / 2), GetScreenHeight() / 2 - 250}, Vector2Scale(MeasureTextEx(retroFont, "RESULTS", 80, 1), 0.5f), 0, 80, 1, WHITE);
+			DrawTextPro(retroFont, sessionDurationString, (Vector2){(GetScreenWidth() / 2 + 2), GetScreenHeight() / 2 - 120 + 1}, Vector2Scale(MeasureTextEx(retroFont, sessionDurationString, 20, 1), 0.5f), 0, 20, 1, BROWN);
+			DrawTextPro(retroFont, sessionDurationString, (Vector2){(GetScreenWidth() / 2), GetScreenHeight() / 2 - 120}, Vector2Scale(MeasureTextEx(retroFont, sessionDurationString, 20, 1), 0.5f), 0, 20, 1, WHITE);
+			DrawTextPro(retroFont, wpmString, (Vector2){(GetScreenWidth() / 2 + 2), GetScreenHeight() / 2 - 80 + 1}, Vector2Scale(MeasureTextEx(retroFont, wpmString, 20, 1), 0.5f), 0, 20, 1, BROWN);
+			DrawTextPro(retroFont, wpmString, (Vector2){(GetScreenWidth() / 2), GetScreenHeight() / 2 - 80}, Vector2Scale(MeasureTextEx(retroFont, wpmString, 20, 1), 0.5f), 0, 20, 1, WHITE);
+			DrawTextPro(retroFont, accuracyString, (Vector2){(GetScreenWidth() / 2 + 2), GetScreenHeight() / 2 - 40 + 1}, Vector2Scale(MeasureTextEx(retroFont, accuracyString, 20, 1), 0.5f), 0, 20, 1, BROWN);
+			DrawTextPro(retroFont, accuracyString, (Vector2){(GetScreenWidth() / 2), GetScreenHeight() / 2 - 40}, Vector2Scale(MeasureTextEx(retroFont, accuracyString, 20, 1), 0.5f), 0, 20, 1, WHITE);
+
+            if ((float)GetMouseX() >= (GetScreenWidth() / 2 - MeasureTextEx(retroFont, "main menu", 30, 1).x / 2) && (float)GetMouseX() <= (GetScreenWidth() / 2 + MeasureTextEx(retroFont, "main menu", 30, 1).x / 2) && (float)GetMouseY() >= (GetScreenHeight() / 2 + 65 - MeasureTextEx(retroFont, "main menu", 30, 1).y / 2) && (float)GetMouseY() <= (GetScreenHeight() / 2 + 65 + MeasureTextEx(retroFont, "main menu", 30, 1).y / 2))
+            {
+                DrawTextPro(retroFont, "main menu", (Vector2){(GetScreenWidth() / 2) + 2, GetScreenHeight() / 2 + 70 + 1}, Vector2Scale(MeasureTextEx(retroFont, "main menu", 30, 1), 0.5f), 0, 30, 1, RED);
+                DrawTextPro(retroFont, "main menu", (Vector2){(GetScreenWidth() / 2), GetScreenHeight() / 2 + 70}, Vector2Scale(MeasureTextEx(retroFont, "main menu", 30, 1), 0.5f), 0, 30, 1, BLUE);
+                if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
+                {
+                    exitTest = true;
+                    exitTestProcess = true;
+                }
+            }
+            else
+            {
+                DrawTextPro(retroFont, "main menu", (Vector2){(GetScreenWidth() / 2 + 3), GetScreenHeight() / 2 + 70 + 2}, Vector2Scale(MeasureTextEx(retroFont, "main menu", 30, 1), 0.5f), 0, 30, 1, LIME);
+                DrawTextPro(retroFont, "main menu", (Vector2){(GetScreenWidth() / 2), GetScreenHeight() / 2 + 70}, Vector2Scale(MeasureTextEx(retroFont, "main menu", 30, 1), 0.5f), 0, 30, 1, WHITE);
             }
         }
         ClearBackground(BLACK);

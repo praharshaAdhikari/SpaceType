@@ -5,65 +5,60 @@
  * inspration from Typeshala, Ztype and aims for the feels similar to retro-console space games
  * like Space Invadors.
  * SPDX-License-Identifier: LGPL-2.1-or-later
- * 
+ *
  * \author Praharsha Adhikari <078bct061.praharsha@pcampus.edu.np>
  * \author Mukunda Dev Adhikari <078bct049.mukunda@pcampus.edu.np>
  * \author Pragalbha Acharya <078bct049.pragalbha@pcampus.edu.np>
  * \bug: No known Bug.
-*/
+ */
 
 /* -- Includes -- */
 /* Including other C files and header files of this code*/
-#include "spacetype_game.h" /*header file for game mode*/
-#include "spacetype_game.c"/*C file for game mode*/
+#include "spacetype_game.h"	 /*header file for game mode*/
+#include "spacetype_game.c"	 /*C file for game mode*/
 #include "spacetype_train.h" /*header file for train mode*/
 #include "spacetype_train.c" /*C file for train mode*/
-#include "spacetype_test.h" /*header file for test mode*/
-#include "spacetype_test.c" /*C file for test mode*/
-
-
-void draw_menu();
+#include "spacetype_test.h"	 /*header file for test mode*/
+#include "spacetype_test.c"	 /*C file for test mode*/
 
 /**
  * @{ \name Main application variables
  */
-FILE* wrongChars; //!<To store mispressed characters to use in customized train mode 
-int screenWidth; //!<screen width for graphical operations
-int screenHeight; //!<screen height for graphical operations
+FILE *wrongChars;		 //!< To store mispressed characters to use in customized train mode
+int screenWidth;		 //!< screen width for graphical operations
+int screenHeight;		 //!< screen height for graphical operations
 bool exitWindow = false; //!< To govern main application loop
-bool exitGame = false; //!<To govern game mode loop
-bool sorted; //!<to check if the WrongChars.txt is sorted or not
+bool exitGame = false;	 //!< To govern game mode loop
+bool sorted;			 //!< to check if the WrongChars.txt is sorted or not
 /**
  * @}
  */
-
 
 /**
  * @{ \name Main interface variables
  * Different textures for the main screen and hover, and other graphical components.
  */
 
-Texture2D cockpitTexture, cockpitTextureTrain,  cockpitTextureTest, cockpitTextureGame, cockpitTextureExit;  //!<Main menu textures
-Font retroFont, regularFont; //!< Main application fonts
-Texture2D  qwertyTexture; //!<keyboard image for tutorial screen
+Texture2D cockpitTexture, cockpitTextureTrain, cockpitTextureTest, cockpitTextureGame, cockpitTextureExit; //!< Main menu textures
+Font retroFont, regularFont;																			   //!< Main application fonts
+Texture2D qwertyTexture;																				   //!< keyboard image for tutorial screen
 /**
  * @}
  */
 
-
 /**
  * \brief Main function of the application
- * 
+ *
  * \details Initializes Screen and audio device. Loads music, fonts
- * and textures. Plays the music, calls the respective function to draw 
- * the background and menu. 
- * 
+ * and textures. Plays the music, calls the respective function to draw
+ * the background and menu.
+ *
  */
 int main()
 {
 	InitWindow(1366, 768, "Space Type");
 	ToggleFullscreen();
-	InitAudioDevice();										// Initialize audio device
+	InitAudioDevice(); // Initialize audio device
 	SetTargetFPS(60);
 
 	// Loading Textures which are used in all modes throught the application
@@ -80,11 +75,11 @@ int main()
 	planetTextures[0] = LoadTexture("resources/images/planet1_texture.png");
 	planetTextures[1] = LoadTexture("resources/images/planet2_texture.png");
 	planetTextures[2] = LoadTexture("resources/images/planet3_texture.png");
-	//Loading default font for the application
+	// Loading default font for the application
 	retroFont = LoadFont("resources/fonts/retro_font.otf");
 	regularFont = LoadFont("resources/fonts/regular_font.otf");
 	// Load background music
-	music = LoadMusicStream("resources/music/country.mp3"); 
+	music = LoadMusicStream("resources/music/country.mp3");
 	PlayMusicStream(music);
 
 	screenWidth = 1366;
@@ -111,33 +106,40 @@ int main()
 	UnloadFont(retroFont);
 }
 
-
 /**
  * \brief Draws main menu for the application.
- * 
- * \details Draws the main menu of the application by loading the cockpitTexture 
- * with mouse control for navigation. Has indicators for hover and  
+ *
+ * \details Draws the main menu of the application by loading the cockpitTexture
+ * with mouse control for navigation. Has indicators for hover and
  * mouse click calls the respective function associated with the
  * menu entry.
  */
 void draw_menu()
 {
-	if (!sorted){
+	if (!sorted)
+	{
 		fclose(wrongChars);
 		wrongChars = fopen("wrongChars.txt", "a+");
-		for (int i=0; i<26; i++){
-			wrongLetters[i].character = (char)(i+65);
+		for (int i = 0; i < 26; i++)
+		{
+			wrongLetters[i].character = (char)(i + 65);
 			wrongLetters[i].count = 0;
 		}
-		while(!feof(wrongChars)){
+		while (!feof(wrongChars))
+		{
 			char c = fgetc(wrongChars);
-			for (int i=0; i<26; i++){
-				if(c == wrongLetters[i].character) wrongLetters[i].count++;
-			}			
+			for (int i = 0; i < 26; i++)
+			{
+				if (c == wrongLetters[i].character)
+					wrongLetters[i].count++;
+			}
 		}
-		for (int i=0; i<26; i++){
-			for (int j=i+1; j<26; j++){
-				if(wrongLetters[i].count < wrongLetters[j].count){
+		for (int i = 0; i < 26; i++)
+		{
+			for (int j = i + 1; j < 26; j++)
+			{
+				if (wrongLetters[i].count < wrongLetters[j].count)
+				{
 					struct charCount swap = wrongLetters[i];
 					wrongLetters[i] = wrongLetters[j];
 					wrongLetters[j] = swap;
@@ -146,29 +148,29 @@ void draw_menu()
 		}
 		sorted = true;
 	}
-	if ((float)GetMouseX() >= screenWidth-50 && (float)GetMouseX() <= screenWidth-50 + MeasureTextEx(retroFont, "☰", 50, 1).x && (float)GetMouseY() >= 5 && (float)GetMouseY() <= (5 + MeasureTextEx(retroFont, "☰", 50, 1).y))
-    {
-        DrawTextEx(retroFont, "☰", (Vector2){screenWidth-50+2,-15+2}, 50, 1, RED);
-        DrawTextEx(retroFont, "☰", (Vector2){screenWidth-50,-15}, 50, 1, BLUE);
-		DrawTextEx(retroFont, "☰", (Vector2){screenWidth-50+2,-5+2}, 50, 1, RED);
-        DrawTextEx(retroFont, "☰", (Vector2){screenWidth-50,-5}, 50, 1, BLUE);
-		DrawTextEx(retroFont, "☰", (Vector2){screenWidth-50+2,5+2}, 50, 1, RED);
-        DrawTextEx(retroFont, "☰", (Vector2){screenWidth-50,5}, 50, 1, BLUE);
-            if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
-        {
-            EndDrawing();
-            tutorial_screen();
-        }
-    }
-    else
-    {
-        DrawTextEx(retroFont, "☰", (Vector2){screenWidth-50-1,-15-1}, 50, 1, WHITE);
-        DrawTextEx(retroFont, "☰", (Vector2){screenWidth-50,-15}, 50, 1, (Color) {115, 147, 179, 255});
-        DrawTextEx(retroFont, "☰", (Vector2){screenWidth-50-1,-5-1}, 50, 1, WHITE);
-        DrawTextEx(retroFont, "☰", (Vector2){screenWidth-50,-5}, 50, 1, (Color) {115, 147, 179, 255});
-        DrawTextEx(retroFont, "☰", (Vector2){screenWidth-50-1,5-1}, 50, 1, WHITE);
-        DrawTextEx(retroFont, "☰", (Vector2){screenWidth-50,5}, 50, 1, (Color) {115, 147, 179, 255});
-    }
+	if ((float)GetMouseX() >= screenWidth - 50 && (float)GetMouseX() <= screenWidth - 50 + MeasureTextEx(retroFont, "☰", 50, 1).x && (float)GetMouseY() >= 5 && (float)GetMouseY() <= (5 + MeasureTextEx(retroFont, "☰", 50, 1).y))
+	{
+		DrawTextEx(retroFont, "☰", (Vector2){screenWidth - 50 + 2, -15 + 2}, 50, 1, RED);
+		DrawTextEx(retroFont, "☰", (Vector2){screenWidth - 50, -15}, 50, 1, BLUE);
+		DrawTextEx(retroFont, "☰", (Vector2){screenWidth - 50 + 2, -5 + 2}, 50, 1, RED);
+		DrawTextEx(retroFont, "☰", (Vector2){screenWidth - 50, -5}, 50, 1, BLUE);
+		DrawTextEx(retroFont, "☰", (Vector2){screenWidth - 50 + 2, 5 + 2}, 50, 1, RED);
+		DrawTextEx(retroFont, "☰", (Vector2){screenWidth - 50, 5}, 50, 1, BLUE);
+		if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
+		{
+			EndDrawing();
+			tutorial_screen();
+		}
+	}
+	else
+	{
+		DrawTextEx(retroFont, "☰", (Vector2){screenWidth - 50 - 1, -15 - 1}, 50, 1, WHITE);
+		DrawTextEx(retroFont, "☰", (Vector2){screenWidth - 50, -15}, 50, 1, (Color){115, 147, 179, 255});
+		DrawTextEx(retroFont, "☰", (Vector2){screenWidth - 50 - 1, -5 - 1}, 50, 1, WHITE);
+		DrawTextEx(retroFont, "☰", (Vector2){screenWidth - 50, -5}, 50, 1, (Color){115, 147, 179, 255});
+		DrawTextEx(retroFont, "☰", (Vector2){screenWidth - 50 - 1, 5 - 1}, 50, 1, WHITE);
+		DrawTextEx(retroFont, "☰", (Vector2){screenWidth - 50, 5}, 50, 1, (Color){115, 147, 179, 255});
+	}
 	DrawTextureEx(cockpitTexture, (Vector2){0, 0}, 0, 1, WHITE);
 	if ((float)GetMouseX() >= 396 && (float)GetMouseX() <= 640 && (float)GetMouseY() >= 541 && (float)GetMouseY() <= 620)
 	{
@@ -183,7 +185,6 @@ void draw_menu()
 	{
 		DrawTextureEx(cockpitTextureTest, (Vector2){0, 0}, 0, 1, WHITE);
 		if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
-			if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
 		{
 			EndDrawing();
 			test();
