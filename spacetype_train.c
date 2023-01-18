@@ -345,7 +345,6 @@ void word_train()
 						strcpy(fastestWord, wordStored);
 					}
 
-					TIME -= (TIME < 5) ? ((TIME < 4) ? 0.1 : 0.25) : 0.5;
 					SCORE++;
 					wordinput = true;
 					framesCounterForWord = 0;
@@ -501,7 +500,6 @@ void customized_train()
 						strcpy(fastestWord, wordStored);
 					}
 
-					TIME -= (TIME < 5) ? ((TIME < 4) ? 0.1 : 0.25) : 0.5;
 					SCORE++;
 					wordinput = true;
 					framesCounterForWord = 0;
