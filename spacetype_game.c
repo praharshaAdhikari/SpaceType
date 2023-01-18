@@ -8,9 +8,6 @@
 /* -- Includes -- */
 /* Including other C files and header files of this code*/
 #include "spacetype_functions.c" /*for pause_screen, reset_counter and remove_firstletter functions*/
-/* Raylib includes*/
-/*for Vector2 operations*/
-
 
 /**
  * @{ \name Main gameplay variables
