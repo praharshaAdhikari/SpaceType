@@ -47,7 +47,7 @@ extern Texture2D cockpitTexture, cockpitTextureKeyboard; //!< Textures for backg
  *
  */
 bool exitTest, exitTestProcess;
-char input[550] = {};
+char input[530] = {};
 int check;
 /**
  * @}
@@ -370,7 +370,6 @@ void test_process(char test_text[])
         ClearBackground(BLACK);
         EndDrawing();
     }
-
     for (int i = 0; i < strlen(test_text); i++)
         input[i] = '\0';
     check = 0;

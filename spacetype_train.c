@@ -710,9 +710,7 @@ void train_select()
 		if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
 		{
 			exitResult = false;
-			if (BottomRow == false && TopRow == false && MiddleRow == false)
-			{
-			}
+			if (BottomRow == false && TopRow == false && MiddleRow == false);
 			else
 			{
 				EndDrawing();
