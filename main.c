@@ -81,7 +81,6 @@ int main()
 	// Load background music
 	music = LoadMusicStream("resources/music/country.mp3");
 	PlayMusicStream(music);
-
 	screenWidth = 1366;
 	screenHeight = 768;
 	scale = ((float)screenWidth) / spaceTexture.width;
