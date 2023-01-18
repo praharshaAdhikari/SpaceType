@@ -83,7 +83,7 @@ void train()
 	while (!exitTrain)
 	{
 		movingDown += mover;
-		movingPlanets += mover + 0.3f;
+		movingPlanets += 0.45f;
 		UpdateMusicStream(music);
 		BeginDrawing();
 		draw_background();
@@ -185,7 +185,7 @@ void mode_trainletters()
 	{
 		UpdateMusicStream(music);
 		movingDown += mover;
-		movingPlanets += mover + 0.3f;
+		movingPlanets += 0.45f;
 		BeginDrawing();
 
 		ClearBackground(BLACK);
@@ -215,7 +215,7 @@ void mode_trainwords()
 	{
 		UpdateMusicStream(music);
 		movingDown += mover;
-		movingPlanets += mover + 0.3f;
+		movingPlanets += 0.45f;
 		BeginDrawing();
 		ClearBackground(BLACK);
 		draw_background();
@@ -249,7 +249,7 @@ void letter_train()
 			UpdateMusicStream(music);
 			char requiredtxt[2] = {0};
 			movingDown += mover;
-			movingPlanets += mover + 0.3f;
+			movingPlanets += 0.45f;
 			sprintf(requiredtxt, "%c ", RequiredLetter);
 			BeginDrawing();
 			ClearBackground(BLACK);
@@ -308,7 +308,7 @@ void word_train()
 		{
 			UpdateMusicStream(music);
 			movingDown += mover;
-			movingPlanets += mover + 0.3f;
+			movingPlanets += 0.45f;
 			textWidth = MeasureTextEx(retroFont, RequiredWord, 30, 2).x;
 			BeginDrawing();
 			framesCounterForSession++;
@@ -464,7 +464,7 @@ void customized_train()
 		{
 			UpdateMusicStream(music);
 			movingDown += mover;
-			movingPlanets += mover + 0.3f;
+			movingPlanets += 0.45f;
 			textWidth = MeasureTextEx(retroFont, RequiredWord, 30, 2).x;
 			BeginDrawing();
 			framesCounterForSession++;
