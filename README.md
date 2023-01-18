@@ -53,7 +53,7 @@ Amplication provides the following features:
 
 To clone and build this application, you'll need [Git](https://git-scm.com), [Ming-GW](https://www.mingw-w64.org/) and [Raylib](https://www.raylib.com/) installed on your computer. You need to add Min-GW path to your computer and setup Raylib for Windows with the help of this [tutorial](https://github.com/raysan5/raylib/wiki/Working-on-Windows). 
 
-After that, clone the repo, open main.c and use the build command of any of your preferred IDE (was done in VSCode and Codeblocks), and a executable file would be made in the project library
+After that, clone the repo, open main.c and use the build command of any of your preferred IDE (was done in VSCode and Codeblocks), and a executable file would be made in the project library.
 
 
 ## Images 
