@@ -76,7 +76,7 @@ Practicing Words
 Result screen
 <img src="https://cdn.discordapp.com/attachments/1058292470141698058/1064197543468220526/Screenshot_118.png" alt="Space Type practicing letters">
 
-Result screen
+Pause screen
 <img src="https://cdn.discordapp.com/attachments/1058292470141698058/1062714965993201724/image.png" alt="Space Type practicing letters">
 
 
