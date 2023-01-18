@@ -8,7 +8,7 @@
  *
  * \author Praharsha Adhikari <078bct061.praharsha@pcampus.edu.np>
  * \author Mukunda Dev Adhikari <078bct049.mukunda@pcampus.edu.np>
- * \author Pragalbha Acharya <078bct049.pragalbha@pcampus.edu.np>
+ * \author Pragalbha Acharya <078bct060.pragalbha@pcampus.edu.np>
  * \bug: No known Bug.
  */
 
