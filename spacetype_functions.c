@@ -88,7 +88,7 @@ void draw_background()
     DrawTextureEx(spaceTexture, (Vector2){0, movingDown}, 0, scale, WHITE);
     DrawTextureEx(spaceTexture, (Vector2){0, spaceTexture.height * scale + movingDown}, 0, scale, WHITE);
     // PLANETS
-    if (planetTime<800){
+    if (planetTime < 12 * 60){
             DrawTextureEx(planetTextures[0], (Vector2){200 - movingPlanets * 1.1, -160 + movingPlanets * 1.1}, 0, 2, WHITE);
             DrawTextureEx(planetTextures[2], (Vector2){1550 - movingPlanets * 3.3, 200 + movingPlanets * 1.1}, 0, 2, WHITE);
             DrawTextureEx(planetTextures[1], (Vector2){-180 + movingPlanets * 4.4, 350 + movingPlanets * 1.1}, 0, 2, WHITE);
