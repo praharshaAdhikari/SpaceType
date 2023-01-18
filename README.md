@@ -68,7 +68,7 @@ Options to choose rows
 <img src="https://cdn.discordapp.com/attachments/970871088542273537/1064985966684676117/Screenshot_129.png" alt="Space Type train menu">
 
 Practicing Letters
-<img src="https://cdn.discordapp.com/attachments/970871088542273537/1064985966995050696/Screenshot_130.png" alt="Space Type practicing letters">
+<img src="https://cdn.discordapp.com/attachments/1058292470141698058/1065297614284795986/image.png" alt="Space Type practicing letters">
 
 Practicing Words
 <img src="https://cdn.discordapp.com/attachments/970871088542273537/1064985966995050696/Screenshot_130.png" alt="Space Type practicing letters">
