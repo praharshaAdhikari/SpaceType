@@ -89,8 +89,6 @@ void train()
 		draw_background();
 		DrawTextureEx(cockpitTextureKeyboard, (Vector2){0, 0}, 0, 1, WHITE);
 		train_menu();
-		if (IsKeyDown(KEY_RIGHT))
-			exitTrain = true;
 		EndDrawing();
 	}
 }
