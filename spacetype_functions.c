@@ -19,7 +19,7 @@
  */
 char fastestWord[20], slowestWord[20], scoreString[50];
 int SCORE;
-float TIME = 10;
+float TIME = 10, planetTime = 0;
 float keysPressed, rightKeysPressed, framesCounterForSession,
     framesCounterForWord, fastestWordFrames, slowestWordFrames;
 bool gapMeasured, exitPause = true;
@@ -35,6 +35,7 @@ bool gapMeasured, exitPause = true;
  */
 float scale; //!< Image scale for the uniformity
 float movingDown; //!< Variable to govern infinitely scrolling background
+float movingPlanets;//!< Variable to govern moving planets
 float mover; //!< Variable which controls the speed of the word in game mode
 Music music;
 Texture2D spaceTexture; //!< Space Background used in infinite scroll background
@@ -88,9 +89,17 @@ void draw_background()
     DrawTextureEx(spaceTexture, (Vector2){0, movingDown}, 0, scale, WHITE);
     DrawTextureEx(spaceTexture, (Vector2){0, spaceTexture.height * scale + movingDown}, 0, scale, WHITE);
     // PLANETS
-    DrawTextureEx(planetTextures[0], (Vector2){200 - movingDown * 1.1, -60 + movingDown * 1.1}, 0, 2, WHITE);
-    DrawTextureEx(planetTextures[2], (Vector2){1350 - movingDown * 1.1, 200 + movingDown * 1.1}, 0, 2, WHITE);
-    DrawTextureEx(planetTextures[1], (Vector2){-80 + movingDown * 2.2, 350 + movingDown * 1.1}, 0, 2, WHITE);
+    if (planetTime<800){
+            DrawTextureEx(planetTextures[0], (Vector2){200 - movingPlanets * 1.1, -160 + movingPlanets * 1.1}, 0, 2, WHITE);
+            DrawTextureEx(planetTextures[2], (Vector2){1550 - movingPlanets * 3.3, 200 + movingPlanets * 1.1}, 0, 2, WHITE);
+            DrawTextureEx(planetTextures[1], (Vector2){-180 + movingPlanets * 4.4, 350 + movingPlanets * 1.1}, 0, 2, WHITE);
+            planetTime++;
+    }
+    else{
+        movingPlanets = 0.45f;
+        planetTime = 0;
+    }
+
 }
 
 /**
@@ -466,10 +475,6 @@ void tutorial_screen() {
 			DrawTextPro(retroFont, "main menu", (Vector2){(GetScreenWidth() / 2 + 3), GetScreenHeight() / 2 + 330 + 2}, Vector2Scale(MeasureTextEx(retroFont, "main menu", 30, 1), 0.5f), 0, 30, 1, LIME);
 			DrawTextPro(retroFont, "main menu", (Vector2){(GetScreenWidth() / 2), GetScreenHeight() / 2 + 330}, Vector2Scale(MeasureTextEx(retroFont, "main menu", 30, 1), 0.5f), 0, 30, 1, WHITE);
 		}
-        // DrawTextEx(retroFont, "Put your left index finger in F and Right one in J. Then Put", (Vector2){60+2,580+1}, 30, 1, BLUE);
-		// DrawTextEx(retroFont, "Put your left index finger in F and Right one in J. Then Put", (Vector2){60,580}, 30, 1, WHITE);
-		// DrawTextEx(retroFont, "the fingers subsequently to have little finger in a and ;", (Vector2){60+2,620+1}, 30, 1, BLUE);
-		// DrawTextEx(retroFont, "the fingers subsequently to have little finger in a and ;", (Vector2){60,620}, 30, 1, WHITE);
         EndDrawing();
     }
 }

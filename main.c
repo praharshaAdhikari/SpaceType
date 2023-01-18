@@ -92,6 +92,7 @@ int main()
 	{
 		UpdateMusicStream(music);
 		movingDown += mover;
+		movingPlanets += mover + 0.3f;
 		BeginDrawing();
 		draw_background();
 		draw_menu();

@@ -69,6 +69,7 @@ void test()
     {
         UpdateMusicStream(music);
         movingDown += mover;
+		movingPlanets += mover + 0.3f;
         BeginDrawing();
         ClearBackground(BLACK);
         draw_background();
@@ -261,6 +262,7 @@ void test_process(char test_text[])
     {
         UpdateMusicStream(music);
         movingDown += mover;
+		movingPlanets += mover + 0.3f;
         BeginDrawing();
         draw_background();
         framescounter++;
