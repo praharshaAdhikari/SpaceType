@@ -447,10 +447,11 @@ void customized_train()
 		BeginDrawing();
 		int letterPresent = 0;
 		while(letterPresent < 5){ 
+			letterPresent = 0;
 			strcpy(RequiredWord, customizedWords[GetRandomValue(0, (sizeof(customizedWords)/sizeof(customizedWords[0]))-1)]);
 			for (int i=0; i<strlen(RequiredWord); i++){
 				for (int j=0; j<8; j++){
-					if ((int)wrongLetters[0].character == (int)RequiredWord[i] - 32) letterPresent++;
+					if ((int)wrongLetters[j].character == (int)RequiredWord[i] - 32) letterPresent++;
 				}
 			}
 		}
