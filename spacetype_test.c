@@ -229,22 +229,23 @@ void test_process(char test_text[])
     char lineOne[50], lineTwo[50];
     int spacePosOne, spacePosTwo;
     int i, j;
-    for (i = 0; i < 20 || test_text[i] != ' '; i++){
+    for (i = 0; i < 23 || test_text[i] != ' '; i++){
         if (i>=26){
             for (i=26; test_text[i] != ' '; i--) lineOne[i] = '\0';
-            spacePosOne = i + 1;
+            spacePosOne = i;
+            i++;
             break;
         }
         lineOne[i] = test_text[i];
-        spacePosOne = i + 1;
+        spacePosOne = i + 1;        
         if (test_text[i] == '\0') break;
     }
     lineOne[i] = ' ';
     lineOne[i+1] = '\0';
-    for (i = spacePosOne, j = 0; j < 20 || test_text[i] != ' '; i++, j++){
+    for (i = spacePosOne, j = 0; j < 23 || test_text[i] != ' '; i++, j++){
         if (j>=26){
             for (j=26; test_text[i] != ' '; j--, i--) lineTwo[j] = '\0';
-            spacePosTwo = i + 1;
+            spacePosTwo = i;
             break;
         }
         lineTwo[j] = test_text[i];
@@ -272,16 +273,16 @@ void test_process(char test_text[])
 		    DrawTextPro(regularFont, lineTwo, (Vector2){(GetScreenWidth() / 2) + 18 + 2, GetScreenHeight() / 2 - 100 + 1}, Vector2Scale(MeasureTextEx(regularFont, lineTwo, 18, 1), 0.5f), 0, 18, 1, BLUE);
 		    DrawTextPro(regularFont, lineTwo, (Vector2){(GetScreenWidth() / 2) + 18, GetScreenHeight() / 2 - 100}, Vector2Scale(MeasureTextEx(regularFont, lineTwo, 18, 1), 0.5f), 0, 18, 1, WHITE);
             keyboard_highlight(test_text[letterCount]);
-            if ((letterCount + 1) == spacePosOne && key != 0 && (char)key == test_text[letterCount])
+            if ((letterCount) == spacePosOne && key != 0 && (char)key == test_text[letterCount])
             {
                 strcpy(lineOne, lineTwo);
                 startPos = spacePosOne;
                 spacePosOne = spacePosTwo;
                 strcpy(lineTwo, "");
-                for (i = spacePosOne, j = 0; j < 20 || test_text[i] != ' '; i++, j++){
+                for (i = spacePosOne, j = 0; j < 23 || test_text[i] != ' '; i++, j++){
                     if (j>=26){
                         for (j=26; test_text[i] != ' '; j--, i--) lineTwo[j] = '\0';
-                        spacePosTwo = i + 1;
+                        spacePosTwo = i;
                         break;
                     }
                     lineTwo[j] = test_text[i];
@@ -306,11 +307,9 @@ void test_process(char test_text[])
                 else
                 {
                     incorrect_keys_pressed++;
-                    if (key >= 97)
+                    if (key >= 97 && key<=122)
                         fprintf(wrongChars, "%c", (char)(key - 32));
-                    else if (key == 32)
-                        ;
-                    else
+                    else if (key >= 65 && key <= 90)
                         fprintf(wrongChars, "%c", (char)(key));
                     input[letterCount] = '\0';
                 }
