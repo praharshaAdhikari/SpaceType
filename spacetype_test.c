@@ -225,7 +225,7 @@ void test_process(char test_text[])
     const int maxletter = strlen(test_text);
     int timecount = 0;
     int letterCount = 0;
-    char lineOne[50], lineTwo[50];
+    char lineOne[28], lineTwo[28];
     int spacePosOne, spacePosTwo;
     int i, j;
     for (i = 0; i < 23 || test_text[i] != ' '; i++){
