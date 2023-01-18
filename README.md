@@ -1,8 +1,10 @@
-<p align="center">
+<div align="center">
 <img width="150px" src="https://cdn.discordapp.com/attachments/1058292470141698058/1065269783014162552/Asset_2.png">
-</p>
-## A retro typing trainer and game set in space.
-
+<br/>
+<strong>A retro typing trainer and game set in space.</strong>
+<br/>
+</div>  
+<br/>
 <p align="center">
   <img src="https://shields.io/badge/build-passing-brightgreen" alt="Build">
   <img src="https://img.shields.io/badge/dependencies-up%20to%20date-brightgreen" alt="Dependencies">
@@ -11,16 +13,17 @@
   <a href="https://www.gnu.org/licenses/gpl-3.0">
     <img src="https://img.shields.io/badge/License-GPLv3-blue.svg" alt="License">
   </a>
- 
-</p>
-<img src="https://cdn.discordapp.com/attachments/1058292470141698058/1064952526773956700/image.png" alt="Space Type main">
-
+</p>  
+                                                                                  
+                                                                                
 Typeshala but retro; and in space! With a fun little game that scratches your nostalgia itch if you ever were acquainted with the classic Space Invaders.
 
 That's essentially what Space Type is. 
 
-A typing trainer, tester, and game. But it's disguised as a game where you train to navigate a spaceship, test your skills, and use them to defend from incoming invaders.
-
+A typing trainer, tester, and game. But it's disguised as a game where you train to navigate a spaceship, test your skills, and use them to defend from incoming invaders.  
+                                                                                
+<img src="https://cdn.discordapp.com/attachments/1058292470141698058/1064952526773956700/image.png" alt="Space Type main">
+                                                                              
 <p align="center">
   <a href="#key-features">Key Features</a> •
   <a href="#how-to-build">How To Use</a> •
