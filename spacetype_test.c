@@ -14,16 +14,16 @@
  * These string contains various texts of varying
  * difficulty and types for the test mode.
  */
-char text1[450] = {"A late 20th century trend in typing, primarily used with devices with small keyboards (such as PDAs and Smartphones) is thumbing or thumb typing. This can be accomplished using one or both thumbs. Similar to desktop keyboards and input devices, if a user overuses keys which need hard presses and/or have small and unergonomic layouts, it could cause thumb tendonitis or other repetitive strain injury."};
-char text2[450] = {"Today, historians relate that, as a general rule, buying and selling securities was very much unorganized before the year 1792. Every person who owned a security faced the problem of finding interested buyers who might consider the purchase of a debt-free investment. This meant most people were somewhat slow in investing in stocks and bonds because these securities could not readily be converted into money."};
-char text3[456] = {"A data entry clerk is a member of staff employed to enter or update data into a computer system. Data is often entered into a computer from paper documents using a keyboard. The keyboards used can often have special keys - Alt, Ctrl, Fn, Shift - multiple colors to help in the task & speed up the work. Proper ergonomics at the workstation is a common topic considered. The Data Entry Clerk may also use a mouse, and a manually-fed scanner may be involved."};
-char text4[530] = {"An ever-growing number of complex rules plus hard-to-cope-with regulations are now being legislated from state to state. Key federal regulations were formulated by the FDA, FTC, and the CPSC. Each of these federal agencies serves a specific mission. One example: Laws sponsored by the Office of the Fair Debt Collection Practices prevent an agency from purposefully harassing clients in serious debt. The Fair Packaging and Labeling Act makes certain that protection from misleading packaging of goods is guaranteed to each buyer."};
+char text1[300] = {"Wealth, fame, power. Gold Roger, the King of the Pirates, attained everything this world has to offer. And so, many men head for the Grand Line to find the great treasure he left behind, the One Piece. The world has truly entered a Great Pirate Era!"};
+char text2[381] = {"The Tale of Jiraiya the Gallant. Now it'll end a bit better, I hope. The final chapter. I'll call it: Frog at the bottom of the well drifts off into the great ocean. Just barely glorious. But glorious indeed. Now I suppose it's about time I put down my pen. Oh, right. What should I name the sequel? I wonder. Let's see: The Tale of Naruto Uzumaki. Yes, that has a nice ring to it."};
+char text3[450] = {"A late 20th century trend in typing, primarily used with devices with small keyboards (such as PDAs and Smartphones) is thumbing or thumb typing. This can be accomplished using one or both thumbs. Similar to desktop keyboards and input devices, if a user overuses keys which need hard presses and/or have small and unergonomic layouts, it could cause thumb tendonitis or other repetitive strain injury."};
+char text4[450] = {"Today, historians relate that, as a general rule, buying and selling securities was very much unorganized before the year 1792. Every person who owned a security faced the problem of finding interested buyers who might consider the purchase of a debt-free investment. This meant most people were somewhat slow in investing in stocks and bonds because these securities could not readily be converted into money."};
 char text5[287] = {"The Master of Business Administration (MBA or M.B.A.) degree originated in the United States. The core courses in an MBA program cover various areas of business such as accounting, applied statistics, business law, finance, managerial economics, management, entrepreneurship & marketing."};
-char text6[400] = {"Business casual is an ambiguously defined Western dress code that is generally considered casual wear but with smart (in the sense of 'well dressed') components of a proper lounge suit from traditional informal wear, adopted for white-collar workplaces. This interpretation typically including dress shirt, necktie, & trousers, but worn with an odd-colored blazer or a sports coat instead."};
-char text7[520] = {"Many touch typists also use keyboard shortcuts or hotkeys when typing on a computer. This allows them to edit their document without having to take their hands off the keyboard to use a mouse. An example of a keyboard shortcut is pressing the Ctrl key + the S key to save a document as they type, or the Ctrl key + the Z key to undo a mistake. Many experienced typists can feel or sense when they have made an error & can hit the Backspace key & make the correction with no increase in time between keystrokes."};
-char text8[438] = {"When we talk about motivating others, the justification is the end result (either we want to avoid the pain or go towards pleasure) or what we want to get the person to do. How we achieve the end result, are our alternatives. As a manager, we need to understand the other person's justification and then come up with alternatives. We may then choose the right alternative. Typically people stop at this level of analysis and start to act."};
-char text9[300] = {"Wealth, fame, power. Gold Roger, the King of the Pirates, attained everything this world has to offer. And so, many men head for the Grand Line to find the great treasure he left behind, the One Piece. The world has truly entered a Great Pirate Era!"};
-char text10[381] = {"The Tale of Jiraiya the Gallant. Now it'll end a bit better, I hope. The final chapter. I'll call it: Frog at the bottom of the well drifts off into the great ocean. Just barely glorious. But glorious indeed. Now I suppose it's about time I put down my pen. Oh, right. What should I name the sequel? I wonder. Let's see: The Tale of Naruto Uzumaki. Yes, that has a nice ring to it."};
+char text6[438] = {"When we talk about motivating others, the justification is the end result (either we want to avoid the pain or go towards pleasure) or what we want to get the person to do. How we achieve the end result, are our alternatives. As a manager, we need to understand the other person's justification and then come up with alternatives. We may then choose the right alternative. Typically people stop at this level of analysis and start to act."};
+char text7[456] = {"A data entry clerk is a member of staff employed to enter or update data into a computer system. Data is often entered into a computer from paper documents using a keyboard. The keyboards used can often have special keys - Alt, Ctrl, Fn, Shift - multiple colors to help in the task & speed up the work. Proper ergonomics at the workstation is a common topic considered. The Data Entry Clerk may also use a mouse, and a manually-fed scanner may be involved."};
+char text8[530] = {"An ever-growing number of complex rules plus hard-to-cope-with regulations are now being legislated from state to state. Key federal regulations were formulated by the FDA, FTC, and the CPSC. Each of these federal agencies serves a specific mission. One example: Laws sponsored by the Office of the Fair Debt Collection Practices prevent an agency from purposefully harassing clients in serious debt. The Fair Packaging and Labeling Act makes certain that protection from misleading packaging of goods is guaranteed to each buyer."};
+char text9[400] = {"Business casual is an ambiguously defined Western dress code that is generally considered casual wear but with smart (in the sense of 'well dressed') components of a proper lounge suit from traditional informal wear, adopted for white-collar workplaces. This interpretation typically including dress shirt, necktie, & trousers, but worn with an odd-colored blazer or a sports coat instead."};
+char text10[520] = {"Many touch typists also use keyboard shortcuts or hotkeys when typing on a computer. This allows them to edit their document without having to take their hands off the keyboard to use a mouse. An example of a keyboard shortcut is pressing the Ctrl key + the S key to save a document as they type, or the Ctrl key + the Z key to undo a mistake. Many experienced typists can feel or sense when they have made an error & can hit the Backspace key & make the correction with no increase in time between keystrokes."};
 /**
  * @}
  */
@@ -63,8 +63,6 @@ int check;
 void test()
 {
     exitTest = false;
-
-    // position = (Vector2){(screenWidth/2)-300,screenHeight/2};
     while (!exitTest)
     {
         UpdateMusicStream(music);
@@ -139,7 +137,7 @@ void test_menu()
     switch (check)
     {
     case 1:
-        random = rand() % 4;
+        random = rand() % 2;
         switch (random)
         {
         case 0:
@@ -149,14 +147,6 @@ void test_menu()
         case 1:
             EndDrawing();
             test_process(text2);
-            break;
-        case 2:
-            EndDrawing();
-            test_process(text3);
-            break;
-        case 3:
-            EndDrawing();
-            test_process(text4);
             break;
         default:
             break;
@@ -168,33 +158,41 @@ void test_menu()
         {
         case 0:
             EndDrawing();
-            test_process(text5);
+            test_process(text3);
             break;
         case 1:
             EndDrawing();
-            test_process(text6);
+            test_process(text4);
             break;
         case 2:
             EndDrawing();
-            test_process(text7);
+            test_process(text5);
             break;
         case 3:
             EndDrawing();
-            test_process(text8);
+            test_process(text6);
             break;
         default:
             break;
         }
         break;
     case 3:
-        random = rand() % 2;
+        random = rand() % 4;
         switch (random)
         {
         case 0:
             EndDrawing();
-            test_process(text9);
+            test_process(text7);
             break;
         case 1:
+            EndDrawing();
+            test_process(text8);
+            break;
+        case 2:
+            EndDrawing();
+            test_process(text9);
+            break;
+        case 3:
             EndDrawing();
             test_process(text10);
             break;
@@ -217,7 +215,7 @@ void test_menu()
  * only displayed once the displayed part is enterred correctly.
  * Statistics like typing speed, accuracy are shown at the end.
  *
- * \param test_test Indicates which passage is to be displayed
+ * \param test_text Indicates which passage is to be displayed
  */
 void test_process(char test_text[])
 {
@@ -375,4 +373,5 @@ void test_process(char test_text[])
 
     for (int i = 0; i < strlen(test_text); i++)
         input[i] = '\0';
+    check = 0;
 }
