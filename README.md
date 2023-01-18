@@ -1,7 +1,6 @@
 <p align="left">
-<br/>
 <img width="75px" src="https://cdn.discordapp.com/attachments/1058292470141698058/1065269783014162552/Asset_2.png">
-</a>
+A retro typing trainer and game set in space.
 </p>
 
 <p align="center">
