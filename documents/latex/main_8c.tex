@@ -1,0 +1,131 @@
+\hypertarget{main_8c}{}\doxysection{main.\+c File Reference}
+\label{main_8c}\index{main.c@{main.c}}
+
+
+Main application file of Space Type.  
+
+
+{\ttfamily \#include \char`\"{}spacetype\+\_\+game.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}spacetype\+\_\+game.\+c\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}spacetype\+\_\+train.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}spacetype\+\_\+train.\+c\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}spacetype\+\_\+test.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}spacetype\+\_\+test.\+c\char`\"{}}\newline
+Include dependency graph for main.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{main_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{main_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}} ()
+\begin{DoxyCompactList}\small\item\em Main function of the application. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{main_8c_a8b6c981db3aad686de04545c1e87f33c}{draw\+\_\+menu}} ()
+\begin{DoxyCompactList}\small\item\em Draws main menu for the application. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{Indent}\textbf{ Main application variables}\par
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{main_8c_a6873dfffcddeacc1146d828469a7b271}\label{main_8c_a6873dfffcddeacc1146d828469a7b271}} 
+FILE $\ast$ {\bfseries wrong\+Chars}
+\begin{DoxyCompactList}\small\item\em To store mispressed characters to use in customized train mode. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{main_8c_ae50cb92a78d9e0a4f4bd718fc02bd294}\label{main_8c_ae50cb92a78d9e0a4f4bd718fc02bd294}} 
+int {\bfseries screen\+Width}
+\begin{DoxyCompactList}\small\item\em screen width for graphical operations \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{main_8c_a9ebc1dbd77788c4bfa27758a6725413f}\label{main_8c_a9ebc1dbd77788c4bfa27758a6725413f}} 
+int {\bfseries screen\+Height}
+\begin{DoxyCompactList}\small\item\em screen height for graphical operations \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{main_8c_ae43599c8abe6cca6d65c4702e38f5d09}\label{main_8c_ae43599c8abe6cca6d65c4702e38f5d09}} 
+bool {\bfseries exit\+Window} = false
+\begin{DoxyCompactList}\small\item\em To govern main application loop. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{main_8c_aae3d881ed021a5f5a1827c0e93f0b9b3}\label{main_8c_aae3d881ed021a5f5a1827c0e93f0b9b3}} 
+bool {\bfseries exit\+Game} = false
+\begin{DoxyCompactList}\small\item\em To govern game mode loop. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{main_8c_af55ba184810ed8dbd5951a049baa7687}\label{main_8c_af55ba184810ed8dbd5951a049baa7687}} 
+bool {\bfseries sorted}
+\begin{DoxyCompactList}\small\item\em to check if the Wrong\+Chars.\+txt is sorted or not \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}\textbf{ Main interface variables}\par
+{\em Different textures for the main screen and hover, and other graphical components. }\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{main_8c_af96cbe49197628e2b40f64e969fd819a}\label{main_8c_af96cbe49197628e2b40f64e969fd819a}} 
+Texture2D {\bfseries cockpit\+Texture}
+\begin{DoxyCompactList}\small\item\em Background Textures. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{main_8c_aea84c4286a06303cdb694a9b73f11ae0}\label{main_8c_aea84c4286a06303cdb694a9b73f11ae0}} 
+Texture2D {\bfseries cockpit\+Texture\+Train}
+\item 
+\mbox{\Hypertarget{main_8c_a49ffdbbe81ff1831d138ff124a44677f}\label{main_8c_a49ffdbbe81ff1831d138ff124a44677f}} 
+Texture2D {\bfseries cockpit\+Texture\+Test}
+\item 
+\mbox{\Hypertarget{main_8c_abcfbe7e296caef16125763b7f3c6956b}\label{main_8c_abcfbe7e296caef16125763b7f3c6956b}} 
+Texture2D {\bfseries cockpit\+Texture\+Game}
+\item 
+\mbox{\Hypertarget{main_8c_a4dd96c20c93370be6c21778ba41d81fd}\label{main_8c_a4dd96c20c93370be6c21778ba41d81fd}} 
+Texture2D {\bfseries cockpit\+Texture\+Exit}
+\begin{DoxyCompactList}\small\item\em Main menu textures. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{main_8c_a81aa2ca2abef778dcd32bddb7dbb164e}\label{main_8c_a81aa2ca2abef778dcd32bddb7dbb164e}} 
+Font {\bfseries retro\+Font}
+\item 
+\mbox{\Hypertarget{main_8c_acea4ca2ba54cc4d82b420245162501c1}\label{main_8c_acea4ca2ba54cc4d82b420245162501c1}} 
+Font {\bfseries regular\+Font}
+\begin{DoxyCompactList}\small\item\em Main application fonts. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{main_8c_a9f127680487df01723b24e6d16c5a831}\label{main_8c_a9f127680487df01723b24e6d16c5a831}} 
+Texture2D {\bfseries qwerty\+Texture}
+\begin{DoxyCompactList}\small\item\em keyboard image for tutorial screen \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+
+
+\doxysubsection{Detailed Description}
+Main application file of Space Type. 
+
+retro-\/interface typing trainer and game to help boost your typing speed. This project takes its inspration from Typeshala, Ztype and aims for the feels similar to retro-\/console space games like Space Invadors. SPDX-\/\+License-\/\+Identifier\+: LGPL-\/2.\+1-\/or-\/later
+
+\begin{DoxyAuthor}{Author}
+Praharsha Adhikari \href{mailto:078bct061.praharsha@pcampus.edu.np}{\texttt{ 078bct061.\+praharsha@pcampus.\+edu.\+np}} 
+
+Mukunda Dev Adhikari \href{mailto:078bct049.mukunda@pcampus.edu.np}{\texttt{ 078bct049.\+mukunda@pcampus.\+edu.\+np}} 
+
+Pragalbha Acharya \href{mailto:078bct060.pragalbha@pcampus.edu.np}{\texttt{ 078bct060.\+pragalbha@pcampus.\+edu.\+np}} 
+\end{DoxyAuthor}
+\begin{DoxyRefDesc}{Bug}
+\item[\mbox{\hyperlink{bug__bug000001}{Bug}}]\+: No known Bug. \end{DoxyRefDesc}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{main_8c_a8b6c981db3aad686de04545c1e87f33c}\label{main_8c_a8b6c981db3aad686de04545c1e87f33c}} 
+\index{main.c@{main.c}!draw\_menu@{draw\_menu}}
+\index{draw\_menu@{draw\_menu}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{draw\_menu()}{draw\_menu()}}
+{\footnotesize\ttfamily void draw\+\_\+menu (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Draws main menu for the application. 
+
+Draws the main menu of the application by loading the cockpit\+Texture with mouse control for navigation. Has indicators for hover and mouse click calls the respective function associated with the menu entry. Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{main_8c_a8b6c981db3aad686de04545c1e87f33c_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{main_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}\label{main_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}} 
+\index{main.c@{main.c}!main@{main}}
+\index{main@{main}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Main function of the application. 
+
+Initializes Screen and audio device. Loads music, fonts and textures. Plays the music, calls the respective function to draw the background and menu. Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{main_8c_ae66f6b31b5ad750f1fe042a706a4e3d4_cgraph}
+\end{center}
+\end{figure}

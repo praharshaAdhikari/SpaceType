@@ -3,7 +3,7 @@
  * \brief Main application file of Space Type
  * \details retro-interface typing trainer and game to help boost your typing speed. This project takes its
  * inspration from Typeshala, Ztype and aims for the feels similar to retro-console space games
- * like Space Invadors.
+ * like Space Invaders.
  * SPDX-License-Identifier: LGPL-2.1-or-later
  *
  * \author Praharsha Adhikari <078bct061.praharsha@pcampus.edu.np>

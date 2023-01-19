@@ -1,0 +1,329 @@
+\hypertarget{spacetype__train_8c}{}\doxysection{spacetype\+\_\+train.\+c File Reference}
+\label{spacetype__train_8c}\index{spacetype\_train.c@{spacetype\_train.c}}
+
+
+Word and Letter Typing train mode.  
+
+
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=174pt]{spacetype__train_8c__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{spacetype__train_8c_a58a9e39b3626c1bb7e4e959b36bf43d7}{train}} ()
+\begin{DoxyCompactList}\small\item\em main function for train mode \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{spacetype__train_8c_ab348f26a0c1dd03ac6671c03b90efa5e}{train\+\_\+menu}} ()
+\begin{DoxyCompactList}\small\item\em main menu for train screen \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{spacetype__train_8c_abda48979ae2115375b8a9123d9bf99d8}{mode\+\_\+trainletters}} ()
+\begin{DoxyCompactList}\small\item\em Letter Train sub menu. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{spacetype__train_8c_ae46d5ffa05bceb73109a5c717f13085c}{mode\+\_\+trainwords}} ()
+\begin{DoxyCompactList}\small\item\em Word Train sub menu. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{spacetype__train_8c_a08952319e7c38f34243c26a936d8c38b}{letter\+\_\+train}} ()
+\begin{DoxyCompactList}\small\item\em Handles processes regarding training typing letters. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{spacetype__train_8c_a9b71b1145b442c758139bf3b462b56b7}{word\+\_\+train}} ()
+\begin{DoxyCompactList}\small\item\em Handles processes regarding training typing words. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{spacetype__train_8c_a774d816129879166ef7b47827fa13f34}{customized\+\_\+train}} ()
+\begin{DoxyCompactList}\small\item\em Handles processes regarding cuztomized train mode. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{spacetype__train_8c_a3d854df91ebc16ceb8135872b1252e68}{train\+\_\+select}} ()
+\begin{DoxyCompactList}\small\item\em Option menu for choosing rows for both letter mode and word mode. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{spacetype__train_8c_ae2a6f84abfa05b6703a92e19c4f2802a}{select\+\_\+letter}} ()
+\begin{DoxyCompactList}\small\item\em function which selects letter to display for letter train process \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{spacetype__train_8c_aaad24f8670154915aa2c3915a2c0cab0}{select\+\_\+word}} ()
+\begin{DoxyCompactList}\small\item\em function which selects words to display for word train process \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{Indent}\textbf{ Letter Train variables}\par
+{\em 3 character arrays to store characters of respective keyboard rows. }\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{spacetype__train_8c_aa0eb65cd9fbb49834ffc197ecb28cb46}\label{spacetype__train_8c_aa0eb65cd9fbb49834ffc197ecb28cb46}} 
+char {\bfseries Top\+Row\+Letters} \mbox{[}10\mbox{]} = \{\textquotesingle{}q\textquotesingle{}, \textquotesingle{}w\textquotesingle{}, \textquotesingle{}e\textquotesingle{}, \textquotesingle{}r\textquotesingle{}, \textquotesingle{}t\textquotesingle{}, \textquotesingle{}y\textquotesingle{}, \textquotesingle{}u\textquotesingle{}, \textquotesingle{}i\textquotesingle{}, \textquotesingle{}o\textquotesingle{}, \textquotesingle{}p\textquotesingle{}\}
+\item 
+\mbox{\Hypertarget{spacetype__train_8c_a83a7eb20198674b4a97cd912d871edad}\label{spacetype__train_8c_a83a7eb20198674b4a97cd912d871edad}} 
+char {\bfseries Middle\+Row\+Letters} \mbox{[}9\mbox{]} = \{\textquotesingle{}a\textquotesingle{}, \textquotesingle{}s\textquotesingle{}, \textquotesingle{}d\textquotesingle{}, \textquotesingle{}f\textquotesingle{}, \textquotesingle{}g\textquotesingle{}, \textquotesingle{}h\textquotesingle{}, \textquotesingle{}j\textquotesingle{}, \textquotesingle{}k\textquotesingle{}, \textquotesingle{}l\textquotesingle{}\}
+\item 
+\mbox{\Hypertarget{spacetype__train_8c_ad0d9b4da8dd51c340764cb70b6aa2493}\label{spacetype__train_8c_ad0d9b4da8dd51c340764cb70b6aa2493}} 
+char {\bfseries Bottom\+Row\+Letters} \mbox{[}7\mbox{]} = \{\textquotesingle{}z\textquotesingle{}, \textquotesingle{}x\textquotesingle{}, \textquotesingle{}c\textquotesingle{}, \textquotesingle{}v\textquotesingle{}, \textquotesingle{}b\textquotesingle{}, \textquotesingle{}n\textquotesingle{}, \textquotesingle{}m\textquotesingle{}\}
+\item 
+\mbox{\Hypertarget{spacetype__train_8c_a274280c65c6cdaa496287f642aa67e94}\label{spacetype__train_8c_a274280c65c6cdaa496287f642aa67e94}} 
+char {\bfseries Required\+Letter}
+\begin{DoxyCompactList}\small\item\em Stores letter which will be displayed in Letter Train process. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}\textbf{ Word Train variables}\par
+{\em List of Words from toprow, middlerow and bottomrow to choose from when selecting word }\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{spacetype__train_8c_a7f7a2ca3ec7cf5038b6c1123127611b4}\label{spacetype__train_8c_a7f7a2ca3ec7cf5038b6c1123127611b4}} 
+char {\bfseries Top\+Row\+Words} \mbox{[}$\,$\mbox{]}\mbox{[}10\mbox{]} = \{\char`\"{}queer\char`\"{}, \char`\"{}wrought\char`\"{}, \char`\"{}erode\char`\"{}, \char`\"{}trope\char`\"{}, \char`\"{}troupe\char`\"{}, \char`\"{}youth\char`\"{}, \char`\"{}utopia\char`\"{}, \char`\"{}irony\char`\"{}, \char`\"{}outhouse\char`\"{}, \char`\"{}power\char`\"{}\}
+\item 
+\mbox{\Hypertarget{spacetype__train_8c_a026fe24097b865d938bf03d591f0573c}\label{spacetype__train_8c_a026fe24097b865d938bf03d591f0573c}} 
+char {\bfseries Middle\+Row\+Words} \mbox{[}$\,$\mbox{]}\mbox{[}10\mbox{]} = \{\char`\"{}lad\char`\"{}, \char`\"{}slade\char`\"{}, \char`\"{}glass\char`\"{}, \char`\"{}fade\char`\"{}, \char`\"{}grade\char`\"{}, \char`\"{}hall\char`\"{}, \char`\"{}jade\char`\"{}, \char`\"{}klaus\char`\"{}, \char`\"{}lathe\char`\"{}\}
+\item 
+\mbox{\Hypertarget{spacetype__train_8c_abf18f43aaf42f928442ef50bf764e474}\label{spacetype__train_8c_abf18f43aaf42f928442ef50bf764e474}} 
+char {\bfseries Bottom\+Row\+Words} \mbox{[}$\,$\mbox{]}\mbox{[}10\mbox{]} = \{\char`\"{}zoner\char`\"{}, \char`\"{}xerox\char`\"{}, \char`\"{}change\char`\"{}, \char`\"{}vought\char`\"{}, \char`\"{}broom\char`\"{}, \char`\"{}noob\char`\"{}, \char`\"{}mooncover\char`\"{}\}
+\item 
+char $\ast$ \mbox{\hyperlink{spacetype__train_8c_a9aa8d778f3c76629a003f60e46cb9cd0}{customized\+Words}} \mbox{[}$\,$\mbox{]}
+\item 
+\mbox{\Hypertarget{spacetype__train_8c_ab67c2bf75aecaae45aa54be72064b12c}\label{spacetype__train_8c_ab67c2bf75aecaae45aa54be72064b12c}} 
+char {\bfseries Required\+Word} \mbox{[}10\mbox{]}
+\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}\textbf{ Boolean to control different modes and screen}\par
+{\em Different booleans to control training process and also to indicatet which row is chosen for respective train modes }\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{spacetype__train_8c_ace864dd89beddb30682a2194098c4d7a}\label{spacetype__train_8c_ace864dd89beddb30682a2194098c4d7a}} 
+bool {\bfseries exit\+Train\+Words}
+\item 
+\mbox{\Hypertarget{spacetype__train_8c_a7731a0bb03a0145545c4ab2887bfbd1b}\label{spacetype__train_8c_a7731a0bb03a0145545c4ab2887bfbd1b}} 
+bool {\bfseries exit\+Train\+Letters}
+\item 
+\mbox{\Hypertarget{spacetype__train_8c_a6f4860fac5ee4453264d597efe0d96d2}\label{spacetype__train_8c_a6f4860fac5ee4453264d597efe0d96d2}} 
+bool {\bfseries Middle\+Row}
+\item 
+\mbox{\Hypertarget{spacetype__train_8c_af75b4f0a50616082d89f8646b879d7b2}\label{spacetype__train_8c_af75b4f0a50616082d89f8646b879d7b2}} 
+bool {\bfseries Top\+Row}
+\item 
+\mbox{\Hypertarget{spacetype__train_8c_a0306f32a10da6fc136490962cdf2c8e5}\label{spacetype__train_8c_a0306f32a10da6fc136490962cdf2c8e5}} 
+bool {\bfseries Bottom\+Row}
+\item 
+\mbox{\Hypertarget{spacetype__train_8c_a31600148ead2658ecf1e07c4dc4831ac}\label{spacetype__train_8c_a31600148ead2658ecf1e07c4dc4831ac}} 
+bool {\bfseries exit\+Train\+Process}
+\item 
+\mbox{\Hypertarget{spacetype__train_8c_af77294798c31640392e8a24118aa0209}\label{spacetype__train_8c_af77294798c31640392e8a24118aa0209}} 
+bool {\bfseries letterinput}
+\item 
+\mbox{\Hypertarget{spacetype__train_8c_ab7f8058b1e0af16644a127cc19b0ce0c}\label{spacetype__train_8c_ab7f8058b1e0af16644a127cc19b0ce0c}} 
+bool {\bfseries exit\+Train}
+\item 
+\mbox{\Hypertarget{spacetype__train_8c_a636f2eeb92432f6fcf8a64eda3ddb618}\label{spacetype__train_8c_a636f2eeb92432f6fcf8a64eda3ddb618}} 
+bool {\bfseries train\+Mode}
+\item 
+\mbox{\Hypertarget{spacetype__train_8c_aeb5c19fef16dd5c060190c22c877cb2f}\label{spacetype__train_8c_aeb5c19fef16dd5c060190c22c877cb2f}} 
+bool {\bfseries wordinput}
+\item 
+\mbox{\Hypertarget{spacetype__train_8c_a3b7260afdeb5ccd84b1bfd028b24017b}\label{spacetype__train_8c_a3b7260afdeb5ccd84b1bfd028b24017b}} 
+bool {\bfseries exit\+Result}
+\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}\textbf{ Extern variables from main}\par
+{\em different variables initialized before that were needed for this portion }\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{spacetype__train_8c_a8e4a12cb358091be4a5f7447b57e2014}\label{spacetype__train_8c_a8e4a12cb358091be4a5f7447b57e2014}} 
+Music {\bfseries music}
+\begin{DoxyCompactList}\small\item\em background music \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{spacetype__train_8c_ae50cb92a78d9e0a4f4bd718fc02bd294}\label{spacetype__train_8c_ae50cb92a78d9e0a4f4bd718fc02bd294}} 
+int {\bfseries screen\+Width}
+\begin{DoxyCompactList}\small\item\em screen width for graphical operations \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{spacetype__train_8c_a9ebc1dbd77788c4bfa27758a6725413f}\label{spacetype__train_8c_a9ebc1dbd77788c4bfa27758a6725413f}} 
+int {\bfseries screen\+Height}
+\begin{DoxyCompactList}\small\item\em screen height for graphical operations \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{spacetype__train_8c_a81aa2ca2abef778dcd32bddb7dbb164e}\label{spacetype__train_8c_a81aa2ca2abef778dcd32bddb7dbb164e}} 
+Font {\bfseries retro\+Font}
+\item 
+\mbox{\Hypertarget{spacetype__train_8c_af96cbe49197628e2b40f64e969fd819a}\label{spacetype__train_8c_af96cbe49197628e2b40f64e969fd819a}} 
+Texture2D {\bfseries cockpit\+Texture}
+\begin{DoxyCompactList}\small\item\em Background Textures. \end{DoxyCompactList}\item 
+Texture2D \mbox{\hyperlink{spacetype__train_8c_ad3e43f46994781a6189f0d5a93145898}{cockpit\+Texture\+Keyboard}}
+\begin{DoxyCompactList}\small\item\em Background Texture. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{spacetype__train_8c_a3bf9fbb547b39fad87847c05dddf7835}\label{spacetype__train_8c_a3bf9fbb547b39fad87847c05dddf7835}} 
+char {\bfseries word\+Stored} \mbox{[}20\mbox{]}
+\begin{DoxyCompactList}\small\item\em stores the presented word to later compare with fastestword and slowestword \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+
+
+\doxysubsection{Detailed Description}
+Word and Letter Typing train mode. 
+
+\begin{DoxyAuthor}{Author}
+Mukunda Dev Adhikari \href{mailto:078bct049.mukunda@pcampus.edu.np}{\texttt{ 078bct049.\+mukunda@pcampus.\+edu.\+np}} 
+\end{DoxyAuthor}
+\begin{DoxyRefDesc}{Bug}
+\item[\mbox{\hyperlink{bug__bug000005}{Bug}}]No Known Bug \end{DoxyRefDesc}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{spacetype__train_8c_a774d816129879166ef7b47827fa13f34}\label{spacetype__train_8c_a774d816129879166ef7b47827fa13f34}} 
+\index{spacetype\_train.c@{spacetype\_train.c}!customized\_train@{customized\_train}}
+\index{customized\_train@{customized\_train}!spacetype\_train.c@{spacetype\_train.c}}
+\doxysubsubsection{\texorpdfstring{customized\_train()}{customized\_train()}}
+{\footnotesize\ttfamily void customized\+\_\+train (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Handles processes regarding cuztomized train mode. 
+
+This function is a child of word\+\_\+train. So, it does everything the word\+\_\+train does but the words it provides to train you are customized and contains the letters that you have typed wrong the most. It is done by storing wrongly typed letters and comparing them with the letters in the word that will be displayed. Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=305pt]{spacetype__train_8c_a774d816129879166ef7b47827fa13f34_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{spacetype__train_8c_a08952319e7c38f34243c26a936d8c38b}\label{spacetype__train_8c_a08952319e7c38f34243c26a936d8c38b}} 
+\index{spacetype\_train.c@{spacetype\_train.c}!letter\_train@{letter\_train}}
+\index{letter\_train@{letter\_train}!spacetype\_train.c@{spacetype\_train.c}}
+\doxysubsubsection{\texorpdfstring{letter\_train()}{letter\_train()}}
+{\footnotesize\ttfamily void letter\+\_\+train (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Handles processes regarding training typing letters. 
+
+The function that handles resetting of variables by calling reset\+\_\+counter, and contains the loop which selects the new letter (using select\+\_\+letter) and a nested loop to check if the input letter matches with the displayed one. Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=276pt]{spacetype__train_8c_a08952319e7c38f34243c26a936d8c38b_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{spacetype__train_8c_abda48979ae2115375b8a9123d9bf99d8}\label{spacetype__train_8c_abda48979ae2115375b8a9123d9bf99d8}} 
+\index{spacetype\_train.c@{spacetype\_train.c}!mode\_trainletters@{mode\_trainletters}}
+\index{mode\_trainletters@{mode\_trainletters}!spacetype\_train.c@{spacetype\_train.c}}
+\doxysubsubsection{\texorpdfstring{mode\_trainletters()}{mode\_trainletters()}}
+{\footnotesize\ttfamily void mode\+\_\+trainletters (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Letter Train sub menu. 
+
+function that handles lettere practice mode. Clears all boolean relatetd rows and train loops and calls the function which draws selection menu for rows. Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{spacetype__train_8c_abda48979ae2115375b8a9123d9bf99d8_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{spacetype__train_8c_ae46d5ffa05bceb73109a5c717f13085c}\label{spacetype__train_8c_ae46d5ffa05bceb73109a5c717f13085c}} 
+\index{spacetype\_train.c@{spacetype\_train.c}!mode\_trainwords@{mode\_trainwords}}
+\index{mode\_trainwords@{mode\_trainwords}!spacetype\_train.c@{spacetype\_train.c}}
+\doxysubsubsection{\texorpdfstring{mode\_trainwords()}{mode\_trainwords()}}
+{\footnotesize\ttfamily void mode\+\_\+trainwords (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Word Train sub menu. 
+
+The function that handles words practice mode. Clears all boolean relatetd rows and train loops and calls the train\+\_\+select function which draws selection menu for rows. Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{spacetype__train_8c_ae46d5ffa05bceb73109a5c717f13085c_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{spacetype__train_8c_ae2a6f84abfa05b6703a92e19c4f2802a}\label{spacetype__train_8c_ae2a6f84abfa05b6703a92e19c4f2802a}} 
+\index{spacetype\_train.c@{spacetype\_train.c}!select\_letter@{select\_letter}}
+\index{select\_letter@{select\_letter}!spacetype\_train.c@{spacetype\_train.c}}
+\doxysubsubsection{\texorpdfstring{select\_letter()}{select\_letter()}}
+{\footnotesize\ttfamily void select\+\_\+letter (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+function which selects letter to display for letter train process 
+
+letter using the the three choices, random number generator and a switch case based on the choice and number generated. Stores that letter in Required\+Letter. \mbox{\Hypertarget{spacetype__train_8c_aaad24f8670154915aa2c3915a2c0cab0}\label{spacetype__train_8c_aaad24f8670154915aa2c3915a2c0cab0}} 
+\index{spacetype\_train.c@{spacetype\_train.c}!select\_word@{select\_word}}
+\index{select\_word@{select\_word}!spacetype\_train.c@{spacetype\_train.c}}
+\doxysubsubsection{\texorpdfstring{select\_word()}{select\_word()}}
+{\footnotesize\ttfamily void select\+\_\+word (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+function which selects words to display for word train process 
+
+Selects a word using the the three choices, random number generator and a switch case based on the choice and number generated. Stores that word in Required\+Word. \mbox{\Hypertarget{spacetype__train_8c_a58a9e39b3626c1bb7e4e959b36bf43d7}\label{spacetype__train_8c_a58a9e39b3626c1bb7e4e959b36bf43d7}} 
+\index{spacetype\_train.c@{spacetype\_train.c}!train@{train}}
+\index{train@{train}!spacetype\_train.c@{spacetype\_train.c}}
+\doxysubsubsection{\texorpdfstring{train()}{train()}}
+{\footnotesize\ttfamily void train (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+main function for train mode 
+
+the background texture, continues the background music and calls train\+\_\+menu function for further navigation Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{spacetype__train_8c_a58a9e39b3626c1bb7e4e959b36bf43d7_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{spacetype__train_8c_ab348f26a0c1dd03ac6671c03b90efa5e}\label{spacetype__train_8c_ab348f26a0c1dd03ac6671c03b90efa5e}} 
+\index{spacetype\_train.c@{spacetype\_train.c}!train\_menu@{train\_menu}}
+\index{train\_menu@{train\_menu}!spacetype\_train.c@{spacetype\_train.c}}
+\doxysubsubsection{\texorpdfstring{train\_menu()}{train\_menu()}}
+{\footnotesize\ttfamily void train\+\_\+menu (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+main menu for train screen 
+
+Draws the menu for the train mode. Gives the user the option to choose between practicing letters or practicing words. Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{spacetype__train_8c_ab348f26a0c1dd03ac6671c03b90efa5e_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{spacetype__train_8c_a3d854df91ebc16ceb8135872b1252e68}\label{spacetype__train_8c_a3d854df91ebc16ceb8135872b1252e68}} 
+\index{spacetype\_train.c@{spacetype\_train.c}!train\_select@{train\_select}}
+\index{train\_select@{train\_select}!spacetype\_train.c@{spacetype\_train.c}}
+\doxysubsubsection{\texorpdfstring{train\_select()}{train\_select()}}
+{\footnotesize\ttfamily void train\+\_\+select (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Option menu for choosing rows for both letter mode and word mode. 
+
+This function generates the option menu for the user to choose the rows that he wants to practice. Checkbox indicator are present to indicate the rows chose. letter\+\_\+train or word\+\_\+train are called based on the user\textquotesingle{}s previous selection Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{spacetype__train_8c_a3d854df91ebc16ceb8135872b1252e68_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{spacetype__train_8c_a9b71b1145b442c758139bf3b462b56b7}\label{spacetype__train_8c_a9b71b1145b442c758139bf3b462b56b7}} 
+\index{spacetype\_train.c@{spacetype\_train.c}!word\_train@{word\_train}}
+\index{word\_train@{word\_train}!spacetype\_train.c@{spacetype\_train.c}}
+\doxysubsubsection{\texorpdfstring{word\_train()}{word\_train()}}
+{\footnotesize\ttfamily void word\+\_\+train (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Handles processes regarding training typing words. 
+
+The function that handles resetting of variables by calling reset\+\_\+counter, and contains the loop which selects the new word (using select\+\_\+word) and a nested loop which ends when the user has finished enterring the word. It calls remove\+\_\+firstletter each time the letter input matches the letter displayed. Once the user chooses to leave the train process, by pressing ESC, a stats screen is displayed which shows their WPM, fastest word, slowest word, etc. Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=275pt]{spacetype__train_8c_a9b71b1145b442c758139bf3b462b56b7_cgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{spacetype__train_8c_ad3e43f46994781a6189f0d5a93145898}\label{spacetype__train_8c_ad3e43f46994781a6189f0d5a93145898}} 
+\index{spacetype\_train.c@{spacetype\_train.c}!cockpitTextureKeyboard@{cockpitTextureKeyboard}}
+\index{cockpitTextureKeyboard@{cockpitTextureKeyboard}!spacetype\_train.c@{spacetype\_train.c}}
+\doxysubsubsection{\texorpdfstring{cockpitTextureKeyboard}{cockpitTextureKeyboard}}
+{\footnotesize\ttfamily Texture2D cockpit\+Texture\+Keyboard\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Background Texture. 
+
+Background Texture. \mbox{\Hypertarget{spacetype__train_8c_a9aa8d778f3c76629a003f60e46cb9cd0}\label{spacetype__train_8c_a9aa8d778f3c76629a003f60e46cb9cd0}} 
+\index{spacetype\_train.c@{spacetype\_train.c}!customizedWords@{customizedWords}}
+\index{customizedWords@{customizedWords}!spacetype\_train.c@{spacetype\_train.c}}
+\doxysubsubsection{\texorpdfstring{customizedWords}{customizedWords}}
+{\footnotesize\ttfamily char$\ast$ customized\+Words\mbox{[}$\,$\mbox{]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}abstract"{}},\ \textcolor{stringliteral}{"{}conjecture"{}},\ \textcolor{stringliteral}{"{}elixir"{}},\ \textcolor{stringliteral}{"{}fervent"{}},\ \textcolor{stringliteral}{"{}gargantuan"{}},\ \textcolor{stringliteral}{"{}haphazard"{}},\ \textcolor{stringliteral}{"{}intrepid"{}},\ \textcolor{stringliteral}{"{}jubilant"{}},\ \textcolor{stringliteral}{"{}kinetic"{}},\ \textcolor{stringliteral}{"{}luminous"{}},\ \textcolor{stringliteral}{"{}maverick"{}},\ \textcolor{stringliteral}{"{}nocturnal"{}},\ \textcolor{stringliteral}{"{}orchid"{}},\ \textcolor{stringliteral}{"{}predator"{}},\ \textcolor{stringliteral}{"{}quagmire"{}},\ \textcolor{stringliteral}{"{}resilient"{}},\ \textcolor{stringliteral}{"{}saunter"{}},\ \textcolor{stringliteral}{"{}turbulent"{}},\ \textcolor{stringliteral}{"{}unwavering"{}},\ \textcolor{stringliteral}{"{}vortex"{}},\ \textcolor{stringliteral}{"{}whimsical"{}},\ \textcolor{stringliteral}{"{}xenon"{}},\ \textcolor{stringliteral}{"{}yellow"{}},\ \textcolor{stringliteral}{"{}zephyr"{}},\ \textcolor{stringliteral}{"{}allegory"{}},\ \textcolor{stringliteral}{"{}benevolent"{}},\ \textcolor{stringliteral}{"{}credence"{}},\ \textcolor{stringliteral}{"{}demeanor"{}},\ \textcolor{stringliteral}{"{}enigma"{}},\ \textcolor{stringliteral}{"{}fractal"{}},\ \textcolor{stringliteral}{"{}gusto"{}},\ \textcolor{stringliteral}{"{}hiatus"{}},\ \textcolor{stringliteral}{"{}intricacy"{}},\ \textcolor{stringliteral}{"{}jubilation"{}},\ \textcolor{stringliteral}{"{}kaleidoscope"{}},\ \textcolor{stringliteral}{"{}lucid"{}},\ \textcolor{stringliteral}{"{}magnitude"{}},\ \textcolor{stringliteral}{"{}nimble"{}},\ \textcolor{stringliteral}{"{}opulence"{}},\ \textcolor{stringliteral}{"{}pertinent"{}},\ \textcolor{stringliteral}{"{}quintessential"{}},\ \textcolor{stringliteral}{"{}responsive"{}},\ \textcolor{stringliteral}{"{}saturate"{}},\ \textcolor{stringliteral}{"{}tenacity"{}},\ \textcolor{stringliteral}{"{}unbridled"{}},\ \textcolor{stringliteral}{"{}volatile"{}},\ \textcolor{stringliteral}{"{}whirlwind"{}},\ \textcolor{stringliteral}{"{}xylophone"{}},\ \textcolor{stringliteral}{"{}yacht"{}},\ \textcolor{stringliteral}{"{}zodiac"{}},\ \textcolor{stringliteral}{"{}acumen"{}},\ \textcolor{stringliteral}{"{}bazaar"{}},\ \textcolor{stringliteral}{"{}clarity"{}},\ \textcolor{stringliteral}{"{}diligent"{}},\ \textcolor{stringliteral}{"{}empathy"{}},\ \textcolor{stringliteral}{"{}flourish"{}},\ \textcolor{stringliteral}{"{}graceful"{}},\ \textcolor{stringliteral}{"{}harmony"{}},\ \textcolor{stringliteral}{"{}intuition"{}},\ \textcolor{stringliteral}{"{}jovial"{}},\ \textcolor{stringliteral}{"{}klutz"{}},\ \textcolor{stringliteral}{"{}leverage"{}},\ \textcolor{stringliteral}{"{}mystique"{}},\ \textcolor{stringliteral}{"{}nostalgia"{}},\ \textcolor{stringliteral}{"{}overture"{}},\ \textcolor{stringliteral}{"{}persistence"{}},\ \textcolor{stringliteral}{"{}quirk"{}},\ \textcolor{stringliteral}{"{}radiance"{}},\ \textcolor{stringliteral}{"{}savvy"{}},\ \textcolor{stringliteral}{"{}transcend"{}},\ \textcolor{stringliteral}{"{}unison"{}},\ \textcolor{stringliteral}{"{}vivid"{}},\ \textcolor{stringliteral}{"{}whisper"{}},\ \textcolor{stringliteral}{"{}xylograph"{}},\ \textcolor{stringliteral}{"{}yearning"{}},\ \textcolor{stringliteral}{"{}zephyr"{}},\ \textcolor{stringliteral}{"{}affinity"{}},\ \textcolor{stringliteral}{"{}bucolic"{}},\ \textcolor{stringliteral}{"{}clandestine"{}},\ \textcolor{stringliteral}{"{}disparate"{}},\ \textcolor{stringliteral}{"{}embellish"{}},\ \textcolor{stringliteral}{"{}fluctuate"{}},\ \textcolor{stringliteral}{"{}glossary"{}},\ \textcolor{stringliteral}{"{}hiatus"{}},\ \textcolor{stringliteral}{"{}intrepid"{}},\ \textcolor{stringliteral}{"{}jubilant"{}},\ \textcolor{stringliteral}{"{}knick-\/knack"{}},\ \textcolor{stringliteral}{"{}legerdemain"{}},\ \textcolor{stringliteral}{"{}magnanimous"{}},\ \textcolor{stringliteral}{"{}nihilistic"{}},\ \textcolor{stringliteral}{"{}opulent"{}},\ \textcolor{stringliteral}{"{}provocative"{}},\ \textcolor{stringliteral}{"{}quintessence"{}},\ \textcolor{stringliteral}{"{}rhapsodic"{}},\ \textcolor{stringliteral}{"{}solitude"{}},\ \textcolor{stringliteral}{"{}tenacity"{}},\ \textcolor{stringliteral}{"{}unabashed"{}},\ \textcolor{stringliteral}{"{}versatility"{}},\ \textcolor{stringliteral}{"{}whirlwind"{}},\ \textcolor{stringliteral}{"{}xenophobe"{}},\ \textcolor{stringliteral}{"{}yen"{}}}
+\DoxyCodeLine{\ \ \ \ \}}
+
+\end{DoxyCode}

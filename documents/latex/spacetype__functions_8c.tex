@@ -1,0 +1,236 @@
+\hypertarget{spacetype__functions_8c}{}\doxysection{spacetype\+\_\+functions.\+c File Reference}
+\label{spacetype__functions_8c}\index{spacetype\_functions.c@{spacetype\_functions.c}}
+
+
+Created functions for this application.  
+
+
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}spacetype\+\_\+functions.\+h\char`\"{}}\newline
+Include dependency graph for spacetype\+\_\+functions.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=336pt]{spacetype__functions_8c__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=194pt]{spacetype__functions_8c__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{spacetype__functions_8c_ac2b53920425ca2363a0d94d7b4cd537e}{remove\+\_\+firstletter}} (char \mbox{\hyperlink{spacetype__game_8c_af034065dfe33f7ef74362e100b14b260}{word}}\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em Removes the first letter of the word sent. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{spacetype__functions_8c_a3d385ca0396c4c2b3001371505a410e4}{draw\+\_\+background}} ()
+\begin{DoxyCompactList}\small\item\em Draws background in all modes. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{spacetype__functions_8c_aaea5b3f618e439b47273f9547f8ee72f}{reset\+\_\+counter}} ()
+\begin{DoxyCompactList}\small\item\em resets variables for required statistics \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{spacetype__functions_8c_af1c28aa5ebc757216e27616f2378bb6f}{pause\+\_\+screen}} ()
+\begin{DoxyCompactList}\small\item\em Creates a pause menu. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{spacetype__functions_8c_a12b39a18475d88f1af660a2fca26e2e1}{keyboard\+\_\+highlight}} (char a)
+\begin{DoxyCompactList}\small\item\em hightlights requried letter \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{spacetype__functions_8c_a4add847567416989bf9b29e5128662ca}{tutorial\+\_\+screen}} ()
+\begin{DoxyCompactList}\small\item\em Shows a tutorial screeen for touch typing. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{Indent}\textbf{ Statistics variables}\par
+{\em variables handle counters which are associated with with statistics of Word shooter game and word train mode. }\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{spacetype__functions_8c_a665a0731aec1172152b78cb5f3c01066}\label{spacetype__functions_8c_a665a0731aec1172152b78cb5f3c01066}} 
+char {\bfseries fastest\+Word} \mbox{[}20\mbox{]}
+\item 
+\mbox{\Hypertarget{spacetype__functions_8c_a936c03af3e86babcb0ac353944d924d2}\label{spacetype__functions_8c_a936c03af3e86babcb0ac353944d924d2}} 
+char {\bfseries slowest\+Word} \mbox{[}20\mbox{]}
+\item 
+\mbox{\Hypertarget{spacetype__functions_8c_a7949044f3f01bd1a91fa3b2454288355}\label{spacetype__functions_8c_a7949044f3f01bd1a91fa3b2454288355}} 
+char {\bfseries score\+String} \mbox{[}50\mbox{]}
+\item 
+\mbox{\Hypertarget{spacetype__functions_8c_a8259dd681a3af7574239fa1f57cb8b01}\label{spacetype__functions_8c_a8259dd681a3af7574239fa1f57cb8b01}} 
+int {\bfseries SCORE}
+\item 
+\mbox{\Hypertarget{spacetype__functions_8c_a89af8cc9f9feb6c3fa73d0ea6729b7d5}\label{spacetype__functions_8c_a89af8cc9f9feb6c3fa73d0ea6729b7d5}} 
+float {\bfseries TIME} = 10
+\item 
+\mbox{\Hypertarget{spacetype__functions_8c_a202ceeb1013924e0b5f0cf66de074567}\label{spacetype__functions_8c_a202ceeb1013924e0b5f0cf66de074567}} 
+float {\bfseries planet\+Time} = 0
+\item 
+\mbox{\Hypertarget{spacetype__functions_8c_abae3a0ff51af1f5850b19e1393d9bb3b}\label{spacetype__functions_8c_abae3a0ff51af1f5850b19e1393d9bb3b}} 
+float {\bfseries keys\+Pressed}
+\item 
+\mbox{\Hypertarget{spacetype__functions_8c_ab5086d2f1f8f1f1d2ee04e2e9150a602}\label{spacetype__functions_8c_ab5086d2f1f8f1f1d2ee04e2e9150a602}} 
+float {\bfseries right\+Keys\+Pressed}
+\item 
+\mbox{\Hypertarget{spacetype__functions_8c_a51e1166222fd5d5311a40d1e2f4f9de4}\label{spacetype__functions_8c_a51e1166222fd5d5311a40d1e2f4f9de4}} 
+float {\bfseries frames\+Counter\+For\+Session}
+\item 
+\mbox{\Hypertarget{spacetype__functions_8c_a95ae14fd649ced57a69b75d68da589d2}\label{spacetype__functions_8c_a95ae14fd649ced57a69b75d68da589d2}} 
+float {\bfseries frames\+Counter\+For\+Word}
+\item 
+\mbox{\Hypertarget{spacetype__functions_8c_adefa0a21ad7e922b1cf99c1019e0a0b0}\label{spacetype__functions_8c_adefa0a21ad7e922b1cf99c1019e0a0b0}} 
+float {\bfseries fastest\+Word\+Frames}
+\item 
+\mbox{\Hypertarget{spacetype__functions_8c_aebc7f6cb0e8f7579831be9c2c2da2b88}\label{spacetype__functions_8c_aebc7f6cb0e8f7579831be9c2c2da2b88}} 
+float {\bfseries slowest\+Word\+Frames}
+\item 
+\mbox{\Hypertarget{spacetype__functions_8c_af8dca9e59115a92ce3cedeab857e62b2}\label{spacetype__functions_8c_af8dca9e59115a92ce3cedeab857e62b2}} 
+bool {\bfseries gap\+Measured}
+\item 
+\mbox{\Hypertarget{spacetype__functions_8c_a23c08685c289fc4adf8d67f4f06a3745}\label{spacetype__functions_8c_a23c08685c289fc4adf8d67f4f06a3745}} 
+bool {\bfseries exit\+Pause} = true
+\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}\textbf{ Background and main interface variables}\par
+{\em handle different elements related to main interface of the program like background textures, music, scale, etc }\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{spacetype__functions_8c_a1d28dec57cce925ad92342891bd71e7c}\label{spacetype__functions_8c_a1d28dec57cce925ad92342891bd71e7c}} 
+float {\bfseries scale}
+\begin{DoxyCompactList}\small\item\em Image scale for the uniformity. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{spacetype__functions_8c_a6fd0aee1ce197388cddc6fb8bb2e605d}\label{spacetype__functions_8c_a6fd0aee1ce197388cddc6fb8bb2e605d}} 
+float {\bfseries moving\+Down}
+\begin{DoxyCompactList}\small\item\em Variable to govern infinitely scrolling background. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{spacetype__functions_8c_a024e5dce544a851b8ababcadb2fa50f1}\label{spacetype__functions_8c_a024e5dce544a851b8ababcadb2fa50f1}} 
+float {\bfseries moving\+Planets}
+\begin{DoxyCompactList}\small\item\em Variable to govern moving planets. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{spacetype__functions_8c_afe5fabfd23aa37cc25ce0ade58d9a21c}\label{spacetype__functions_8c_afe5fabfd23aa37cc25ce0ade58d9a21c}} 
+float {\bfseries mover}
+\begin{DoxyCompactList}\small\item\em Variable which controls the speed of the word in game mode. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{spacetype__functions_8c_a8e4a12cb358091be4a5f7447b57e2014}\label{spacetype__functions_8c_a8e4a12cb358091be4a5f7447b57e2014}} 
+Music {\bfseries music}
+\begin{DoxyCompactList}\small\item\em background music \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{spacetype__functions_8c_a6ec6a673dfa71c60cda36fd4a1cd0766}\label{spacetype__functions_8c_a6ec6a673dfa71c60cda36fd4a1cd0766}} 
+Texture2D {\bfseries space\+Texture}
+\begin{DoxyCompactList}\small\item\em Space Background used in infinite scroll background. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{spacetype__functions_8c_a2a083bd637a6d7f4aad5822c7375c819}\label{spacetype__functions_8c_a2a083bd637a6d7f4aad5822c7375c819}} 
+Texture2D {\bfseries planet\+Textures} \mbox{[}3\mbox{]}
+\begin{DoxyCompactList}\small\item\em Array of 3 different planet images to display on background. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{spacetype__functions_8c_a4fb5ae16226454babb052b833c19050e}\label{spacetype__functions_8c_a4fb5ae16226454babb052b833c19050e}} 
+Texture2D {\bfseries bullet\+Texture}
+\begin{DoxyCompactList}\small\item\em Texture of Bullet used in game mode. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{spacetype__functions_8c_a8970a99909f173b19ac141212ae2aba1}\label{spacetype__functions_8c_a8970a99909f173b19ac141212ae2aba1}} 
+Texture2D {\bfseries spaceship\+Texture}
+\begin{DoxyCompactList}\small\item\em Texture of spaceship in game mode. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{spacetype__functions_8c_ad3e43f46994781a6189f0d5a93145898}\label{spacetype__functions_8c_ad3e43f46994781a6189f0d5a93145898}} 
+Texture2D {\bfseries cockpit\+Texture\+Keyboard}
+\begin{DoxyCompactList}\small\item\em Background Texture. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}\textbf{ Extern variables from main}\par
+{\em different variables initialized before needed for this portion }\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{spacetype__functions_8c_ae50cb92a78d9e0a4f4bd718fc02bd294}\label{spacetype__functions_8c_ae50cb92a78d9e0a4f4bd718fc02bd294}} 
+int {\bfseries screen\+Width}
+\begin{DoxyCompactList}\small\item\em screen width for graphical operations \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{spacetype__functions_8c_a9ebc1dbd77788c4bfa27758a6725413f}\label{spacetype__functions_8c_a9ebc1dbd77788c4bfa27758a6725413f}} 
+int {\bfseries screen\+Height}
+\begin{DoxyCompactList}\small\item\em screen height for graphical operations \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{spacetype__functions_8c_a81aa2ca2abef778dcd32bddb7dbb164e}\label{spacetype__functions_8c_a81aa2ca2abef778dcd32bddb7dbb164e}} 
+Font {\bfseries retro\+Font}
+\item 
+\mbox{\Hypertarget{spacetype__functions_8c_aae3d881ed021a5f5a1827c0e93f0b9b3}\label{spacetype__functions_8c_aae3d881ed021a5f5a1827c0e93f0b9b3}} 
+bool {\bfseries exit\+Game}
+\begin{DoxyCompactList}\small\item\em To govern game mode loop. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{spacetype__functions_8c_af55ba184810ed8dbd5951a049baa7687}\label{spacetype__functions_8c_af55ba184810ed8dbd5951a049baa7687}} 
+bool {\bfseries sorted}
+\item 
+\mbox{\Hypertarget{spacetype__functions_8c_a6873dfffcddeacc1146d828469a7b271}\label{spacetype__functions_8c_a6873dfffcddeacc1146d828469a7b271}} 
+FILE $\ast$ {\bfseries wrong\+Chars}
+\begin{DoxyCompactList}\small\item\em To store mispressed characters to use in customized train mode. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{spacetype__functions_8c_a9f127680487df01723b24e6d16c5a831}\label{spacetype__functions_8c_a9f127680487df01723b24e6d16c5a831}} 
+Texture2D {\bfseries qwerty\+Texture}
+\begin{DoxyCompactList}\small\item\em keyboard image for tutorial screen \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+
+
+\doxysubsection{Detailed Description}
+Created functions for this application. 
+
+\begin{DoxyAuthor}{Author}
+Praharsha Adhikari \href{mailto:078bct061.praharsha@pcampus.edu.np}{\texttt{ 078bct061.\+praharsha@pcampus.\+edu.\+np}} 
+\end{DoxyAuthor}
+\begin{DoxyRefDesc}{Bug}
+\item[\mbox{\hyperlink{bug__bug000002}{Bug}}]No Known Bugs \end{DoxyRefDesc}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{spacetype__functions_8c_a3d385ca0396c4c2b3001371505a410e4}\label{spacetype__functions_8c_a3d385ca0396c4c2b3001371505a410e4}} 
+\index{spacetype\_functions.c@{spacetype\_functions.c}!draw\_background@{draw\_background}}
+\index{draw\_background@{draw\_background}!spacetype\_functions.c@{spacetype\_functions.c}}
+\doxysubsubsection{\texorpdfstring{draw\_background()}{draw\_background()}}
+{\footnotesize\ttfamily void draw\+\_\+background (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Draws background in all modes. 
+
+Draws the infinitely scrolling space background with moving planets. \mbox{\Hypertarget{spacetype__functions_8c_a12b39a18475d88f1af660a2fca26e2e1}\label{spacetype__functions_8c_a12b39a18475d88f1af660a2fca26e2e1}} 
+\index{spacetype\_functions.c@{spacetype\_functions.c}!keyboard\_highlight@{keyboard\_highlight}}
+\index{keyboard\_highlight@{keyboard\_highlight}!spacetype\_functions.c@{spacetype\_functions.c}}
+\doxysubsubsection{\texorpdfstring{keyboard\_highlight()}{keyboard\_highlight()}}
+{\footnotesize\ttfamily void keyboard\+\_\+highlight (\begin{DoxyParamCaption}\item[{char}]{a }\end{DoxyParamCaption})}
+
+
+
+hightlights requried letter 
+
+the key you need to press in the keyboard for Train mode
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & the letter which needs to be highlighted \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{spacetype__functions_8c_af1c28aa5ebc757216e27616f2378bb6f}\label{spacetype__functions_8c_af1c28aa5ebc757216e27616f2378bb6f}} 
+\index{spacetype\_functions.c@{spacetype\_functions.c}!pause\_screen@{pause\_screen}}
+\index{pause\_screen@{pause\_screen}!spacetype\_functions.c@{spacetype\_functions.c}}
+\doxysubsubsection{\texorpdfstring{pause\_screen()}{pause\_screen()}}
+{\footnotesize\ttfamily void pause\+\_\+screen (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Creates a pause menu. 
+
+a pause menu when called. Has options to either resume the game or return back to main menu \mbox{\Hypertarget{spacetype__functions_8c_ac2b53920425ca2363a0d94d7b4cd537e}\label{spacetype__functions_8c_ac2b53920425ca2363a0d94d7b4cd537e}} 
+\index{spacetype\_functions.c@{spacetype\_functions.c}!remove\_firstletter@{remove\_firstletter}}
+\index{remove\_firstletter@{remove\_firstletter}!spacetype\_functions.c@{spacetype\_functions.c}}
+\doxysubsubsection{\texorpdfstring{remove\_firstletter()}{remove\_firstletter()}}
+{\footnotesize\ttfamily void remove\+\_\+firstletter (\begin{DoxyParamCaption}\item[{char}]{word\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Removes the first letter of the word sent. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em word\mbox{[}$\,$\mbox{]}} & the word sent to have its first letter removed \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{spacetype__functions_8c_aaea5b3f618e439b47273f9547f8ee72f}\label{spacetype__functions_8c_aaea5b3f618e439b47273f9547f8ee72f}} 
+\index{spacetype\_functions.c@{spacetype\_functions.c}!reset\_counter@{reset\_counter}}
+\index{reset\_counter@{reset\_counter}!spacetype\_functions.c@{spacetype\_functions.c}}
+\doxysubsubsection{\texorpdfstring{reset\_counter()}{reset\_counter()}}
+{\footnotesize\ttfamily void reset\+\_\+counter (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+resets variables for required statistics 
+
+all the variables like score, fastestword, slowest word, etc. that are used to calculate statistics during word practice and Game mode \mbox{\Hypertarget{spacetype__functions_8c_a4add847567416989bf9b29e5128662ca}\label{spacetype__functions_8c_a4add847567416989bf9b29e5128662ca}} 
+\index{spacetype\_functions.c@{spacetype\_functions.c}!tutorial\_screen@{tutorial\_screen}}
+\index{tutorial\_screen@{tutorial\_screen}!spacetype\_functions.c@{spacetype\_functions.c}}
+\doxysubsubsection{\texorpdfstring{tutorial\_screen()}{tutorial\_screen()}}
+{\footnotesize\ttfamily void tutorial\+\_\+screen (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Shows a tutorial screeen for touch typing. 
+
+Shows the touch typing finger placement in keyboard when Help button is pressed in main menu Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=288pt]{spacetype__functions_8c_a4add847567416989bf9b29e5128662ca_cgraph}
+\end{center}
+\end{figure}

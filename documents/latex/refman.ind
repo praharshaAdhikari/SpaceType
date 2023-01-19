@@ -1,0 +1,129 @@
+\begin{theindex}
+
+  \item {character}
+    \subitem {charCount}, \hyperpage{7}
+  \item {charCount}, \hyperpage{7}
+    \subitem {character}, \hyperpage{7}
+    \subitem {count}, \hyperpage{7}
+  \item {cockpitTextureKeyboard}
+    \subitem {spacetype\_test.c}, \hyperpage{24}
+    \subitem {spacetype\_train.c}, \hyperpage{31}
+  \item {count}
+    \subitem {charCount}, \hyperpage{7}
+  \item {customized\_train}
+    \subitem {spacetype\_train.c}, \hyperpage{26}
+  \item {customizedWords}
+    \subitem {spacetype\_train.c}, \hyperpage{31}
+
+  \indexspace
+
+  \item {draw\_background}
+    \subitem {spacetype\_functions.c}, \hyperpage{14}
+  \item {draw\_menu}
+    \subitem {main.c}, \hyperpage{10}
+
+  \indexspace
+
+  \item {game}
+    \subitem {spacetype\_game.c}, \hyperpage{18}
+
+  \indexspace
+
+  \item {keyboard\_highlight}
+    \subitem {spacetype\_functions.c}, \hyperpage{14}
+
+  \indexspace
+
+  \item {letter\_train}
+    \subitem {spacetype\_train.c}, \hyperpage{27}
+
+  \indexspace
+
+  \item {main}
+    \subitem {main.c}, \hyperpage{11}
+  \item {main.c}, \hyperpage{9}
+    \subitem {draw\_menu}, \hyperpage{10}
+    \subitem {main}, \hyperpage{11}
+  \item {mode\_trainletters}
+    \subitem {spacetype\_train.c}, \hyperpage{27}
+  \item {mode\_trainwords}
+    \subitem {spacetype\_train.c}, \hyperpage{28}
+
+  \indexspace
+
+  \item {pause\_screen}
+    \subitem {spacetype\_functions.c}, \hyperpage{15}
+
+  \indexspace
+
+  \item {remove\_firstletter}
+    \subitem {spacetype\_functions.c}, \hyperpage{15}
+  \item {reset\_counter}
+    \subitem {spacetype\_functions.c}, \hyperpage{15}
+
+  \indexspace
+
+  \item {select\_letter}
+    \subitem {spacetype\_train.c}, \hyperpage{28}
+  \item {select\_word}
+    \subitem {spacetype\_train.c}, \hyperpage{29}
+  \item {spacetype\_functions.c}, \hyperpage{12}
+    \subitem {draw\_background}, \hyperpage{14}
+    \subitem {keyboard\_highlight}, \hyperpage{14}
+    \subitem {pause\_screen}, \hyperpage{15}
+    \subitem {remove\_firstletter}, \hyperpage{15}
+    \subitem {reset\_counter}, \hyperpage{15}
+    \subitem {tutorial\_screen}, \hyperpage{15}
+  \item {spacetype\_game.c}, \hyperpage{16}
+    \subitem {game}, \hyperpage{18}
+    \subitem {text\_mover}, \hyperpage{19}
+    \subitem {words}, \hyperpage{19}
+  \item {spacetype\_test.c}, \hyperpage{20}
+    \subitem {cockpitTextureKeyboard}, \hyperpage{24}
+    \subitem {test}, \hyperpage{22}
+    \subitem {test\_menu}, \hyperpage{22}
+    \subitem {test\_process}, \hyperpage{23}
+    \subitem {text1}, \hyperpage{24}
+  \item {spacetype\_train.c}, \hyperpage{24}
+    \subitem {cockpitTextureKeyboard}, \hyperpage{31}
+    \subitem {customized\_train}, \hyperpage{26}
+    \subitem {customizedWords}, \hyperpage{31}
+    \subitem {letter\_train}, \hyperpage{27}
+    \subitem {mode\_trainletters}, \hyperpage{27}
+    \subitem {mode\_trainwords}, \hyperpage{28}
+    \subitem {select\_letter}, \hyperpage{28}
+    \subitem {select\_word}, \hyperpage{29}
+    \subitem {train}, \hyperpage{29}
+    \subitem {train\_menu}, \hyperpage{29}
+    \subitem {train\_select}, \hyperpage{30}
+    \subitem {word\_train}, \hyperpage{31}
+
+  \indexspace
+
+  \item {test}
+    \subitem {spacetype\_test.c}, \hyperpage{22}
+  \item {test\_menu}
+    \subitem {spacetype\_test.c}, \hyperpage{22}
+  \item {test\_process}
+    \subitem {spacetype\_test.c}, \hyperpage{23}
+  \item {text1}
+    \subitem {spacetype\_test.c}, \hyperpage{24}
+  \item {text\_mover}
+    \subitem {spacetype\_game.c}, \hyperpage{19}
+  \item {train}
+    \subitem {spacetype\_train.c}, \hyperpage{29}
+  \item {train\_menu}
+    \subitem {spacetype\_train.c}, \hyperpage{29}
+  \item {train\_select}
+    \subitem {spacetype\_train.c}, \hyperpage{30}
+  \item {tutorial\_screen}
+    \subitem {spacetype\_functions.c}, \hyperpage{15}
+
+  \indexspace
+
+  \item {word\_train}
+    \subitem {spacetype\_train.c}, \hyperpage{31}
+  \item {words}
+    \subitem {spacetype\_game.c}, \hyperpage{19}
+
+\end{theindex}

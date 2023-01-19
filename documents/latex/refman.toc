@@ -1,0 +1,64 @@
+\@ifundefined {etoctocstyle}{\let \etoc@startlocaltoc \@gobble \let \etoc@settocdepth \@gobble \let \etoc@depthtag \@gobble \let \etoc@setlocaltop \@gobble }{}
+\contentsline {chapter}{\numberline {1}Bug List}{1}{chapter.1}%
+\contentsline {chapter}{\numberline {2}Data Structure Index}{3}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Data Structures}{3}{section.2.1}%
+\contentsline {chapter}{\numberline {3}File Index}{5}{chapter.3}%
+\contentsline {section}{\numberline {3.1}File List}{5}{section.3.1}%
+\contentsline {chapter}{\numberline {4}Data Structure Documentation}{7}{chapter.4}%
+\contentsline {section}{\numberline {4.1}char\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Count Struct Reference}{7}{section.4.1}%
+\contentsline {subsection}{\numberline {4.1.1}Detailed Description}{7}{subsection.4.1.1}%
+\contentsline {subsection}{\numberline {4.1.2}Field Documentation}{7}{subsection.4.1.2}%
+\contentsline {subsubsection}{\numberline {4.1.2.1}character}{7}{subsubsection.4.1.2.1}%
+\contentsline {subsubsection}{\numberline {4.1.2.2}count}{7}{subsubsection.4.1.2.2}%
+\contentsline {chapter}{\numberline {5}File Documentation}{9}{chapter.5}%
+\contentsline {section}{\numberline {5.1}main.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}c File Reference}{9}{section.5.1}%
+\contentsline {subsection}{\numberline {5.1.1}Detailed Description}{10}{subsection.5.1.1}%
+\contentsline {subsection}{\numberline {5.1.2}Function Documentation}{10}{subsection.5.1.2}%
+\contentsline {subsubsection}{\numberline {5.1.2.1}draw\_menu()}{11}{subsubsection.5.1.2.1}%
+\contentsline {subsubsection}{\numberline {5.1.2.2}main()}{11}{subsubsection.5.1.2.2}%
+\contentsline {section}{\numberline {5.2}spacetype\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}functions.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}c File Reference}{12}{section.5.2}%
+\contentsline {subsection}{\numberline {5.2.1}Detailed Description}{14}{subsection.5.2.1}%
+\contentsline {subsection}{\numberline {5.2.2}Function Documentation}{14}{subsection.5.2.2}%
+\contentsline {subsubsection}{\numberline {5.2.2.1}draw\_background()}{14}{subsubsection.5.2.2.1}%
+\contentsline {subsubsection}{\numberline {5.2.2.2}keyboard\_highlight()}{14}{subsubsection.5.2.2.2}%
+\contentsline {subsubsection}{\numberline {5.2.2.3}pause\_screen()}{15}{subsubsection.5.2.2.3}%
+\contentsline {subsubsection}{\numberline {5.2.2.4}remove\_firstletter()}{15}{subsubsection.5.2.2.4}%
+\contentsline {subsubsection}{\numberline {5.2.2.5}reset\_counter()}{15}{subsubsection.5.2.2.5}%
+\contentsline {subsubsection}{\numberline {5.2.2.6}tutorial\_screen()}{15}{subsubsection.5.2.2.6}%
+\contentsline {section}{\numberline {5.3}spacetype\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}functions.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{16}{section.5.3}%
+\contentsline {section}{\numberline {5.4}spacetype\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}game.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}c File Reference}{16}{section.5.4}%
+\contentsline {subsection}{\numberline {5.4.1}Detailed Description}{18}{subsection.5.4.1}%
+\contentsline {subsection}{\numberline {5.4.2}Function Documentation}{18}{subsection.5.4.2}%
+\contentsline {subsubsection}{\numberline {5.4.2.1}game()}{18}{subsubsection.5.4.2.1}%
+\contentsline {subsubsection}{\numberline {5.4.2.2}text\_mover()}{19}{subsubsection.5.4.2.2}%
+\contentsline {subsection}{\numberline {5.4.3}Variable Documentation}{19}{subsection.5.4.3}%
+\contentsline {subsubsection}{\numberline {5.4.3.1}words}{19}{subsubsection.5.4.3.1}%
+\contentsline {section}{\numberline {5.5}spacetype\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}game.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{20}{section.5.5}%
+\contentsline {section}{\numberline {5.6}spacetype\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}test.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}c File Reference}{20}{section.5.6}%
+\contentsline {subsection}{\numberline {5.6.1}Detailed Description}{22}{subsection.5.6.1}%
+\contentsline {subsection}{\numberline {5.6.2}Function Documentation}{22}{subsection.5.6.2}%
+\contentsline {subsubsection}{\numberline {5.6.2.1}test()}{22}{subsubsection.5.6.2.1}%
+\contentsline {subsubsection}{\numberline {5.6.2.2}test\_menu()}{23}{subsubsection.5.6.2.2}%
+\contentsline {subsubsection}{\numberline {5.6.2.3}test\_process()}{23}{subsubsection.5.6.2.3}%
+\contentsline {subsection}{\numberline {5.6.3}Variable Documentation}{24}{subsection.5.6.3}%
+\contentsline {subsubsection}{\numberline {5.6.3.1}cockpitTextureKeyboard}{24}{subsubsection.5.6.3.1}%
+\contentsline {subsubsection}{\numberline {5.6.3.2}text1}{24}{subsubsection.5.6.3.2}%
+\contentsline {section}{\numberline {5.7}spacetype\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}test.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{24}{section.5.7}%
+\contentsline {section}{\numberline {5.8}spacetype\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}train.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}c File Reference}{24}{section.5.8}%
+\contentsline {subsection}{\numberline {5.8.1}Detailed Description}{26}{subsection.5.8.1}%
+\contentsline {subsection}{\numberline {5.8.2}Function Documentation}{26}{subsection.5.8.2}%
+\contentsline {subsubsection}{\numberline {5.8.2.1}customized\_train()}{26}{subsubsection.5.8.2.1}%
+\contentsline {subsubsection}{\numberline {5.8.2.2}letter\_train()}{27}{subsubsection.5.8.2.2}%
+\contentsline {subsubsection}{\numberline {5.8.2.3}mode\_trainletters()}{28}{subsubsection.5.8.2.3}%
+\contentsline {subsubsection}{\numberline {5.8.2.4}mode\_trainwords()}{28}{subsubsection.5.8.2.4}%
+\contentsline {subsubsection}{\numberline {5.8.2.5}select\_letter()}{29}{subsubsection.5.8.2.5}%
+\contentsline {subsubsection}{\numberline {5.8.2.6}select\_word()}{29}{subsubsection.5.8.2.6}%
+\contentsline {subsubsection}{\numberline {5.8.2.7}train()}{29}{subsubsection.5.8.2.7}%
+\contentsline {subsubsection}{\numberline {5.8.2.8}train\_menu()}{30}{subsubsection.5.8.2.8}%
+\contentsline {subsubsection}{\numberline {5.8.2.9}train\_select()}{30}{subsubsection.5.8.2.9}%
+\contentsline {subsubsection}{\numberline {5.8.2.10}word\_train()}{31}{subsubsection.5.8.2.10}%
+\contentsline {subsection}{\numberline {5.8.3}Variable Documentation}{31}{subsection.5.8.3}%
+\contentsline {subsubsection}{\numberline {5.8.3.1}cockpitTextureKeyboard}{31}{subsubsection.5.8.3.1}%
+\contentsline {subsubsection}{\numberline {5.8.3.2}customizedWords}{32}{subsubsection.5.8.3.2}%
+\contentsline {section}{\numberline {5.9}spacetype\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}train.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{32}{section.5.9}%
+\contentsline {chapter}{Index}{33}{section*.34}%
