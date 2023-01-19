@@ -81,7 +81,7 @@ Pause screen
 <img src="https://cdn.discordapp.com/attachments/1058292470141698058/1065305821489152152/image.png" alt="Space Type practicing letters">
 
 ## Documentation
-The documentation of this app was generated using Doxygen. 
+The documentation of this app was generated using Doxygen.  
 Link: https://praharshaadhikari.github.io/SpaceType/documentation/html/
 
 ## Credits
