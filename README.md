@@ -30,6 +30,7 @@ A typing trainer, tester, and game. But it's disguised as a game where you train
   <a href="#key-features">Key Features</a> •
   <a href="#how-to-build">How To Use</a> •
   <a href="#images">Images</a> •
+  <a href="#documentation">Documentation</a> •
   <a href="#credits">Credits</a> •
   <a href="#acknowledgements">Acknowledgements</a>
 </p>
@@ -79,11 +80,9 @@ Result screen
 Pause screen
 <img src="https://cdn.discordapp.com/attachments/1058292470141698058/1065305821489152152/image.png" alt="Space Type practicing letters">
 
-
-
-
-
-
+## Documentation
+The documentation of this game was generated using Doxygen.  
+Link: https://praharshaadhikari.github.io/SpaceType/documentation/html/
 
 ## Credits
 
